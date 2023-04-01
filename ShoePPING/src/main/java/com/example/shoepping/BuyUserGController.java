@@ -7,7 +7,7 @@ import javafx.scene.layout.HBox;
 
 public class BuyUserGController{
 
-    public String username = "";
+    String username = "";
 
     @FXML
     HBox sellButton;
@@ -38,7 +38,7 @@ public class BuyUserGController{
 
 
     public void onNewBalanceClick() {
-        System.out.println("newBalance");
+        System.out.println("newbalance");
     }
 
     public void onProfileClick() {

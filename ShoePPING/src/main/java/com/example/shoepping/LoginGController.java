@@ -75,7 +75,7 @@ public class LoginGController implements ILoginView {
     }
 
     public void onLoginSuccessUser() throws IOException {
-        
+
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
         Parent root = loader.load();
