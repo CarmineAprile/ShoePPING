@@ -7,7 +7,7 @@ import javafx.scene.layout.HBox;
 
 public class BuyUserGController{
 
-    public String username = "";
+    String username = "";
 
     @FXML
     HBox sellButton;
