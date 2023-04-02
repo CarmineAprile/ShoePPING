@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
@@ -23,12 +24,15 @@
       <PasswordField fx:id="loginPassword" focusTraversable="false" onKeyTyped="#maxLenghtPass" prefHeight="35.0" prefWidth="271.0" promptText="Password" />
       <Label fx:id="passwordLabel" prefHeight="17.0" prefWidth="270.0" textFill="RED" />
       <VBox alignment="TOP_CENTER" prefHeight="191.0" prefWidth="271.0" spacing="15.0">
-         <Text fx:id="forgotPassword" fill="#554b4d" onMouseClicked="#passwordRecovery" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password?" textAlignment="RIGHT" wrappingWidth="270.5865478515625">
+         <Text fx:id="forgotPassword" fill="#554b4d" onMouseClicked="#passwordRecovery" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password?" textAlignment="RIGHT" wrappingWidth="102.5865478515625">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
+            <VBox.margin>
+               <Insets left="165.0" />
+            </VBox.margin>
          </Text>
-         <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="271.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="LOGIN" textAlignment="CENTER" textFill="#554b4d">
+         <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="353.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="LOGIN" textAlignment="CENTER" textFill="#554b4d">
             <effect>
                <DropShadow height="5.0" radius="2.0" width="5.0" />
             </effect>

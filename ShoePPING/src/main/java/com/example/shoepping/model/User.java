@@ -7,7 +7,7 @@ public class User implements IUser {
     private final String username;
     private final String pass;
     private final String repass;
-    private final String email;
+    private String email;
 
     public User(String username, String pass, String repass, String email) {
         this.username = username;
@@ -37,6 +37,12 @@ public class User implements IUser {
     public String getEmail() {
         return email;
     }
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
 
     @Override
     public int isValid() {
@@ -66,4 +72,6 @@ public class User implements IUser {
         else
             return -1;
     }
+
+
 }

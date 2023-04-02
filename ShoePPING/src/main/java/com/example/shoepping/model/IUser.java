@@ -6,4 +6,5 @@ public interface IUser {
     String getPassword();
     String getEmail();
     int isValid();
+    void setEmail(String email);
 }

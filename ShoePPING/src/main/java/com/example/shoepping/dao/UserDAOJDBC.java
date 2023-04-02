@@ -33,11 +33,20 @@ public class UserDAOJDBC implements UserDao {
         return rs == 1;
     }
 
+    @Override
     public void addUser(User instance) throws ClassNotFoundException, SQLException, IOException, DAOException {
 
         Connection conn = DaoUtility.prepareQuery();
 
         // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
         SimpleQueries.insertUser(conn, instance.getUsername(), instance.getPassword(), instance.getEmail());
+    }
+
+    @Override
+    public String getEmail(User instance) throws SQLException, IOException, ClassNotFoundException {
+
+        Connection conn = DaoUtility.prepareQuery();
+
+        return SimpleQueries.getEmailUser(conn, instance.getUsername());
     }
 }

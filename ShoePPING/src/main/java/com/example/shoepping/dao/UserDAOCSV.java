@@ -77,5 +77,23 @@ public class UserDAOCSV implements UserDao {
         csvWriter.close();
     }
 
+    @Override
+    public String getEmail(User instance) throws CsvValidationException, IOException {
+        CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)));
+        String[] rec;
+        String email = "";
+
+        while ((rec = csvReader.readNext()) != null) {
+
+            boolean recordFound = rec[USERNAME_INDEX].equals(instance.getUsername());
+            if (recordFound) {
+                email = rec[2];
+            }
+        }
+        csvReader.close();
+
+        return email;
+    }
+
 
 }

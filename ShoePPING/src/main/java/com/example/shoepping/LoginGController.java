@@ -1,8 +1,12 @@
 package com.example.shoepping;
 
+import com.example.shoepping.dao.UserDAOCSV;
+import com.example.shoepping.dao.UserDAOJDBC;
+import com.example.shoepping.model.User;
 import com.example.shoepping.use_case.login.controller.ILoginController;
 import com.example.shoepping.use_case.login.controller.LoginController;
 import com.example.shoepping.use_case.login.view.ILoginView;
+import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,9 +15,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class LoginGController implements ILoginView {
+
+    String usernameLogin = "";
+    String passLogin = "";
+
+
     @FXML
     CheckBox checkFS;
     @FXML
@@ -44,8 +54,8 @@ public class LoginGController implements ILoginView {
     }
 
     public void login() throws Exception {
-        String user = loginUsername.getText();
-        String pass = loginPassword.getText();
+        usernameLogin = loginUsername.getText();
+        passLogin = loginPassword.getText();
 
         //Serve a "svuotare" le label di errore
         usernameLabel.setText("");
@@ -54,7 +64,7 @@ public class LoginGController implements ILoginView {
         boolean check = checkFS.isSelected();
 
         ILoginController loginPresenter = new LoginController(this);
-        loginPresenter.onLogin(user, pass, check);
+        loginPresenter.onLogin(usernameLogin, passLogin, check);
     }
 
     public void googleLogin() {
@@ -74,14 +84,30 @@ public class LoginGController implements ILoginView {
         cw.switchPage(root, loginPane);
     }
 
-    public void onLoginSuccessUser() throws IOException {
+    public void onLoginSuccessUser() throws IOException, SQLException, ClassNotFoundException, CsvValidationException {
 
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
         Parent root = loader.load();
 
         BuyUserGController buyUserGController = loader.getController();
-        buyUserGController.salva(loginUsername.getText());
+
+        User user = new User(usernameLogin, passLogin);
+
+        // da salvare da loginGC se check è premuto
+        if(!checkFS.isSelected()) {
+            UserDAOJDBC userdao = new UserDAOJDBC();
+            String emailLogin = userdao.getEmail(user);
+            user.setEmail(emailLogin);
+        }else{
+            UserDAOCSV userdao = new UserDAOCSV();
+            String emailLogin = userdao.getEmail(user);
+            user.setEmail(emailLogin);
+            System.out.println(emailLogin);
+        }
+
+
+        buyUserGController.salva(user);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, loginPane);

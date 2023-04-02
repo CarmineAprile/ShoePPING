@@ -1,14 +1,21 @@
 package com.example.shoepping;
 
+import com.example.shoepping.model.User;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+
+import java.io.IOException;
 
 public class BuyUserGController{
 
-    String username = "";
-
+    User user;
+    @FXML
+    AnchorPane buyUserPane;
     @FXML
     HBox sellButton;
     @FXML
@@ -22,8 +29,8 @@ public class BuyUserGController{
     @FXML
     Button catalogButton;
 
-    public void salva(String username){
-        this.username = username;
+    public void salva(User user){
+        this.user = user;
     }
 
 
@@ -41,8 +48,17 @@ public class BuyUserGController{
         System.out.println("newbalance");
     }
 
-    public void onProfileClick() {
-        System.out.println(username);
+    public void onProfileClick() throws IOException {
+        System.out.println(user.getUsername());
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
+        Parent root = loader.load();
+
+        ProfileGController profileGController = loader.getController();
+        profileGController.salva(user);
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, buyUserPane);
     }
 
     public void onSellClick() {
