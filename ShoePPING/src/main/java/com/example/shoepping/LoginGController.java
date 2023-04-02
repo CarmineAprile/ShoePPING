@@ -87,8 +87,11 @@ public class LoginGController implements ILoginView {
         cw.switchPage(root, loginPane);
     }
 
-    public void onLoginSuccessAdmin(){
+    public void onLoginSuccessAdmin() throws IOException {
         System.out.println("Sei l'amministratore, benvenuto.");
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("profile-view.fxml")));
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, loginPane);
     }
 
 

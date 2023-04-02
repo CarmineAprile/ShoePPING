@@ -5,6 +5,6 @@ import java.io.IOException;
 public interface ILoginView {
 
     void onLoginSuccessUser() throws IOException;
-    void onLoginSuccessAdmin();
+    void onLoginSuccessAdmin() throws IOException;
     void onLoginError(String message, int codeError);
 }
