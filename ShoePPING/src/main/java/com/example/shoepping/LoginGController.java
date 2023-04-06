@@ -94,8 +94,10 @@ public class LoginGController implements ILoginView {
 
         User user = new User(usernameLogin, passLogin);
 
-        // da salvare da loginGC se check è premuto
-        if(!checkFS.isSelected()) {
+        boolean isChecked = checkFS.isSelected();
+
+
+        if(!isChecked) {
             UserDAOJDBC userdao = new UserDAOJDBC();
             String emailLogin = userdao.getEmail(user);
             user.setEmail(emailLogin);
@@ -107,7 +109,7 @@ public class LoginGController implements ILoginView {
         }
 
 
-        buyUserGController.salva(user);
+        buyUserGController.salva(user, isChecked);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, loginPane);

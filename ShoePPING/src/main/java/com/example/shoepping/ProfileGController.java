@@ -15,6 +15,7 @@ import java.io.IOException;
 public class ProfileGController {
 
     User user;
+    boolean isChecked;
 
     @FXML
     AnchorPane profilePane;
@@ -33,8 +34,9 @@ public class ProfileGController {
     @FXML
     HBox aboutUs;
 
-    public void salva(User user){
+    public void salva(User user, boolean isChecked){
         this.user = user;
+        this.isChecked = isChecked;
 
         usernameLabel.setText(user.getUsername());
         emailLabel.setText(user.getEmail());
@@ -45,7 +47,7 @@ public class ProfileGController {
         Parent root = loader.load();
 
         BuyUserGController buyUserGController = loader.getController();
-        buyUserGController.salva(user);
+        buyUserGController.salva(user, isChecked);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, profilePane);
@@ -54,7 +56,6 @@ public class ProfileGController {
     public void editProfile() {
         System.out.println("Profile");
         // aggiungere controllo su check fyleSystem
-        // da salvare da loginGC se check è premuto
     }
 
     public void goMyOrders() {

@@ -14,6 +14,7 @@ import java.io.IOException;
 public class BuyUserGController{
 
     User user;
+    boolean isChecked;
     @FXML
     AnchorPane buyUserPane;
     @FXML
@@ -29,8 +30,9 @@ public class BuyUserGController{
     @FXML
     Button catalogButton;
 
-    public void salva(User user){
+    public void salva(User user, boolean isChecked){
         this.user = user;
+        this.isChecked = isChecked;
     }
 
 
@@ -53,7 +55,7 @@ public class BuyUserGController{
         Parent root = loader.load();
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva(user);
+        profileGController.salva(user, isChecked);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);
