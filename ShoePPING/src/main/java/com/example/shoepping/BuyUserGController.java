@@ -49,8 +49,6 @@ public class BuyUserGController{
     }
 
     public void onProfileClick() throws IOException {
-        System.out.println(user.getUsername());
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
         Parent root = loader.load();
 
