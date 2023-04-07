@@ -53,9 +53,15 @@ public class ProfileGController {
         cw.switchPage(root, profilePane);
     }
 
-    public void editProfile() {
-        System.out.println("Profile");
-        // aggiungere controllo su check fyleSystem
+    public void editProfile() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("edit-profile-view.fxml"));
+        Parent root = loader.load();
+
+        EditProfileGController editProfileGController = loader.getController();
+        editProfileGController.salva(user, isChecked);
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, profilePane);
     }
 
     public void goMyOrders() {

@@ -20,7 +20,7 @@
         <Label fx:id="usernameLabel" prefHeight="17.0" prefWidth="270.0" textFill="RED" />
         <TextField fx:id="registrationPassword" focusTraversable="false" onKeyTyped="#maxLenghtPass" prefHeight="35.0" prefWidth="263.0" promptText="Password" />
         <Label fx:id="passwordLabel" prefHeight="17.0" prefWidth="270.0" textFill="RED" />
-      <TextField fx:id="registrationRepassword" focusTraversable="false" onKeyTyped="#maxLenghtRepass" prefHeight="35.0" prefWidth="88.0" promptText="Retype-Password" />
+      <TextField fx:id="registrationRepassword" focusTraversable="false" onKeyTyped="#maxLenghtRepass" prefHeight="35.0" prefWidth="88.0" promptText="Confirm Password" />
       <Label fx:id="retypeLabel" prefHeight="17.0" prefWidth="382.0" textFill="RED" />
       <TextField fx:id="registrationEmail" focusTraversable="false" onKeyTyped="#maxLenghtEmail" prefHeight="35.0" prefWidth="88.0" promptText="Email" />
       <Label fx:id="emailLabel" prefHeight="17.0" prefWidth="382.0" textFill="RED" />
