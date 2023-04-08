@@ -105,7 +105,6 @@ public class LoginGController implements ILoginView {
             UserDAOCSV userdao = new UserDAOCSV();
             String emailLogin = userdao.getEmail(user);
             user.setEmail(emailLogin);
-            System.out.println(emailLogin);
         }
 
 
