@@ -8,7 +8,6 @@ import com.opencsv.exceptions.CsvValidationException;
 import java.io.*;
 
 
-
 public class UserDAOCSV implements UserDao {
 
     private static final String CSV_FILE_NAME = "usersDBFile.csv";
@@ -75,6 +74,10 @@ public class UserDAOCSV implements UserDao {
         csvWriter.writeNext(rec);
         csvWriter.flush();
         csvWriter.close();
+    }
+
+    @Override
+    public void updateUser(User instance, String oldUsername){
     }
 
     @Override

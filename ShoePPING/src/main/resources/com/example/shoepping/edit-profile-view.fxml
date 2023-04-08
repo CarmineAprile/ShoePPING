@@ -40,16 +40,6 @@
                   <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="emailTA" focusTraversable="false" onKeyTyped="#maxLenghtEmail" prefHeight="35.0" prefWidth="452.0" promptText="New Email">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </TextField>
-            <Label fx:id="emailLabel" prefHeight="18.0" prefWidth="470.0" textFill="RED">
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </Label>
             <TextField fx:id="passwordTA" focusTraversable="false" onKeyTyped="#maxLenghtPass" prefHeight="35.0" prefWidth="452.0" promptText="New Password">
                <VBox.margin>
                   <Insets />
@@ -68,6 +58,16 @@
             <Label fx:id="repasswordLabel" prefHeight="18.0" prefWidth="440.0" textFill="RED">
                <VBox.margin>
                   <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="emailTA" focusTraversable="false" onKeyTyped="#maxLenghtEmail" prefHeight="35.0" prefWidth="452.0" promptText="New Email">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TextField>
+            <Label fx:id="emailLabel" prefHeight="18.0" prefWidth="470.0" textFill="RED">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
             </Label>
             <Button fx:id="editButton" mnemonicParsing="false" onAction="#editProfile" prefHeight="25.0" prefWidth="443.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="EDIT PROFILE" textAlignment="CENTER" textFill="#554b4d">

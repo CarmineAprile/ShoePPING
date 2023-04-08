@@ -43,6 +43,13 @@ public class UserDAOJDBC implements UserDao {
     }
 
     @Override
+    public void updateUser(User instance, String oldUsername) throws SQLException, IOException, ClassNotFoundException{
+        Connection conn = DaoUtility.prepareQuery();
+
+        SimpleQueries.updateUser(conn, instance.getUsername(), instance.getPassword(), instance.getEmail(), oldUsername);
+    }
+
+    @Override
     public String getEmail(User instance) throws SQLException, IOException, ClassNotFoundException {
 
         Connection conn = DaoUtility.prepareQuery();

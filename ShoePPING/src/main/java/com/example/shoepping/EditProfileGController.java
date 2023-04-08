@@ -1,5 +1,6 @@
 package com.example.shoepping;
 
+import com.example.shoepping.exception.DAOException;
 import com.example.shoepping.model.User;
 import com.example.shoepping.use_case.edit_profile.controller.EditProfileController;
 import com.example.shoepping.use_case.edit_profile.controller.IEditProfileController;
@@ -61,7 +62,7 @@ public class EditProfileGController implements IEditProfileView {
         cw.switchPage(root, editProfilePane);
     }
 
-    public void editProfile() throws CsvValidationException, SQLException, IOException, ClassNotFoundException {
+    public void editProfile() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, DAOException {
         // aggiungere controllo su check fyleSystem
 
         String username = usernameTA.getText();
@@ -81,11 +82,26 @@ public class EditProfileGController implements IEditProfileView {
     }
 
     @Override
-    public void onEditProfileSuccess() throws IOException {
+    public void onEditProfileSuccess(User userNew) throws IOException {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
         Parent root = loader.load();
 
-        ProfileGController profileGController= loader.getController();
+        if(isChecked){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Edit profile with File-System");
+
+            // Header Text: null
+            alert.setHeaderText(null);
+            alert.setContentText("Work in progress...");
+
+            alert.showAndWait();
+        }else {
+            this.user = userNew;
+        }
+
+
+        ProfileGController profileGController = loader.getController();
         profileGController.salva(user, isChecked);
 
         ChangeWindow cw = new ChangeWindow();

@@ -39,7 +39,7 @@ public class EditProfileController implements IEditProfileController{
                     boolean countUser = userdao.checkExistence(user);
 
                     if (!countUser) {
-                        editProfileView.onEditProfileSuccess();
+                        editProfileView.onEditProfileSuccess(user);
                     } else {
                         editProfileView.onEditProfileError("This username is already taken!", 0);
                     }
@@ -48,8 +48,18 @@ public class EditProfileController implements IEditProfileController{
                     UserDAOJDBC userdao = new UserDAOJDBC();
                     boolean countUser = userdao.checkExistence(user);
 
+                    if(oldUsername.equals(user.getUsername())){
+                        countUser = false;
+                    }
+
                     if (!countUser) {
-                        editProfileView.onEditProfileSuccess();
+                        user.setUsername(username);
+                        user.setPassword(pass);
+                        user.setEmail(email);
+
+                        userdao.updateUser(user, oldUsername);
+
+                        editProfileView.onEditProfileSuccess(user);
                     } else {
                         editProfileView.onEditProfileError("This username is already taken!", 0);
                     }

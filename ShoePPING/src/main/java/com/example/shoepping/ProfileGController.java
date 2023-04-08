@@ -4,6 +4,7 @@ import com.example.shoepping.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -73,6 +74,13 @@ public class ProfileGController {
     }
 
     public void showAboutUs() {
-        System.out.println("AboutUs");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About-Us");
+
+        // Header Text: null
+        alert.setHeaderText(null);
+        alert.setContentText("ShoePPING app for ISPW project.\nDevelopers: Carmine Aprile, Daniele Ausili.");
+
+        alert.showAndWait();
     }
 }

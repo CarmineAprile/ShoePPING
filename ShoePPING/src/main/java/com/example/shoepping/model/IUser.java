@@ -6,5 +6,7 @@ public interface IUser {
     String getPassword();
     String getEmail();
     int isValid();
+    void setUsername(String username);
+    void setPassword(String password);
     void setEmail(String email);
 }

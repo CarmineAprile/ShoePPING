@@ -17,5 +17,7 @@ public interface UserDao {
 
     void addUser(User instance) throws ClassNotFoundException, SQLException, IOException, DAOException;
 
+    void updateUser(User instance, String oldUsername) throws SQLException, IOException, ClassNotFoundException;
+
     String getEmail(User instance) throws SQLException, IOException, ClassNotFoundException, CsvValidationException;
 }

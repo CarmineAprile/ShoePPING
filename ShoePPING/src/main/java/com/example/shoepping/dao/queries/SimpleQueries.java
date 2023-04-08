@@ -54,4 +54,16 @@ public class SimpleQueries {
         cs.executeQuery();
         return cs.getString(2);
     }
+
+    public static void updateUser(Connection conn, String username, String passd, String email, String oldUsername) throws SQLException {
+
+            CallableStatement cs = conn.prepareCall("{call updateUser(?, ?, ?, ?)}");
+            cs.setString(1, username);
+            cs.setString(2, passd);
+            cs.setString(3, email);
+            cs.setString(4, oldUsername);
+
+            cs.executeQuery();
+
+    }
 }

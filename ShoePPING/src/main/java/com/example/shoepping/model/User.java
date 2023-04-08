@@ -4,8 +4,8 @@ import static com.example.shoepping.ValidationEmail.valEmail;
 
 public class User implements IUser {
 
-    private final String username;
-    private final String pass;
+    private String username;
+    private String pass;
     private final String repass;
     private String email;
 
@@ -36,6 +36,16 @@ public class User implements IUser {
     @Override
     public String getEmail() {
         return email;
+    }
+
+    @Override
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public void setPassword(String pass) {
+        this.pass = pass;
     }
     @Override
     public void setEmail(String email) {
@@ -72,6 +82,4 @@ public class User implements IUser {
         else
             return -1;
     }
-
-
 }
