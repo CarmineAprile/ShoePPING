@@ -56,4 +56,15 @@ public class UserDAOJDBC implements UserDao {
 
         return SimpleQueries.getEmailUser(conn, instance.getUsername());
     }
+
+    @Override
+    public boolean isAdmin(String username, String passd) throws SQLException, IOException, ClassNotFoundException {
+
+        int rs;
+
+        Connection conn = DaoUtility.prepareQuery();
+        rs = SimpleQueries.isAdmin(conn, username, passd);
+
+        return rs == 1;
+    }
 }

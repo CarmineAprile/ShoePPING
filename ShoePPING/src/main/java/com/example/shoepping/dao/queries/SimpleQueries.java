@@ -46,6 +46,17 @@ public class SimpleQueries {
         return cs.getInt(2);
     }
 
+    public static int isAdmin(Connection conn, String username, String passd) throws SQLException {
+
+        CallableStatement cs = conn.prepareCall("{call isAdmin(?, ?, ?)}");
+        cs.setString(1, username);
+        cs.setString(2, passd);
+        cs.registerOutParameter(3, Types.NUMERIC);
+
+        cs.executeQuery();
+        return cs.getInt(3);
+    }
+
     public static String getEmailUser(Connection conn, String username) throws SQLException {
         CallableStatement cs = conn.prepareCall("{call getEmailUser(?, ?)}");
         cs.setString(1, username);
@@ -64,6 +75,5 @@ public class SimpleQueries {
             cs.setString(4, oldUsername);
 
             cs.executeQuery();
-
     }
 }

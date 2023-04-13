@@ -99,5 +99,11 @@ public class UserDAOCSV implements UserDao {
         return email;
     }
 
+    @Override
+    public boolean isAdmin(String username, String password){
+        // da fare
+        return false;
+    }
+
 
 }

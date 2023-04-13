@@ -2,6 +2,7 @@ package com.example.shoepping.use_case.login.controller;
 
 import com.example.shoepping.dao.UserDAOCSV;
 import com.example.shoepping.dao.UserDAOJDBC;
+import com.example.shoepping.dao.UserDao;
 import com.example.shoepping.use_case.login.view.ILoginView;
 import com.example.shoepping.model.User;
 import com.opencsv.exceptions.CsvValidationException;
@@ -43,8 +44,11 @@ public class LoginController implements ILoginController {
     public void onLogin(String username, String pass, boolean check) throws SQLException, ClassNotFoundException, IOException, CsvValidationException {
 
         User user = new User(username, pass);
+        UserDao userDao = new UserDAOJDBC();
+        boolean isAdmin = userDao.isAdmin(username, pass);
 
-        if (user.getUsername().equals("Administrator") && user.getPassword().equals("Administrator"))
+
+        if (isAdmin && !check)
             loginView.onLoginSuccessAdmin();
         else {
 

@@ -20,4 +20,6 @@ public interface UserDao {
     void updateUser(User instance, String oldUsername) throws SQLException, IOException, ClassNotFoundException;
 
     String getEmail(User instance) throws SQLException, IOException, ClassNotFoundException, CsvValidationException;
+
+    boolean isAdmin(String username, String password) throws SQLException, IOException, ClassNotFoundException;
 }

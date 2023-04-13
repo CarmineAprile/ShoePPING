@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="editProfilePane" prefHeight="515.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shoepping.EditProfileGController">
+<AnchorPane fx:id="MyOrdersPane" prefHeight="515.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shoepping.MyOrdersGController">
     <children>
         <ImageView fitHeight="542.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -27,7 +27,7 @@
         </Label>
         <VBox layoutX="293.0" layoutY="74.0" prefHeight="441.0" prefWidth="399.0">
             <children>
-            <TextArea editable="false" focusTraversable="false" prefHeight="433.0" prefWidth="397.0" text="&#10;" />
+            <TextArea fx:id="ordersTA" editable="false" focusTraversable="false" prefHeight="433.0" prefWidth="397.0" text="&#10;" />
             </children>
         </VBox>
     </children>

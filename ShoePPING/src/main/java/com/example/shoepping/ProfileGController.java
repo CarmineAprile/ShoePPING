@@ -65,8 +65,19 @@ public class ProfileGController {
         cw.switchPage(root, profilePane);
     }
 
-    public void goMyOrders() {
-        System.out.println("Orders");
+    public void goMyOrders() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("my-orders-view.fxml"));
+        Parent root = loader.load();
+
+        MyOrdersGController myOrdersGController = loader.getController();
+        myOrdersGController.salva(user, isChecked);
+
+        // va aggiustato
+        myOrdersGController.setText("prova1", "prova2", "prova3", "prova4", "prova5");
+
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, profilePane);
     }
 
     public void goMySales() {
