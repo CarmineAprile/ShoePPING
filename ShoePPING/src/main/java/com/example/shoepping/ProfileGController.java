@@ -1,6 +1,6 @@
 package com.example.shoepping;
 
-import com.example.shoepping.dao.order_Dao.OrderDaoJDBC;
+import com.example.shoepping.dao.order_dao.OrderDaoJDBC;
 import com.example.shoepping.model.user.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
