@@ -2,7 +2,7 @@ package com.example.shoepping.model.order;
 
 public class Order implements IOrder{
 
-    private final int order;
+    private final int orderID;
     private final String dateOrder;
     private final String itemOrder;
     private  final double priceOrder;
@@ -10,8 +10,8 @@ public class Order implements IOrder{
     private final String addressOrder;
     private final String statusOrder;
 
-    public Order(int order, String dateOrder, String itemOrder, double priceOrder, String conditionOrder, String addressOrder, String statusOrder) {
-        this.order = order;
+    public Order(int orderID, String dateOrder, String itemOrder, double priceOrder, String conditionOrder, String addressOrder, String statusOrder) {
+        this.orderID = orderID;
         this.dateOrder = dateOrder;
         this.itemOrder = itemOrder;
         this.priceOrder = priceOrder;
@@ -22,7 +22,7 @@ public class Order implements IOrder{
 
     @Override
     public int getOrder() {
-        return order;
+        return orderID;
     }
     @Override
     public String getDateOrder() {
