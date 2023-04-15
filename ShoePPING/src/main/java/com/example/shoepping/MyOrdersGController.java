@@ -14,7 +14,7 @@ public class MyOrdersGController {
     User user;
     boolean isChecked;
     @FXML
-    AnchorPane MyOrdersPane;
+    AnchorPane myOrdersPane;
     @FXML
     ImageView backButton;
     @FXML
@@ -34,7 +34,7 @@ public class MyOrdersGController {
         profileGController.salva(user, isChecked);
 
         ChangeWindow cw = new ChangeWindow();
-        cw.switchPage(root, MyOrdersPane);
+        cw.switchPage(root, myOrdersPane);
     }
 
     public void setText(String numero, String date, String item, String price, String status){
