@@ -1,4 +1,4 @@
-package com.example.shoepping.dao.order_Dao;
+package com.example.shoepping.dao.order_dao;
 
 import com.example.shoepping.dao.DaoUtility;
 import com.example.shoepping.dao.queries.SimpleQueries;
