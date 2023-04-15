@@ -2,7 +2,7 @@ package com.example.shoepping.use_case.edit_profile.controller;
 
 import com.example.shoepping.dao.UserDAOCSV;
 import com.example.shoepping.dao.UserDAOJDBC;
-import com.example.shoepping.model.User;
+import com.example.shoepping.model.user.User;
 import com.example.shoepping.use_case.edit_profile.view.IEditProfileView;
 import com.opencsv.exceptions.CsvValidationException;
 

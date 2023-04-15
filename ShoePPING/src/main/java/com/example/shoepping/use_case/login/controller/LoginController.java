@@ -4,7 +4,7 @@ import com.example.shoepping.dao.UserDAOCSV;
 import com.example.shoepping.dao.UserDAOJDBC;
 import com.example.shoepping.dao.UserDao;
 import com.example.shoepping.use_case.login.view.ILoginView;
-import com.example.shoepping.model.User;
+import com.example.shoepping.model.user.User;
 import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.IOException;
@@ -45,7 +45,7 @@ public class LoginController implements ILoginController {
 
         User user = new User(username, pass);
         UserDao userDao = new UserDAOJDBC();
-        boolean isAdmin = userDao.isAdmin(username, pass);
+        boolean isAdmin = userDao.isAdmin(user);
 
 
         if (isAdmin && !check)

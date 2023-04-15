@@ -1,7 +1,7 @@
 package com.example.shoepping;
 
 import com.example.shoepping.exception.DAOException;
-import com.example.shoepping.model.User;
+import com.example.shoepping.model.user.User;
 import com.example.shoepping.use_case.edit_profile.controller.EditProfileController;
 import com.example.shoepping.use_case.edit_profile.controller.IEditProfileController;
 import com.example.shoepping.use_case.edit_profile.view.IEditProfileView;

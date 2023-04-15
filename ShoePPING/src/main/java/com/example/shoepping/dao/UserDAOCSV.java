@@ -1,6 +1,6 @@
 package com.example.shoepping.dao;
 
-import com.example.shoepping.model.User;
+import com.example.shoepping.model.user.User;
 
 import com.opencsv.*;
 import com.opencsv.exceptions.CsvValidationException;
@@ -100,7 +100,7 @@ public class UserDAOCSV implements UserDao {
     }
 
     @Override
-    public boolean isAdmin(String username, String password){
+    public boolean isAdmin(User instance){
         // da fare
         return false;
     }

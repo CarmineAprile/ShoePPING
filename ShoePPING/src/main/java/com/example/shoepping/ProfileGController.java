@@ -1,6 +1,8 @@
 package com.example.shoepping;
 
-import com.example.shoepping.model.User;
+import com.example.shoepping.dao.orderDao.OrderDaoJDBC;
+import com.example.shoepping.exception.DAOException;
+import com.example.shoepping.model.user.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class ProfileGController {
 
@@ -65,15 +68,16 @@ public class ProfileGController {
         cw.switchPage(root, profilePane);
     }
 
-    public void goMyOrders() throws IOException {
+    public void goMyOrders() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("my-orders-view.fxml"));
         Parent root = loader.load();
 
         MyOrdersGController myOrdersGController = loader.getController();
-        myOrdersGController.salva(user, isChecked);
 
-        // va aggiustato
-        myOrdersGController.setText("prova1", "prova2", "prova3", "prova4", "prova5");
+        OrderDaoJDBC orderDao = new OrderDaoJDBC();
+        String orders = orderDao.getOrderList(user, isChecked);
+
+        myOrdersGController.salva(user, isChecked, orders);
 
 
         ChangeWindow cw = new ChangeWindow();

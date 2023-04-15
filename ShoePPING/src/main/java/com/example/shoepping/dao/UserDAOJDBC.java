@@ -2,7 +2,7 @@ package com.example.shoepping.dao;
 
 import com.example.shoepping.dao.queries.SimpleQueries;
 import com.example.shoepping.exception.DAOException;
-import com.example.shoepping.model.User;
+import com.example.shoepping.model.user.User;
 
 import java.io.IOException;
 import java.sql.*;
@@ -58,12 +58,12 @@ public class UserDAOJDBC implements UserDao {
     }
 
     @Override
-    public boolean isAdmin(String username, String passd) throws SQLException, IOException, ClassNotFoundException {
+    public boolean isAdmin(User instance) throws SQLException, IOException, ClassNotFoundException {
 
         int rs;
 
         Connection conn = DaoUtility.prepareQuery();
-        rs = SimpleQueries.isAdmin(conn, username, passd);
+        rs = SimpleQueries.isAdmin(conn, instance.getUsername(), instance.getPassword());
 
         return rs == 1;
     }

@@ -1,6 +1,6 @@
 package com.example.shoepping.use_case.edit_profile.view;
 
-import com.example.shoepping.model.User;
+import com.example.shoepping.model.user.User;
 
 import java.io.IOException;
 

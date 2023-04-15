@@ -1,4 +1,4 @@
-package com.example.shoepping.model;
+package com.example.shoepping.model.user;
 
 public interface IUser {
 

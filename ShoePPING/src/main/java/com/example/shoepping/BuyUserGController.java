@@ -1,6 +1,6 @@
 package com.example.shoepping;
 
-import com.example.shoepping.model.User;
+import com.example.shoepping.model.user.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -1,4 +1,5 @@
-package com.example.shoepping.model;
+package com.example.shoepping.model.user;
+
 
 import static com.example.shoepping.ValidationEmail.valEmail;
 

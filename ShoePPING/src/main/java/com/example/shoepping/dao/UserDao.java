@@ -1,7 +1,7 @@
 package com.example.shoepping.dao;
 
 import com.example.shoepping.exception.DAOException;
-import com.example.shoepping.model.User;
+import com.example.shoepping.model.user.User;
 import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.IOException;
@@ -21,5 +21,7 @@ public interface UserDao {
 
     String getEmail(User instance) throws SQLException, IOException, ClassNotFoundException, CsvValidationException;
 
-    boolean isAdmin(String username, String password) throws SQLException, IOException, ClassNotFoundException;
+    boolean isAdmin(User instance) throws SQLException, IOException, ClassNotFoundException;
+
+
 }

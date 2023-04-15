@@ -2,7 +2,7 @@ package com.example.shoepping;
 
 import com.example.shoepping.dao.UserDAOCSV;
 import com.example.shoepping.dao.UserDAOJDBC;
-import com.example.shoepping.model.User;
+import com.example.shoepping.model.user.User;
 import com.example.shoepping.use_case.login.controller.ILoginController;
 import com.example.shoepping.use_case.login.controller.LoginController;
 import com.example.shoepping.use_case.login.view.ILoginView;

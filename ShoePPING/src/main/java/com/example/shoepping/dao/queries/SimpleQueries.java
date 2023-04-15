@@ -3,6 +3,8 @@ package com.example.shoepping.dao.queries;
 
 
 import com.example.shoepping.exception.DAOException;
+import com.example.shoepping.model.order.Order;
+import com.example.shoepping.model.order.OrderList;
 
 import java.sql.*;
 
@@ -76,4 +78,29 @@ public class SimpleQueries {
 
             cs.executeQuery();
     }
+
+    public static String getOrderList(Connection conn, String username, boolean check) throws SQLException {
+        OrderList orderList = new OrderList();
+        CallableStatement cs;
+
+        if(check){
+            cs = conn.prepareCall("{call getOrdersCSV(?)}");
+        }else {
+            cs = conn.prepareCall("{call getOrdersSQL(?)}");
+        }
+            cs.setString(1, username);
+
+        boolean status = cs.execute();
+
+        if(status){
+            ResultSet rs = cs.getResultSet();
+            while (rs.next()){
+                Order order = new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                orderList.addOrder(order);
+            }
+        }
+
+        return orderList.toString();
+    }
+
 }

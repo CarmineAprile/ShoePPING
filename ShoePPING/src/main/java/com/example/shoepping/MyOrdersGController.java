@@ -1,6 +1,6 @@
 package com.example.shoepping;
 
-import com.example.shoepping.model.User;
+import com.example.shoepping.model.user.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,9 +21,11 @@ public class MyOrdersGController {
     TextArea ordersTA;
 
 
-    public void salva(User user, boolean isChecked){
+    public void salva(User user, boolean isChecked, String orders){
         this.user = user;
         this.isChecked = isChecked;
+
+        ordersTA.setText(orders);
     }
 
     public void goBack() throws IOException {
@@ -35,10 +37,5 @@ public class MyOrdersGController {
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, myOrdersPane);
-    }
-
-    public void setText(String numero, String date, String item, String price, String status){
-        // va aggiustato
-        ordersTA.setText("Number: " + numero +"\n\nDate: " + date +"\n\nItem: " + item +"\n\nPrice: " + price +"\n\nStatus: " + status);
     }
 }
