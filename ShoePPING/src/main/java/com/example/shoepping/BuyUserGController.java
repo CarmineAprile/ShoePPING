@@ -48,13 +48,27 @@ public class BuyUserGController{
     }
 
 
-    public void onAdidasClick() {
-        System.out.println("adidas");
+    public void onAdidasClick() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-adidas-view.fxml"));
+        Parent root = loader.load();
+
+        BuyUserAdidasGController buyUserAdidasGController = loader.getController();
+        buyUserAdidasGController.salva(user, isChecked);
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, buyUserPane);
     }
 
 
-    public void onNewBalanceClick() {
-        System.out.println("newbalance");
+    public void onNewBalanceClick() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-new-balance-view.fxml"));
+        Parent root = loader.load();
+
+        BuyUserNewBalanceGController buyUserNewBalanceGController = loader.getController();
+        buyUserNewBalanceGController.salva(user, isChecked);
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, buyUserPane);
     }
 
     public void onProfileClick() throws IOException {

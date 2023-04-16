@@ -1,0 +1,10 @@
+cose fatte:
+1) aggiustato il controller grafico di my orders
+2) implementate le funzioni salva e goback all'interno di my orders
+3) tabella per admin con campi user e pass (entrambi uguali a "Administrator")
+4) query per login dalla tabella per admin
+5) login admin viene fatto tramite una select nella tabella admin 
+   (se la checbox è selezionata e inserisco nome e password "Administrator", fallisce il login)
+
+Da fare:
+fare tabella orders e inserire i dati prelevati all'interno della text area nella relativa view

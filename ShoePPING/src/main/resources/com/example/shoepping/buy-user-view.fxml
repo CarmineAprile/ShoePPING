@@ -101,7 +101,7 @@
                   </HBox.margin>
                   <Image url="@../../../drawable/iconadidas.png" />
                </ImageView>
-               <Label prefHeight="20.0" prefWidth="510.0" text="HERE YOU CAN FIND: Stan Smith, Superstar, LA Trainer... AND MORE!" textAlignment="CENTER" textFill="#554b4d">
+               <Label prefHeight="20.0" prefWidth="510.0" text="HERE YOU CAN FIND: Stan Smith, Superstar, Yeezy ... AND MORE!" textAlignment="CENTER" textFill="#554b4d">
                   <font>
                      <Font name="System Bold" size="14.0" />
                   </font>
