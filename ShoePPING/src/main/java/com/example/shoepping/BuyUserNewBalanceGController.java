@@ -15,6 +15,8 @@ import java.io.IOException;
 public class BuyUserNewBalanceGController {
     User user;
     boolean isChecked;
+
+    static final String schermata = "buy-user-shoe-view.fxml";
     @FXML
     Button newBalanceButton1;
     @FXML
@@ -84,7 +86,7 @@ public class BuyUserNewBalanceGController {
     }
 
     public void onNewBalance1() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-shoe-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(schermata));
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
@@ -95,7 +97,7 @@ public class BuyUserNewBalanceGController {
     }
 
     public void onNewBalance2() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-shoe-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(schermata));
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
@@ -106,7 +108,7 @@ public class BuyUserNewBalanceGController {
     }
 
     public void onNewBalance3() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-shoe-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(schermata));
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
@@ -117,7 +119,7 @@ public class BuyUserNewBalanceGController {
     }
 
     public void onNewBalance4() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-shoe-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(schermata));
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
@@ -128,7 +130,7 @@ public class BuyUserNewBalanceGController {
     }
 
     public void onNewBalance5() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-shoe-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(schermata));
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();

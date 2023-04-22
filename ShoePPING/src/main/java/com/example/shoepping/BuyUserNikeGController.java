@@ -16,6 +16,7 @@ import java.io.IOException;
 public class BuyUserNikeGController {
     User user;
     boolean isChecked;
+    static final String schermata = "buy-user-shoe-view.fxml";
     @FXML
     Button nikeButton1;
     @FXML
@@ -91,7 +92,7 @@ public class BuyUserNikeGController {
     }
 
     public void onNike1() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-shoe-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(schermata));
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
@@ -102,7 +103,7 @@ public class BuyUserNikeGController {
     }
 
     public void onNike2() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-shoe-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(schermata));
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
@@ -113,7 +114,7 @@ public class BuyUserNikeGController {
     }
 
     public void onNike3() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-shoe-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(schermata));
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
@@ -124,7 +125,7 @@ public class BuyUserNikeGController {
     }
 
     public void onNike4() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-shoe-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(schermata));
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
@@ -135,7 +136,7 @@ public class BuyUserNikeGController {
     }
 
     public void onNike5() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-shoe-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(schermata));
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
@@ -146,7 +147,7 @@ public class BuyUserNikeGController {
     }
 
     public void onNike6() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-shoe-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(schermata));
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
