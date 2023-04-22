@@ -67,7 +67,7 @@
          <VBox.margin>
             <Insets top="60.0" />
          </VBox.margin>
-         <Button fx:id="shoeButton1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNewBalance1" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="newBalanceButton1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNewBalance1" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -82,7 +82,7 @@
                      </VBox.margin>
                      <Image url="@../../../drawable/shoe-new-balance-1(327-Moonbeam).png" />
                   </ImageView>
-                  <Label fx:id="model1" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="327 Moonbeam" textFill="#554b4d">
+                  <Label fx:id="newBalancemodel1" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="327 Moonbeam" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -90,7 +90,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="priceL1" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="newBalancepriceL1" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -98,7 +98,7 @@
                </VBox>
             </graphic>
          </Button>
-         <Button fx:id="shoeButton2" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNewBalance2" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="newBalanceButton2" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNewBalance2" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -113,7 +113,7 @@
                      </VBox.margin>
                      <Image url="@../../../drawable/shoe-new-balance-2(X-Racer-Bodega).png" />
                   </ImageView>
-                  <Label fx:id="model2" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="X-Racer Bodega" textFill="#554b4d">
+                  <Label fx:id="newBalancemodel2" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="X-Racer Bodega" textFill="#554b4d">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -121,7 +121,7 @@
                         <Insets top="8.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="priceL2" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="newBalancepriceL2" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -129,7 +129,7 @@
                </VBox>
             </graphic>
          </Button>
-         <Button fx:id="shoeButton3" alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNewBalance3" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="newBalanceButton3" alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNewBalance3" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -141,7 +141,7 @@
                   <ImageView fitHeight="87.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                      <Image url="@../../../drawable/shoe-new-balance-3(Shando).png" />
                   </ImageView>
-                  <Label fx:id="model3" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Shando" textFill="#554b4d">
+                  <Label fx:id="newBalancemodel3" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Shando" textFill="#554b4d">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -149,7 +149,7 @@
                         <Insets top="11.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="priceL3" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="newBalancepriceL3" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -157,7 +157,7 @@
                </VBox>
             </graphic>
          </Button>
-         <Button fx:id="shoeButton4" alignment="CENTER" contentDisplay="CENTER" layoutX="371.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNewBalance4" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="newBalanceButton4" alignment="CENTER" contentDisplay="CENTER" layoutX="371.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNewBalance4" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -172,7 +172,7 @@
                      </VBox.margin>
                      <Image url="@../../../drawable/shoe-new-balance-4(530).png" />
                   </ImageView>
-                  <Label fx:id="model4" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="530" textFill="#554b4d">
+                  <Label fx:id="newBalancemodel4" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="530" textFill="#554b4d">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -180,7 +180,7 @@
                         <Insets top="8.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="priceL4" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="newBalancepriceL4" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -190,7 +190,7 @@
          </Button>
       </HBox>
       <HBox layoutX="10.0" layoutY="10.0" prefHeight="177.5" prefWidth="700.0">
-         <Button fx:id="shoeButton5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNewBalance5" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="newBalanceButton5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNewBalance5" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -205,7 +205,7 @@
                      </VBox.margin>
                      <Image url="@../../../drawable/shoe-new-balance-5(550-White-Red).png" />
                   </ImageView>
-                  <Label fx:id="model5" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="550 White-Red" textFill="#554b4d">
+                  <Label fx:id="newBalancemodel5" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="550 White-Red" textFill="#554b4d">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -213,7 +213,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="priceL5" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="newBalancepriceL5" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>

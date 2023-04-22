@@ -16,25 +16,25 @@ public class BuyUserNewBalanceGController {
     User user;
     boolean isChecked;
     @FXML
-    Button shoeButton1;
+    Button newBalanceButton1;
     @FXML
-    Button shoeButton2;
+    Button newBalanceButton2;
     @FXML
-    Button shoeButton3;
+    Button newBalanceButton3;
     @FXML
-    Button shoeButton4;
+    Button newBalanceButton4;
     @FXML
-    Button shoeButton5;
+    Button newBalanceButton5;
     @FXML
-    Label model1;
+    Label newBalancemodel1;
     @FXML
-    Label model2;
+    Label newBalancemodel2;
     @FXML
-    Label model3;
+    Label newBalancemodel3;
     @FXML
-    Label model4;
+    Label newBalancemodel4;
     @FXML
-    Label model5;
+    Label newBalancemodel5;
     @FXML
     AnchorPane buyUserNewBalancePane;
     @FXML
@@ -44,15 +44,15 @@ public class BuyUserNewBalanceGController {
     @FXML
     ImageView userIcon;
     @FXML
-    Label priceL1;
+    Label newBalancepriceL1;
     @FXML
-    Label priceL2;
+    Label newBalancepriceL2;
     @FXML
-    Label priceL3;
+    Label newBalancepriceL3;
     @FXML
-    Label priceL4;
+    Label newBalancepriceL4;
     @FXML
-    Label priceL5;
+    Label newBalancepriceL5;
 
 
     public void salva(User user, boolean isChecked){
@@ -88,7 +88,7 @@ public class BuyUserNewBalanceGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-1(327-Moonbeam).png", model1.getText(), priceL1.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-1(327-Moonbeam).png", newBalancemodel1.getText(), newBalancepriceL1.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -99,7 +99,7 @@ public class BuyUserNewBalanceGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-2(X-Racer-Bodega).png", model2.getText(), priceL2.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-2(X-Racer-Bodega).png", newBalancemodel2.getText(), newBalancepriceL2.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -110,7 +110,7 @@ public class BuyUserNewBalanceGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-3(Shando).png", model3.getText(), priceL3.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-3(Shando).png", newBalancemodel3.getText(), newBalancepriceL3.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -121,7 +121,7 @@ public class BuyUserNewBalanceGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-4(530).png", model4.getText(), priceL4.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-4(530).png", newBalancemodel4.getText(), newBalancepriceL4.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -132,7 +132,7 @@ public class BuyUserNewBalanceGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-5(550-White-Red).png", model5.getText(), priceL5.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-5(550-White-Red).png", newBalancemodel5.getText(), newBalancepriceL5.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
