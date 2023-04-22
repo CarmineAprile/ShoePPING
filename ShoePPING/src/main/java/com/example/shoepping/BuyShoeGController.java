@@ -105,5 +105,6 @@ public class BuyShoeGController {
     }
 
     public void confirm() {
+        // da fare
     }
 }
