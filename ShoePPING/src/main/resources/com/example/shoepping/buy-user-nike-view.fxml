@@ -67,7 +67,7 @@
          <VBox.margin>
             <Insets top="60.0" />
          </VBox.margin>
-         <Button fx:id="shoeButton1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNike1" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="nikeButton1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNike1" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -82,7 +82,7 @@
                      </VBox.margin>
                      <Image url="@../../../drawable/shoe-nike-1(Air-max-97).png" />
                   </ImageView>
-                  <Label fx:id="model1" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Air Max 97" textFill="#554b4d">
+                  <Label fx:id="nikeModel1" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Air Max 97" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -90,7 +90,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="priceL1" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="nikePriceL1" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -98,7 +98,7 @@
                </VBox>
             </graphic>
          </Button>
-         <Button fx:id="shoeButton2" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNike2" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="nikeButton2" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNike2" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -113,7 +113,7 @@
                      </VBox.margin>
                      <Image url="@../../../drawable/shoe-nike-2(Air-Jordan-1-Mid).png" />
                   </ImageView>
-                  <Label fx:id="model2" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Air Jordan 1 Mid" textFill="#554b4d">
+                  <Label fx:id="nikeModel2" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Air Jordan 1 Mid" textFill="#554b4d">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -121,7 +121,7 @@
                         <Insets top="8.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="priceL2" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="nikePriceL2" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -129,7 +129,7 @@
                </VBox>
             </graphic>
          </Button>
-         <Button fx:id="shoeButton3" alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNike3" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="nikeButton3" alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNike3" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -141,7 +141,7 @@
                   <ImageView fitHeight="87.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                      <Image url="@../../../drawable/shoe-nike-3(Air-Max-2017).png" />
                   </ImageView>
-                  <Label fx:id="model3" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Air Max 2017" textFill="#554b4d">
+                  <Label fx:id="nikeModel3" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Air Max 2017" textFill="#554b4d">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -149,7 +149,7 @@
                         <Insets top="11.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="priceL3" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="nikePriceL3" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -157,7 +157,7 @@
                </VBox>
             </graphic>
          </Button>
-         <Button fx:id="shoeButton4" alignment="CENTER" contentDisplay="CENTER" layoutX="371.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNike4" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="nikeButton4" alignment="CENTER" contentDisplay="CENTER" layoutX="371.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNike4" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -172,7 +172,7 @@
                      </VBox.margin>
                      <Image url="@../../../drawable/shoe-nike-4(Nike-Air-Max-90-South-Beach).png" />
                   </ImageView>
-                  <Label fx:id="model4" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Air Max 90" textFill="#554b4d">
+                  <Label fx:id="nikeModel4" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Air Max 90" textFill="#554b4d">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -180,7 +180,7 @@
                         <Insets top="4.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="priceL4" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="nikePriceL4" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -190,7 +190,7 @@
          </Button>
       </HBox>
       <HBox layoutX="10.0" layoutY="10.0" prefHeight="177.5" prefWidth="700.0">
-         <Button fx:id="shoeButton5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNike5" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="nikeButton5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNike5" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -205,7 +205,7 @@
                      </VBox.margin>
                      <Image url="@../../../drawable/shoe-nike-5(Air-Huarache).png" />
                   </ImageView>
-                  <Label fx:id="model5" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Air Huarache" textFill="#554b4d">
+                  <Label fx:id="nikeModel5" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Air Huarache" textFill="#554b4d">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -213,7 +213,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="priceL5" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="nikePriceL5" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -221,7 +221,7 @@
                </VBox>
             </graphic>
          </Button>
-         <Button fx:id="shoeButton6" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNike6" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="nikeButton6" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" onAction="#onNike6" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -233,7 +233,7 @@
                   <ImageView fitHeight="87.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                      <Image url="@../../../drawable/shoe-nike-6(Nike-Air-Max-94).png" />
                   </ImageView>
-                  <Label fx:id="model6" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Air Max 94" textFill="#554b4d">
+                  <Label fx:id="nikeModel6" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Air Max 94" textFill="#554b4d">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -241,7 +241,7 @@
                         <Insets top="4.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="priceL6" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="nikePriceL6" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>

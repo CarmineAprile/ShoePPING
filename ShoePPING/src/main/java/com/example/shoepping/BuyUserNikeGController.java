@@ -17,29 +17,29 @@ public class BuyUserNikeGController {
     User user;
     boolean isChecked;
     @FXML
-    Button shoeButton1;
+    Button nikeButton1;
     @FXML
-    Button shoeButton2;
+    Button nikeButton2;
     @FXML
-    Button shoeButton3;
+    Button nikeButton3;
     @FXML
-    Button shoeButton4;
+    Button nikeButton4;
     @FXML
-    Button shoeButton5;
+    Button nikeButton5;
     @FXML
-    Button shoeButton6;
+    Button nikeButton6;
     @FXML
-    Label model1;
+    Label nikeModel1;
     @FXML
-    Label model2;
+    Label nikeModel2;
     @FXML
-    Label model3;
+    Label nikeModel3;
     @FXML
-    Label model4;
+    Label nikeModel4;
     @FXML
-    Label model5;
+    Label nikeModel5;
     @FXML
-    Label model6;
+    Label nikeModel6;
     @FXML
     AnchorPane buyUserNikePane;
     @FXML
@@ -49,17 +49,17 @@ public class BuyUserNikeGController {
     @FXML
     ImageView userIcon;
     @FXML
-    Label priceL1;
+    Label nikePriceL1;
     @FXML
-    Label priceL2;
+    Label nikePriceL2;
     @FXML
-    Label priceL3;
+    Label nikePriceL3;
     @FXML
-    Label priceL4;
+    Label nikePriceL4;
     @FXML
-    Label priceL5;
+    Label nikePriceL5;
     @FXML
-    Label priceL6;
+    Label nikePriceL6;
 
 
     public void salva(User user, boolean isChecked){
@@ -95,7 +95,7 @@ public class BuyUserNikeGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-1(Air-max-97).png", model1.getText(), priceL1.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-1(Air-max-97).png", nikeModel1.getText(), nikePriceL1.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
@@ -106,7 +106,7 @@ public class BuyUserNikeGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-2(Air-Jordan-1-Mid).png", model2.getText(), priceL2.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-2(Air-Jordan-1-Mid).png", nikeModel2.getText(), nikePriceL2.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
@@ -117,7 +117,7 @@ public class BuyUserNikeGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-3(Air-Max-2017).png", model3.getText(), priceL3.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-3(Air-Max-2017).png", nikeModel3.getText(), nikePriceL3.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
@@ -128,7 +128,7 @@ public class BuyUserNikeGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-4(Nike-Air-Max-90-South-Beach).png", model4.getText(), priceL4.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-4(Nike-Air-Max-90-South-Beach).png", nikeModel4.getText(), nikePriceL4.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
@@ -139,7 +139,7 @@ public class BuyUserNikeGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-5(Air-Huarache).png", model5.getText(), priceL5.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-5(Air-Huarache).png", nikeModel5.getText(), nikePriceL5.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
@@ -150,7 +150,7 @@ public class BuyUserNikeGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-6(Nike-Air-Max-94).png", model6.getText(), priceL6.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-6(Nike-Air-Max-94).png", nikeModel6.getText(), nikePriceL6.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
