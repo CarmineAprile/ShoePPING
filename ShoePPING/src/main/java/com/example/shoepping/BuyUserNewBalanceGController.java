@@ -57,9 +57,10 @@ public class BuyUserNewBalanceGController {
     Label newBalancepriceL5;
 
 
-    public void salva(User user, boolean isChecked){
+    public void salva(User user, boolean isChecked, String[] lista){
         this.user = user;
         this.isChecked = isChecked;
+        setNewBalancePrice(lista);
     }
     public void onBuyClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
@@ -83,6 +84,14 @@ public class BuyUserNewBalanceGController {
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
+    }
+
+    public void setNewBalancePrice(String[] lista){
+        newBalancepriceL1.setText(lista[0] + '$');
+        newBalancepriceL2.setText(lista[1] + '$');
+        newBalancepriceL3.setText(lista[2] + '$');
+        newBalancepriceL4.setText(lista[3] + '$');
+        newBalancepriceL5.setText(lista[4] + '$');
     }
 
     public void onNewBalance1() throws IOException {

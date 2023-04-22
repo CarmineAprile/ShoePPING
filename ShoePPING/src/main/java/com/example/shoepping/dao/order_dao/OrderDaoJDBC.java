@@ -18,4 +18,3 @@ public class OrderDaoJDBC implements OrderDao{
         return SimpleQueries.getOrderList(conn, instance.getUsername(), check);
         }
 }
-

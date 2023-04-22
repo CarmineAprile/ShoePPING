@@ -1,8 +1,8 @@
 package com.example.shoepping.use_case.login.controller;
 
-import com.example.shoepping.dao.UserDAOCSV;
-import com.example.shoepping.dao.UserDAOJDBC;
-import com.example.shoepping.dao.UserDao;
+import com.example.shoepping.dao.user_dao.UserDAOCSV;
+import com.example.shoepping.dao.user_dao.UserDAOJDBC;
+import com.example.shoepping.dao.user_dao.UserDao;
 import com.example.shoepping.use_case.login.view.ILoginView;
 import com.example.shoepping.model.user.User;
 import com.opencsv.exceptions.CsvValidationException;

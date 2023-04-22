@@ -63,9 +63,10 @@ public class BuyUserNikeGController {
     Label nikePriceL6;
 
 
-    public void salva(User user, boolean isChecked){
+    public void salva(User user, boolean isChecked, String[] lista){
         this.user = user;
         this.isChecked = isChecked;
+        setNikePrice(lista);
     }
     public void onBuyClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
@@ -89,6 +90,15 @@ public class BuyUserNikeGController {
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
+    }
+
+    public void setNikePrice(String[] lista){
+        nikePriceL1.setText(lista[0] + '$');
+        nikePriceL2.setText(lista[1] + '$');
+        nikePriceL3.setText(lista[2] + '$');
+        nikePriceL4.setText(lista[3] + '$');
+        nikePriceL5.setText(lista[4] + '$');
+        nikePriceL6.setText(lista[5] + '$');
     }
 
     public void onNike1() throws IOException {

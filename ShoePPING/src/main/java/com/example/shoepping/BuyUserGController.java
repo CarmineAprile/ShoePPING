@@ -1,6 +1,7 @@
 package com.example.shoepping;
 
 import com.example.shoepping.model.user.User;
+import com.example.shoepping.use_case.buy_user.BuyUserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class BuyUserGController{
 
@@ -36,36 +38,45 @@ public class BuyUserGController{
     }
 
 
-    public void onNike() throws IOException {
+    public void onNikeClick() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-nike-view.fxml"));
         Parent root = loader.load();
 
+        BuyUserController buyUserController = new BuyUserController();
+        String[] lista = buyUserController.onNikeList();
+
         BuyUserNikeGController buyUserNikeGController = loader.getController();
-        buyUserNikeGController.salva(user, isChecked);
+        buyUserNikeGController.salva(user, isChecked, lista);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);
     }
 
 
-    public void onAdidasClick() throws IOException {
+    public void onAdidasClick() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-adidas-view.fxml"));
         Parent root = loader.load();
 
+        BuyUserController buyUserController = new BuyUserController();
+        String[] lista = buyUserController.onAdidasList();
+
         BuyUserAdidasGController buyUserAdidasGController = loader.getController();
-        buyUserAdidasGController.salva(user, isChecked);
+        buyUserAdidasGController.salva(user, isChecked, lista);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);
     }
 
 
-    public void onNewBalanceClick() throws IOException {
+    public void onNewBalanceClick() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-new-balance-view.fxml"));
         Parent root = loader.load();
 
+        BuyUserController buyUserController = new BuyUserController();
+        String[] lista = buyUserController.onNewBalanceList();
+
         BuyUserNewBalanceGController buyUserNewBalanceGController = loader.getController();
-        buyUserNewBalanceGController.salva(user, isChecked);
+        buyUserNewBalanceGController.salva(user, isChecked, lista);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);

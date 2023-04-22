@@ -103,4 +103,66 @@ public class SimpleQueries {
         return orderList.toString();
     }
 
+    public static String[] getNikePrice(Connection conn) throws SQLException {
+        String[] lista = new String[6];
+        CallableStatement cs;
+        int i = 0;
+
+        cs = conn.prepareCall("{call getNikePrice()}");
+
+        boolean status = cs.execute();
+
+        if(status){
+            ResultSet rs = cs.getResultSet();
+            while (rs.next()){
+                float price = rs.getFloat(1);
+                lista[i] = String.valueOf(price);
+                i++;
+            }
+        }
+
+        return lista;
+    }
+
+    public static String[] getAdidasPrice(Connection conn) throws SQLException {
+        String[] lista = new String[5];
+        CallableStatement cs;
+        int i = 0;
+
+        cs = conn.prepareCall("{call getAdidasPrice()}");
+
+        boolean status = cs.execute();
+
+        if(status){
+            ResultSet rs = cs.getResultSet();
+            while (rs.next()){
+                float price = rs.getFloat(1);
+                lista[i] = String.valueOf(price);
+                i++;
+            }
+        }
+
+        return lista;
+    }
+
+    public static String[] getNwBalancePrice(Connection conn) throws SQLException {
+        String[] lista = new String[5];
+        CallableStatement cs;
+        int i = 0;
+
+        cs = conn.prepareCall("{call getNewBalancePrice()}");
+
+        boolean status = cs.execute();
+
+        if(status){
+            ResultSet rs = cs.getResultSet();
+            while (rs.next()){
+                float price = rs.getFloat(1);
+                lista[i] = String.valueOf(price);
+                i++;
+            }
+        }
+
+        return lista;
+    }
 }

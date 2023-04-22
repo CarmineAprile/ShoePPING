@@ -1,7 +1,7 @@
 package com.example.shoepping;
 
-import com.example.shoepping.dao.order_dao.OrderDaoJDBC;
 import com.example.shoepping.model.user.User;
+import com.example.shoepping.use_case.profile.ProfileController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -73,8 +73,8 @@ public class ProfileGController {
 
         MyOrdersGController myOrdersGController = loader.getController();
 
-        OrderDaoJDBC orderDao = new OrderDaoJDBC();
-        String orders = orderDao.getOrderList(user, isChecked);
+        ProfileController profileController = new ProfileController();
+        String orders = profileController.onOrders(user, isChecked);
 
         myOrdersGController.salva(user, isChecked, orders);
 

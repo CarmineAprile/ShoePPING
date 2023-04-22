@@ -8,15 +8,13 @@ import java.util.Properties;
 
 public class DaoUtility {
 
-    private static Connection conn;
-
     private DaoUtility() {
         throw new IllegalStateException("Utility class");
     }
     public static Connection prepareQuery() throws SQLException, ClassNotFoundException, IOException {
 
         // STEP 1: dichiarazioni
-        conn = null;
+        Connection conn;
 
         //get connection data
         String url;
@@ -48,23 +46,5 @@ public class DaoUtility {
         conn = DriverManager.getConnection(url, user, pass);
 
         return conn;
-    }
-
-    public static void close(PreparedStatement stmt) throws SQLException {
-
-        // STEP 5.2: Clean-up dell'ambiente
-        try {
-            if (stmt != null)
-                stmt.close();
-        } catch (SQLException se2) {
-                throw new SQLException(se2);
-            }
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se) {
-                throw new SQLException(se);
-            }
-
     }
 }

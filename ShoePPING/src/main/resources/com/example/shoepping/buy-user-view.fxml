@@ -63,7 +63,7 @@
       </HBox>
    </AnchorPane>
    <VBox layoutY="70.0" prefHeight="445.0" prefWidth="700.0">
-      <Button fx:id="nikeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNike" prefHeight="88.0" prefWidth="650.0" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="nikeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onNikeClick" prefHeight="88.0" prefWidth="650.0" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

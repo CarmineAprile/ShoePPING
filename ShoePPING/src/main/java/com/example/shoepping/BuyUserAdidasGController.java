@@ -58,9 +58,10 @@ public class BuyUserAdidasGController {
     Label adidasPriceL5;
 
 
-    public void salva(User user, boolean isChecked){
+    public void salva(User user, boolean isChecked, String[] lista){
         this.user = user;
         this.isChecked = isChecked;
+        setAdidasPrice(lista);
     }
     public void onBuyClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
@@ -85,6 +86,14 @@ public class BuyUserAdidasGController {
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserAdidasPane);
+    }
+
+    public void setAdidasPrice(String[] lista){
+        adidasPriceL1.setText(lista[0] + '$');
+        adidasPriceL2.setText(lista[1] + '$');
+        adidasPriceL3.setText(lista[2] + '$');
+        adidasPriceL4.setText(lista[3] + '$');
+        adidasPriceL5.setText(lista[4] + '$');
     }
 
     public void onAdidas1() throws IOException {
