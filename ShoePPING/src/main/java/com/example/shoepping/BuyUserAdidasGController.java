@@ -16,26 +16,26 @@ public class BuyUserAdidasGController {
     User user;
     boolean isChecked;
     @FXML
-    Button shoeButton1;
+    Button adidasButton1;
     @FXML
-    Button shoeButton2;
+    Button adidasButton2;
     @FXML
-    Button shoeButton3;
+    Button adidasButton3;
     @FXML
-    Button shoeButton4;
+    Button adidasButton4;
     @FXML
-    Button shoeButton5;
+    Button adidasButton5;
 
     @FXML
-    Label model1;
+    Label adidasModel1;
     @FXML
-    Label model2;
+    Label adidasModel2;
     @FXML
-    Label model3;
+    Label adidasModel3;
     @FXML
-    Label model4;
+    Label adidasModel4;
     @FXML
-    Label model5;
+    Label adidasModel5;
     @FXML
     AnchorPane buyUserAdidasPane;
     @FXML
@@ -45,15 +45,15 @@ public class BuyUserAdidasGController {
     @FXML
     ImageView userIcon;
     @FXML
-    Label priceL1;
+    Label adidasPriceL1;
     @FXML
-    Label priceL2;
+    Label adidasPriceL2;
     @FXML
-    Label priceL3;
+    Label adidasPriceL3;
     @FXML
-    Label priceL4;
+    Label adidasPriceL4;
     @FXML
-    Label priceL5;
+    Label adidasPriceL5;
 
 
     public void salva(User user, boolean isChecked){
@@ -90,7 +90,7 @@ public class BuyUserAdidasGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-adidas-1(Gazelle).png", model1.getText(), priceL1.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-adidas-1(Gazelle).png", adidasModel1.getText(), adidasPriceL1.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserAdidasPane);
@@ -101,7 +101,7 @@ public class BuyUserAdidasGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-adidas-2(Stan-Smith).png", model2.getText(), priceL2.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-adidas-2(Stan-Smith).png", adidasModel2.getText(), adidasPriceL2.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserAdidasPane);
@@ -112,7 +112,7 @@ public class BuyUserAdidasGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-adidas-3(Yeezy-Boost-350).png", model3.getText(), priceL3.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-adidas-3(Yeezy-Boost-350).png", adidasModel3.getText(), adidasPriceL3.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserAdidasPane);
@@ -123,7 +123,7 @@ public class BuyUserAdidasGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-adidas-4(EQT-Flurro-Yellow).png", model4.getText(), priceL4.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-adidas-4(EQT-Flurro-Yellow).png", adidasModel4.getText(), adidasPriceL4.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserAdidasPane);
@@ -134,7 +134,7 @@ public class BuyUserAdidasGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-adidas-5(Superstar).png", model5.getText(), priceL5.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-adidas-5(Superstar).png", adidasModel5.getText(), adidasPriceL5.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserAdidasPane);

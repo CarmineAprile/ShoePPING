@@ -67,7 +67,7 @@
          <VBox.margin>
             <Insets top="60.0" />
          </VBox.margin>
-         <Button fx:id="shoeButton1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAdidas1" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="adidasButton1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAdidas1" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -82,7 +82,7 @@
                      </VBox.margin>
                      <Image url="@../../../drawable/shoe-adidas-1(Gazelle).png" />
                   </ImageView>
-                  <Label fx:id="model1" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Gazelle" textFill="#554b4d">
+                  <Label fx:id="adidasModel1" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Gazelle" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -90,7 +90,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="priceL1" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="adidasPriceL1" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -98,7 +98,7 @@
                </VBox>
             </graphic>
          </Button>
-         <Button fx:id="shoeButton2" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" onAction="#onAdidas2" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="adidasButton2" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" onAction="#onAdidas2" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -113,7 +113,7 @@
                      </VBox.margin>
                      <Image url="@../../../drawable/shoe-adidas-2(Stan-Smith).png" />
                   </ImageView>
-                  <Label fx:id="model2" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Stan Smith" textFill="#554b4d">
+                  <Label fx:id="adidasModel2" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Stan Smith" textFill="#554b4d">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -121,7 +121,7 @@
                         <Insets top="9.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="priceL2" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="adidasPriceL2" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -129,7 +129,7 @@
                </VBox>
             </graphic>
          </Button>
-         <Button fx:id="shoeButton3" alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="40.0" mnemonicParsing="false" onAction="#onAdidas3" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="adidasButton3" alignment="CENTER" contentDisplay="CENTER" layoutX="203.0" layoutY="40.0" mnemonicParsing="false" onAction="#onAdidas3" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -144,7 +144,7 @@
                      </VBox.margin>
                      <Image url="@../../../drawable/shoe-adidas-3(Yeezy-Boost-350).png" />
                   </ImageView>
-                  <Label fx:id="model3" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Yeezy Boost 350" textFill="#554b4d">
+                  <Label fx:id="adidasModel3" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Yeezy Boost 350" textFill="#554b4d">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -152,7 +152,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="priceL3" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="adidasPriceL3" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -160,7 +160,7 @@
                </VBox>
             </graphic>
          </Button>
-         <Button fx:id="shoeButton4" alignment="CENTER" contentDisplay="CENTER" layoutX="371.0" layoutY="40.0" mnemonicParsing="false" onAction="#onAdidas4" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="adidasButton4" alignment="CENTER" contentDisplay="CENTER" layoutX="371.0" layoutY="40.0" mnemonicParsing="false" onAction="#onAdidas4" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -175,7 +175,7 @@
                      </VBox.margin>
                      <Image url="@../../../drawable/shoe-adidas-4(EQT-Flurro-Yellow).png" />
                   </ImageView>
-                  <Label fx:id="model4" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="EQT Flurro Yellow" textFill="#554b4d">
+                  <Label fx:id="adidasModel4" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="EQT Flurro Yellow" textFill="#554b4d">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -183,7 +183,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="priceL4" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="adidasPriceL4" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -193,7 +193,7 @@
          </Button>
       </HBox>
       <HBox layoutX="10.0" layoutY="10.0" prefHeight="177.5" prefWidth="700.0">
-         <Button fx:id="shoeButton5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAdidas5" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
+         <Button fx:id="adidasButton5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAdidas5" prefHeight="147.5" prefWidth="147.5" style="-fx-background-radius: 20; -fx-background-color: #ffffff;" textAlignment="CENTER" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -208,7 +208,7 @@
                      </VBox.margin>
                      <Image url="@../../../drawable/shoe-adidas-5(Superstar).png" />
                   </ImageView>
-                  <Label fx:id="model5" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Superstar" textFill="#554b4d">
+                  <Label fx:id="adidasModel5" contentDisplay="CENTER" prefHeight="20.0" prefWidth="185.0" style="-fx-alignment: center;" text="Superstar" textFill="#554b4d">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -216,7 +216,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="priceL5" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
+                  <Label fx:id="adidasPriceL5" alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="141.0" textFill="#554b4d">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
