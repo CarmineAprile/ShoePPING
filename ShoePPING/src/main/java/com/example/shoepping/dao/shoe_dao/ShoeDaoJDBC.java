@@ -28,6 +28,6 @@ public class ShoeDaoJDBC implements ShoeDao{
     public String[] getNewBalancePrice() throws SQLException, IOException, ClassNotFoundException {
         Connection conn = DaoUtility.prepareQuery();
 
-        return SimpleQueries.getNwBalancePrice(conn);
+        return SimpleQueries.getNewBalancePrice(conn);
     }
 }

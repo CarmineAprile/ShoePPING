@@ -104,56 +104,41 @@ public class SimpleQueries {
     }
 
     public static String[] getNikePrice(Connection conn) throws SQLException {
-        String[] lista = new String[6];
         CallableStatement cs;
-        int i = 0;
 
         cs = conn.prepareCall("{call getNikePrice()}");
 
         boolean status = cs.execute();
 
-        if(status){
-            ResultSet rs = cs.getResultSet();
-            while (rs.next()){
-                float price = rs.getFloat(1);
-                lista[i] = String.valueOf(price);
-                i++;
-            }
-        }
-
-        return lista;
+        return getListPrice(cs, status);
     }
 
     public static String[] getAdidasPrice(Connection conn) throws SQLException {
-        String[] lista = new String[5];
         CallableStatement cs;
-        int i = 0;
 
         cs = conn.prepareCall("{call getAdidasPrice()}");
 
         boolean status = cs.execute();
 
-        if(status){
-            ResultSet rs = cs.getResultSet();
-            while (rs.next()){
-                float price = rs.getFloat(1);
-                lista[i] = String.valueOf(price);
-                i++;
-            }
-        }
+        return getListPrice(cs, status);
 
-        return lista;
+
     }
 
-    public static String[] getNwBalancePrice(Connection conn) throws SQLException {
-        String[] lista = new String[5];
+    public static String[] getNewBalancePrice(Connection conn) throws SQLException {
         CallableStatement cs;
-        int i = 0;
+
 
         cs = conn.prepareCall("{call getNewBalancePrice()}");
 
         boolean status = cs.execute();
 
+        return getListPrice(cs, status);
+    }
+
+    public static String[] getListPrice(CallableStatement cs, boolean status) throws SQLException {
+        String[] lista = new String[6];
+        int i = 0;
         if(status){
             ResultSet rs = cs.getResultSet();
             while (rs.next()){
@@ -162,7 +147,6 @@ public class SimpleQueries {
                 i++;
             }
         }
-
         return lista;
     }
 }
