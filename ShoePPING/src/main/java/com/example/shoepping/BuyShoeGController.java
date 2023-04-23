@@ -107,4 +107,35 @@ public class BuyShoeGController {
     public void confirm() {
         // da fare
     }
+
+    public void size37(){
+        sizeMenu.setText("37");
+    }
+    public void size38(){
+        sizeMenu.setText("38");
+    }
+    public void size39(){
+        sizeMenu.setText("39");
+    }
+    public void size40(){
+        sizeMenu.setText("40");
+    }
+    public void size41(){
+        sizeMenu.setText("41");
+    }
+    public void size42(){
+        sizeMenu.setText("42");
+    }
+    public void size43(){
+        sizeMenu.setText("43");
+    }
+    public void size44(){
+        sizeMenu.setText("44");
+    }
+    public void size45(){
+        sizeMenu.setText("45");
+    }
+    public void size46(){
+        sizeMenu.setText("46");
+    }
 }

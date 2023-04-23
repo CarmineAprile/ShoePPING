@@ -90,100 +90,90 @@
          <VBox prefHeight="0.0" prefWidth="351.0">
             <Label fx:id="modelLabel" prefHeight="11.0" prefWidth="351.0" textFill="#554b4d">
                <font>
-                  <Font name="System Bold" size="24.0"/>
+                  <Font name="System Bold" size="24.0" />
                </font>
                <VBox.margin>
-                  <Insets left="25.0"/>
+                  <Insets left="25.0" />
                </VBox.margin>
             </Label>
             <Label fx:id="priceLabel" textFill="#554b4d">
                <VBox.margin>
-                  <Insets left="25.0" top="10.0"/>
+                  <Insets left="25.0" top="10.0" />
                </VBox.margin>
                <font>
-                  <Font size="14.0"/>
+                  <Font size="14.0" />
                </font>
             </Label>
-            <MenuButton fx:id="sizeMenu" alignment="TOP_CENTER" focusTraversable="false" mnemonicParsing="false"
-                        prefHeight="25.0" prefWidth="361.0"
-                        style="-fx-background-color: white; -fx-background-radius: 20;" text="Select size"
-                        textFill="#554b4d">
+            <MenuButton fx:id="sizeMenu" alignment="TOP_CENTER" focusTraversable="false" mnemonicParsing="false" prefHeight="25.0" prefWidth="361.0" style="-fx-background-color: white; -fx-background-radius: 20;" text="Select size" textFill="#554b4d">
                <items>
-                  <MenuItem fx:id="item37" mnemonicParsing="false" style="-fx-text-fill: #554b4d;" text="37"/>
-                  <MenuItem fx:id="item38" mnemonicParsing="false" style="-fx-text-fill: #554b4d;" text="38"/>
-                  <MenuItem fx:id="item39" mnemonicParsing="false" style="-fx-text-fill: #554b4d;" text="39"/>
-                  <MenuItem fx:id="item40" mnemonicParsing="false" style="-fx-text-fill: #554b4d;" text="40"/>
-                  <MenuItem fx:id="item41" mnemonicParsing="false" style="-fx-text-fill: #554b4d;" text="41"/>
-                  <MenuItem fx:id="item42" mnemonicParsing="false" style="-fx-text-fill: #554b4d;" text="42"/>
-                  <MenuItem fx:id="item43" mnemonicParsing="false" style="-fx-text-fill: #554b4d;" text="43"/>
-                  <MenuItem fx:id="item44" mnemonicParsing="false" style="-fx-text-fill: #554b4d;" text="44"/>
-                  <MenuItem fx:id="item45" mnemonicParsing="false" style="-fx-text-fill: #554b4d;" text="45"/>
-                  <MenuItem fx:id="item46" mnemonicParsing="false" style="-fx-text-fill: #554b4d;" text="46"/>
+                  <MenuItem fx:id="item37" mnemonicParsing="false" onAction="#size37" style="-fx-text-fill: #554b4d;" text="37" />
+                  <MenuItem fx:id="item38" mnemonicParsing="false" onAction="#size38" style="-fx-text-fill: #554b4d;" text="38" />
+                  <MenuItem fx:id="item39" mnemonicParsing="false" onAction="#size39" style="-fx-text-fill: #554b4d;" text="39" />
+                  <MenuItem fx:id="item40" mnemonicParsing="false" onAction="#size40" style="-fx-text-fill: #554b4d;" text="40" />
+                  <MenuItem fx:id="item41" mnemonicParsing="false" onAction="#size41" style="-fx-text-fill: #554b4d;" text="41" />
+                  <MenuItem fx:id="item42" mnemonicParsing="false" onAction="#size42" style="-fx-text-fill: #554b4d;" text="42" />
+                  <MenuItem fx:id="item43" mnemonicParsing="false" onAction="#size43" style="-fx-text-fill: #554b4d;" text="43" />
+                  <MenuItem fx:id="item44" mnemonicParsing="false" onAction="#size44" style="-fx-text-fill: #554b4d;" text="44" />
+                  <MenuItem fx:id="item45" mnemonicParsing="false" onAction="#size45" style="-fx-text-fill: #554b4d;" text="45" />
+                  <MenuItem fx:id="item46" mnemonicParsing="false" onAction="#size46" style="-fx-text-fill: #554b4d;" text="46" />
                </items>
                <VBox.margin>
-                  <Insets left="25.0" right="25.0" top="10.0"/>
+                  <Insets left="25.0" right="25.0" top="10.0" />
                </VBox.margin>
             </MenuButton>
-            <Label layoutX="35.0" layoutY="10.0" prefHeight="11.0" prefWidth="351.0" text="Shipping address"
-                   textFill="#554b4d">
+            <Label layoutX="35.0" layoutY="10.0" prefHeight="11.0" prefWidth="351.0" text="Shipping address" textFill="#554b4d">
                <font>
-                  <Font name="System Bold" size="18.0"/>
+                  <Font name="System Bold" size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets left="25.0" top="20.0"/>
+                  <Insets left="25.0" top="20.0" />
                </VBox.margin>
             </Label>
             <TextField fx:id="addressTA" focusTraversable="false">
                <VBox.margin>
-                  <Insets left="25.0" right="25.0" top="10.0"/>
+                  <Insets left="25.0" right="25.0" top="10.0" />
                </VBox.margin>
             </TextField>
-            <Label layoutX="35.0" layoutY="130.0" prefHeight="11.0" prefWidth="351.0" text="Payment method"
-                   textFill="#554b4d">
+            <Label layoutX="35.0" layoutY="130.0" prefHeight="11.0" prefWidth="351.0" text="Payment method" textFill="#554b4d">
                <font>
-                  <Font name="System Bold" size="18.0"/>
+                  <Font name="System Bold" size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets left="25.0" top="20.0"/>
+                  <Insets left="25.0" top="20.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="cardIDTA" focusTraversable="false" layoutX="35.0" layoutY="167.0"
-                       promptText="XXXX - XXXX - XXXX - XXXX">
+            <TextField fx:id="cardIDTA" focusTraversable="false" layoutX="35.0" layoutY="167.0" promptText="XXXX - XXXX - XXXX - XXXX">
                <VBox.margin>
-                  <Insets left="25.0" right="25.0" top="10.0"/>
+                  <Insets left="25.0" right="25.0" top="10.0" />
                </VBox.margin>
             </TextField>
             <Label fx:id="cardIDL" prefHeight="17.0" prefWidth="379.0" textFill="RED">
                <VBox.margin>
-                  <Insets left="25.0" right="25.0" top="5.0"/>
+                  <Insets left="25.0" right="25.0" top="5.0" />
                </VBox.margin>
             </Label>
             <HBox prefHeight="25.0" prefWidth="314.0">
                <VBox.margin>
-                  <Insets left="25.0" right="25.0" top="5.0"/>
+                  <Insets left="25.0" right="25.0" top="5.0" />
                </VBox.margin>
-               <TextField fx:id="cardDateTA" focusTraversable="false" promptText="MM/YY"/>
-               <TextField fx:id="cardCVCTA" focusTraversable="false" layoutX="10.0" layoutY="10.0" prefHeight="25.0"
-                          prefWidth="99.0" promptText="CVC">
+               <TextField fx:id="cardDateTA" focusTraversable="false" promptText="MM/YY" />
+               <TextField fx:id="cardCVCTA" focusTraversable="false" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="99.0" promptText="CVC">
                   <HBox.margin>
-                     <Insets left="55.0"/>
+                     <Insets left="55.0" />
                   </HBox.margin>
                </TextField>
             </HBox>
-            <Label fx:id="cardDateCVVLabel" layoutX="35.0" layoutY="279.0" prefHeight="17.0" prefWidth="379.0"
-                   textFill="RED">
+            <Label fx:id="cardDateCVVLabel" layoutX="35.0" layoutY="279.0" prefHeight="17.0" prefWidth="379.0" textFill="RED">
                <VBox.margin>
-                  <Insets left="25.0" right="25.0" top="5.0"/>
+                  <Insets left="25.0" right="25.0" top="5.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="confirmButton" focusTraversable="false" mnemonicParsing="false" onAction="#confirm"
-                    prefHeight="25.0" prefWidth="367.0"
-                    style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="CONFIRM" textFill="#554b4d">
+            <Button fx:id="confirmButton" focusTraversable="false" mnemonicParsing="false" onAction="#confirm" prefHeight="25.0" prefWidth="367.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="CONFIRM" textFill="#554b4d">
                <VBox.margin>
-                  <Insets left="25.0" right="25.0" top="5.0"/>
+                  <Insets left="25.0" right="25.0" top="5.0" />
                </VBox.margin>
                <font>
-                  <Font name="System Bold" size="12.0"/>
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Button>
          </VBox>
