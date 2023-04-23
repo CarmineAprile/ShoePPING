@@ -5,6 +5,8 @@ package com.example.shoepping.dao.queries;
 import com.example.shoepping.exception.DAOException;
 import com.example.shoepping.model.order.Order;
 import com.example.shoepping.model.order.OrderList;
+import com.example.shoepping.pattern.observer.ShoeSizeList;
+import com.example.shoepping.pattern.observer.SizeAmount;
 
 import java.sql.*;
 
@@ -136,6 +138,32 @@ public class SimpleQueries {
         return getListPrice(cs, status);
     }
 
+    public static ShoeSizeList getSizeList(Connection conn, String model) throws SQLException {
+        ShoeSizeList shoeSizeList = new ShoeSizeList();
+        CallableStatement cs;
+
+
+        cs = conn.prepareCall("{call getSizeList(?)}");
+        cs.setString(1, model);
+
+
+        boolean status = cs.execute();
+
+        if(status){
+            ResultSet rs = cs.getResultSet();
+            while (rs.next()){
+                int size = rs.getInt(1);
+                int amount = rs.getInt(2);
+
+                SizeAmount sizeAmount = new SizeAmount(size, amount);
+                shoeSizeList.addSizeAmount(sizeAmount);
+            }
+        }
+
+        return shoeSizeList;
+
+    }
+
     public static String[] getListPrice(CallableStatement cs, boolean status) throws SQLException {
         String[] lista = new String[6];
         int i = 0;
@@ -149,4 +177,6 @@ public class SimpleQueries {
         }
         return lista;
     }
+
+
 }

@@ -2,6 +2,9 @@ package com.example.shoepping;
 
 
 import com.example.shoepping.model.user.User;
+import com.example.shoepping.pattern.observer.ShoeSizeList;
+import com.example.shoepping.use_case.buy_brands.BuyUserBrandsController;
+import com.example.shoepping.use_case.buy_brands.IBuyUserBrandsController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class BuyUserNikeGController {
     User user;
@@ -101,67 +105,86 @@ public class BuyUserNikeGController {
         nikePriceL6.setText(lista[5] + '$');
     }
 
-    public void onNike1() throws IOException {
+    public void onNike1() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
+
+        IBuyUserBrandsController buyUserNikeController = new BuyUserBrandsController();
+        ShoeSizeList shoeSizeList = buyUserNikeController.getSizeAmountList(nikeModel1.getText());
+
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-1(Air-max-97).png", nikeModel1.getText(), nikePriceL1.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-1(Air-max-97).png", nikeModel1.getText(), nikePriceL1.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
     }
 
-    public void onNike2() throws IOException {
+    public void onNike2() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
+        IBuyUserBrandsController buyUserNikeController = new BuyUserBrandsController();
+        ShoeSizeList shoeSizeList = buyUserNikeController.getSizeAmountList(nikeModel2.getText());
+
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-2(Air-Jordan-1-Mid).png", nikeModel2.getText(), nikePriceL2.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-2(Air-Jordan-1-Mid).png", nikeModel2.getText(), nikePriceL2.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
     }
 
-    public void onNike3() throws IOException {
+    public void onNike3() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
+        IBuyUserBrandsController buyUserNikeController = new BuyUserBrandsController();
+        ShoeSizeList shoeSizeList = buyUserNikeController.getSizeAmountList(nikeModel3.getText());
+
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-3(Air-Max-2017).png", nikeModel3.getText(), nikePriceL3.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-3(Air-Max-2017).png", nikeModel3.getText(), nikePriceL3.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
     }
 
-    public void onNike4() throws IOException {
+    public void onNike4() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
+        IBuyUserBrandsController buyUserNikeController = new BuyUserBrandsController();
+        ShoeSizeList shoeSizeList = buyUserNikeController.getSizeAmountList(nikeModel4.getText());
+
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-4(Nike-Air-Max-90-South-Beach).png", nikeModel4.getText(), nikePriceL4.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-4(Nike-Air-Max-90-South-Beach).png", nikeModel4.getText(), nikePriceL4.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
     }
 
-    public void onNike5() throws IOException {
+    public void onNike5() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
+        IBuyUserBrandsController buyUserNikeController = new BuyUserBrandsController();
+        ShoeSizeList shoeSizeList = buyUserNikeController.getSizeAmountList(nikeModel5.getText());
+
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-5(Air-Huarache).png", nikeModel5.getText(), nikePriceL5.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-5(Air-Huarache).png", nikeModel5.getText(), nikePriceL5.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
     }
 
-    public void onNike6() throws IOException {
+    public void onNike6() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
+        IBuyUserBrandsController buyUserNikeController = new BuyUserBrandsController();
+        ShoeSizeList shoeSizeList = buyUserNikeController.getSizeAmountList(nikeModel6.getText());
+
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-6(Nike-Air-Max-94).png", nikeModel6.getText(), nikePriceL6.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-nike-6(Nike-Air-Max-94).png", nikeModel6.getText(), nikePriceL6.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);

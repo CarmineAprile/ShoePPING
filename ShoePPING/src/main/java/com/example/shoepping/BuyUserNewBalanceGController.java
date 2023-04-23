@@ -1,6 +1,9 @@
 package com.example.shoepping;
 
 import com.example.shoepping.model.user.User;
+import com.example.shoepping.pattern.observer.ShoeSizeList;
+import com.example.shoepping.use_case.buy_brands.BuyUserBrandsController;
+import com.example.shoepping.use_case.buy_brands.IBuyUserBrandsController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class BuyUserNewBalanceGController {
     User user;
@@ -94,56 +98,71 @@ public class BuyUserNewBalanceGController {
         newBalancepriceL5.setText(lista[4] + '$');
     }
 
-    public void onNewBalance1() throws IOException {
+    public void onNewBalance1() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
+        IBuyUserBrandsController buyUserNewBalanceController = new BuyUserBrandsController();
+        ShoeSizeList shoeSizeList = buyUserNewBalanceController.getSizeAmountList(newBalancemodel1.getText());
+
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-1(327-Moonbeam).png", newBalancemodel1.getText(), newBalancepriceL1.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-1(327-Moonbeam).png", newBalancemodel1.getText(), newBalancepriceL1.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
     }
 
-    public void onNewBalance2() throws IOException {
+    public void onNewBalance2() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
+        IBuyUserBrandsController buyUserNewBalanceController = new BuyUserBrandsController();
+        ShoeSizeList shoeSizeList = buyUserNewBalanceController.getSizeAmountList(newBalancemodel2.getText());
+
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-2(X-Racer-Bodega).png", newBalancemodel2.getText(), newBalancepriceL2.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-2(X-Racer-Bodega).png", newBalancemodel2.getText(), newBalancepriceL2.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
     }
 
-    public void onNewBalance3() throws IOException {
+    public void onNewBalance3() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
+        IBuyUserBrandsController buyUserNewBalanceController = new BuyUserBrandsController();
+        ShoeSizeList shoeSizeList = buyUserNewBalanceController.getSizeAmountList(newBalancemodel3.getText());
+
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-3(Shando).png", newBalancemodel3.getText(), newBalancepriceL3.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-3(Shando).png", newBalancemodel3.getText(), newBalancepriceL3.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
     }
 
-    public void onNewBalance4() throws IOException {
+    public void onNewBalance4() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
+        IBuyUserBrandsController buyUserNewBalanceController = new BuyUserBrandsController();
+        ShoeSizeList shoeSizeList = buyUserNewBalanceController.getSizeAmountList(newBalancemodel4.getText());
+
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-4(530).png", newBalancemodel4.getText(), newBalancepriceL4.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-4(530).png", newBalancemodel4.getText(), newBalancepriceL4.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
     }
 
-    public void onNewBalance5() throws IOException {
+    public void onNewBalance5() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
+        IBuyUserBrandsController buyUserNewBalanceController = new BuyUserBrandsController();
+        ShoeSizeList shoeSizeList = buyUserNewBalanceController.getSizeAmountList(newBalancemodel5.getText());
+
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-5(550-White-Red).png", newBalancemodel5.getText(), newBalancepriceL5.getText());
+        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-5(550-White-Red).png", newBalancemodel5.getText(), newBalancepriceL5.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
