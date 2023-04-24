@@ -4,6 +4,7 @@ module com.example.shoepping {
     requires java.sql;
     requires mysql.connector.j;
     requires com.opencsv;
+    requires jdk.internal.le;
 
 
     opens com.example.shoepping to javafx.fxml;

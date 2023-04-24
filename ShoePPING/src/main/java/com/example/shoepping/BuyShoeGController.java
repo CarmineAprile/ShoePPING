@@ -18,6 +18,8 @@ import javafx.scene.layout.HBox;
 import java.io.IOException;
 import java.util.Objects;
 
+import static jdk.internal.org.jline.utils.Log.error;
+
 public class BuyShoeGController implements IBuyShoeView {
 
     User user;
@@ -185,6 +187,7 @@ public class BuyShoeGController implements IBuyShoeView {
             case 44 -> item44.setDisable(true);
             case 45 -> item45.setDisable(true);
             case 46 -> item46.setDisable(true);
+            default -> error();
 
         }
     }
