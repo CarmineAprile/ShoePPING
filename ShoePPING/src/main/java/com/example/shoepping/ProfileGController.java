@@ -1,6 +1,7 @@
 package com.example.shoepping;
 
 import com.example.shoepping.model.user.User;
+import com.example.shoepping.use_case.profile.IProfileController;
 import com.example.shoepping.use_case.profile.ProfileController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -73,7 +74,7 @@ public class ProfileGController {
 
         MyOrdersGController myOrdersGController = loader.getController();
 
-        ProfileController profileController = new ProfileController();
+        IProfileController profileController = new ProfileController();
         String orders = profileController.onOrders(user, isChecked);
 
         myOrdersGController.salva(user, isChecked, orders);

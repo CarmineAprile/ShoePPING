@@ -2,7 +2,7 @@ package com.example.shoepping.model.order;
 
 public class Order implements IOrder{
 
-    private final int orderID;
+    private int orderID;
     private final String dateOrder;
     private final String itemOrder;
     private  final double priceOrder;
@@ -12,6 +12,15 @@ public class Order implements IOrder{
 
     public Order(int orderID, String dateOrder, String itemOrder, double priceOrder, String conditionOrder, String addressOrder, String statusOrder) {
         this.orderID = orderID;
+        this.dateOrder = dateOrder;
+        this.itemOrder = itemOrder;
+        this.priceOrder = priceOrder;
+        this.conditionOrder = conditionOrder;
+        this.addressOrder = addressOrder;
+        this.statusOrder = statusOrder;
+    }
+
+    public Order(String dateOrder, String itemOrder, double priceOrder, String conditionOrder, String addressOrder, String statusOrder) {
         this.dateOrder = dateOrder;
         this.itemOrder = itemOrder;
         this.priceOrder = priceOrder;
@@ -47,6 +56,15 @@ public class Order implements IOrder{
     @Override
     public String getStatusOrder() {
         return statusOrder;
+    }
+
+    @Override
+    public int isValid() {
+        // 0. Check for address is empty
+
+        if (addressOrder.isEmpty())
+            return 0;
+        else return -1;
     }
 
     @Override

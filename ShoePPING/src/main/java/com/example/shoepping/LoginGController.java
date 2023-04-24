@@ -1,12 +1,9 @@
 package com.example.shoepping;
 
-import com.example.shoepping.dao.user_dao.UserDAOCSV;
-import com.example.shoepping.dao.user_dao.UserDAOJDBC;
 import com.example.shoepping.model.user.User;
 import com.example.shoepping.use_case.login.controller.ILoginController;
 import com.example.shoepping.use_case.login.controller.LoginController;
 import com.example.shoepping.use_case.login.view.ILoginView;
-import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Objects;
 
 public class LoginGController implements ILoginView {
@@ -84,7 +80,7 @@ public class LoginGController implements ILoginView {
         cw.switchPage(root, loginPane);
     }
 
-    public void onLoginSuccessUser() throws IOException, SQLException, ClassNotFoundException, CsvValidationException {
+    public void onLoginSuccessUser(User user) throws IOException{
 
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
@@ -92,21 +88,8 @@ public class LoginGController implements ILoginView {
 
         BuyUserGController buyUserGController = loader.getController();
 
-        User user = new User(usernameLogin, passLogin);
 
         boolean isChecked = checkFS.isSelected();
-
-
-        if(!isChecked) {
-            UserDAOJDBC userdao = new UserDAOJDBC();
-            String emailLogin = userdao.getEmail(user);
-            user.setEmail(emailLogin);
-        }else{
-            UserDAOCSV userdao = new UserDAOCSV();
-            String emailLogin = userdao.getEmail(user);
-            user.setEmail(emailLogin);
-        }
-
 
         buyUserGController.salva(user, isChecked);
 

@@ -121,28 +121,38 @@
                   <Insets left="25.0" right="25.0" top="10.0" />
                </VBox.margin>
             </MenuButton>
+            <Label fx:id="sizeL" layoutX="35.0" layoutY="197.0" prefHeight="17.0" prefWidth="379.0" textFill="RED">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
             <Label layoutX="35.0" layoutY="10.0" prefHeight="11.0" prefWidth="351.0" text="Shipping address" textFill="#554b4d">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets left="25.0" top="20.0" />
+                  <Insets left="25.0" top="5.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="addressTA" focusTraversable="false">
+            <TextField fx:id="addressTA" focusTraversable="false" onKeyTyped="#maxLenghtAddress">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" top="10.0" />
                </VBox.margin>
             </TextField>
+            <Label fx:id="addressL" layoutX="35.0" layoutY="279.0" prefHeight="17.0" prefWidth="379.0" textFill="RED">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
             <Label layoutX="35.0" layoutY="130.0" prefHeight="11.0" prefWidth="351.0" text="Payment method" textFill="#554b4d">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets left="25.0" top="20.0" />
+                  <Insets left="25.0" top="5.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="cardIDTA" focusTraversable="false" layoutX="35.0" layoutY="167.0" promptText="XXXX - XXXX - XXXX - XXXX">
+            <TextField fx:id="cardIDTA" focusTraversable="false" layoutX="35.0" layoutY="167.0" onKeyTyped="#maxLenghtCardID" promptText="XXXX  XXXX  XXXX  XXXX">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" top="10.0" />
                </VBox.margin>
@@ -156,8 +166,8 @@
                <VBox.margin>
                   <Insets left="25.0" right="25.0" top="5.0" />
                </VBox.margin>
-               <TextField fx:id="cardDateTA" focusTraversable="false" promptText="MM/YY" />
-               <TextField fx:id="cardCVCTA" focusTraversable="false" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="99.0" promptText="CVC">
+               <TextField fx:id="cardDateTA" focusTraversable="false" onKeyTyped="#maxLenghtDate" promptText="MM/YY" />
+               <TextField fx:id="cardCVCTA" focusTraversable="false" layoutX="10.0" layoutY="10.0" onKeyTyped="#maxLenghtCVC" prefHeight="25.0" prefWidth="99.0" promptText="CVC">
                   <HBox.margin>
                      <Insets left="55.0" />
                   </HBox.margin>

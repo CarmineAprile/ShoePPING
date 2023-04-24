@@ -5,6 +5,7 @@ package com.example.shoepping.dao.queries;
 import com.example.shoepping.exception.DAOException;
 import com.example.shoepping.model.order.Order;
 import com.example.shoepping.model.order.OrderList;
+import com.example.shoepping.model.user.User;
 import com.example.shoepping.pattern.observer.ShoeSizeList;
 import com.example.shoepping.pattern.observer.SizeAmount;
 
@@ -176,6 +177,34 @@ public class SimpleQueries {
             }
         }
         return lista;
+    }
+
+    public static void InsertOrder(Connection conn, Order order, User user, int size, boolean check) throws SQLException {
+
+        CallableStatement cs;
+        CallableStatement cs1;
+
+        if(check){
+            cs = conn.prepareCall("{call insertCSV(?, ?, ?, ?, ?, ?, ?)}");
+        }else {
+            cs = conn.prepareCall("{call insertSQL(?, ?, ?, ?, ?, ?, ?)}");
+        }
+        cs.setString(1, order.getDateOrder());
+        cs.setString(2, order.getItemOrder());
+        cs.setDouble(3, order.getPriceOrder());
+        cs.setString(4, order.getConditionOrder());
+        cs.setString(5, order.getAddressOrder());
+        cs.setString(6, order.getStatusOrder());
+        cs.setString(7, user.getUsername());
+
+        cs.execute();
+
+        cs1 = conn.prepareCall("{call updateStorage(?, ?)}");
+
+        cs1.setString(1, order.getItemOrder());
+        cs1.setInt(2, size);
+
+        cs1.execute();
     }
 
 

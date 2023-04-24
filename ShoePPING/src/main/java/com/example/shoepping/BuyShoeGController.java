@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 import static jdk.internal.org.jline.utils.Log.error;
@@ -41,6 +42,8 @@ public class BuyShoeGController implements IBuyShoeView {
     @FXML
     MenuButton sizeMenu;
     @FXML
+    Label sizeL;
+    @FXML
     MenuItem item37;
     @FXML
     MenuItem item38;
@@ -62,6 +65,8 @@ public class BuyShoeGController implements IBuyShoeView {
     MenuItem item46;
     @FXML
     TextField addressTA;
+    @FXML
+    Label addressL;
     @FXML
     TextField cardIDTA;
     @FXML
@@ -139,8 +144,62 @@ public class BuyShoeGController implements IBuyShoeView {
         cw.switchPage(root, buyShoePane);
     }
 
-    public void confirm() {
-        // da fare
+    public void confirm() throws SQLException, IOException, ClassNotFoundException {
+        String model = modelLabel.getText();
+        String price = priceLabel.getText();
+        String size = sizeMenu.getText();
+        String address = addressTA.getText();
+        String cardID = cardIDTA.getText();
+        String cardDate = cardDateTA.getText();
+        String cardCVC = cardCVCTA.getText();
+
+        //Serve a "svuotare" le label di errore
+        sizeL.setText("");
+        addressL.setText("");
+        cardIDL.setText("");
+        cardDateCVVLabel.setText("");
+
+        IBuyShoeController buyShoeController = new BuyShoeController(this);
+        buyShoeController.onConfirm(user, isChecked, model, removeLastChar(price), size, address, cardID, cardDate, cardCVC);
+    }
+    @Override
+    public void onConfirmSuccess() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
+        Parent root = loader.load();
+
+        BuyUserGController buyUserGController = loader.getController();
+        buyUserGController.salva(user, isChecked);
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, buyShoePane);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Order received successfully");
+
+        // Header Text: null
+        alert.setHeaderText(null);
+        alert.setContentText("Order received successfully!");
+
+        alert.showAndWait();
+    }
+
+    @Override
+    public void onConfirmError(String message, int code) {
+        /*
+        0 not selected size
+        1 empty address
+        2 invalid cardID
+        3 invalid expiration cardDate
+        4 invalid CVC
+         */
+        switch (code){
+            case 0 -> sizeL.setText(message);
+            case 1 -> addressL.setText(message);
+            case 2 -> cardIDL.setText(message);
+            case 3, 4 -> cardDateCVVLabel.setText(message);
+        }
+
     }
 
     public void size37(){
@@ -190,5 +249,52 @@ public class BuyShoeGController implements IBuyShoeView {
             default -> error();
 
         }
+    }
+
+    public void maxLenghtAddress() {
+        final int maxLengthAddress = 40;
+
+        if (addressTA.getText().length() > maxLengthAddress) {
+            int pos = addressTA.getCaretPosition();
+            addressTA.setText(addressTA.getText(0, maxLengthAddress));
+            addressTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
+        }
+    }
+
+    public void maxLenghtCardID() {
+        final int maxLengthCardID = 19;
+
+        if (cardIDTA.getText().length() > maxLengthCardID) {
+            int pos = cardIDTA.getCaretPosition();
+            cardIDTA.setText(cardIDTA.getText(0, maxLengthCardID));
+            cardIDTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
+        }
+    }
+
+    public void maxLenghtDate() {
+        final int maxLengthDate = 5;
+
+        if (cardDateTA.getText().length() > maxLengthDate) {
+            int pos = cardDateTA.getCaretPosition();
+            cardDateTA.setText(cardDateTA.getText(0, maxLengthDate));
+            cardDateTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
+        }
+    }
+
+    public void maxLenghtCVC() {
+        final int maxLengthCVC = 3;
+
+        if (cardCVCTA.getText().length() > maxLengthCVC) {
+            int pos = cardCVCTA.getCaretPosition();
+            cardCVCTA.setText(cardCVCTA.getText(0, maxLengthCVC));
+            cardCVCTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
+        }
+    }
+
+    public static String removeLastChar(String str) {
+        if (str == null || str.length() == 0) {
+            return str;
+        }
+        return str.substring(0, str.length() - 1);
     }
 }

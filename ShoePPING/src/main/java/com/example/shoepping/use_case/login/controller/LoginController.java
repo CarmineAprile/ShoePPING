@@ -23,7 +23,10 @@ public class LoginController implements ILoginController {
             UserDAOCSV userdao = new UserDAOCSV();
             boolean countUser = userdao.checkLogin(user);
             if (countUser) {
-                loginView.onLoginSuccessUser();
+
+                String emailLogin = userdao.getEmail(user);
+                user.setEmail(emailLogin);
+                loginView.onLoginSuccessUser(user);
             } else {
                 loginView.onLoginError("Login failed! Please try again...", 3);
             }
@@ -32,7 +35,10 @@ public class LoginController implements ILoginController {
             UserDAOJDBC userdao = new UserDAOJDBC();
             boolean countUser = userdao.checkLogin(user);
             if (countUser) {
-                loginView.onLoginSuccessUser();
+
+                String emailLogin = userdao.getEmail(user);
+                user.setEmail(emailLogin);
+                loginView.onLoginSuccessUser(user);
             } else {
                 loginView.onLoginError("Login failed! Please try again...", 3);
             }
