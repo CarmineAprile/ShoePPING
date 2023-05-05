@@ -201,6 +201,7 @@ public class BuyShoeGController implements IBuyShoeView {
             case 1 -> addressL.setText(message);
             case 2 -> cardIDL.setText(message);
             case 3, 4 -> cardDateCVVLabel.setText(message);
+            default -> error();
         }
 
     }
