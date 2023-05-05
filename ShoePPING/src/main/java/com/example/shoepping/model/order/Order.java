@@ -61,7 +61,6 @@ public class Order implements IOrder{
     @Override
     public int isValid() {
         // 0. Check for address is empty
-
         if (addressOrder.isEmpty())
             return 0;
         else return -1;

@@ -97,7 +97,14 @@ public class BuyUserGController{
         System.out.println("sell");
     }
 
-    public void onCatalogClick() {
-        System.out.println("catalog");
+    public void onCatalogClick() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-used-shoe-view.fxml"));
+        Parent root = loader.load();
+
+        BuyUserUsedShoeGController buyUserUsedShoeGController = loader.getController();
+        buyUserUsedShoeGController.salva(user, isChecked);
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, buyUserPane);
     }
 }
