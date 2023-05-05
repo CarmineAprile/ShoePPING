@@ -179,7 +179,7 @@ public class SimpleQueries {
         return lista;
     }
 
-    public static void InsertOrder(Connection conn, Order order, User user, int size, boolean check) throws SQLException {
+    public static void insertOrder(Connection conn, Order order, User user, int size, boolean check) throws SQLException {
 
         CallableStatement cs;
         CallableStatement cs1;

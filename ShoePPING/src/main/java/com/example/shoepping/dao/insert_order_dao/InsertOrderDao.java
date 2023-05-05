@@ -16,6 +16,6 @@ public class InsertOrderDao implements InsertOrderDaoInterface{
 
         Connection conn = DaoUtility.prepareQuery();
 
-        SimpleQueries.InsertOrder(conn, order, user, size, check);
+        SimpleQueries.insertOrder(conn, order, user, size, check);
     }
 }

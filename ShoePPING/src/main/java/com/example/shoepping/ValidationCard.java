@@ -41,17 +41,17 @@ public class ValidationCard {
         return (m1 == '0' && (m2 != '0') || m1 == '1' && (m2 == '0' || m2 == '1' || m2 == '2')) && (space == '/') && (y1 != '0' && y1 != '1') && (!(y1 == '2' && (y2 == '0' || y2 == '1' || y2 == '2')));
     }
 
-    public static boolean valCardCVC(String CVC){
+    public static boolean valCardCVC(String cvc){
 
-        int l = CVC.length();
+        int l = cvc.length();
         if (l != 3){
             return false;
         }
 
-        char CVC1 = CVC.charAt(0);
-        char CVC2 = CVC.charAt(1);
-        char CVC3 = CVC.charAt(2);
+        char cvc1 = cvc.charAt(0);
+        char cvc2 = cvc.charAt(1);
+        char cvc3 = cvc.charAt(2);
 
-        return (CVC1 == '0' || CVC1 == '1' || CVC1 == '2' || CVC1 == '3' || CVC1 == '4' || CVC1 == '5' || CVC1 == '6' || CVC1 == '7' || CVC1 == '8' || CVC1 == '9') && (CVC2 == '0' || CVC2 == '1' || CVC2 == '2' || CVC2 == '3' || CVC2 == '4' || CVC2 == '5' || CVC2 == '6' || CVC2 == '7' || CVC2 == '8' || CVC2 == '9') && (CVC3 == '0' || CVC3 == '1' || CVC3 == '2' || CVC3 == '3' || CVC3 == '4' || CVC3 == '5' || CVC3 == '6' || CVC3 == '7' || CVC3 == '8' || CVC3 == '9');
+        return (cvc1 == '0' || cvc1 == '1' || cvc1 == '2' || cvc1 == '3' || cvc1 == '4' || cvc1 == '5' || cvc1 == '6' || cvc1 == '7' || cvc1 == '8' || cvc1 == '9') && (cvc2 == '0' || cvc2 == '1' || cvc2 == '2' || cvc2 == '3' || cvc2 == '4' || cvc2 == '5' || cvc2 == '6' || cvc2 == '7' || cvc2 == '8' || cvc2 == '9') && (cvc3 == '0' || cvc3 == '1' || cvc3 == '2' || cvc3 == '3' || cvc3 == '4' || cvc3 == '5' || cvc3 == '6' || cvc3 == '7' || cvc3 == '8' || cvc3 == '9');
     }
 }
