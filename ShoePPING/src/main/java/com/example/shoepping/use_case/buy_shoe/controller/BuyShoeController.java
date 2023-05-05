@@ -33,19 +33,19 @@ public class BuyShoeController implements IBuyShoeController{
         }
     }
 
-    public void onConfirm(User user, boolean isChecked, String model, String price, String size, String address, String cardID, String cardDate, String cardCVC) throws SQLException, IOException, ClassNotFoundException {
+    public void onConfirm(User user, boolean isChecked, String[] orderVec) throws SQLException, IOException, ClassNotFoundException {
 
         String conditionOrder = "new";
         String statusOrder = "payed";
 
         String dateOrder = ZonedDateTime.now(ZoneId.of("Europe/Rome")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        Order order = new Order(dateOrder, model, Float.parseFloat(price), conditionOrder, address, statusOrder);
+        Order order = new Order(dateOrder, orderVec[0], Double.parseDouble(orderVec[1]), conditionOrder, orderVec[3], statusOrder);
         int orderCode = order.isValid();
 
-        boolean cardIDCode = ValidationCard.valCardID(cardID);
-        boolean cardDateCode = ValidationCard.valCardDate(cardDate);
-        boolean cardCVCCode = ValidationCard.valCardCVC(cardCVC);
+        boolean cardIDCode = ValidationCard.valCardID(orderVec[4]);
+        boolean cardDateCode = ValidationCard.valCardDate(orderVec[5]);
+        boolean cardCVCCode = ValidationCard.valCardCVC(orderVec[6]);
 
         /*
         0 not selected size
@@ -55,7 +55,7 @@ public class BuyShoeController implements IBuyShoeController{
         4 invalid CVC
          */
 
-        if(size.equals("Select size")){
+        if(orderVec[2].equals("Select size")){
             buyShoeView.onConfirmError("Please select a size", 0);
         }else if(orderCode == 0){
             buyShoeView.onConfirmError("Please enter an address", 1);
@@ -67,7 +67,7 @@ public class BuyShoeController implements IBuyShoeController{
             buyShoeView.onConfirmError("Please insert a valid CVC", 4);
         }else{
             InsertOrderDao insertOrderDao = new InsertOrderDao();
-            insertOrderDao.insertOrder(order, user, Integer.parseInt(size), isChecked);
+            insertOrderDao.insertOrder(order, user, Integer.parseInt(orderVec[2]), isChecked);
             buyShoeView.onConfirmSuccess();
         }
 

@@ -159,8 +159,11 @@ public class BuyShoeGController implements IBuyShoeView {
         cardIDL.setText("");
         cardDateCVVLabel.setText("");
 
+
+        String[] orderVec = {model, removeLastChar(price), size, address, cardID, cardDate, cardCVC};
+
         IBuyShoeController buyShoeController = new BuyShoeController(this);
-        buyShoeController.onConfirm(user, isChecked, model, removeLastChar(price), size, address, cardID, cardDate, cardCVC);
+        buyShoeController.onConfirm(user, isChecked, orderVec);
     }
     @Override
     public void onConfirmSuccess() throws IOException {

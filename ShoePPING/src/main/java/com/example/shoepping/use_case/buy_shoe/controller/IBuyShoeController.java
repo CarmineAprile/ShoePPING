@@ -9,5 +9,5 @@ import java.sql.SQLException;
 public interface IBuyShoeController {
     void onUpdate(ShoeSizeList shoeSizeList);
 
-    void onConfirm(User user, boolean isChecked, String model, String price, String size, String address, String cardID, String cardDate, String cardCVC) throws SQLException, IOException, ClassNotFoundException;
+    void onConfirm(User user, boolean isChecked, String[] orderVec) throws SQLException, IOException, ClassNotFoundException;
 }

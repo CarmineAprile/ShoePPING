@@ -1,6 +1,10 @@
 package com.example.shoepping;
 
 public class ValidationCard {
+
+    private ValidationCard() {
+        throw new IllegalStateException("Utility class");
+    }
     public static boolean valCardID(String cardID) {
         int l = cardID.length();
         if(l != 19)
