@@ -106,34 +106,34 @@ public class BuyUserUsedShoeGController {
         cw.switchPage(root, buyUserUsedShoePane);
     }
 
-    public void size37(){
+    public void menuSize37(){
         sizeMenu.setText("37");
     }
-    public void size38(){
+    public void menuSize38(){
         sizeMenu.setText("38");
     }
-    public void size39(){
+    public void menuSize39(){
         sizeMenu.setText("39");
     }
-    public void size40(){
+    public void menuSize40(){
         sizeMenu.setText("40");
     }
-    public void size41(){
+    public void menuSize41(){
         sizeMenu.setText("41");
     }
-    public void size42(){
+    public void menuSize42(){
         sizeMenu.setText("42");
     }
-    public void size43(){
+    public void menuSize43(){
         sizeMenu.setText("43");
     }
-    public void size44(){
+    public void menuSize44(){
         sizeMenu.setText("44");
     }
-    public void size45(){
+    public void menuSize45(){
         sizeMenu.setText("45");
     }
-    public void size46(){
+    public void menuSize46(){
         sizeMenu.setText("46");
     }
 }
