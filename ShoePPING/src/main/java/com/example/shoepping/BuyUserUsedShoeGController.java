@@ -1,6 +1,5 @@
 package com.example.shoepping;
 
-import com.example.shoepping.model.user.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -16,8 +15,6 @@ import java.io.IOException;
 
 public class BuyUserUsedShoeGController {
 
-    User user;
-    boolean isChecked;
     String[] lista = {"12", "15"};
     @FXML
     AnchorPane buyUserUsedShoePane;
@@ -64,9 +61,7 @@ public class BuyUserUsedShoeGController {
     VBox vBoxCatalog;
 
 
-    public void salva(User user, boolean isChecked){
-        this.user = user;
-        this.isChecked = isChecked;
+    public void salva(){
 
         for(int i = 0; i<2; i++){
             Label label = new Label(lista[i]);
@@ -85,8 +80,7 @@ public class BuyUserUsedShoeGController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
         Parent root = loader.load();
 
-        BuyUserGController buyUserGController = loader.getController();
-        buyUserGController.salva(user, isChecked);
+
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserUsedShoePane);
@@ -100,7 +94,7 @@ public class BuyUserUsedShoeGController {
         Parent root = loader.load();
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva(user, isChecked);
+        profileGController.salva();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserUsedShoePane);

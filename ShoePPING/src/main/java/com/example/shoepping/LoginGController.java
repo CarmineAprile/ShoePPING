@@ -1,6 +1,5 @@
 package com.example.shoepping;
 
-import com.example.shoepping.model.user.User;
 import com.example.shoepping.use_case.login.controller.ILoginController;
 import com.example.shoepping.use_case.login.controller.LoginController;
 import com.example.shoepping.use_case.login.view.ILoginView;
@@ -80,18 +79,11 @@ public class LoginGController implements ILoginView {
         cw.switchPage(root, loginPane);
     }
 
-    public void onLoginSuccessUser(User user) throws IOException{
+    public void onLoginSuccessUser() throws IOException{
 
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
         Parent root = loader.load();
-
-        BuyUserGController buyUserGController = loader.getController();
-
-
-        boolean isChecked = checkFS.isSelected();
-
-        buyUserGController.salva(user, isChecked);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, loginPane);

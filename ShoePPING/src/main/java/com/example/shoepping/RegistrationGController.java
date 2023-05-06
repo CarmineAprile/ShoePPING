@@ -25,10 +25,8 @@ public class RegistrationGController implements IRegistrationView {
     TextField registrationPassword;
     @FXML
     TextField registrationRepassword;
-
     @FXML
     TextField registrationEmail;
-
     @FXML
     Button signupButton;
     @FXML

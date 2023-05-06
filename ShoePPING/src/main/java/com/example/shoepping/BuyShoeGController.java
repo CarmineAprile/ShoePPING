@@ -1,8 +1,8 @@
 package com.example.shoepping;
 
-import com.example.shoepping.model.user.User;
 import com.example.shoepping.pattern.observer.ShoeSizeButton;
 import com.example.shoepping.pattern.observer.ShoeSizeList;
+import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.buy_shoe.controller.BuyShoeController;
 import com.example.shoepping.use_case.buy_shoe.controller.IBuyShoeController;
 import com.example.shoepping.use_case.buy_shoe.view.IBuyShoeView;
@@ -23,8 +23,6 @@ import static jdk.internal.org.jline.utils.Log.error;
 
 public class BuyShoeGController implements IBuyShoeView {
 
-    User user;
-    boolean isChecked;
     @FXML
     AnchorPane buyShoePane;
     @FXML
@@ -80,9 +78,7 @@ public class BuyShoeGController implements IBuyShoeView {
     @FXML
     Button confirmButton;
 
-    public void salva(User user, boolean isChecked, String shoe, String model, String price, ShoeSizeList shoeSizeList){
-        this.user = user;
-        this.isChecked = isChecked;
+    public void salva(String shoe, String model, String price, ShoeSizeList shoeSizeList){
 
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(shoe)));
         shoeImage.setImage(image);
@@ -123,9 +119,6 @@ public class BuyShoeGController implements IBuyShoeView {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
         Parent root = loader.load();
 
-        BuyUserGController buyUserGController = loader.getController();
-        buyUserGController.salva(user, isChecked);
-
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyShoePane);
     }
@@ -138,7 +131,7 @@ public class BuyShoeGController implements IBuyShoeView {
         Parent root = loader.load();
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva(user, isChecked);
+        profileGController.salva();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyShoePane);
@@ -162,17 +155,16 @@ public class BuyShoeGController implements IBuyShoeView {
 
         String[] orderVec = {model, removeLastChar(price), size, address, cardID, cardDate, cardCVC};
 
+        UserSingleton userSingleton = UserSingleton.getInstance();
+
         IBuyShoeController buyShoeController = new BuyShoeController(this);
-        buyShoeController.onConfirm(user, isChecked, orderVec);
+        buyShoeController.onConfirm(userSingleton.getUser(), userSingleton.isChecked(), orderVec);
     }
     @Override
     public void onConfirmSuccess() throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
         Parent root = loader.load();
-
-        BuyUserGController buyUserGController = loader.getController();
-        buyUserGController.salva(user, isChecked);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyShoePane);

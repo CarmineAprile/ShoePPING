@@ -1,6 +1,5 @@
 package com.example.shoepping;
 
-import com.example.shoepping.model.user.User;
 import com.example.shoepping.use_case.profile.IProfileController;
 import com.example.shoepping.use_case.profile.ProfileController;
 import javafx.fxml.FXML;
@@ -18,8 +17,6 @@ import java.sql.SQLException;
 
 public class ProfileGController {
 
-    User user;
-    boolean isChecked;
 
     @FXML
     AnchorPane profilePane;
@@ -38,20 +35,18 @@ public class ProfileGController {
     @FXML
     HBox aboutUs;
 
-    public void salva(User user, boolean isChecked){
-        this.user = user;
-        this.isChecked = isChecked;
+    public void salva(){
 
-        usernameLabel.setText(user.getUsername());
-        emailLabel.setText(user.getEmail());
+        IProfileController profileController = new ProfileController();
+        String[] valueLabels = profileController.setLabels();
+        usernameLabel.setText(valueLabels[0]);
+        emailLabel.setText(valueLabels[1]);
     }
 
     public void goBack() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
         Parent root = loader.load();
 
-        BuyUserGController buyUserGController = loader.getController();
-        buyUserGController.salva(user, isChecked);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, profilePane);
@@ -60,9 +55,6 @@ public class ProfileGController {
     public void editProfile() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("edit-profile-view.fxml"));
         Parent root = loader.load();
-
-        EditProfileGController editProfileGController = loader.getController();
-        editProfileGController.salva(user, isChecked);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, profilePane);
@@ -75,9 +67,11 @@ public class ProfileGController {
         MyOrdersGController myOrdersGController = loader.getController();
 
         IProfileController profileController = new ProfileController();
-        String orders = profileController.onOrders(user, isChecked);
 
-        myOrdersGController.salva(user, isChecked, orders);
+
+        String orders = profileController.onOrders();
+
+        myOrdersGController.salva(orders);
 
 
         ChangeWindow cw = new ChangeWindow();

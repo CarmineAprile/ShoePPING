@@ -16,10 +16,8 @@ public class PasswordRecoveryGController {
 
     @FXML
     TextField recoveryUsername;
-
     @FXML
     Button recoverButton;
-
     @FXML
     ImageView backButton;
     @FXML

@@ -1,7 +1,6 @@
 package com.example.shoepping;
 
 import com.example.shoepping.exception.DAOException;
-import com.example.shoepping.model.user.User;
 import com.example.shoepping.use_case.edit_profile.controller.EditProfileController;
 import com.example.shoepping.use_case.edit_profile.controller.IEditProfileController;
 import com.example.shoepping.use_case.edit_profile.view.IEditProfileView;
@@ -21,8 +20,6 @@ import java.sql.SQLException;
 
 public class EditProfileGController implements IEditProfileView {
 
-    User user;
-    boolean isChecked;
     @FXML
     AnchorPane editProfilePane;
     @FXML
@@ -46,17 +43,12 @@ public class EditProfileGController implements IEditProfileView {
     @FXML
     Button editButton;
 
-    public void salva(User user, boolean isChecked){
-        this.user = user;
-        this.isChecked = isChecked;
-    }
-
     public void goBack() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
         Parent root = loader.load();
 
-        ProfileGController profileGController= loader.getController();
-        profileGController.salva(user, isChecked);
+        ProfileGController profileGController = loader.getController();
+        profileGController.salva();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, editProfilePane);
@@ -77,12 +69,12 @@ public class EditProfileGController implements IEditProfileView {
         emailLabel.setText("");
 
         IEditProfileController editProfileController = new EditProfileController(this);
-        editProfileController.onEditProfile(username,pass,repass,email, user.getUsername(), isChecked);
+        editProfileController.onEditProfile(username,pass,repass,email);
 
     }
 
     @Override
-    public void onEditProfileSuccess(User userNew) throws IOException {
+    public void onEditProfileSuccess(boolean isChecked) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
         Parent root = loader.load();
@@ -97,12 +89,13 @@ public class EditProfileGController implements IEditProfileView {
 
             alert.showAndWait();
         }else {
-            this.user = userNew;
+            IEditProfileController editProfileController = new EditProfileController(this);
+            editProfileController.setNewUser();
         }
 
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva(user, isChecked);
+        profileGController.salva();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, editProfilePane);

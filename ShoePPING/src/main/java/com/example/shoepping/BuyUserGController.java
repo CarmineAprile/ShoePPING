@@ -1,6 +1,5 @@
 package com.example.shoepping;
 
-import com.example.shoepping.model.user.User;
 import com.example.shoepping.use_case.buy_user.BuyUserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +14,6 @@ import java.sql.SQLException;
 
 public class BuyUserGController{
 
-    User user;
-    boolean isChecked;
     @FXML
     AnchorPane buyUserPane;
     @FXML
@@ -32,12 +29,6 @@ public class BuyUserGController{
     @FXML
     Button catalogButton;
 
-    public void salva(User user, boolean isChecked){
-        this.user = user;
-        this.isChecked = isChecked;
-    }
-
-
     public void onNikeClick() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-nike-view.fxml"));
         Parent root = loader.load();
@@ -46,7 +37,7 @@ public class BuyUserGController{
         String[] lista = buyUserController.onNikeList();
 
         BuyUserNikeGController buyUserNikeGController = loader.getController();
-        buyUserNikeGController.salva(user, isChecked, lista);
+        buyUserNikeGController.salva(lista);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);
@@ -61,7 +52,7 @@ public class BuyUserGController{
         String[] lista = buyUserController.onAdidasList();
 
         BuyUserAdidasGController buyUserAdidasGController = loader.getController();
-        buyUserAdidasGController.salva(user, isChecked, lista);
+        buyUserAdidasGController.salva(lista);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);
@@ -76,7 +67,7 @@ public class BuyUserGController{
         String[] lista = buyUserController.onNewBalanceList();
 
         BuyUserNewBalanceGController buyUserNewBalanceGController = loader.getController();
-        buyUserNewBalanceGController.salva(user, isChecked, lista);
+        buyUserNewBalanceGController.salva(lista);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);
@@ -87,7 +78,7 @@ public class BuyUserGController{
         Parent root = loader.load();
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva(user, isChecked);
+        profileGController.salva();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);
@@ -102,7 +93,7 @@ public class BuyUserGController{
         Parent root = loader.load();
 
         BuyUserUsedShoeGController buyUserUsedShoeGController = loader.getController();
-        buyUserUsedShoeGController.salva(user, isChecked);
+        buyUserUsedShoeGController.salva();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);

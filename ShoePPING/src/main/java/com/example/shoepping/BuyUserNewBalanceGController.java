@@ -1,6 +1,6 @@
 package com.example.shoepping;
 
-import com.example.shoepping.model.user.User;
+
 import com.example.shoepping.pattern.observer.ShoeSizeList;
 import com.example.shoepping.use_case.buy_brands.BuyUserBrandsController;
 import com.example.shoepping.use_case.buy_brands.IBuyUserBrandsController;
@@ -17,8 +17,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class BuyUserNewBalanceGController {
-    User user;
-    boolean isChecked;
 
     static final String SCHERMATA = "buy-user-shoe-view.fxml";
     @FXML
@@ -61,17 +59,12 @@ public class BuyUserNewBalanceGController {
     Label newBalancepriceL5;
 
 
-    public void salva(User user, boolean isChecked, String[] lista){
-        this.user = user;
-        this.isChecked = isChecked;
+    public void salva(String[] lista){
         setNewBalancePrice(lista);
     }
     public void onBuyClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
         Parent root = loader.load();
-
-        BuyUserGController buyUserGController = loader.getController();
-        buyUserGController.salva(user, isChecked);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -84,7 +77,7 @@ public class BuyUserNewBalanceGController {
         Parent root = loader.load();
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva(user, isChecked);
+        profileGController.salva();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -106,7 +99,7 @@ public class BuyUserNewBalanceGController {
         ShoeSizeList shoeSizeList = buyUserNewBalanceController.getSizeAmountList(newBalancemodel1.getText());
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-1(327-Moonbeam).png", newBalancemodel1.getText(), newBalancepriceL1.getText(), shoeSizeList);
+        buyShoeGController.salva("/drawable/shoe-new-balance-1(327-Moonbeam).png", newBalancemodel1.getText(), newBalancepriceL1.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -120,7 +113,7 @@ public class BuyUserNewBalanceGController {
         ShoeSizeList shoeSizeList = buyUserNewBalanceController.getSizeAmountList(newBalancemodel2.getText());
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-2(X-Racer-Bodega).png", newBalancemodel2.getText(), newBalancepriceL2.getText(), shoeSizeList);
+        buyShoeGController.salva("/drawable/shoe-new-balance-2(X-Racer-Bodega).png", newBalancemodel2.getText(), newBalancepriceL2.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -134,7 +127,7 @@ public class BuyUserNewBalanceGController {
         ShoeSizeList shoeSizeList = buyUserNewBalanceController.getSizeAmountList(newBalancemodel3.getText());
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-3(Shando).png", newBalancemodel3.getText(), newBalancepriceL3.getText(), shoeSizeList);
+        buyShoeGController.salva("/drawable/shoe-new-balance-3(Shando).png", newBalancemodel3.getText(), newBalancepriceL3.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -148,7 +141,7 @@ public class BuyUserNewBalanceGController {
         ShoeSizeList shoeSizeList = buyUserNewBalanceController.getSizeAmountList(newBalancemodel4.getText());
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-4(530).png", newBalancemodel4.getText(), newBalancepriceL4.getText(), shoeSizeList);
+        buyShoeGController.salva("/drawable/shoe-new-balance-4(530).png", newBalancemodel4.getText(), newBalancepriceL4.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -162,7 +155,7 @@ public class BuyUserNewBalanceGController {
         ShoeSizeList shoeSizeList = buyUserNewBalanceController.getSizeAmountList(newBalancemodel5.getText());
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva(user, isChecked, "/drawable/shoe-new-balance-5(550-White-Red).png", newBalancemodel5.getText(), newBalancepriceL5.getText(), shoeSizeList);
+        buyShoeGController.salva("/drawable/shoe-new-balance-5(550-White-Red).png", newBalancemodel5.getText(), newBalancepriceL5.getText(), shoeSizeList);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);

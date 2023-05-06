@@ -8,5 +8,7 @@ import java.sql.SQLException;
 
 public interface IEditProfileController {
 
-    void onEditProfile(String username, String pass, String repass, String email, String oldUsername, boolean check) throws CsvValidationException, IOException, SQLException, ClassNotFoundException, DAOException;
+    void onEditProfile(String username, String pass, String repass, String email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException, DAOException;
+
+    void setNewUser();
 }

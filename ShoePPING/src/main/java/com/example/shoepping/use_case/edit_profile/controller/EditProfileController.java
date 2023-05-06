@@ -3,6 +3,7 @@ package com.example.shoepping.use_case.edit_profile.controller;
 import com.example.shoepping.dao.user_dao.UserDAOCSV;
 import com.example.shoepping.dao.user_dao.UserDAOJDBC;
 import com.example.shoepping.model.user.User;
+import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.edit_profile.view.IEditProfileView;
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -12,14 +13,20 @@ import java.sql.SQLException;
 public class EditProfileController implements IEditProfileController{
 
     IEditProfileView editProfileView;
+    User userNew;
 
     public EditProfileController(IEditProfileView editProfileView){
         this.editProfileView = editProfileView;
     }
     @Override
-    public void onEditProfile(String username, String pass, String repass, String email, String oldUsername, boolean check) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+    public void onEditProfile(String username, String pass, String repass, String email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
 
         User user = new User(username, pass, repass, email);
+        UserSingleton userSingleton = UserSingleton.getInstance();
+
+        String oldUsername = userSingleton.getUser().getUsername();
+        boolean check = userSingleton.isChecked();
+
         int registrationCode = user.isValid();
 
         switch (registrationCode) {
@@ -39,7 +46,7 @@ public class EditProfileController implements IEditProfileController{
                     boolean countUser = userdao.checkExistence(user);
 
                     if (!countUser) {
-                        editProfileView.onEditProfileSuccess(user);
+                        editProfileView.onEditProfileSuccess(true);
                     } else {
                         editProfileView.onEditProfileError("This username is already taken!", 0);
                     }
@@ -59,12 +66,19 @@ public class EditProfileController implements IEditProfileController{
 
                         userdao.updateUser(user, oldUsername);
 
-                        editProfileView.onEditProfileSuccess(user);
+                        userNew = user;
+                        editProfileView.onEditProfileSuccess(false);
                     } else {
                         editProfileView.onEditProfileError("This username is already taken!", 0);
                     }
                 }
             }
         }
+    }
+
+    @Override
+    public void setNewUser() {
+        UserSingleton userSingleton = UserSingleton.getInstance();
+        userSingleton.setUser(userNew);
     }
 }

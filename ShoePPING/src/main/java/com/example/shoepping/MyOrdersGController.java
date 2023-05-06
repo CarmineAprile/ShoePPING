@@ -1,6 +1,5 @@
 package com.example.shoepping;
 
-import com.example.shoepping.model.user.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,8 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
 public class MyOrdersGController {
-    User user;
-    boolean isChecked;
     @FXML
     AnchorPane myOrdersPane;
     @FXML
@@ -21,10 +18,7 @@ public class MyOrdersGController {
     TextArea ordersTA;
 
 
-    public void salva(User user, boolean isChecked, String orders){
-        this.user = user;
-        this.isChecked = isChecked;
-
+    public void salva(String orders){
         ordersTA.setText(orders);
     }
 
@@ -33,7 +27,7 @@ public class MyOrdersGController {
         Parent root = loader.load();
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva(user, isChecked);
+        profileGController.salva();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, myOrdersPane);

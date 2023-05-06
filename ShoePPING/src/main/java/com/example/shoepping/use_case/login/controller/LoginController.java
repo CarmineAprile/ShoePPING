@@ -3,6 +3,7 @@ package com.example.shoepping.use_case.login.controller;
 import com.example.shoepping.dao.user_dao.UserDAOCSV;
 import com.example.shoepping.dao.user_dao.UserDAOJDBC;
 import com.example.shoepping.dao.user_dao.UserDao;
+import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.login.view.ILoginView;
 import com.example.shoepping.model.user.User;
 import com.opencsv.exceptions.CsvValidationException;
@@ -18,6 +19,7 @@ public class LoginController implements ILoginController {
     }
 
     public void checkTrue(User user, boolean check) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+
         if (check) {
 
             UserDAOCSV userdao = new UserDAOCSV();
@@ -26,7 +28,11 @@ public class LoginController implements ILoginController {
 
                 String emailLogin = userdao.getEmail(user);
                 user.setEmail(emailLogin);
-                loginView.onLoginSuccessUser(user);
+                UserSingleton userSingleton = UserSingleton.getInstance();
+                userSingleton.setUser(user);
+                userSingleton.setChecked(true);
+
+                loginView.onLoginSuccessUser();
             } else {
                 loginView.onLoginError("Login failed! Please try again...", 3);
             }
@@ -38,7 +44,12 @@ public class LoginController implements ILoginController {
 
                 String emailLogin = userdao.getEmail(user);
                 user.setEmail(emailLogin);
-                loginView.onLoginSuccessUser(user);
+
+                UserSingleton userSingleton = UserSingleton.getInstance();
+                userSingleton.setUser(user);
+                userSingleton.setChecked(false);
+
+                loginView.onLoginSuccessUser();
             } else {
                 loginView.onLoginError("Login failed! Please try again...", 3);
             }
