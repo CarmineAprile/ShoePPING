@@ -34,25 +34,25 @@ public class BuyUserUsedShoeGController {
     @FXML
     MenuButton sizeMenu;
     @FXML
-    MenuItem item37;
+    MenuItem itemSize37;
     @FXML
-    MenuItem item38;
+    MenuItem itemSize38;
     @FXML
-    MenuItem item39;
+    MenuItem itemSize39;
     @FXML
-    MenuItem item40;
+    MenuItem itemSize40;
     @FXML
-    MenuItem item41;
+    MenuItem itemSize41;
     @FXML
-    MenuItem item42;
+    MenuItem itemSize42;
     @FXML
-    MenuItem item43;
+    MenuItem itemSize43;
     @FXML
-    MenuItem item44;
+    MenuItem itemSize44;
     @FXML
-    MenuItem item45;
+    MenuItem itemSize45;
     @FXML
-    MenuItem item46;
+    MenuItem itemSize46;
 
     @FXML
     TextField priceFilter;
@@ -71,7 +71,7 @@ public class BuyUserUsedShoeGController {
         for(int i = 0; i<2; i++){
             Label label = new Label(lista[i]);
             label.setFont(new Font("System Bold", 12));
-            label.setPadding(new Insets(10, 0, 0, 0));
+            label.setPadding(new Insets(0, 0, 10, 0));
             vBoxCatalog.getChildren().add(label);
             label.setOnMouseClicked(evt -> System.out.println(label.getText()));
         }

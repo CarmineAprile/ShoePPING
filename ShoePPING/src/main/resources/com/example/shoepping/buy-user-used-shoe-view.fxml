@@ -100,16 +100,16 @@
             </MenuButton>
             <MenuButton fx:id="sizeMenu" alignment="TOP_CENTER" focusTraversable="false" mnemonicParsing="false" prefHeight="25.0" prefWidth="361.0" style="-fx-background-color: white; -fx-background-radius: 20;" text="Select size" textFill="#554b4d">
                <items>
-                  <MenuItem fx:id="item37" mnemonicParsing="false" onAction="#size37" style="-fx-text-fill: #554b4d;" text="37" />
-                  <MenuItem fx:id="item38" mnemonicParsing="false" onAction="#size38" style="-fx-text-fill: #554b4d;" text="38" />
-                  <MenuItem fx:id="item39" mnemonicParsing="false" onAction="#size39" style="-fx-text-fill: #554b4d;" text="39" />
-                  <MenuItem fx:id="item40" mnemonicParsing="false" onAction="#size40" style="-fx-text-fill: #554b4d;" text="40" />
-                  <MenuItem fx:id="item41" mnemonicParsing="false" onAction="#size41" style="-fx-text-fill: #554b4d;" text="41" />
-                  <MenuItem fx:id="item42" mnemonicParsing="false" onAction="#size42" style="-fx-text-fill: #554b4d;" text="42" />
-                  <MenuItem fx:id="item43" mnemonicParsing="false" onAction="#size43" style="-fx-text-fill: #554b4d;" text="43" />
-                  <MenuItem fx:id="item44" mnemonicParsing="false" onAction="#size44" style="-fx-text-fill: #554b4d;" text="44" />
-                  <MenuItem fx:id="item45" mnemonicParsing="false" onAction="#size45" style="-fx-text-fill: #554b4d;" text="45" />
-                  <MenuItem fx:id="item46" mnemonicParsing="false" onAction="#size46" style="-fx-text-fill: #554b4d;" text="46" />
+                  <MenuItem fx:id="itemSize37" mnemonicParsing="false" onAction="#size37" style="-fx-text-fill: #554b4d;" text="37" />
+                  <MenuItem fx:id="itemSize38" mnemonicParsing="false" onAction="#size38" style="-fx-text-fill: #554b4d;" text="38" />
+                  <MenuItem fx:id="itemSize39" mnemonicParsing="false" onAction="#size39" style="-fx-text-fill: #554b4d;" text="39" />
+                  <MenuItem fx:id="itemSize40" mnemonicParsing="false" onAction="#size40" style="-fx-text-fill: #554b4d;" text="40" />
+                  <MenuItem fx:id="itemSize41" mnemonicParsing="false" onAction="#size41" style="-fx-text-fill: #554b4d;" text="41" />
+                  <MenuItem fx:id="itemSize42" mnemonicParsing="false" onAction="#size42" style="-fx-text-fill: #554b4d;" text="42" />
+                  <MenuItem fx:id="itemSize43" mnemonicParsing="false" onAction="#size43" style="-fx-text-fill: #554b4d;" text="43" />
+                  <MenuItem fx:id="itemSize44" mnemonicParsing="false" onAction="#size44" style="-fx-text-fill: #554b4d;" text="44" />
+                  <MenuItem fx:id="itemSize45" mnemonicParsing="false" onAction="#size45" style="-fx-text-fill: #554b4d;" text="45" />
+                  <MenuItem fx:id="itemSize46" mnemonicParsing="false" onAction="#size46" style="-fx-text-fill: #554b4d;" text="46" />
                </items>
                <VBox.margin>
                   <Insets left="20.0" right="10.0" top="20.0" />
