@@ -16,8 +16,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class ProfileGController {
-
-
     @FXML
     AnchorPane profilePane;
     @FXML
@@ -34,9 +32,10 @@ public class ProfileGController {
     HBox mySales;
     @FXML
     HBox aboutUs;
+    @FXML
+    HBox exitButton;
 
     public void salva(){
-
         IProfileController profileController = new ProfileController();
         String[] valueLabels = profileController.setLabels();
         usernameLabel.setText(valueLabels[0]);
@@ -70,7 +69,6 @@ public class ProfileGController {
 
 
         String orders = profileController.onOrders();
-
         myOrdersGController.salva(orders);
 
 
@@ -78,8 +76,12 @@ public class ProfileGController {
         cw.switchPage(root, profilePane);
     }
 
-    public void goMySales() {
-        System.out.println("Sales");
+    public void goMySales() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("my-sales-view.fxml"));
+        Parent root = loader.load();
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, profilePane);
     }
 
     public void showAboutUs() {
@@ -91,5 +93,13 @@ public class ProfileGController {
         alert.setContentText("ShoePPING app for ISPW project.\nDevelopers: Carmine Aprile, Daniele Ausili.");
 
         alert.showAndWait();
+    }
+
+    public void exit() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
+        Parent root = loader.load();
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, profilePane);
     }
 }
