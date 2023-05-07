@@ -1,5 +1,6 @@
 package com.example.shoepping.use_case.buy_user;
 
+
 import com.example.shoepping.dao.shoe_dao.ShoeDaoJDBC;
 
 import java.io.IOException;
@@ -25,4 +26,5 @@ public class BuyUserController implements IBuyUserController{
         ShoeDaoJDBC shoeDaoJDBC = new ShoeDaoJDBC();
         return shoeDaoJDBC.getNewBalancePrice();
     }
+
 }

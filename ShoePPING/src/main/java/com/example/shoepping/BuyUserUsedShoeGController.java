@@ -1,5 +1,8 @@
 package com.example.shoepping;
 
+import com.example.shoepping.use_case.buy_used_shoe.Controller.BuyUserUsedShoeController;
+import com.example.shoepping.use_case.buy_used_shoe.Controller.IBuyUserUsedShoeController;
+import com.example.shoepping.use_case.buy_used_shoe.View.IBuyUserUsedShoeView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -12,10 +15,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-public class BuyUserUsedShoeGController {
-
-    String[] lista = {"12", "15"};
+public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
     @FXML
     AnchorPane buyUserUsedShoePane;
     @FXML
@@ -61,15 +63,20 @@ public class BuyUserUsedShoeGController {
     VBox vBoxCatalog;
 
 
-    public void salva(){
+    public void salva() throws SQLException, IOException, ClassNotFoundException {
+        IBuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
+        buyUserUsedShoeController.getCatalog();
+    }
 
-        for(int i = 0; i<2; i++){
-            Label label = new Label(lista[i]);
-            label.setFont(new Font("System Bold", 12));
-            label.setPadding(new Insets(0, 0, 10, 0));
-            vBoxCatalog.getChildren().add(label);
-            label.setOnMouseClicked(evt -> System.out.println(label.getText()));
-        }
+    @Override
+    public void setShoeLabel(String item) {
+        Label label = new Label(item);
+        label.setFont(new Font("System Bold", 14));
+        label.setPadding(new Insets(0, 0, 10, 0));
+        vBoxCatalog.getChildren().add(label);
+
+        // va gestito il passaggio alla pagina successiva della scarpa cliccata
+        label.setOnMouseClicked(evt -> System.out.println(label.getText()));
     }
 
     public void apply() {

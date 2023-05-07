@@ -88,7 +88,7 @@ public class BuyUserGController{
         System.out.println("sell");
     }
 
-    public void onCatalogClick() throws IOException {
+    public void onCatalogClick() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-used-shoe-view.fxml"));
         Parent root = loader.load();
 

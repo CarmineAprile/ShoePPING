@@ -3,6 +3,8 @@ package com.example.shoepping.dao.queries;
 
 
 import com.example.shoepping.exception.DAOException;
+import com.example.shoepping.model.catalog.Catalog;
+import com.example.shoepping.model.catalog.CatalogItem;
 import com.example.shoepping.model.order.Order;
 import com.example.shoepping.model.order.OrderList;
 import com.example.shoepping.model.user.User;
@@ -208,4 +210,25 @@ public class SimpleQueries {
     }
 
 
+    public static Catalog getCatalog(Connection conn) throws SQLException {
+
+        Catalog catalog = new Catalog();
+
+        CallableStatement cs;
+
+        cs = conn.prepareCall("{call usedCatalog()}");
+
+
+        boolean status = cs.execute();
+
+        if(status){
+            ResultSet rs = cs.getResultSet();
+            while (rs.next()){
+                 CatalogItem catalogItem = new CatalogItem(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getString(6), rs.getString(7));
+                 catalog.addItem(catalogItem);
+            }
+        }
+
+        return catalog;
+    }
 }
