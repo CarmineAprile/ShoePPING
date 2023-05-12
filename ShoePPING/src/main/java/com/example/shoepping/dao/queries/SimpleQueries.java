@@ -108,6 +108,32 @@ public class SimpleQueries {
         return orderList.toString();
     }
 
+    public static String getSalesList(Connection conn, String username) throws SQLException {
+        Catalog catalog = new Catalog();
+        CallableStatement cs;
+
+        cs = conn.prepareCall("{call getSales(?)}");
+        cs.setString(1, username);
+
+        boolean status = cs.execute();
+
+        if(status){
+            ResultSet rs = cs.getResultSet();
+            while (rs.next()){
+                CatalogItem catalogItem = new CatalogItem(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getString(6), rs.getString(7));
+                catalog.addItem(catalogItem);
+            }
+        }
+
+        StringBuilder temp = new StringBuilder();
+
+        for(CatalogItem catalogItem : catalog.getCatalog()){
+            temp.append(catalogItem.toStringSales()).append("\n\n");
+        }
+
+        return temp.toString();
+    }
+
     public static String[] getNikePrice(Connection conn) throws SQLException {
         CallableStatement cs;
 
@@ -231,4 +257,6 @@ public class SimpleQueries {
 
         return catalog;
     }
+
+
 }

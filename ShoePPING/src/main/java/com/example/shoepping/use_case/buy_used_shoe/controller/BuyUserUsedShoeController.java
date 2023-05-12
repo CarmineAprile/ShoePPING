@@ -12,12 +12,14 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
 
     IBuyUserUsedShoeView buyUserUsedShoeView;
 
+    public static Catalog catalog;
+
     public BuyUserUsedShoeController(IBuyUserUsedShoeView buyUserUsedShoeView){
         this.buyUserUsedShoeView = buyUserUsedShoeView;
     }
     @Override
     public void getCatalog() throws SQLException, IOException, ClassNotFoundException {
-        Catalog catalog;
+
         CatalogDao catalogDao = new CatalogDao();
 
         catalog = catalogDao.getCatalog();

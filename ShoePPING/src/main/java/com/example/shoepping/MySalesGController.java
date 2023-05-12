@@ -17,6 +17,10 @@ public class MySalesGController {
     @FXML
     TextArea salesTA;
 
+    public void salva(String sales) {
+        salesTA.setText(sales);
+    }
+
     public void goBack() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
         Parent root = loader.load();
@@ -27,4 +31,6 @@ public class MySalesGController {
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, mySalesPane);
     }
+
+
 }

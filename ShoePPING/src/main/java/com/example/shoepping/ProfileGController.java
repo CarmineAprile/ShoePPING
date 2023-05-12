@@ -76,9 +76,16 @@ public class ProfileGController {
         cw.switchPage(root, profilePane);
     }
 
-    public void goMySales() throws IOException {
+    public void goMySales() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("my-sales-view.fxml"));
         Parent root = loader.load();
+
+        MySalesGController mySalesGController = loader.getController();
+
+        IProfileController profileController = new ProfileController();
+
+        String sales = profileController.onSales();
+        mySalesGController.salva(sales);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, profilePane);

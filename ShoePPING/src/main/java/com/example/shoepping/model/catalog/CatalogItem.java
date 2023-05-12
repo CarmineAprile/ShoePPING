@@ -60,4 +60,8 @@ public class CatalogItem implements ICatalogItem{
     public String toString(){
         return "Sale: " + this.getShoeSale() + ", " + this.getShoeBrand() + ", " + this.getShoeItem() + ", " + this.getShoePrice() + "$, " + this.getShoeSize() + ", " + this.getShoeCondition() + "      User: " + this.getShoeUsername();
     }
+
+    public String toStringSales(){
+        return "Sale:\t\t\t" + this.getShoeSale() + "\nBrand:\t\t" + this.getShoeBrand() + "\nItem:\t\t" + this.getShoeItem() + "\nPrice:\t\t" + this.getShoePrice() + "$\nSize:\t\t\t" + this.getShoeSize() + "\nCondition:\t" + this.getShoeCondition();
+    }
 }
