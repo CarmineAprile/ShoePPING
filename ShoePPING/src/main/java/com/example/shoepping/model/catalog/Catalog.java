@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Catalog implements ICatalog{
 
-    List<CatalogItem> catalog = new ArrayList<>();
+    List<CatalogItem> shoeCatalog = new ArrayList<>();
 
     @Override
     public void addItem(CatalogItem catalogItem) {
-        this.catalog.add(catalogItem);
+        this.shoeCatalog.add(catalogItem);
     }
 
     @Override
     public List<CatalogItem> getCatalog() {
-        return catalog;
+        return shoeCatalog;
     }
 }

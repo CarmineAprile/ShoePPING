@@ -58,7 +58,6 @@ public class CatalogItem implements ICatalogItem{
 
     @Override
     public String toString(){
-        //return "Sale: " + this.getShoeSale() + ", Brand: " + this.getShoeBrand() + ", Item: " + this.getShoeItem() + ", Price: " + this.getShoePrice() + "$, Size: " + this.getShoeSize() + ", Condition: " + this.getShoeCondition() + ", User: " + this.getShoeUsername();
         return "Sale: " + this.getShoeSale() + ", " + this.getShoeBrand() + ", " + this.getShoeItem() + ", " + this.getShoePrice() + "$, " + this.getShoeSize() + ", " + this.getShoeCondition() + "      User: " + this.getShoeUsername();
     }
 }

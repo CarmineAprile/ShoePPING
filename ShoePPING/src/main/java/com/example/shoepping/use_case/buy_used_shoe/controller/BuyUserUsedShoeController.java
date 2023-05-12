@@ -1,9 +1,9 @@
-package com.example.shoepping.use_case.buy_used_shoe.Controller;
+package com.example.shoepping.use_case.buy_used_shoe.controller;
 
 import com.example.shoepping.dao.catalog_dao.CatalogDao;
 import com.example.shoepping.model.catalog.Catalog;
 import com.example.shoepping.model.catalog.CatalogItem;
-import com.example.shoepping.use_case.buy_used_shoe.View.IBuyUserUsedShoeView;
+import com.example.shoepping.use_case.buy_used_shoe.view.IBuyUserUsedShoeView;
 
 import java.io.IOException;
 import java.sql.SQLException;

@@ -1,8 +1,8 @@
 package com.example.shoepping;
 
-import com.example.shoepping.use_case.buy_used_shoe.Controller.BuyUserUsedShoeController;
-import com.example.shoepping.use_case.buy_used_shoe.Controller.IBuyUserUsedShoeController;
-import com.example.shoepping.use_case.buy_used_shoe.View.IBuyUserUsedShoeView;
+import com.example.shoepping.use_case.buy_used_shoe.controller.BuyUserUsedShoeController;
+import com.example.shoepping.use_case.buy_used_shoe.controller.IBuyUserUsedShoeController;
+import com.example.shoepping.use_case.buy_used_shoe.view.IBuyUserUsedShoeView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
