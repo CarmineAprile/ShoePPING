@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
+
     @FXML
     AnchorPane buyUserUsedShoePane;
     @FXML
@@ -52,13 +53,22 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
     MenuItem itemSize45;
     @FXML
     MenuItem itemSize46;
-
+    @FXML
+    MenuButton conditionMenu;
+    @FXML
+    MenuItem itemConditionAsNew;
+    @FXML
+    MenuItem itemConditionLightlyUsed;
+    @FXML
+    MenuItem itemConditionAveragelyUsed;
     @FXML
     TextField priceFilter;
     @FXML
     Label maxPriceL;
     @FXML
     Button applyFilter;
+    @FXML
+    Button resetFilter;
     @FXML
     VBox vBoxCatalog;
 
@@ -71,7 +81,7 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
     @Override
     public void setShoeLabel(String item) {
         Label label = new Label(item);
-        label.setFont(new Font("System Bold", 14));
+        label.setFont(new Font("System Bold", 12));
         label.setPadding(new Insets(0, 0, 10, 0));
         vBoxCatalog.getChildren().add(label);
 
@@ -79,8 +89,24 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         label.setOnMouseClicked(evt -> System.out.println(label.getText()));
     }
 
-    public void apply() {
-        System.out.println("Apply filter");
+    @Override
+    public void onApplyFilterError() {
+        maxPriceL.setText("Please insert a valid price");
+    }
+
+    public void apply() throws SQLException, IOException, ClassNotFoundException {
+        BuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
+
+        vBoxCatalog.getChildren().clear();
+        maxPriceL.setText("");
+
+        String item = itemFilter.getText();
+        String brand = brandMenu.getText();
+        String size = sizeMenu.getText();
+        String condition = conditionMenu.getText();
+        String price = priceFilter.getText();
+
+        buyUserUsedShoeController.setFilter(item, brand, size, condition, price);
     }
 
     public void onBuyClick() throws IOException {
@@ -136,5 +162,35 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
     }
     public void menuSize46(){
         sizeMenu.setText("46");
+    }
+
+    public void menuBrandNike(){
+        brandMenu.setText("Nike");
+    }
+    public void menuBrandAdidas(){
+        brandMenu.setText("Adidas");
+    }
+    public void menuBrandNewBalance(){
+        brandMenu.setText("New Balance");
+    }
+
+    public void reset() throws SQLException, IOException, ClassNotFoundException {
+        itemFilter.clear();
+        brandMenu.setText("Select brand");
+        sizeMenu.setText("Select size");
+        conditionMenu.setText("Select condition");
+        priceFilter.clear();
+        vBoxCatalog.getChildren().clear();
+        salva();
+    }
+
+    public void menuConditionAsNew() {
+        conditionMenu.setText("As new");
+    }
+    public void menuConditionLightlyUsed() {
+        conditionMenu.setText("Lightly used");
+    }
+    public void menuConditionAveragelyUsed() {
+        conditionMenu.setText("Averagely used");
     }
 }
