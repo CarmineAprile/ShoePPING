@@ -1,24 +1,25 @@
 package com.example.shoepping;
 
-import com.example.shoepping.use_case.buy_used_shoe.controller.BuyUserUsedShoeController;
-import com.example.shoepping.use_case.buy_used_shoe.controller.IBuyUserUsedShoeController;
-import com.example.shoepping.use_case.buy_used_shoe.view.IBuyUserUsedShoeView;
+import com.example.shoepping.use_case.buy_user_used_shoe.controller.BuyUserUsedShoeController;
+import com.example.shoepping.use_case.buy_user_used_shoe.controller.IBuyUserUsedShoeController;
+import com.example.shoepping.use_case.buy_user_used_shoe.view.IBuyUserUsedShoeView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
+import static jdk.internal.org.jline.utils.Log.error;
 
+public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
     @FXML
     AnchorPane buyUserUsedShoePane;
     @FXML
@@ -28,96 +29,113 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
     @FXML
     ImageView userIcon;
     @FXML
-    TextField itemFilter;
+    Label modelLabel;
     @FXML
-    MenuButton brandMenu;
+    Label brandLabel;
     @FXML
-    MenuButton sizeMenu;
+    Label priceL;
     @FXML
-    MenuItem itemSize37;
+    Label sizeL;
     @FXML
-    MenuItem itemSize38;
+    Label conditionL;
     @FXML
-    MenuItem itemSize39;
+    Label sellerL;
     @FXML
-    MenuItem itemSize40;
+    TextField addressTA;
     @FXML
-    MenuItem itemSize41;
+    Label addressL;
     @FXML
-    MenuItem itemSize42;
+    TextField cardIDTA;
     @FXML
-    MenuItem itemSize43;
+    Label cardIDL;
     @FXML
-    MenuItem itemSize44;
+    TextField cardDateTA;
     @FXML
-    MenuItem itemSize45;
+    TextField cardCVCTA;
     @FXML
-    MenuItem itemSize46;
+    Label cardDateCVVLabel;
     @FXML
-    MenuButton conditionMenu;
-    @FXML
-    MenuItem itemConditionAsNew;
-    @FXML
-    MenuItem itemConditionLightlyUsed;
-    @FXML
-    MenuItem itemConditionAveragelyUsed;
-    @FXML
-    TextField priceFilter;
-    @FXML
-    Label maxPriceL;
-    @FXML
-    Button applyFilter;
-    @FXML
-    Button resetFilter;
-    @FXML
-    VBox vBoxCatalog;
+    Button confirmButton;
 
 
-    public void salva() throws SQLException, IOException, ClassNotFoundException {
+    public void salva(String label) throws SQLException, IOException, ClassNotFoundException {
         IBuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
-        buyUserUsedShoeController.getCatalog();
+        buyUserUsedShoeController.setLabels(label);
     }
 
     @Override
-    public void setShoeLabel(String item) {
-        Label label = new Label(item);
-        label.setFont(new Font("System Bold", 12));
-        label.setPadding(new Insets(0, 0, 10, 0));
-        vBoxCatalog.getChildren().add(label);
+    public void onLabelsUpdate(int shoeSale, String shoeBrand, String shoeItem, double shoePrice, int shoeSize, String shoeUsername, String shoeCondition) {
+        modelLabel.setText(shoeItem);
+        brandLabel.setText(shoeBrand);
+        priceL.setText(String.valueOf(shoePrice)+'$');
+        sizeL.setText(String.valueOf(shoeSize));
+        conditionL.setText(shoeCondition);
+        sellerL.setText(shoeUsername);
+    }
+    public void confirm() throws SQLException, IOException, ClassNotFoundException {
+        String item = modelLabel.getText();
+        String brand = brandLabel.getText();
+        String price = removeLastChar(priceL.getText());
+        String size = sizeL.getText();
+        String seller = sellerL.getText();
 
-        // va gestito il passaggio alla pagina successiva della scarpa cliccata
-        label.setOnMouseClicked(evt -> System.out.println(label.getText()));
+        String address = addressTA.getText();
+        String cardID = cardIDTA.getText();
+        String cardDate = cardDateTA.getText();
+        String cardCVC = cardCVCTA.getText();
+
+        addressL.setText("");
+        cardIDL.setText("");
+        cardDateCVVLabel.setText("");
+
+        String[] userDataVec = {address, cardID, cardDate, cardCVC};
+
+        IBuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
+        buyUserUsedShoeController.onConfirm(item, brand, price, size, seller, userDataVec);
+
     }
 
     @Override
-    public void onApplyFilterError() {
-        maxPriceL.setText("Please insert a valid price");
+    public void onConfirmError(String message, int code) {
+        /*
+        0 empty address
+        1 invalid cardID
+        2 invalid expiration cardDate
+        3 invalid CVC
+         */
+        switch (code){
+            case 0 -> addressL.setText(message);
+            case 1 -> cardIDL.setText(message);
+            case 2, 3 -> cardDateCVVLabel.setText(message);
+            default -> error();
+        }
     }
 
-    public void apply() throws SQLException, IOException, ClassNotFoundException {
-        BuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
+    @Override
+    public void onConfirmSuccess() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
+        Parent root = loader.load();
 
-        vBoxCatalog.getChildren().clear();
-        maxPriceL.setText("");
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, buyUserUsedShoePane);
 
-        String item = itemFilter.getText();
-        String brand = brandMenu.getText();
-        String size = sizeMenu.getText();
-        String condition = conditionMenu.getText();
-        String price = priceFilter.getText();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Order received successfully");
 
-        buyUserUsedShoeController.setFilter(item, brand, size, condition, price);
+        // Header Text: null
+        alert.setHeaderText(null);
+        alert.setContentText("Order received successfully!");
+
+        alert.showAndWait();
     }
-
     public void onBuyClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
         Parent root = loader.load();
 
-
-
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserUsedShoePane);
     }
+
     public void onSellClick() {
         System.out.println("sell");
     }
@@ -133,64 +151,51 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         cw.switchPage(root, buyUserUsedShoePane);
     }
 
-    public void menuSize37(){
-        sizeMenu.setText("37");
-    }
-    public void menuSize38(){
-        sizeMenu.setText("38");
-    }
-    public void menuSize39(){
-        sizeMenu.setText("39");
-    }
-    public void menuSize40(){
-        sizeMenu.setText("40");
-    }
-    public void menuSize41(){
-        sizeMenu.setText("41");
-    }
-    public void menuSize42(){
-        sizeMenu.setText("42");
-    }
-    public void menuSize43(){
-        sizeMenu.setText("43");
-    }
-    public void menuSize44(){
-        sizeMenu.setText("44");
-    }
-    public void menuSize45(){
-        sizeMenu.setText("45");
-    }
-    public void menuSize46(){
-        sizeMenu.setText("46");
+    public void maxLenghtAddress() {
+        final int maxLengthAddress = 40;
+
+        if (addressTA.getText().length() > maxLengthAddress) {
+            int pos = addressTA.getCaretPosition();
+            addressTA.setText(addressTA.getText(0, maxLengthAddress));
+            addressTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
+        }
     }
 
-    public void menuBrandNike(){
-        brandMenu.setText("Nike");
-    }
-    public void menuBrandAdidas(){
-        brandMenu.setText("Adidas");
-    }
-    public void menuBrandNewBalance(){
-        brandMenu.setText("New Balance");
+    public void maxLenghtCardID() {
+        final int maxLengthCardID = 19;
+
+        if (cardIDTA.getText().length() > maxLengthCardID) {
+            int pos = cardIDTA.getCaretPosition();
+            cardIDTA.setText(cardIDTA.getText(0, maxLengthCardID));
+            cardIDTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
+        }
     }
 
-    public void reset() throws SQLException, IOException, ClassNotFoundException {
-        itemFilter.clear();
-        brandMenu.setText("Select brand");
-        sizeMenu.setText("Select size");
-        conditionMenu.setText("Select condition");
-        priceFilter.clear();
-        vBoxCatalog.getChildren().clear();
-        salva();
+    public void maxLenghtDate() {
+        final int maxLengthDate = 5;
+
+        if (cardDateTA.getText().length() > maxLengthDate) {
+            int pos = cardDateTA.getCaretPosition();
+            cardDateTA.setText(cardDateTA.getText(0, maxLengthDate));
+            cardDateTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
+        }
     }
 
-    public void menuConditionAsNew() {
-        conditionMenu.setText("As new");
+    public void maxLenghtCVC() {
+        final int maxLengthCVC = 3;
+
+        if (cardCVCTA.getText().length() > maxLengthCVC) {
+            int pos = cardCVCTA.getCaretPosition();
+            cardCVCTA.setText(cardCVCTA.getText(0, maxLengthCVC));
+            cardCVCTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
+        }
     }
-    public void menuConditionLightlyUsed() {
-        conditionMenu.setText("Lightly used");
+
+    public static String removeLastChar(String str) {
+        if (str == null || str.length() == 0) {
+            return str;
+        }
+        return str.substring(0, str.length() - 1);
     }
-    public void menuConditionAveragelyUsed() {
-        conditionMenu.setText("Averagely used");
-    }
+
 }

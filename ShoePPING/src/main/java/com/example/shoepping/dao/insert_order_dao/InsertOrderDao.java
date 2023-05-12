@@ -12,10 +12,18 @@ import java.sql.SQLException;
 public class InsertOrderDao implements InsertOrderDaoInterface{
 
     @Override
-    public void insertOrder(Order order, User user , int size, boolean check) throws SQLException, IOException, ClassNotFoundException {
+    public void insertOrder(Order order, User user , int size, boolean check) throws SQLException, IOException, ClassNotFoundException{
 
         Connection conn = DaoUtility.prepareQuery();
 
         SimpleQueries.insertOrder(conn, order, user, size, check);
+    }
+
+    @Override
+    public void insertOrderCatalog(Order order, User user, boolean check, String sellID) throws SQLException, IOException, ClassNotFoundException{
+
+        Connection conn = DaoUtility.prepareQuery();
+
+        SimpleQueries.insertOrderCatalog(conn, order, user, check, sellID);
     }
 }

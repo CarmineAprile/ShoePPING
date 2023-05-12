@@ -1,8 +1,7 @@
 package com.example.shoepping;
 
-import com.example.shoepping.pattern.observer.ShoeSizeButton;
-import com.example.shoepping.pattern.observer.ShoeSizeList;
-import com.example.shoepping.pattern.singleton.UserSingleton;
+
+
 import com.example.shoepping.use_case.buy_shoe.controller.BuyShoeController;
 import com.example.shoepping.use_case.buy_shoe.controller.IBuyShoeController;
 import com.example.shoepping.use_case.buy_shoe.view.IBuyShoeView;
@@ -78,7 +77,10 @@ public class BuyShoeGController implements IBuyShoeView {
     @FXML
     Button confirmButton;
 
-    public void salva(String shoe, String model, String price, ShoeSizeList shoeSizeList){
+    public void salva(String shoe, String model, String price) throws SQLException, IOException, ClassNotFoundException {
+
+        IBuyShoeController buyShoeController = new BuyShoeController(this);
+        buyShoeController.getSizeAmountList(model);
 
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(shoe)));
         shoeImage.setImage(image);
@@ -86,33 +88,6 @@ public class BuyShoeGController implements IBuyShoeView {
         modelLabel.setText(model);
 
         priceLabel.setText(price);
-
-        ShoeSizeButton observer37 = new ShoeSizeButton();
-        ShoeSizeButton observer38 = new ShoeSizeButton();
-        ShoeSizeButton observer39 = new ShoeSizeButton();
-        ShoeSizeButton observer40 = new ShoeSizeButton();
-        ShoeSizeButton observer41 = new ShoeSizeButton();
-        ShoeSizeButton observer42 = new ShoeSizeButton();
-        ShoeSizeButton observer43 = new ShoeSizeButton();
-        ShoeSizeButton observer44 = new ShoeSizeButton();
-        ShoeSizeButton observer45 = new ShoeSizeButton();
-        ShoeSizeButton observer46 = new ShoeSizeButton();
-
-        shoeSizeList.addObserver(observer37);
-        shoeSizeList.addObserver(observer38);
-        shoeSizeList.addObserver(observer39);
-        shoeSizeList.addObserver(observer40);
-        shoeSizeList.addObserver(observer41);
-        shoeSizeList.addObserver(observer42);
-        shoeSizeList.addObserver(observer43);
-        shoeSizeList.addObserver(observer44);
-        shoeSizeList.addObserver(observer45);
-        shoeSizeList.addObserver(observer46);
-
-        shoeSizeList.setAvailable();
-
-        IBuyShoeController buyShoeController = new BuyShoeController(this);
-        buyShoeController.onUpdate(shoeSizeList);
 
     }
     public void onBuyClick() throws IOException {
@@ -155,10 +130,9 @@ public class BuyShoeGController implements IBuyShoeView {
 
         String[] orderVec = {model, removeLastChar(price), size, address, cardID, cardDate, cardCVC};
 
-        UserSingleton userSingleton = UserSingleton.getInstance();
 
         IBuyShoeController buyShoeController = new BuyShoeController(this);
-        buyShoeController.onConfirm(userSingleton.getUser(), userSingleton.isChecked(), orderVec);
+        buyShoeController.onConfirm(orderVec);
     }
     @Override
     public void onConfirmSuccess() throws IOException {
@@ -195,7 +169,6 @@ public class BuyShoeGController implements IBuyShoeView {
             case 3, 4 -> cardDateCVVLabel.setText(message);
             default -> error();
         }
-
     }
 
     public void size37(){

@@ -3,9 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -71,102 +68,168 @@
          <VBox.margin>
             <Insets top="30.0" />
          </VBox.margin>
-         <VBox prefHeight="415.0" prefWidth="250.0">
+         <VBox prefHeight="415.0" prefWidth="350.0">
+            <Label text="Model" textFill="#554b4d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="modelLabel" textFill="#554b4d">
+               <VBox.margin>
+                  <Insets left="25.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Brand" textFill="#554b4d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="brandLabel" textFill="#554b4d">
+               <VBox.margin>
+                  <Insets left="25.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Price" textFill="#554b4d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="priceL" textFill="#554b4d">
+               <VBox.margin>
+                  <Insets left="25.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Size" textFill="#554b4d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="sizeL" textFill="#554b4d">
+               <VBox.margin>
+                  <Insets left="25.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Condition" textFill="#554b4d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="conditionL" textFill="#554b4d">
+               <VBox.margin>
+                  <Insets left="25.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Seller" textFill="#554b4d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="sellerL" textFill="#554b4d">
+               <VBox.margin>
+                  <Insets left="25.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </VBox>
+         <VBox prefHeight="415.0" prefWidth="493.0">
+            <Label layoutX="35.0" layoutY="10.0" prefHeight="11.0" prefWidth="351.0" text="Shipping address" textFill="#554b4d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="addressTA" focusTraversable="false" onKeyTyped="#maxLenghtAddress">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <Label fx:id="addressL" layoutX="35.0" layoutY="279.0" prefHeight="17.0" prefWidth="379.0" textFill="RED">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="35.0" layoutY="130.0" prefHeight="11.0" prefWidth="351.0" text="Payment method" textFill="#554b4d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="cardIDTA" focusTraversable="false" layoutX="35.0" layoutY="167.0" onKeyTyped="#maxLenghtCardID" promptText="XXXX  XXXX  XXXX  XXXX">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <Label fx:id="cardIDL" prefHeight="17.0" prefWidth="379.0" textFill="RED">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="25.0" prefWidth="314.0">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" top="5.0" />
+               </VBox.margin>
+               <TextField fx:id="cardDateTA" focusTraversable="false" onKeyTyped="#maxLenghtDate" promptText="MM/YY" />
+               <TextField fx:id="cardCVCTA" focusTraversable="false" layoutX="10.0" layoutY="10.0" onKeyTyped="#maxLenghtCVC" prefHeight="25.0" prefWidth="99.0" promptText="CVC">
+                  <HBox.margin>
+                     <Insets left="124.0" />
+                  </HBox.margin>
+               </TextField>
+            </HBox>
+            <Label fx:id="cardDateCVVLabel" layoutX="35.0" layoutY="279.0" prefHeight="17.0" prefWidth="379.0" textFill="RED">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="confirmButton" focusTraversable="false" mnemonicParsing="false" onAction="#confirm" prefHeight="25.0" prefWidth="367.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="CONFIRM" textFill="#554b4d">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
             <HBox.margin>
                <Insets />
             </HBox.margin>
-            <Label alignment="TOP_CENTER" prefHeight="27.0" prefWidth="241.0" text="Filters" textFill="#554b4d">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="itemFilter" focusTraversable="false" promptText="Search item...">
-               <VBox.margin>
-                  <Insets left="20.0" right="10.0" top="20.0" />
-               </VBox.margin>
-            </TextField>
-            <MenuButton fx:id="brandMenu" alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="254.0" style="-fx-background-color: white; -fx-background-radius: 20;" text="Select brand" textFill="#554b4d">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#menuBrandNike" text="Nike" />
-                  <MenuItem mnemonicParsing="false" onAction="#menuBrandAdidas" text="Adidas" />
-                  <MenuItem mnemonicParsing="false" onAction="#menuBrandNewBalance" text="New Balance" />
-               </items>
-               <VBox.margin>
-                  <Insets left="20.0" right="10.0" top="20.0" />
-               </VBox.margin>
-            </MenuButton>
-            <MenuButton fx:id="sizeMenu" alignment="TOP_CENTER" focusTraversable="false" mnemonicParsing="false" prefHeight="25.0" prefWidth="361.0" style="-fx-background-color: white; -fx-background-radius: 20;" text="Select size" textFill="#554b4d">
-               <items>
-                  <MenuItem fx:id="itemSize37" mnemonicParsing="false" onAction="#menuSize37" style="-fx-text-fill: #554b4d;" text="37" />
-                  <MenuItem fx:id="itemSize38" mnemonicParsing="false" onAction="#menuSize38" style="-fx-text-fill: #554b4d;" text="38" />
-                  <MenuItem fx:id="itemSize39" mnemonicParsing="false" onAction="#menuSize39" style="-fx-text-fill: #554b4d;" text="39" />
-                  <MenuItem fx:id="itemSize40" mnemonicParsing="false" onAction="#menuSize40" style="-fx-text-fill: #554b4d;" text="40" />
-                  <MenuItem fx:id="itemSize41" mnemonicParsing="false" onAction="#menuSize41" style="-fx-text-fill: #554b4d;" text="41" />
-                  <MenuItem fx:id="itemSize42" mnemonicParsing="false" onAction="#menuSize42" style="-fx-text-fill: #554b4d;" text="42" />
-                  <MenuItem fx:id="itemSize43" mnemonicParsing="false" onAction="#menuSize43" style="-fx-text-fill: #554b4d;" text="43" />
-                  <MenuItem fx:id="itemSize44" mnemonicParsing="false" onAction="#menuSize44" style="-fx-text-fill: #554b4d;" text="44" />
-                  <MenuItem fx:id="itemSize45" mnemonicParsing="false" onAction="#menuSize45" style="-fx-text-fill: #554b4d;" text="45" />
-                  <MenuItem fx:id="itemSize46" mnemonicParsing="false" onAction="#menuSize46" style="-fx-text-fill: #554b4d;" text="46" />
-               </items>
-               <VBox.margin>
-                  <Insets left="20.0" right="10.0" top="20.0" />
-               </VBox.margin>
-            </MenuButton>
-            <MenuButton fx:id="conditionMenu" alignment="TOP_CENTER" focusTraversable="false" layoutX="30.0" layoutY="147.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="361.0" style="-fx-background-color: white; -fx-background-radius: 20;" text="Select condition" textFill="#554b4d">
-               <items>
-                  <MenuItem fx:id="itemConditionAsNew" mnemonicParsing="false" onAction="#menuConditionAsNew" style="-fx-text-fill: #554b4d;" text="As new" />
-                  <MenuItem fx:id="itemConditionLightlyUsed" mnemonicParsing="false" onAction="#menuConditionLightlyUsed" style="-fx-text-fill: #554b4d;" text="Lightly used" />
-                  <MenuItem fx:id="itemConditionAveragelyUsed" mnemonicParsing="false" onAction="#menuConditionAveragelyUsed" style="-fx-text-fill: #554b4d;" text="Averagely used" />
-               </items>
-               <VBox.margin>
-                  <Insets left="20.0" right="10.0" top="20.0" />
-               </VBox.margin>
-            </MenuButton>
-            <TextField fx:id="priceFilter" focusTraversable="false" layoutX="10.0" layoutY="37.0" promptText="Select max price">
-               <VBox.margin>
-                  <Insets left="20.0" right="10.0" top="20.0" />
-               </VBox.margin>
-            </TextField>
-            <Label fx:id="maxPriceL" prefHeight="17.0" prefWidth="291.0" textFill="RED">
-               <VBox.margin>
-                  <Insets left="20.0" right="10.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Button fx:id="applyFilter" focusTraversable="false" mnemonicParsing="false" onAction="#apply" prefHeight="25.0" prefWidth="367.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="APPLY" textFill="#554b4d">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="20.0" right="10.0" top="5.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="resetFilter" focusTraversable="false" layoutX="30.0" layoutY="244.0" mnemonicParsing="false" onAction="#reset" prefHeight="25.0" prefWidth="367.0" style="-fx-background-color: #554b4d; -fx-background-radius: 20;" text="RESET FILTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="20.0" right="10.0" top="20.0" />
-               </VBox.margin>
-            </Button>
-         </VBox>
-         <VBox prefHeight="632.0" prefWidth="450.0">
-            <Label alignment="TOP_CENTER" prefHeight="27.0" prefWidth="499.0" text="Shoe catalog" textFill="#554b4d">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </VBox.margin>
-            </Label>
-            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="445.0" prefWidth="170.0">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
-               </VBox.margin>
-               <VBox fx:id="vBoxCatalog" prefHeight="356.0" prefWidth="428.0" />
-            </ScrollPane>
          </VBox>
       </HBox>
    </VBox>

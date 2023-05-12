@@ -2,10 +2,13 @@ package com.example.shoepping.use_case.buy_shoe.controller;
 
 import com.example.shoepping.ValidationCard;
 import com.example.shoepping.dao.insert_order_dao.InsertOrderDao;
+import com.example.shoepping.dao.size_dao.SizeDaoJDBC;
 import com.example.shoepping.model.order.Order;
 import com.example.shoepping.model.user.User;
+import com.example.shoepping.pattern.observer.ShoeSizeButton;
 import com.example.shoepping.pattern.observer.ShoeSizeList;
 import com.example.shoepping.pattern.observer.SizeButton;
+import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.buy_shoe.view.IBuyShoeView;
 
 import java.io.IOException;
@@ -33,7 +36,43 @@ public class BuyShoeController implements IBuyShoeController{
         }
     }
 
-    public void onConfirm(User user, boolean isChecked, String[] orderVec) throws SQLException, IOException, ClassNotFoundException {
+    @Override
+    public void getSizeAmountList(String model) throws SQLException, IOException, ClassNotFoundException {
+        ShoeSizeList shoeSizeList;
+        SizeDaoJDBC sizeDao = new SizeDaoJDBC();
+        shoeSizeList = sizeDao.getSizeList(model);
+
+        ShoeSizeButton observer37 = new ShoeSizeButton();
+        ShoeSizeButton observer38 = new ShoeSizeButton();
+        ShoeSizeButton observer39 = new ShoeSizeButton();
+        ShoeSizeButton observer40 = new ShoeSizeButton();
+        ShoeSizeButton observer41 = new ShoeSizeButton();
+        ShoeSizeButton observer42 = new ShoeSizeButton();
+        ShoeSizeButton observer43 = new ShoeSizeButton();
+        ShoeSizeButton observer44 = new ShoeSizeButton();
+        ShoeSizeButton observer45 = new ShoeSizeButton();
+        ShoeSizeButton observer46 = new ShoeSizeButton();
+
+        shoeSizeList.addObserver(observer37);
+        shoeSizeList.addObserver(observer38);
+        shoeSizeList.addObserver(observer39);
+        shoeSizeList.addObserver(observer40);
+        shoeSizeList.addObserver(observer41);
+        shoeSizeList.addObserver(observer42);
+        shoeSizeList.addObserver(observer43);
+        shoeSizeList.addObserver(observer44);
+        shoeSizeList.addObserver(observer45);
+        shoeSizeList.addObserver(observer46);
+
+        shoeSizeList.setAvailable();
+        onUpdate(shoeSizeList);
+    }
+
+    public void onConfirm(String[] orderVec) throws SQLException, IOException, ClassNotFoundException {
+
+        UserSingleton userSingleton = UserSingleton.getInstance();
+        User user = userSingleton.getUser();
+        boolean isChecked = userSingleton.isChecked();
 
         String conditionOrder = "new";
         String statusOrder = "payed";

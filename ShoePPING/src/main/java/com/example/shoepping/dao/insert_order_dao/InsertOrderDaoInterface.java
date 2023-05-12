@@ -8,4 +8,6 @@ import java.sql.SQLException;
 
 public interface InsertOrderDaoInterface {
     void insertOrder(Order order, User user, int size, boolean check) throws SQLException, IOException, ClassNotFoundException;
+
+    void insertOrderCatalog(Order order, User user, boolean check, String sellID) throws SQLException, IOException, ClassNotFoundException;
 }

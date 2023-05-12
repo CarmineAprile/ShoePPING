@@ -89,11 +89,11 @@ public class BuyUserGController{
     }
 
     public void onCatalogClick() throws IOException, SQLException, ClassNotFoundException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-used-shoe-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-catalog-view.fxml"));
         Parent root = loader.load();
 
-        BuyUserUsedShoeGController buyUserUsedShoeGController = loader.getController();
-        buyUserUsedShoeGController.salva();
+        BuyCatalogGController buyCatalogGController = loader.getController();
+        buyCatalogGController.salva();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);

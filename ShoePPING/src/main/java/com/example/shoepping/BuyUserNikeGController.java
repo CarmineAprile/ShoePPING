@@ -1,9 +1,5 @@
 package com.example.shoepping;
 
-
-import com.example.shoepping.pattern.observer.ShoeSizeList;
-import com.example.shoepping.use_case.buy_brands.BuyUserBrandsController;
-import com.example.shoepping.use_case.buy_brands.IBuyUserBrandsController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -101,12 +97,8 @@ public class BuyUserNikeGController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
-
-        IBuyUserBrandsController buyUserNikeController = new BuyUserBrandsController();
-        ShoeSizeList shoeSizeList = buyUserNikeController.getSizeAmountList(nikeModel1.getText());
-
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-nike-1(Air-max-97).png", nikeModel1.getText(), nikePriceL1.getText(), shoeSizeList);
+        buyShoeGController.salva("/drawable/shoe-nike-1(Air-max-97).png", nikeModel1.getText(), nikePriceL1.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
@@ -116,11 +108,8 @@ public class BuyUserNikeGController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
-        IBuyUserBrandsController buyUserNikeController = new BuyUserBrandsController();
-        ShoeSizeList shoeSizeList = buyUserNikeController.getSizeAmountList(nikeModel2.getText());
-
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-nike-2(Air-Jordan-1-Mid).png", nikeModel2.getText(), nikePriceL2.getText(), shoeSizeList);
+        buyShoeGController.salva("/drawable/shoe-nike-2(Air-Jordan-1-Mid).png", nikeModel2.getText(), nikePriceL2.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
@@ -130,11 +119,9 @@ public class BuyUserNikeGController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
-        IBuyUserBrandsController buyUserNikeController = new BuyUserBrandsController();
-        ShoeSizeList shoeSizeList = buyUserNikeController.getSizeAmountList(nikeModel3.getText());
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-nike-3(Air-Max-2017).png", nikeModel3.getText(), nikePriceL3.getText(), shoeSizeList);
+        buyShoeGController.salva("/drawable/shoe-nike-3(Air-Max-2017).png", nikeModel3.getText(), nikePriceL3.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
@@ -144,11 +131,9 @@ public class BuyUserNikeGController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
-        IBuyUserBrandsController buyUserNikeController = new BuyUserBrandsController();
-        ShoeSizeList shoeSizeList = buyUserNikeController.getSizeAmountList(nikeModel4.getText());
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-nike-4(Nike-Air-Max-90-South-Beach).png", nikeModel4.getText(), nikePriceL4.getText(), shoeSizeList);
+        buyShoeGController.salva("/drawable/shoe-nike-4(Nike-Air-Max-90-South-Beach).png", nikeModel4.getText(), nikePriceL4.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
@@ -158,11 +143,8 @@ public class BuyUserNikeGController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
-        IBuyUserBrandsController buyUserNikeController = new BuyUserBrandsController();
-        ShoeSizeList shoeSizeList = buyUserNikeController.getSizeAmountList(nikeModel5.getText());
-
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-nike-5(Air-Huarache).png", nikeModel5.getText(), nikePriceL5.getText(), shoeSizeList);
+        buyShoeGController.salva("/drawable/shoe-nike-5(Air-Huarache).png", nikeModel5.getText(), nikePriceL5.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
@@ -172,11 +154,8 @@ public class BuyUserNikeGController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
-        IBuyUserBrandsController buyUserNikeController = new BuyUserBrandsController();
-        ShoeSizeList shoeSizeList = buyUserNikeController.getSizeAmountList(nikeModel6.getText());
-
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-nike-6(Nike-Air-Max-94).png", nikeModel6.getText(), nikePriceL6.getText(), shoeSizeList);
+        buyShoeGController.salva("/drawable/shoe-nike-6(Nike-Air-Max-94).png", nikeModel6.getText(), nikePriceL6.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);
