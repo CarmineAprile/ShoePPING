@@ -23,9 +23,9 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
 
         CatalogDao catalogDao = new CatalogDao();
 
-        Catalog catalog = catalogDao.getCatalog();
+        Catalog catalogShoe = catalogDao.getCatalog();
 
-        for(CatalogItem catalogItem : catalog.getCatalog()){
+        for(CatalogItem catalogItem : catalogShoe.getCatalog()){
             buyUserUsedShoeView.setShoeLabel(catalogItem.toString());
         }
     }
