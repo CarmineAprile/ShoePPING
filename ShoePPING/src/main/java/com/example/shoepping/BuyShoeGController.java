@@ -29,6 +29,8 @@ public class BuyShoeGController implements IBuyShoeView {
     @FXML
     HBox sellButton;
     @FXML
+    ImageView backButton;
+    @FXML
     ImageView userIcon;
     @FXML
     ImageView shoeImage;
@@ -76,8 +78,16 @@ public class BuyShoeGController implements IBuyShoeView {
     Label cardDateCVVLabel;
     @FXML
     Button confirmButton;
+    /* serve per capire in che schermata andae quando viene effettuato il goBack()
+    UNO: torna al catalogo delle nike
+    DUE: torna al catalogo delle adidas
+    TRE: torna al catalogo delle newBalance
+    */
+    public int reference;
 
-    public void salva(String shoe, String model, String price) throws SQLException, IOException, ClassNotFoundException {
+    public void salva(String shoe, String model, String price, int reference) throws SQLException, IOException, ClassNotFoundException {
+
+        this.reference = reference;
 
         IBuyShoeController buyShoeController = new BuyShoeController(this);
         buyShoeController.getSizeAmountList(model);
@@ -88,7 +98,24 @@ public class BuyShoeGController implements IBuyShoeView {
         modelLabel.setText(model);
 
         priceLabel.setText(price);
+    }
 
+    public void goBack() throws IOException, SQLException, ClassNotFoundException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
+        Parent root = loader.load();
+
+        BuyUserGController buyUserGController = loader.getController();
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage1(root, buyShoePane);
+
+        switch (reference) {
+            case 1 -> buyUserGController.onNikeClick();
+            case 2 -> buyUserGController.onAdidasClick();
+            case 3 -> buyUserGController.onNewBalanceClick();
+            default -> error();
+        }
     }
     public void onBuyClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));

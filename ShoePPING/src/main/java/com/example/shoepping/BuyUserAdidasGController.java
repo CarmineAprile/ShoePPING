@@ -94,7 +94,7 @@ public class BuyUserAdidasGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-adidas-1(Gazelle).png", adidasModel1.getText(), adidasPriceL1.getText());
+        buyShoeGController.salva("/drawable/shoe-adidas-1(Gazelle).png", adidasModel1.getText(), adidasPriceL1.getText(), 2);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserAdidasPane);
@@ -105,7 +105,7 @@ public class BuyUserAdidasGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-adidas-2(Stan-Smith).png", adidasModel2.getText(), adidasPriceL2.getText());
+        buyShoeGController.salva("/drawable/shoe-adidas-2(Stan-Smith).png", adidasModel2.getText(), adidasPriceL2.getText(), 2);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserAdidasPane);
@@ -116,7 +116,7 @@ public class BuyUserAdidasGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-adidas-3(Yeezy-Boost-350).png", adidasModel3.getText(), adidasPriceL3.getText());
+        buyShoeGController.salva("/drawable/shoe-adidas-3(Yeezy-Boost-350).png", adidasModel3.getText(), adidasPriceL3.getText(),2);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserAdidasPane);
@@ -127,7 +127,7 @@ public class BuyUserAdidasGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-adidas-4(EQT-Flurro-Yellow).png", adidasModel4.getText(), adidasPriceL4.getText());
+        buyShoeGController.salva("/drawable/shoe-adidas-4(EQT-Flurro-Yellow).png", adidasModel4.getText(), adidasPriceL4.getText(), 2);
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserAdidasPane);
     }
@@ -137,7 +137,7 @@ public class BuyUserAdidasGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-adidas-5(Superstar).png", adidasModel5.getText(), adidasPriceL5.getText());
+        buyShoeGController.salva("/drawable/shoe-adidas-5(Superstar).png", adidasModel5.getText(), adidasPriceL5.getText(), 2);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserAdidasPane);

@@ -20,12 +20,15 @@ import java.sql.SQLException;
 import static jdk.internal.org.jline.utils.Log.error;
 
 public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
+
     @FXML
     AnchorPane buyUserUsedShoePane;
     @FXML
     HBox buyButton;
     @FXML
     HBox sellButton;
+    @FXML
+    ImageView backButton;
     @FXML
     ImageView userIcon;
     @FXML
@@ -71,6 +74,17 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         sizeL.setText(String.valueOf(shoeSize));
         conditionL.setText(shoeCondition);
         sellerL.setText(shoeUsername);
+    }
+
+    public void goBack() throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-catalog-view.fxml"));
+        Parent root = loader.load();
+
+        BuyCatalogGController buyCatalogGController = loader.getController();
+        buyCatalogGController.salva();
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, buyUserUsedShoePane);
     }
     public void confirm() throws SQLException, IOException, ClassNotFoundException {
         String item = modelLabel.getText();

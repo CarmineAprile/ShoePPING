@@ -64,6 +64,13 @@
       </HBox>
    </AnchorPane>
    <VBox layoutY="70.0" prefHeight="445.0" prefWidth="700.0">
+      <ImageView fx:id="backButton" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#goBack" pickOnBounds="true"
+                 preserveRatio="true">
+         <VBox.margin>
+            <Insets left="20.0" top="25.0"/>
+         </VBox.margin>
+         <Image url="@../../../drawable/arrowleft.png"/>
+      </ImageView>
       <HBox prefHeight="429.0" prefWidth="700.0">
          <VBox.margin>
             <Insets top="30.0" />

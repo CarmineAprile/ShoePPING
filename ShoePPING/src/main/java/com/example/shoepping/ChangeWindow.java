@@ -28,4 +28,19 @@ public class ChangeWindow {
         pane.getScene().getWindow().hide();
     }
 
+    public void switchPage1(Parent root, AnchorPane pane){
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+
+        //lock dimension of window
+        stage.setResizable(false);
+        stage.setTitle("ShoePPING");
+
+        //set icon in stage
+        stage.getIcons().add(image);
+
+        pane.getScene().getWindow().hide();
+    }
+
 }
