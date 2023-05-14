@@ -18,14 +18,14 @@ import java.time.format.DateTimeFormatter;
 
 public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
 
-    IBuyUserUsedShoeView buyUserUsedShoeView;
+    static IBuyUserUsedShoeView buyUserUsedShoeView;
     static String sellIDUpdate;
     public BuyUserUsedShoeController(IBuyUserUsedShoeView buyUserUsedShoeView){
-        this.buyUserUsedShoeView = buyUserUsedShoeView;
+        BuyUserUsedShoeController.buyUserUsedShoeView = buyUserUsedShoeView;
     }
 
-    @Override
-    public void setLabels(String label) throws SQLException, IOException, ClassNotFoundException {
+    //@Override
+    public static void setLabels(String label) throws SQLException, IOException, ClassNotFoundException {
 
         CatalogDao catalogDao = new CatalogDao();
 
