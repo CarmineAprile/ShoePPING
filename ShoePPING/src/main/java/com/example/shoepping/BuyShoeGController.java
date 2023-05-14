@@ -83,7 +83,7 @@ public class BuyShoeGController implements IBuyShoeView {
     DUE: torna al catalogo delle adidas
     TRE: torna al catalogo delle newBalance
     */
-    public int reference;
+    int reference;
 
     public void salva(String shoe, String model, String price, int reference) throws SQLException, IOException, ClassNotFoundException {
 
