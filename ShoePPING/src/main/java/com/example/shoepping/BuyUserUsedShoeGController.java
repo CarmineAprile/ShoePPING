@@ -60,10 +60,12 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
     @FXML
     Button confirmButton;
 
+    String sellIDUpdate;
+
 
     public void salva(String label) throws SQLException, IOException, ClassNotFoundException {
         IBuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
-        buyUserUsedShoeController.setLabels(label);
+        sellIDUpdate = buyUserUsedShoeController.setLabels(label);
     }
 
     @Override
@@ -105,7 +107,7 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         String[] userDataVec = {address, cardID, cardDate, cardCVC};
 
         IBuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
-        buyUserUsedShoeController.onConfirm(item, brand, price, size, seller, userDataVec);
+        buyUserUsedShoeController.onConfirm(item, brand, price, size, seller, userDataVec, sellIDUpdate);
 
     }
 

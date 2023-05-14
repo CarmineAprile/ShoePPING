@@ -19,17 +19,19 @@ import java.time.format.DateTimeFormatter;
 public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
 
     IBuyUserUsedShoeView buyUserUsedShoeView;
-    static String sellIDUpdate;
+
     public BuyUserUsedShoeController(IBuyUserUsedShoeView buyUserUsedShoeView){
         this.buyUserUsedShoeView = buyUserUsedShoeView;
     }
 
     @Override
-    public void setLabels(String label) throws SQLException, IOException, ClassNotFoundException {
+    public String setLabels(String label) throws SQLException, IOException, ClassNotFoundException {
 
         CatalogDao catalogDao = new CatalogDao();
 
         Catalog catalog = catalogDao.getCatalog();
+
+        String sellIDUpdate = null;
 
         StringBuilder sellID = new StringBuilder();
         for(int i = 6; i<label.length(); i++){
@@ -48,10 +50,11 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
             }
         }
 
+        return sellIDUpdate;
     }
 
     @Override
-    public void onConfirm(String item, String brand, String price, String size, String seller, String[] userDataVec) throws SQLException, IOException, ClassNotFoundException {
+    public void onConfirm(String item, String brand, String price, String size, String seller, String[] userDataVec, String sellIDUpdate) throws SQLException, IOException, ClassNotFoundException {
 
         UserSingleton userSingleton = UserSingleton.getInstance();
         User user = userSingleton.getUser();
