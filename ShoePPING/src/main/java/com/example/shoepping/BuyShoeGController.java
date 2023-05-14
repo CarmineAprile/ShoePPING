@@ -84,6 +84,7 @@ public class BuyShoeGController implements IBuyShoeView {
     TRE: torna al catalogo delle newBalance
     */
     int reference;
+    final String fxml = "buy-user-view.fxml";
 
     public void salva(String shoe, String model, String price, int reference) throws SQLException, IOException, ClassNotFoundException {
 
@@ -102,7 +103,7 @@ public class BuyShoeGController implements IBuyShoeView {
 
     public void goBack() throws IOException, SQLException, ClassNotFoundException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Parent root = loader.load();
 
         BuyUserGController buyUserGController = loader.getController();
@@ -118,7 +119,7 @@ public class BuyShoeGController implements IBuyShoeView {
         }
     }
     public void onBuyClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Parent root = loader.load();
 
         ChangeWindow cw = new ChangeWindow();
@@ -164,7 +165,7 @@ public class BuyShoeGController implements IBuyShoeView {
     @Override
     public void onConfirmSuccess() throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Parent root = loader.load();
 
         ChangeWindow cw = new ChangeWindow();
