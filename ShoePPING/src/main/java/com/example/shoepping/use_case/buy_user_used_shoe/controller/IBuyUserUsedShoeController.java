@@ -4,6 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public interface IBuyUserUsedShoeController {
-    void setLabels(String label) throws SQLException, IOException, ClassNotFoundException;
-    void onConfirm(String item, String brand, String price, String size, String condition, String[] userDataVec) throws SQLException, IOException, ClassNotFoundException;
+    String setLabels(String label) throws SQLException, IOException, ClassNotFoundException;
+    void onConfirm(String item, String brand, String price, String size, String condition, String[] userDataVec, String sellIDUpdate) throws SQLException, IOException, ClassNotFoundException;
 }

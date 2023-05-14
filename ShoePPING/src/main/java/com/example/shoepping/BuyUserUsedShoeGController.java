@@ -44,26 +44,28 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
     @FXML
     Label sellerL;
     @FXML
-    TextField addressTA;
+    TextField addressUsedTA;
     @FXML
-    Label addressL;
+    Label addressUsedL;
     @FXML
-    TextField cardIDTA;
+    TextField cardIDUsedTA;
     @FXML
-    Label cardIDL;
+    Label cardIDUsedL;
     @FXML
-    TextField cardDateTA;
+    TextField cardDateUsedTA;
     @FXML
-    TextField cardCVCTA;
+    TextField cardCVCUsedTA;
     @FXML
-    Label cardDateCVVLabel;
+    Label cardDateCVVUsedLabel;
     @FXML
-    Button confirmButton;
+    Button confirmUsedButton;
+
+    String sellIDUpdate;
 
 
     public void salva(String label) throws SQLException, IOException, ClassNotFoundException {
         IBuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
-        buyUserUsedShoeController.setLabels(label);
+        sellIDUpdate = buyUserUsedShoeController.setLabels(label);
     }
 
     @Override
@@ -93,19 +95,19 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         String size = sizeL.getText();
         String seller = sellerL.getText();
 
-        String address = addressTA.getText();
-        String cardID = cardIDTA.getText();
-        String cardDate = cardDateTA.getText();
-        String cardCVC = cardCVCTA.getText();
+        String address = addressUsedTA.getText();
+        String cardID = cardIDUsedTA.getText();
+        String cardDate = cardDateUsedTA.getText();
+        String cardCVC = cardCVCUsedTA.getText();
 
-        addressL.setText("");
-        cardIDL.setText("");
-        cardDateCVVLabel.setText("");
+        addressUsedL.setText("");
+        cardIDUsedL.setText("");
+        cardDateCVVUsedLabel.setText("");
 
         String[] userDataVec = {address, cardID, cardDate, cardCVC};
 
         IBuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
-        buyUserUsedShoeController.onConfirm(item, brand, price, size, seller, userDataVec);
+        buyUserUsedShoeController.onConfirm(item, brand, price, size, seller, userDataVec, sellIDUpdate);
 
     }
 
@@ -118,9 +120,9 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         3 invalid CVC
          */
         switch (code){
-            case 0 -> addressL.setText(message);
-            case 1 -> cardIDL.setText(message);
-            case 2, 3 -> cardDateCVVLabel.setText(message);
+            case 0 -> addressUsedL.setText(message);
+            case 1 -> cardIDUsedL.setText(message);
+            case 2, 3 -> cardDateCVVUsedLabel.setText(message);
             default -> error();
         }
     }
@@ -168,40 +170,40 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
     public void maxLenghtAddress() {
         final int maxLengthAddress = 40;
 
-        if (addressTA.getText().length() > maxLengthAddress) {
-            int pos = addressTA.getCaretPosition();
-            addressTA.setText(addressTA.getText(0, maxLengthAddress));
-            addressTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
+        if (addressUsedTA.getText().length() > maxLengthAddress) {
+            int pos = addressUsedTA.getCaretPosition();
+            addressUsedTA.setText(addressUsedTA.getText(0, maxLengthAddress));
+            addressUsedTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
         }
     }
 
     public void maxLenghtCardID() {
         final int maxLengthCardID = 19;
 
-        if (cardIDTA.getText().length() > maxLengthCardID) {
-            int pos = cardIDTA.getCaretPosition();
-            cardIDTA.setText(cardIDTA.getText(0, maxLengthCardID));
-            cardIDTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
+        if (cardIDUsedTA.getText().length() > maxLengthCardID) {
+            int pos = cardIDUsedTA.getCaretPosition();
+            cardIDUsedTA.setText(cardIDUsedTA.getText(0, maxLengthCardID));
+            cardIDUsedTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
         }
     }
 
     public void maxLenghtDate() {
         final int maxLengthDate = 5;
 
-        if (cardDateTA.getText().length() > maxLengthDate) {
-            int pos = cardDateTA.getCaretPosition();
-            cardDateTA.setText(cardDateTA.getText(0, maxLengthDate));
-            cardDateTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
+        if (cardDateUsedTA.getText().length() > maxLengthDate) {
+            int pos = cardDateUsedTA.getCaretPosition();
+            cardDateUsedTA.setText(cardDateUsedTA.getText(0, maxLengthDate));
+            cardDateUsedTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
         }
     }
 
     public void maxLenghtCVC() {
         final int maxLengthCVC = 3;
 
-        if (cardCVCTA.getText().length() > maxLengthCVC) {
-            int pos = cardCVCTA.getCaretPosition();
-            cardCVCTA.setText(cardCVCTA.getText(0, maxLengthCVC));
-            cardCVCTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
+        if (cardCVCUsedTA.getText().length() > maxLengthCVC) {
+            int pos = cardCVCUsedTA.getCaretPosition();
+            cardCVCUsedTA.setText(cardCVCUsedTA.getText(0, maxLengthCVC));
+            cardCVCUsedTA.positionCaret(pos); //To reposition caret since setText sets it at the beginning by default
         }
     }
 
