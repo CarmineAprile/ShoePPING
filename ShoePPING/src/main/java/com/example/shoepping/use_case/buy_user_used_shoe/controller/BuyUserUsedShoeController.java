@@ -33,7 +33,7 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
 
         StringBuilder sellID = new StringBuilder();
         for(int i = 6; i<label.length(); i++){
-            if(!(label.charAt(i) == ',')){
+            if((label.charAt(i) != ',')){
                 sellID.append(label.charAt(i));
             }else {
                 sellIDUpdate = String.valueOf(sellID);

@@ -84,7 +84,7 @@ public class BuyShoeGController implements IBuyShoeView {
     TRE: torna al catalogo delle newBalance
     */
     int reference;
-    final String fxml = "buy-user-view.fxml";
+    final static String fxml = "buy-user-view.fxml";
 
     public void salva(String shoe, String model, String price, int reference) throws SQLException, IOException, ClassNotFoundException {
 
