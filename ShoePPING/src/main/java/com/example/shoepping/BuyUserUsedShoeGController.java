@@ -62,6 +62,8 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
 
     String sellIDUpdate;
 
+    String sellIDUpdate;
+
 
     public void salva(String label) throws SQLException, IOException, ClassNotFoundException {
         IBuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
