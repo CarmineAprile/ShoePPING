@@ -153,8 +153,12 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         cw.switchPage(root, buyUserUsedShoePane);
     }
 
-    public void onSellClick() {
-        System.out.println("sell");
+    public void onSellClick() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sell-user-view.fxml"));
+        Parent root = loader.load();
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, buyUserUsedShoePane);
     }
 
     public void onProfileClick() throws IOException {
