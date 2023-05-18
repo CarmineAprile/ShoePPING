@@ -130,13 +130,15 @@ public class BuyCatalogGController implements IBuyCatalogView {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
         Parent root = loader.load();
 
-
-
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyCatalogPane);
     }
-    public void onSellClick() {
-        System.out.println("sell");
+    public void onSellClick() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sell-user-view.fxml"));
+        Parent root = loader.load();
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, buyCatalogPane);
     }
 
     public void onProfileClick() throws IOException {

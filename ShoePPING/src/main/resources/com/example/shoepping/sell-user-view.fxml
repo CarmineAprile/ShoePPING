@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="sellUserShoePane" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #EDEAEA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shoepping.SellUserShoeGController">
+   <AnchorPane prefHeight="70.0" prefWidth="700.0" style="-fx-background-color: #F1CDD4;">
+      <HBox prefHeight="70.0" prefWidth="700.0">
+         <HBox fx:id="buyButton" onMouseClicked="#onBuyClick" prefHeight="70.0" prefWidth="100.0" style="-fx-background-color: #F1CDD4;">
+            <HBox.margin>
+               <Insets left="70.0" />
+            </HBox.margin>
+            <ImageView fitHeight="30.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="10.0" top="22.0" />
+               </HBox.margin>
+               <Image url="@../../../drawable/iconbag.png" />
+            </ImageView>
+            <Label text="BUY" textFill="#554b4d">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" top="25.0" />
+               </HBox.margin>
+            </Label>
+         </HBox>
+         <HBox prefHeight="70.0" prefWidth="100.0" style="-fx-background-color: #EDEAEA;">
+            <ImageView fitHeight="30.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="10.0" top="22.0" />
+               </HBox.margin>
+               <Image url="@../../../drawable/iconcard.png" />
+            </ImageView>
+            <Label text="SELL" textFill="#554b4d">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" top="25.0" />
+               </HBox.margin>
+            </Label>
+         </HBox>
+         <ImageView fitHeight="77.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+            <HBox.margin>
+               <Insets left="45.0" top="5.0" />
+            </HBox.margin>
+            <Image url="@../../../drawable/iconapp.png" />
+         </ImageView>
+         <ImageView fx:id="userIcon" fitHeight="30.0" fitWidth="26.0" onMouseClicked="#onProfileClick" pickOnBounds="true" preserveRatio="true">
+            <HBox.margin>
+               <Insets left="230.0" top="22.0" />
+            </HBox.margin>
+            <Image url="@../../../drawable/iconuser.png" />
+         </ImageView>
+      </HBox>
+   </AnchorPane>
+   <VBox layoutY="70.0" prefHeight="445.0" prefWidth="700.0">
+      <HBox prefHeight="15.0" prefWidth="700.0">
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+         <TextField fx:id="brandTA" focusTraversable="false" onKeyTyped="#maxLenghtBrand" promptText="Insert brand">
+            <HBox.margin>
+               <Insets left="20.0" />
+            </HBox.margin>
+         </TextField>
+         <Label text="Example: Nike, Adidas, New Balance..." textFill="#554b4d">
+            <HBox.margin>
+               <Insets left="20.0" top="3.0" />
+            </HBox.margin>
+         </Label>
+      </HBox>
+      <Label fx:id="brandL" prefHeight="17.0" prefWidth="700.0" textFill="RED">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" top="5.0" />
+         </VBox.margin>
+      </Label>
+      <HBox layoutX="10.0" layoutY="40.0" prefHeight="15.0" prefWidth="700.0">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+         <TextField fx:id="itemTA" focusTraversable="false" onKeyTyped="#maxLenghtItem" promptText="Insert item">
+            <HBox.margin>
+               <Insets left="20.0" />
+            </HBox.margin>
+         </TextField>
+         <Label text="Example: Air Max 97, Stan Smith, Shando..." textFill="#554b4d">
+            <HBox.margin>
+               <Insets left="20.0" top="3.0" />
+            </HBox.margin>
+         </Label>
+      </HBox>
+      <Label fx:id="itemL" prefHeight="17.0" prefWidth="731.0" textFill="RED">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" top="5.0" />
+         </VBox.margin>
+      </Label>
+      <HBox layoutX="10.0" layoutY="85.0" prefHeight="15.0" prefWidth="700.0">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+         <TextField fx:id="priceTA" focusTraversable="false" onKeyTyped="#maxLenghtPrice" promptText="Insert retail price">
+            <HBox.margin>
+               <Insets left="20.0" right="20.0" />
+            </HBox.margin>
+         </TextField>
+         <MenuButton fx:id="conditionMenu" alignment="TOP_CENTER" focusTraversable="false" mnemonicParsing="false" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 20;" text="Select condition" textFill="#554b4d">
+            <items>
+               <MenuItem fx:id="asNewOption" mnemonicParsing="false" onAction="#asNew" text="As new" />
+               <MenuItem fx:id="lightlyUsedOption" mnemonicParsing="false" onAction="#lightlyUsed" text="Lightly used" />
+               <MenuItem fx:id="averagelyUsed" mnemonicParsing="false" onAction="#averagelyUsed" text="Averagely used" />
+            </items>
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+         </MenuButton>
+         <Button fx:id="reccomendedPriceButton" focusTraversable="false" mnemonicParsing="false" onAction="#applyReccomendedPrice" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="RECCOMENDED PRICE" textFill="#554b4d">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="50.0" />
+            </HBox.margin>
+         </Button>
+         <ImageView fx:id="infoButton" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#onPriceInfo"
+                    pickOnBounds="true" preserveRatio="true">
+            <HBox.margin>
+               <Insets left="5.0"/>
+            </HBox.margin>
+            <Image url="@../../../drawable/help-circle.png"/>
+         </ImageView>
+      </HBox>
+      <Label fx:id="priceL" prefHeight="17.0" prefWidth="709.0" textFill="RED">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" top="5.0" />
+         </VBox.margin>
+      </Label>
+      <HBox layoutX="10.0" layoutY="40.0" prefHeight="15.0" prefWidth="700.0">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+         <TextField fx:id="sizeTA" focusTraversable="false" onKeyTyped="#maxLenghtSize" promptText="Insert size">
+            <HBox.margin>
+               <Insets left="20.0" />
+            </HBox.margin>
+         </TextField>
+      </HBox>
+      <Label fx:id="sizeL" layoutX="30.0" layoutY="174.0" prefHeight="17.0" prefWidth="709.0" textFill="RED">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" top="5.0" />
+         </VBox.margin>
+      </Label>
+      <Button fx:id="insertSale" focusTraversable="false" mnemonicParsing="false" onAction="#insertSale" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="INSERT SALE" textFill="#554b4d">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="240.0" right="240.0" top="20.0" />
+         </VBox.margin>
+      </Button>
+      <Line endX="559.0" startX="-100.0" stroke="#554b4d">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" top="50.0" />
+         </VBox.margin>
+      </Line>
+      <Button fx:id="manageSales" focusTraversable="false" mnemonicParsing="false" onAction="#manageSales" prefHeight="45.0" prefWidth="643.0" style="-fx-background-color: #554b4d; -fx-background-radius: 20;" text="MANAGE YOUR SALES" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="60.0" right="60.0" top="20.0" />
+         </VBox.margin>
+      </Button>
+   </VBox>
+</AnchorPane>
