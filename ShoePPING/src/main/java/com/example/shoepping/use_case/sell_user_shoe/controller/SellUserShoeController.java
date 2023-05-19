@@ -46,40 +46,14 @@ public class SellUserShoeController implements ISellUserShoeController{
     @Override
     public void onReccomendedPriceCalculate(String price, String condition) {
 
-        if(price.isEmpty()){
-            sellUserShoeView.onReccomendedPriceCalculateError("Please insert a price", 0);
-        }else if(!isAPrice(price)){
-            sellUserShoeView.onReccomendedPriceCalculateError("Please insert a valid price format", 1);
-        }else if(condition.equals("Select condition")){
-            sellUserShoeView.onReccomendedPriceCalculateError("Please select a condition", 2);
-        }else {
-            Sale sale = new Sale(price, condition);
+        Sale sale = new Sale(price, condition);
+        int isValid = sale.isValidRecommendedPrice();
 
-            sellUserShoeView.onReccomendedPriceCalculateSuccess(sale);
+        switch (isValid){
+            case 0 -> sellUserShoeView.onReccomendedPriceCalculateError("Please insert a price");
+            case 1 -> sellUserShoeView.onReccomendedPriceCalculateError("Please insert a valid price format");
+            case 2 -> sellUserShoeView.onReccomendedPriceCalculateError("Please select a condition");
+            default -> sellUserShoeView.onReccomendedPriceCalculateSuccess(sale.getPrice(), sale.getCondition());
         }
     }
-
-
-    private boolean isAPrice(String price){
-
-        int l = price.length();
-
-        for(int i = 0; i<l; i++){
-            if(price.charAt(i) == '.'){
-                for(int j = 0; j<(l-i); j++){
-                    if(j>2){
-                        return false;
-                    }
-                }
-            }
-        }
-
-        try{
-            Double.parseDouble(price);
-            return true;
-        }catch(Exception e){
-            return false;
-        }
-    }
-
 }

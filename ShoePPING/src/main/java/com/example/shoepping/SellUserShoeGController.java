@@ -1,6 +1,5 @@
 package com.example.shoepping;
 
-import com.example.shoepping.model.sale.Sale;
 import com.example.shoepping.pattern.adapter.Adapter;
 import com.example.shoepping.use_case.sell_user_shoe.controller.ISellUserShoeController;
 import com.example.shoepping.use_case.sell_user_shoe.controller.SellUserShoeController;
@@ -104,17 +103,19 @@ public class SellUserShoeGController implements ISellUserShoeView {
         String price = priceTA.getText();
         String condition = conditionMenu.getText();
 
+        priceL.setText("");
+
         ISellUserShoeController sellUserShoeController = new SellUserShoeController(this);
         sellUserShoeController.onReccomendedPriceCalculate(price, condition);
     }
     @Override
-    public void onReccomendedPriceCalculateError(String message, int code) {
+    public void onReccomendedPriceCalculateError(String message) {
         priceL.setText(message);
     }
     @Override
-    public void onReccomendedPriceCalculateSuccess(Sale sale) {
+    public void onReccomendedPriceCalculateSuccess(String price, String condition) {
         Adapter adapter = new Adapter();
-        String reccomendedPrice = String.valueOf(adapter.calculatePrice(sale.getCondition(), sale.getPrice()));
+        String reccomendedPrice = String.valueOf(adapter.calculatePrice(price, condition));
         priceTA.setText(reccomendedPrice);
     }
 

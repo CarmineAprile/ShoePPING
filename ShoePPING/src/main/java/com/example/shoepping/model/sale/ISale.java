@@ -8,4 +8,6 @@ public interface ISale {
     String getSize();
 
     int isValid();
+
+    int isValidRecommendedPrice();
 }

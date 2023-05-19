@@ -97,6 +97,26 @@ public class Sale implements ISale{
         }else return -1;
     }
 
+    @Override
+    public int isValidRecommendedPrice() {
+        // 0. Check for brand is Empty
+        // 1. Check for item is Empty
+        // 2. Check for price is empty
+        // 3. Check for price is numeric
+        // 4. Check for condition is empty
+        // 5. Check for size is empty
+        // 6. Check for size is integer
+
+
+        if(price.isEmpty()) {
+            return 0;
+        }else if (!isAPrice(price)) {
+            return 1;
+        }else if(condition.equals("Select condition")){
+            return 2;
+        }else return -1;
+    }
+
     private boolean isAPrice(String price){
 
         int l = price.length();

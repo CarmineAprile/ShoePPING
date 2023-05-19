@@ -5,7 +5,7 @@ import static jdk.internal.org.jline.utils.Log.error;
 public class Adapter implements Target{
 
     @Override
-    public double calculatePrice(String condition, String price) {
+    public double calculatePrice(String price, String condition) {
 
         double reccomendedPrice = Double.parseDouble(price);
 
