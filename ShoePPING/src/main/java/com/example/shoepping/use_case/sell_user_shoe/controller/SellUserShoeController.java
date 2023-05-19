@@ -2,6 +2,7 @@ package com.example.shoepping.use_case.sell_user_shoe.controller;
 
 import com.example.shoepping.dao.sales_dao.SalesDaoJDBC;
 import com.example.shoepping.model.sale.Sale;
+import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.sell_user_shoe.view.ISellUserShoeView;
 
 public class SellUserShoeController implements ISellUserShoeController{
@@ -16,6 +17,14 @@ public class SellUserShoeController implements ISellUserShoeController{
     @Override
     public void onInsertSale(String brand, String item, String price, String condition, String size) {
 
+        UserSingleton userSingleton = UserSingleton.getInstance();
+
+        if(userSingleton.isChecked()){
+            // 8. Check for  user logged with csv
+            sellUserShoeView.onInsertSaleError("Not available yet!", 8);
+            return;
+        }
+
         Sale sale = new Sale(brand, item, price, condition, size);
 
         // 0. Check for brand is Empty
@@ -25,6 +34,8 @@ public class SellUserShoeController implements ISellUserShoeController{
         // 4. Check for condition is empty
         // 5. Check for size is empty
         // 6. Check for size is integer
+        // 7. Check for size between 30 and 60
+
 
         switch (sale.isValid()){
             case 0 -> sellUserShoeView.onInsertSaleError("Please insert a brand", 0);
@@ -42,7 +53,6 @@ public class SellUserShoeController implements ISellUserShoeController{
             }
         }
     }
-
     @Override
     public void onReccomendedPriceCalculate(String price, String condition) {
 
@@ -56,4 +66,6 @@ public class SellUserShoeController implements ISellUserShoeController{
             default -> sellUserShoeView.onReccomendedPriceCalculateSuccess(sale.getPrice(), sale.getCondition());
         }
     }
+
+
 }

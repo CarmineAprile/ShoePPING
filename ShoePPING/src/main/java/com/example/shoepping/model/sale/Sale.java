@@ -84,7 +84,7 @@ public class Sale implements ISale{
             return 1;
         }else if (price.isEmpty()){
             return 2;
-        }else if(!isAPrice(price)) {
+        }else if(isNotAPrice(price)) {
             return 3;
         }else if(condition.equals("Select condition")){
             return 4;
@@ -110,32 +110,43 @@ public class Sale implements ISale{
 
         if(price.isEmpty()) {
             return 0;
-        }else if (!isAPrice(price)) {
+        }else if (isNotAPrice(price)) {
             return 1;
         }else if(condition.equals("Select condition")){
             return 2;
         }else return -1;
     }
 
-    private boolean isAPrice(String price){
+    private boolean isNotAPrice(String price){
 
         int l = price.length();
+        int cont = 0;
+        boolean findPoint = false;
 
         for(int i = 0; i<l; i++){
+
             if(price.charAt(i) == '.'){
+                findPoint = true;
+                if(cont > 3){
+                    return true;
+                }
                 for(int j = 0; j<(l-i); j++){
                     if(j>2){
-                        return false;
+                        return true;
                     }
                 }
             }
+            cont++;
         }
+
+        if(l>3 && !findPoint)
+            return true;
 
         try{
             Double.parseDouble(price);
-            return true;
-        }catch(Exception e){
             return false;
+        }catch(Exception e){
+            return true;
         }
     }
 

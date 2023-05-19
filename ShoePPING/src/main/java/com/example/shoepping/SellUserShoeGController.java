@@ -83,19 +83,32 @@ public class SellUserShoeGController implements ISellUserShoeView {
         // 4. Check for condition is empty
         // 5. Check for size is empty
         // 6. Check for size is integer
+        // 7. Check for size between 30 and 60
+        // 8. Check for  user logged with csv
 
         switch (code){
-            case 0 ->brandL.setText(message);
-            case 1 ->itemL.setText(message);
-            case 2, 3, 4 ->priceL.setText(message);
-            case 5, 6, 7 ->sizeL.setText(message);
+            case 0 -> brandL.setText(message);
+            case 1 -> itemL.setText(message);
+            case 2, 3, 4 -> priceL.setText(message);
+            case 5, 6, 7 -> sizeL.setText(message);
+            case 8 -> {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Insert sale with File-System");
+
+                // Header Text: null
+                alert.setHeaderText(null);
+                alert.setContentText(message);
+
+                alert.showAndWait();
+            }
             default -> error();
         }
     }
 
     @Override
     public void onIsertSaleSuccess() {
-        System.out.println("Messi parte lo steeeeSSSSSOOOOO!!!!");
+        // stampare messaggio work in progress if is checked
+
     }
 
 
@@ -130,6 +143,11 @@ public class SellUserShoeGController implements ISellUserShoeView {
         alert.showAndWait();
     }
 
+    public void manageSales() {
+        // stampare messaggio work in progress if is checked
+        System.out.println("Manage your Sales");
+    }
+
     public void onBuyClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
         Parent root = loader.load();
@@ -159,10 +177,6 @@ public class SellUserShoeGController implements ISellUserShoeView {
 
     public void averagelyUsed() {
         conditionMenu.setText("Averagely used");
-    }
-
-    public void manageSales() {
-        System.out.println("Manage your Sales");
     }
 
     public void maxLenghtBrand() {
