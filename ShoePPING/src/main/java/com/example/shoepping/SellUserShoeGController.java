@@ -109,10 +109,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
     }
     @Override
     public void onReccomendedPriceCalculateError(String message, int code) {
-        switch (code){
-            case 0, 1, 2 -> priceL.setText(message);
-            default -> error();
-        }
+        priceL.setText(message);
     }
     @Override
     public void onReccomendedPriceCalculateSuccess(Sale sale) {
