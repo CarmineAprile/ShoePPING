@@ -138,7 +138,10 @@ public class Sale implements ISale{
             }
             cont++;
         }
+        return utilityPrice(l, findPoint);
+    }
 
+    private boolean utilityPrice(int l, boolean findPoint){
         if(l>3 && !findPoint)
             return true;
 
