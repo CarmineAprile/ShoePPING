@@ -70,18 +70,17 @@
          <VBox prefHeight="415.0" prefWidth="724.0">
             <HBox prefHeight="100.0" prefWidth="200.0">
                <VBox.margin>
-                  <Insets left="25.0" right="30.0"/>
+                  <Insets left="25.0" right="30.0" />
                </VBox.margin>
-               <ImageView fx:id="backButton" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#goBack"
-                          pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../../../drawable/arrowleft.png"/>
+               <ImageView fx:id="backButton" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../../../drawable/arrowleft.png" />
                </ImageView>
                <Label alignment="TOP_CENTER" prefHeight="27.0" prefWidth="741.0" text="Your sales" textFill="#554b4d">
                   <font>
-                     <Font name="System Bold" size="18.0"/>
+                     <Font name="System Bold" size="18.0" />
                   </font>
                   <HBox.margin>
-                     <Insets right="30.0"/>
+                     <Insets right="30.0" />
                   </HBox.margin>
                </Label>
             </HBox>

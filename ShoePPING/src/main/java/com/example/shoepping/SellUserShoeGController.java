@@ -155,9 +155,12 @@ public class SellUserShoeGController implements ISellUserShoeView {
         alert.showAndWait();
     }
 
-    public void manageSales() throws IOException {
+    public void manageSales() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("manage-sales.fxml"));
         Parent root = loader.load();
+
+        ManageSaleGController manageSaleGController = loader.getController();
+        manageSaleGController.salva();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, sellUserShoePane);

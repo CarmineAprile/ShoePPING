@@ -8,6 +8,8 @@ import com.example.shoepping.model.catalog.CatalogItem;
 import com.example.shoepping.model.order.Order;
 import com.example.shoepping.model.order.OrderList;
 import com.example.shoepping.model.sale.Sale;
+import com.example.shoepping.model.sale_storage.SaleStorage;
+import com.example.shoepping.model.sale_storage.SaleStorageItem;
 import com.example.shoepping.model.user.User;
 import com.example.shoepping.pattern.observer.ShoeSizeList;
 import com.example.shoepping.pattern.observer.SizeAmount;
@@ -236,9 +238,9 @@ public class SimpleQueries {
         insertOrderMethod(conn, order, user, check);
 
         if(check){
-            cs2 = conn.prepareCall("{call insertSaleStorageCSV(?, ?, ?, ?, ?, ?, ?, ?)}");
+            cs2 = conn.prepareCall("{call insertSaleStorageCSV(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
         }else {
-            cs2 = conn.prepareCall("{call insertSaleStorageSQL(?, ?, ?, ?, ?, ?, ?, ?)}");
+            cs2 = conn.prepareCall("{call insertSaleStorageSQL(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
         }
 
         cs2.setString(1, sale.getBrand());
@@ -247,8 +249,9 @@ public class SimpleQueries {
         cs2.setInt(4, Integer.parseInt(sale.getSize()));
         cs2.setString(5, sale.getCondition());
         cs2.setString(6, user.getUsername());
-        cs2.setString(7, sale.getSeller());
-        cs2.setInt(8, isChecked);
+        cs2.setString(7, order.getAddressOrder());
+        cs2.setString(8, sale.getSeller());
+        cs2.setInt(9, isChecked);
 
         cs2.execute();
 
@@ -310,5 +313,28 @@ public class SimpleQueries {
         cs.setString(6, sale.getCondition());
 
         cs.executeQuery();
+    }
+
+    public static SaleStorage getSaleStorage(Connection conn, String username) throws SQLException {
+
+
+        SaleStorage saleStorage = new SaleStorage();
+
+        CallableStatement cs = conn.prepareCall("{call getSaleStorage(?)}");
+        cs.setString(1, username);
+
+        //cs.executeQuery();
+
+        boolean status = cs.execute();
+
+        if(status){
+            ResultSet rs = cs.getResultSet();
+            while (rs.next()){
+                SaleStorageItem saleStorageItem = new SaleStorageItem(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10));
+                saleStorage.addItem(saleStorageItem);
+            }
+        }
+
+        return saleStorage;
     }
 }
