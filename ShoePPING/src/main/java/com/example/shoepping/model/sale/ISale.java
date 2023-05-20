@@ -6,6 +6,7 @@ public interface ISale {
     String getPrice();
     String getCondition();
     String getSize();
+    String getSeller();
 
     int isValid();
 

@@ -95,6 +95,7 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         String price = removeLastChar(priceL.getText());
         String size = sizeL.getText();
         String seller = sellerL.getText();
+        String condition = conditionL.getText();
 
         String address = addressUsedTA.getText();
         String cardID = cardIDUsedTA.getText();
@@ -105,7 +106,7 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         cardIDUsedL.setText("");
         cardDateCVVUsedLabel.setText("");
 
-        String[] userDataVec = {address, cardID, cardDate, cardCVC};
+        String[] userDataVec = {address, cardID, cardDate, cardCVC, condition};
 
         IBuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
         buyUserUsedShoeController.onConfirm(item, brand, price, size, seller, userDataVec, sellIDUpdate);

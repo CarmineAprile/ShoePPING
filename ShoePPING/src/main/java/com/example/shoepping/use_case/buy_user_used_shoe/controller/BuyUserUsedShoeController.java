@@ -6,6 +6,7 @@ import com.example.shoepping.dao.insert_order_dao.InsertOrderDao;
 import com.example.shoepping.model.catalog.Catalog;
 import com.example.shoepping.model.catalog.CatalogItem;
 import com.example.shoepping.model.order.Order;
+import com.example.shoepping.model.sale.Sale;
 import com.example.shoepping.model.user.User;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.buy_user_used_shoe.view.IBuyUserUsedShoeView;
@@ -66,6 +67,7 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
         String dateOrder = ZonedDateTime.now(ZoneId.of("Europe/Rome")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         Order order = new Order(dateOrder, item, Double.parseDouble(price), conditionOrder, userDataVec[0], statusOrder);
+        Sale sale = new Sale(brand, item, price, userDataVec[4], size, seller);
 
         int orderCode = order.isValid();
 
@@ -90,7 +92,7 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
             buyUserUsedShoeView.onConfirmError("Please insert a valid CVC", 3);
         }else{
             InsertOrderDao insertOrderDao = new InsertOrderDao();
-            insertOrderDao.insertOrderCatalog(order, user, isChecked, sellIDUpdate);
+            insertOrderDao.insertOrderCatalog(order, user, isChecked, sellIDUpdate, sale);
             buyUserUsedShoeView.onConfirmSuccess();
         }
 
