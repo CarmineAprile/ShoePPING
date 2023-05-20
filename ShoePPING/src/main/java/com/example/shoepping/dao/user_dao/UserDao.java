@@ -1,6 +1,6 @@
 package com.example.shoepping.dao.user_dao;
 
-import com.example.shoepping.exception.DAOException;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.user.User;
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -15,7 +15,7 @@ public interface UserDao {
     
     boolean checkExistence(User instance) throws ClassNotFoundException, SQLException, IOException, CsvValidationException;
 
-    void addUser(User instance) throws ClassNotFoundException, SQLException, IOException, DAOException;
+    void addUser(User instance) throws ClassNotFoundException, SQLException, IOException, ManageException;
 
     void updateUser(User instance, String oldUsername) throws SQLException, IOException, ClassNotFoundException;
 

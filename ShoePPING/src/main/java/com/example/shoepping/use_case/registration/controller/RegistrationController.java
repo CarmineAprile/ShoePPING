@@ -3,7 +3,7 @@ package com.example.shoepping.use_case.registration.controller;
 
 import com.example.shoepping.dao.user_dao.UserDAOCSV;
 import com.example.shoepping.dao.user_dao.UserDAOJDBC;
-import com.example.shoepping.exception.DAOException;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.user.User;
 import com.example.shoepping.use_case.registration.view.IRegistrationView;
 import com.opencsv.exceptions.CsvValidationException;
@@ -21,7 +21,7 @@ public class RegistrationController implements IRegistrationController {
 
 
     @Override
-    public void onRegistration(String username, String pass, String repass, String email, boolean check) throws SQLException, ClassNotFoundException, IOException, DAOException, CsvValidationException {
+    public void onRegistration(String username, String pass, String repass, String email, boolean check) throws SQLException, ClassNotFoundException, IOException, ManageException, CsvValidationException {
 
         User user = new User(username, pass, repass, email);
         int registrationCode = user.isValid();

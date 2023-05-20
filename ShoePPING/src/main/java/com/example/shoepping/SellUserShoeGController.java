@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import static jdk.internal.org.jline.utils.Log.error;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class SellUserShoeGController implements ISellUserShoeView {
     @FXML
@@ -55,7 +56,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
     @FXML
     Button manageSales;
 
-    public void insertSale(){
+    public void insertSale() throws IOException, SQLException, ClassNotFoundException {
         String brand = brandTA.getText();
         String item = itemTA.getText();
         String price = priceTA.getText();
@@ -106,9 +107,20 @@ public class SellUserShoeGController implements ISellUserShoeView {
     }
 
     @Override
-    public void onIsertSaleSuccess() {
-        // stampare messaggio work in progress if is checked
+    public void onIsertSaleSuccess() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
+        Parent root = loader.load();
 
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, sellUserShoePane);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Item insered successfully");
+
+        // Header Text: null
+        alert.setHeaderText(null);
+        alert.setContentText("Item insered successfully!");
+        alert.showAndWait();
     }
 
 

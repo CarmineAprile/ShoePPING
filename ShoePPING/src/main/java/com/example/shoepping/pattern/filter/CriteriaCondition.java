@@ -9,7 +9,7 @@ public class CriteriaCondition implements Criteria{
         Catalog catalogFind = new Catalog();
 
         for(CatalogItem catalogItem : catalog.getCatalog()){
-            if(catalogItem.getShoeCondition().equals(condition.toLowerCase())){
+            if(catalogItem.getShoeCondition().equalsIgnoreCase(condition)){
                 catalogFind.addItem(catalogItem);
             }
         }

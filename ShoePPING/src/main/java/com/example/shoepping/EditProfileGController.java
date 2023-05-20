@@ -1,6 +1,6 @@
 package com.example.shoepping;
 
-import com.example.shoepping.exception.DAOException;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.use_case.edit_profile.controller.EditProfileController;
 import com.example.shoepping.use_case.edit_profile.controller.IEditProfileController;
 import com.example.shoepping.use_case.edit_profile.view.IEditProfileView;
@@ -54,7 +54,7 @@ public class EditProfileGController implements IEditProfileView {
         cw.switchPage(root, editProfilePane);
     }
 
-    public void editProfile() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, DAOException {
+    public void editProfile() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         // aggiungere controllo su check fyleSystem
 
         String username = usernameTA.getText();

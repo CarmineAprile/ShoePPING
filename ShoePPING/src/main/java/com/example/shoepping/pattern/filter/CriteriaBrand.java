@@ -9,7 +9,7 @@ public class CriteriaBrand implements Criteria{
         Catalog catalogFind = new Catalog();
 
         for(CatalogItem catalogItem : catalog.getCatalog()){
-            if(catalogItem.getShoeBrand().equals(brand.toLowerCase())){
+            if(catalogItem.getShoeBrand().equalsIgnoreCase(brand)){
                 catalogFind.addItem(catalogItem);
             }
         }

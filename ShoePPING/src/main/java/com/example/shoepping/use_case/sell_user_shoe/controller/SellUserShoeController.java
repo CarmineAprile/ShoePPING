@@ -5,6 +5,9 @@ import com.example.shoepping.model.sale.Sale;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.sell_user_shoe.view.ISellUserShoeView;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
 public class SellUserShoeController implements ISellUserShoeController{
 
     ISellUserShoeView sellUserShoeView;
@@ -15,7 +18,7 @@ public class SellUserShoeController implements ISellUserShoeController{
 
 
     @Override
-    public void onInsertSale(String brand, String item, String price, String condition, String size) {
+    public void onInsertSale(String brand, String item, String price, String condition, String size) throws IOException, SQLException, ClassNotFoundException {
 
         UserSingleton userSingleton = UserSingleton.getInstance();
 
@@ -48,6 +51,7 @@ public class SellUserShoeController implements ISellUserShoeController{
             case 7 -> sellUserShoeView.onInsertSaleError("Please insert a size value between 30 and 60", 7);
             default -> {
                 SalesDaoJDBC salesDaoJDBC = new SalesDaoJDBC();
+                salesDaoJDBC.insertSale(sale, userSingleton.getUser().getUsername());
                 // aggiungere la funzione del dao per inserire la sale
                 sellUserShoeView.onIsertSaleSuccess();
             }

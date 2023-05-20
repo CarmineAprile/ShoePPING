@@ -1,5 +1,6 @@
 package com.example.shoepping;
 
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.use_case.buy_catalog.controller.BuyCatalogController;
 import com.example.shoepping.use_case.buy_catalog.controller.IBuyCatalogController;
 import com.example.shoepping.use_case.buy_catalog.view.IBuyCatalogView;
@@ -111,7 +112,7 @@ public class BuyCatalogGController implements IBuyCatalogView {
         maxPriceL.setText("Please insert a valid price");
     }
 
-    public void apply() throws SQLException, IOException, ClassNotFoundException {
+    public void apply() throws SQLException, IOException, ClassNotFoundException, ManageException {
         BuyCatalogController buyCatalogController = new BuyCatalogController(this);
 
         vBoxCatalog.getChildren().clear();

@@ -10,7 +10,7 @@ public class CriteriaFind implements Criteria{
         Catalog catalogFind = new Catalog();
 
         for(CatalogItem catalogItem : catalog.getCatalog()){
-            if(catalogItem.getShoeItem().equals(item)){
+            if(catalogItem.getShoeItem().equalsIgnoreCase(item)){
                 catalogFind.addItem(catalogItem);
             }
         }

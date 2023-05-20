@@ -2,7 +2,7 @@ package com.example.shoepping.dao.user_dao;
 
 import com.example.shoepping.dao.DaoUtility;
 import com.example.shoepping.dao.queries.SimpleQueries;
-import com.example.shoepping.exception.DAOException;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.user.User;
 
 import java.io.IOException;
@@ -35,7 +35,7 @@ public class UserDAOJDBC implements UserDao {
     }
 
     @Override
-    public void addUser(User instance) throws ClassNotFoundException, SQLException, IOException, DAOException {
+    public void addUser(User instance) throws ClassNotFoundException, SQLException, IOException, ManageException {
 
         Connection conn = DaoUtility.prepareQuery();
 

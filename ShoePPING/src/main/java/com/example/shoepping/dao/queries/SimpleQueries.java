@@ -2,11 +2,12 @@
 package com.example.shoepping.dao.queries;
 
 
-import com.example.shoepping.exception.DAOException;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.catalog.Catalog;
 import com.example.shoepping.model.catalog.CatalogItem;
 import com.example.shoepping.model.order.Order;
 import com.example.shoepping.model.order.OrderList;
+import com.example.shoepping.model.sale.Sale;
 import com.example.shoepping.model.user.User;
 import com.example.shoepping.pattern.observer.ShoeSizeList;
 import com.example.shoepping.pattern.observer.SizeAmount;
@@ -29,7 +30,7 @@ public class SimpleQueries {
         return cs.getInt(3);
     }
 
-    public static void insertUser(Connection conn, String username, String passd, String email) throws DAOException {
+    public static void insertUser(Connection conn, String username, String passd, String email) throws ManageException {
         try {
             CallableStatement cs = conn.prepareCall("{call addNewUser(?, ?, ?)}");
             cs.setString(1, username);
@@ -38,7 +39,7 @@ public class SimpleQueries {
 
             cs.executeQuery();
         }catch (SQLException e){
-            throw new DAOException("Failed insert: " + e.getMessage());
+            throw new ManageException("Failed insert: " + e.getMessage());
         }
 
     }
@@ -274,4 +275,15 @@ public class SimpleQueries {
         return catalog;
     }
 
+    public static void insertSale(Connection conn, Sale sale, String username) throws SQLException {
+        CallableStatement cs = conn.prepareCall("{call insertSale(?, ?, ?, ?, ?, ?)}");
+        cs.setString(1, sale.getBrand());
+        cs.setString(2, sale.getItem());
+        cs.setDouble(3, Double.parseDouble(sale.getPrice()));
+        cs.setInt(4, Integer.parseInt(sale.getSize()));
+        cs.setString(5, username);
+        cs.setString(6, sale.getCondition());
+
+        cs.executeQuery();
+    }
 }

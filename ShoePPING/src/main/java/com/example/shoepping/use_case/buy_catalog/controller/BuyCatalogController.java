@@ -1,6 +1,7 @@
 package com.example.shoepping.use_case.buy_catalog.controller;
 
 import com.example.shoepping.dao.catalog_dao.CatalogDao;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.catalog.Catalog;
 import com.example.shoepping.model.catalog.CatalogItem;
 import com.example.shoepping.pattern.filter.*;
@@ -31,7 +32,7 @@ public class BuyCatalogController implements IBuyCatalogController {
     }
 
     @Override
-    public void setFilter(String item, String brand, String size, String condition, String price) throws SQLException, IOException, ClassNotFoundException {
+    public void setFilter(String item, String brand, String size, String condition, String price) throws SQLException, IOException, ClassNotFoundException, ManageException {
 
 
         if(!price.isEmpty()){
