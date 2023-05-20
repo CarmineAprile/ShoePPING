@@ -155,9 +155,12 @@ public class SellUserShoeGController implements ISellUserShoeView {
         alert.showAndWait();
     }
 
-    public void manageSales() {
-        // stampare messaggio work in progress if is checked
-        System.out.println("Manage your Sales");
+    public void manageSales() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("manage-sales.fxml"));
+        Parent root = loader.load();
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, sellUserShoePane);
     }
 
     public void onBuyClick() throws IOException {
