@@ -68,6 +68,6 @@ public class SaleStorageItem implements ISaleStorageItem{
 
     @Override
     public String toString(){
-        return "Sale: " + this.getStorageSale() + ", " + this.storageBrand + ", " + this.storageItem + ", " + this.storagePrice + "$, " +  this.storageSize + ", " + this.storageCondition + ", " + this.storageBuyer + ", " + this.storageAddress;
+        return "Sale: " + this.getStorageSale() + ", " + this.getStorageBrand() + ", " + this.getStorageItem() + ", " + this.getStoragePrice() + "$, " +  this.getStorageSize() + ", " + this.getStorageCondition() + ", " + this.getStorageBuyer() + ", " + this.getStorageAddress();
     }
 }
