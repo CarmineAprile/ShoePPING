@@ -323,8 +323,6 @@ public class SimpleQueries {
         CallableStatement cs = conn.prepareCall("{call getSaleStorage(?)}");
         cs.setString(1, username);
 
-        //cs.executeQuery();
-
         boolean status = cs.execute();
 
         if(status){

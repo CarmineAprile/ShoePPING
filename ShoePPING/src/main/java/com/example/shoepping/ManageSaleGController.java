@@ -33,6 +33,8 @@ public class ManageSaleGController implements IManageSaleView {
     @FXML
     VBox vBoxSales;
 
+    String format = "System Bold";
+
     public void salva() throws SQLException, IOException, ClassNotFoundException {
         IManageSaleController manageSaleController = new ManageSaleController(this);
         manageSaleController.getSales();
@@ -53,11 +55,11 @@ public class ManageSaleGController implements IManageSaleView {
 
         Label label = new Label(sale);
         label.setPrefWidth(450);
-        label.setFont(new Font("System Bold", 12));
+        label.setFont(new Font(format, 12));
         label.setPadding(new Insets(5, 30, 5, 5));
 
         Button buttonConfirm = new Button("Confirm");
-        buttonConfirm.setFont(new Font("System Bold", 12));
+        buttonConfirm.setFont(new Font(format, 12));
         buttonConfirm.setPadding(new Insets(5,10,5,10));
         buttonConfirm.setTextFill(Paint.valueOf("green"));
         buttonConfirm.setFocusTraversable(false);
@@ -66,7 +68,7 @@ public class ManageSaleGController implements IManageSaleView {
         filler.setPadding(new Insets(5, 30, 5, 0));
 
         Button buttonRefuse = new Button("Refused");
-        buttonRefuse.setFont(new Font("System Bold", 12));
+        buttonRefuse.setFont(new Font(format, 12));
         buttonRefuse.setPadding(new Insets(5,10,5,10));
         buttonRefuse.setTextFill(Paint.valueOf("red"));
         buttonRefuse.setFocusTraversable(false);
