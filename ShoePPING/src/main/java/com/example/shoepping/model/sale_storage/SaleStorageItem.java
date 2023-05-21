@@ -2,30 +2,17 @@ package com.example.shoepping.model.sale_storage;
 
 public class SaleStorageItem implements ISaleStorageItem{
 
-    private final int storageSale;
-    private final String storageBrand;
-    private final String storageItem;
-    private  final double storagePrice;
-    private final int storageSize;
-    private final String storageCondition;
-    private final String storageBuyer;
-    private final String storageAddress;
-    private final String storageSeller;
-    private final int storageIsChecked;
+    private int storageSale;
+    private String storageBrand;
+    private String storageItem;
+    private double storagePrice;
+    private int storageSize;
+    private String storageCondition;
+    private String storageBuyer;
+    private String storageAddress;
+    private String storageSeller;
+    private int storageIsChecked;
 
-
-    public SaleStorageItem(int storageSale, String storageBrand, String storageItem, double storagePrice, int storageSize, String storageCondition, String storageBuyer, String storageAddress, String storageSeller, int storageIsChecked) {
-        this.storageSale = storageSale;
-        this.storageBrand = storageBrand;
-        this.storageItem = storageItem;
-        this.storagePrice = storagePrice;
-        this.storageSize = storageSize;
-        this.storageCondition = storageCondition;
-        this.storageBuyer = storageBuyer;
-        this.storageAddress = storageAddress;
-        this.storageSeller = storageSeller;
-        this.storageIsChecked = storageIsChecked;
-    }
 
     @Override
     public int getStorageSale() {
@@ -64,6 +51,50 @@ public class SaleStorageItem implements ISaleStorageItem{
     @Override
     public int getStorageIsChecked() {
         return storageIsChecked;
+    }
+
+    @Override
+    public void setStorageSale(int storageSale) {
+        this.storageSale = storageSale;
+    }
+    @Override
+    public void setStorageBrand(String storageBrand) {
+        this.storageBrand = storageBrand;
+    }
+    @Override
+    public void setStorageItem(String storageItem) {
+        this.storageItem = storageItem;
+    }
+    @Override
+    public void setStoragePrice(double storagePrice) {
+        this.storagePrice = storagePrice;
+    }
+    @Override
+    public void setStorageSize(int storageSize) {
+        this.storageSize = storageSize;
+    }
+    @Override
+    public void setStorageCondition(String storageCondition) {
+        this.storageCondition = storageCondition;
+    }
+    @Override
+    public void setStorageBuyer(String storageBuyer) {
+        this.storageBuyer = storageBuyer;
+    }
+
+    @Override
+    public void setStorageAddress(String storageAddress) {
+        this.storageAddress = storageAddress;
+    }
+
+    @Override
+    public void setStorageSeller(String storageSeller) {
+        this.storageSeller = storageSeller;
+    }
+
+    @Override
+    public void setStorageIsChecked(int storageIsChecked) {
+        this.storageIsChecked = storageIsChecked;
     }
 
     @Override

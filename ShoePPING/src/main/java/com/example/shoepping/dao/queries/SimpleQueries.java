@@ -328,7 +328,17 @@ public class SimpleQueries {
         if(status){
             ResultSet rs = cs.getResultSet();
             while (rs.next()){
-                SaleStorageItem saleStorageItem = new SaleStorageItem(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10));
+                SaleStorageItem saleStorageItem = new SaleStorageItem();
+                saleStorageItem.setStorageSale(rs.getInt(1));
+                saleStorageItem.setStorageBrand(rs.getString(2));
+                saleStorageItem.setStorageItem(rs.getString(3));
+                saleStorageItem.setStoragePrice(rs.getDouble(4));
+                saleStorageItem.setStorageSize(rs.getInt(5));
+                saleStorageItem.setStorageCondition(rs.getString(6));
+                saleStorageItem.setStorageBuyer(rs.getString(7));
+                saleStorageItem.setStorageAddress(rs.getString(8));
+                saleStorageItem.setStorageSeller(rs.getString(9));
+                saleStorageItem.setStorageIsChecked(rs.getInt(10));
                 saleStorage.addItem(saleStorageItem);
             }
         }

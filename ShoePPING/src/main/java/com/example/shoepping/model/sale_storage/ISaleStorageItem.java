@@ -20,4 +20,24 @@ public interface ISaleStorageItem {
     String getStorageSeller();
 
     int getStorageIsChecked();
+
+    void setStorageSale(int storageSale);
+
+    void setStorageBrand(String storageBrand);
+
+    void setStorageItem(String storageItem);
+
+    void setStoragePrice(double storagePrice);
+
+    void setStorageSize(int storageSize);
+
+    void setStorageCondition(String storageCondition);
+
+    void setStorageBuyer(String storageBuyer);
+
+    void setStorageAddress(String storageAddress);
+
+    void setStorageSeller(String storageSeller);
+
+    void setStorageIsChecked(int storageIsChecked);
 }
