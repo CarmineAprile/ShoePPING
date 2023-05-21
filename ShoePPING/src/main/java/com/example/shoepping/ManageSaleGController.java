@@ -18,6 +18,7 @@ import javafx.scene.text.Font;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ManageSaleGController implements IManageSaleView {
     @FXML
@@ -48,7 +49,7 @@ public class ManageSaleGController implements IManageSaleView {
     }
 
     @Override
-    public void setSaleButton(String sale) {
+    public void setSaleButton(String sale, List<String> itemData) {
         HBox hBox = new HBox();
         hBox.setPrefWidth(638);
         hBox.setPadding(new Insets(10, 0, 0,0));
@@ -79,16 +80,30 @@ public class ManageSaleGController implements IManageSaleView {
         hBox.getChildren().add(buttonRefuse);
         vBoxSales.getChildren().add(hBox);
 
+        IManageSaleController manageSaleController = new ManageSaleController(this);
+
         buttonConfirm.setOnAction(evt -> {
             hBox.getChildren().remove(buttonConfirm);
             hBox.getChildren().remove(buttonRefuse);
             filler.setText("Sale confirmed");
+
+            try {
+                manageSaleController.onConfirmSale(itemData);
+            } catch (SQLException | IOException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         });
 
         buttonRefuse.setOnAction(evt -> {
             hBox.getChildren().remove(buttonConfirm);
             hBox.getChildren().remove(buttonRefuse);
             filler.setText("Sale refused");
+
+            try {
+                manageSaleController.onRefuseSale(itemData);
+            } catch (SQLException | IOException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         });
     }
 

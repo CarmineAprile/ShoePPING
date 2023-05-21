@@ -16,6 +16,7 @@ import com.example.shoepping.pattern.observer.SizeAmount;
 
 import java.sql.*;
 
+
 public class SimpleQueries {
 
     private SimpleQueries() {
@@ -344,5 +345,48 @@ public class SimpleQueries {
         }
 
         return saleStorage;
+    }
+
+    public static void confirmSale(Connection conn, SaleStorageItem saleStorageItem) throws SQLException {
+        CallableStatement cs;
+
+        if (saleStorageItem.getStorageIsChecked() == 0){
+            cs = conn.prepareCall("{call updateOrderSQL(?,?)}");
+        }else {
+            cs = conn.prepareCall("{call updateOrderCSV(?,?)}");
+        }
+        cs.setInt(1, saleStorageItem.getStorageSale());
+        cs.setString(2, "confirmed");
+
+        cs.executeQuery();
+
+        CallableStatement cs2 = conn.prepareCall("{call storeSale(?,?,?,?,?,?,?,?,?,?)}");
+        cs2.setInt(1, saleStorageItem.getStorageSale());
+        cs2.setString(2, saleStorageItem.getStorageBrand());
+        cs2.setString(3, saleStorageItem.getStorageItem());
+        cs2.setDouble(4, saleStorageItem.getStoragePrice());
+        cs2.setInt(5, saleStorageItem.getStorageSize());
+        cs2.setString(6, saleStorageItem.getStorageCondition());
+        cs2.setString(7, saleStorageItem.getStorageBuyer());
+        cs2.setString(8, saleStorageItem.getStorageAddress());
+        cs2.setString(9, saleStorageItem.getStorageSeller());
+        cs2.setInt(10, saleStorageItem.getStorageIsChecked());
+
+        cs2.executeQuery();
+    }
+
+    public static void refuseSale(Connection conn, SaleStorageItem saleStorageItem) throws SQLException {
+        CallableStatement cs;
+
+        if (saleStorageItem.getStorageIsChecked() == 0){
+            cs = conn.prepareCall("{call updateOrderSQL(?,?)}");
+        }else {
+            cs = conn.prepareCall("{call updateOrderCSV(?,?)}");
+        }
+
+        cs.setInt(1, saleStorageItem.getStorageSale());
+        cs.setString(2, "refused");
+
+        cs.executeQuery();
     }
 }

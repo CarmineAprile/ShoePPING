@@ -13,6 +13,23 @@ public class SaleStorageItem implements ISaleStorageItem{
     private String storageSeller;
     private int storageIsChecked;
 
+    public SaleStorageItem(int storageSale, String storageBrand, String storageItem, double storagePrice, int storageSize, String storageCondition, String storageBuyer, String storageAddress, String storageSeller, int storageIsChecked) {
+        this.storageSale = storageSale;
+        this.storageBrand = storageBrand;
+        this.storageItem = storageItem;
+        this.storagePrice = storagePrice;
+        this.storageSize = storageSize;
+        this.storageCondition = storageCondition;
+        this.storageBuyer = storageBuyer;
+        this.storageAddress = storageAddress;
+        this.storageSeller = storageSeller;
+        this.storageIsChecked = storageIsChecked;
+    }
+
+    public SaleStorageItem() {
+
+    }
+
 
     @Override
     public int getStorageSale() {

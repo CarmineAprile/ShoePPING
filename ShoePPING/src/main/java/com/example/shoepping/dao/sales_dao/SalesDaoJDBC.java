@@ -4,6 +4,7 @@ import com.example.shoepping.dao.DaoUtility;
 import com.example.shoepping.dao.queries.SimpleQueries;
 import com.example.shoepping.model.sale.Sale;
 import com.example.shoepping.model.sale_storage.SaleStorage;
+import com.example.shoepping.model.sale_storage.SaleStorageItem;
 import com.example.shoepping.model.user.User;
 
 import java.io.IOException;
@@ -34,5 +35,21 @@ public class SalesDaoJDBC implements SalesDao{
         Connection conn = DaoUtility.prepareQuery();
 
         return SimpleQueries.getSaleStorage(conn, username);
+    }
+
+    @Override
+    public void confirmSale(SaleStorageItem saleStorageItem) throws SQLException, IOException, ClassNotFoundException {
+
+        Connection conn = DaoUtility.prepareQuery();
+
+        SimpleQueries.confirmSale(conn, saleStorageItem);
+    }
+
+    @Override
+    public void refuseSale(SaleStorageItem saleStorageItem) throws SQLException, IOException, ClassNotFoundException {
+
+        Connection conn = DaoUtility.prepareQuery();
+
+        SimpleQueries.refuseSale(conn, saleStorageItem);
     }
 }
