@@ -44,11 +44,11 @@ public class SaleStorageItem implements ISaleStorageItem{
     }
     @Override
     public String getStorageAddress(){return storageAddress;}
-    @Override
+
     public String getStorageSeller() {
         return storageSeller;
     }
-    @Override
+
     public int getStorageIsChecked() {
         return storageIsChecked;
     }

@@ -17,9 +17,6 @@ public interface ISaleStorageItem {
 
     String getStorageAddress();
 
-    String getStorageSeller();
-
-    int getStorageIsChecked();
 
     void setStorageSale(int storageSale);
 
