@@ -6,15 +6,15 @@ import java.util.List;
 
 public class SaleStorage implements ISaleStorage{
 
-    List<SaleStorageItem> saleStorage = new ArrayList<>();
+    List<SaleStorageItem> saleStorageItems = new ArrayList<>();
 
     @Override
     public void addItem(SaleStorageItem saleStorageItem) {
-        this.saleStorage.add(saleStorageItem);
+        this.saleStorageItems.add(saleStorageItem);
     }
 
     @Override
     public List<SaleStorageItem> getCatalog() {
-        return saleStorage;
+        return saleStorageItems;
     }
 }
