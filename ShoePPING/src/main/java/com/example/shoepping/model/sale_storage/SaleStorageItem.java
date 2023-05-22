@@ -16,7 +16,7 @@ public class SaleStorageItem implements ISaleStorageItem{
     private int storageIsChecked;
 
     public SaleStorageItem() {
-
+        // empty constructor
     }
 
 
