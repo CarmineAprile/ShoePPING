@@ -52,7 +52,10 @@ public class ManageSaleController implements IManageSaleController{
     public void onConfirmSale(List<String> itemData) throws SQLException, IOException, ClassNotFoundException {
 
         SalesDaoJDBC salesDao = new SalesDaoJDBC();
-        SaleStorageItem saleStorageItem = new SaleStorageItem(Integer.parseInt(itemData.get(0)), itemData.get(1), itemData.get(2), Double.parseDouble(itemData.get(3)), Integer.parseInt(itemData.get(4)), itemData.get(5), itemData.get(6), itemData.get(7), itemData.get(8), Integer.parseInt(itemData.get(9)));
+
+        SaleStorageItem saleStorageItem = new SaleStorageItem();
+        saleStorageItem.setValues(itemData);
+
         salesDao.confirmSale(saleStorageItem);
     }
 
@@ -60,7 +63,10 @@ public class ManageSaleController implements IManageSaleController{
     public void onRefuseSale(List<String> itemData) throws SQLException, IOException, ClassNotFoundException {
 
         SalesDaoJDBC salesDao = new SalesDaoJDBC();
-        SaleStorageItem saleStorageItem = new SaleStorageItem(Integer.parseInt(itemData.get(0)), itemData.get(1), itemData.get(2), Double.parseDouble(itemData.get(3)), Integer.parseInt(itemData.get(4)), itemData.get(5), itemData.get(6), itemData.get(7), itemData.get(8), Integer.parseInt(itemData.get(9)));
+
+        SaleStorageItem saleStorageItem = new SaleStorageItem();
+        saleStorageItem.setValues(itemData);
+
         salesDao.refuseSale(saleStorageItem);
     }
 

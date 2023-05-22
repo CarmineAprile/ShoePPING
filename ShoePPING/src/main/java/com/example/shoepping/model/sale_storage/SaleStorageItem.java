@@ -1,5 +1,7 @@
 package com.example.shoepping.model.sale_storage;
 
+import java.util.List;
+
 public class SaleStorageItem implements ISaleStorageItem{
 
     private int storageSale;
@@ -12,19 +14,6 @@ public class SaleStorageItem implements ISaleStorageItem{
     private String storageAddress;
     private String storageSeller;
     private int storageIsChecked;
-
-    public SaleStorageItem(int storageSale, String storageBrand, String storageItem, double storagePrice, int storageSize, String storageCondition, String storageBuyer, String storageAddress, String storageSeller, int storageIsChecked) {
-        this.storageSale = storageSale;
-        this.storageBrand = storageBrand;
-        this.storageItem = storageItem;
-        this.storagePrice = storagePrice;
-        this.storageSize = storageSize;
-        this.storageCondition = storageCondition;
-        this.storageBuyer = storageBuyer;
-        this.storageAddress = storageAddress;
-        this.storageSeller = storageSeller;
-        this.storageIsChecked = storageIsChecked;
-    }
 
     public SaleStorageItem() {
 
@@ -117,5 +106,18 @@ public class SaleStorageItem implements ISaleStorageItem{
     @Override
     public String toString(){
         return "Sale: " + this.getStorageSale() + ", " + this.getStorageBrand() + ", " + this.getStorageItem() + ", " + this.getStoragePrice() + "$, " +  this.getStorageSize() + ", " + this.getStorageCondition() + ", " + this.getStorageBuyer() + ", " + this.getStorageAddress();
+    }
+
+    public void setValues(List<String> itemData){
+        setStorageSale(Integer.parseInt(itemData.get(0)));
+        setStorageBrand(itemData.get(1));
+        setStorageItem(itemData.get(2));
+        setStoragePrice(Double.parseDouble(itemData.get(3)));
+        setStorageSize(Integer.parseInt(itemData.get(4)));
+        setStorageCondition(itemData.get(5));
+        setStorageBuyer(itemData.get(6));
+        setStorageAddress(itemData.get(7));
+        setStorageSeller(itemData.get(8));
+        setStorageIsChecked(Integer.parseInt(itemData.get(9)));
     }
 }
