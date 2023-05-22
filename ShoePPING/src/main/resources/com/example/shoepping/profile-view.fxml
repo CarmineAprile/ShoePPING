@@ -115,6 +115,23 @@
             </HBox.margin>
          </Label>
       </HBox>
+      <HBox fx:id="myShipments" layoutX="45.0" layoutY="261.0" onMouseClicked="#goMyShipments" prefHeight="30.0"
+            prefWidth="221.0">
+         <VBox.margin>
+            <Insets left="35.0" right="215.0" top="10.0"/>
+         </VBox.margin>
+         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../../drawable/icontruck.png"/>
+         </ImageView>
+         <Label prefHeight="25.0" prefWidth="109.0" text="My shipments" textFill="#554b4d">
+            <font>
+               <Font name="System Bold" size="16.0"/>
+            </font>
+            <HBox.margin>
+               <Insets left="10.0" top="2.0"/>
+            </HBox.margin>
+         </Label>
+      </HBox>
       <HBox fx:id="aboutUs" layoutX="45.0" layoutY="260.0" onMouseClicked="#showAboutUs" prefHeight="30.0" prefWidth="371.0">
          <VBox.margin>
             <Insets left="35.0" right="255.0" top="10.0" />
@@ -131,20 +148,19 @@
             </HBox.margin>
          </Label>
       </HBox>
-      <HBox fx:id="exitButton" layoutX="45.0" layoutY="300.0" onMouseClicked="#exit" prefHeight="30.0"
-            prefWidth="371.0">
+      <HBox fx:id="exitButton" layoutX="45.0" layoutY="300.0" onMouseClicked="#exit" prefHeight="30.0" prefWidth="371.0">
          <VBox.margin>
-            <Insets left="35.0" right="225.0" top="10.0"/>
+            <Insets left="35.0" right="225.0" top="10.0" />
          </VBox.margin>
          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../../../drawable/x-circle.png"/>
+            <Image url="@../../../drawable/x-circle.png" />
          </ImageView>
          <Label prefHeight="25.0" prefWidth="93.0" text="Exit" textFill="#554b4d">
             <font>
-               <Font name="System Bold" size="16.0"/>
+               <Font name="System Bold" size="16.0" />
             </font>
             <HBox.margin>
-               <Insets left="10.0" top="2.0"/>
+               <Insets left="10.0" top="2.0" />
             </HBox.margin>
          </Label>
       </HBox>

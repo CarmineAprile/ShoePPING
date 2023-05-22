@@ -138,6 +138,46 @@ public class SimpleQueries {
         return temp.toString();
     }
 
+    public static String getShipmentsList(Connection conn, String username) throws SQLException {
+        SaleStorage saleStorage = new SaleStorage();
+        CallableStatement cs;
+
+        cs = conn.prepareCall("{call getShipments(?)}");
+        setQuerySale(username, saleStorage, cs);
+
+        StringBuilder temp = new StringBuilder();
+
+        for(SaleStorageItem saleStorageItem : saleStorage.getCatalog()){
+            temp.append(saleStorageItem.toStringShipments()).append("\n\n");
+        }
+
+        return temp.toString();
+    }
+
+    private static void setQuerySale(String username, SaleStorage saleStorage, CallableStatement cs) throws SQLException {
+        cs.setString(1, username);
+
+        boolean status = cs.execute();
+
+        if(status){
+            ResultSet rs = cs.getResultSet();
+            while (rs.next()){
+                SaleStorageItem saleStorageItem = new SaleStorageItem();
+                saleStorageItem.setStorageSale(rs.getInt(1));
+                saleStorageItem.setStorageBrand(rs.getString(2));
+                saleStorageItem.setStorageItem(rs.getString(3));
+                saleStorageItem.setStoragePrice(rs.getDouble(4));
+                saleStorageItem.setStorageSize(rs.getInt(5));
+                saleStorageItem.setStorageCondition(rs.getString(6));
+                saleStorageItem.setStorageBuyer(rs.getString(7));
+                saleStorageItem.setStorageAddress(rs.getString(8));
+                saleStorageItem.setStorageSeller(rs.getString(9));
+                saleStorageItem.setStorageIsChecked(rs.getInt(10));
+                saleStorage.addItem(saleStorageItem);
+            }
+        }
+    }
+
     public static String[] getNikePrice(Connection conn) throws SQLException {
         CallableStatement cs;
 
@@ -322,27 +362,7 @@ public class SimpleQueries {
         SaleStorage saleStorage = new SaleStorage();
 
         CallableStatement cs = conn.prepareCall("{call getSaleStorage(?)}");
-        cs.setString(1, username);
-
-        boolean status = cs.execute();
-
-        if(status){
-            ResultSet rs = cs.getResultSet();
-            while (rs.next()){
-                SaleStorageItem saleStorageItem = new SaleStorageItem();
-                saleStorageItem.setStorageSale(rs.getInt(1));
-                saleStorageItem.setStorageBrand(rs.getString(2));
-                saleStorageItem.setStorageItem(rs.getString(3));
-                saleStorageItem.setStoragePrice(rs.getDouble(4));
-                saleStorageItem.setStorageSize(rs.getInt(5));
-                saleStorageItem.setStorageCondition(rs.getString(6));
-                saleStorageItem.setStorageBuyer(rs.getString(7));
-                saleStorageItem.setStorageAddress(rs.getString(8));
-                saleStorageItem.setStorageSeller(rs.getString(9));
-                saleStorageItem.setStorageIsChecked(rs.getInt(10));
-                saleStorage.addItem(saleStorageItem);
-            }
-        }
+        setQuerySale(username, saleStorage, cs);
 
         return saleStorage;
     }
@@ -389,4 +409,6 @@ public class SimpleQueries {
 
         cs.executeQuery();
     }
+
+
 }

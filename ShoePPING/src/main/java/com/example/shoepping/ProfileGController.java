@@ -17,6 +17,8 @@ import java.sql.SQLException;
 
 public class ProfileGController {
     @FXML
+    HBox myShipments;
+    @FXML
     AnchorPane profilePane;
     @FXML
     ImageView backButton;
@@ -91,6 +93,21 @@ public class ProfileGController {
         cw.switchPage(root, profilePane);
     }
 
+    public void goMyShipments() throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("my-shipments-view.fxml"));
+        Parent root = loader.load();
+
+        MyShipmentsGController myShipmentsGController = loader.getController();
+
+        IProfileController profileController = new ProfileController();
+
+        String shipments = profileController.onShipments();
+        myShipmentsGController.salva(shipments);
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.switchPage(root, profilePane);
+    }
+
     public void showAboutUs() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About-Us");
@@ -109,4 +126,6 @@ public class ProfileGController {
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, profilePane);
     }
+
+
 }

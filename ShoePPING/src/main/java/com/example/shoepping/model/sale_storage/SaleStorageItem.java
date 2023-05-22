@@ -120,4 +120,8 @@ public class SaleStorageItem implements ISaleStorageItem{
         setStorageSeller(itemData.get(8));
         setStorageIsChecked(Integer.parseInt(itemData.get(9)));
     }
+
+    public String toStringShipments() {
+        return "Sale:\t\t\t" + this.getStorageSale() + "\nBrand:\t\t" + this.getStorageBrand() + "\nItem:\t\t" + this.getStorageItem() + "\nPrice:\t\t" + this.getStoragePrice() + "$\nSize:\t\t\t" + this.getStorageSize() + "\nCondition:\t" + this.getStorageCondition() + "\nBuyer:\t\t" + this.getStorageBuyer() + "\nAddress:\t\t" + this.getStorageAddress();
+    }
 }

@@ -22,6 +22,14 @@ public class SalesDaoJDBC implements SalesDao{
     }
 
     @Override
+    public String getShipmentsList(User user) throws SQLException, IOException, ClassNotFoundException {
+
+        Connection conn = DaoUtility.prepareQuery();
+
+        return SimpleQueries.getShipmentsList(conn, user.getUsername());
+    }
+
+    @Override
     public void insertSale(Sale sale, String username) throws SQLException, IOException, ClassNotFoundException {
 
         Connection conn = DaoUtility.prepareQuery();
@@ -52,4 +60,6 @@ public class SalesDaoJDBC implements SalesDao{
 
         SimpleQueries.refuseSale(conn, saleStorageItem);
     }
+
+
 }

@@ -17,4 +17,6 @@ public interface SalesDao {
     void confirmSale(SaleStorageItem saleStorageItem) throws SQLException, IOException, ClassNotFoundException;
 
     void refuseSale(SaleStorageItem saleStorageItem) throws SQLException, IOException, ClassNotFoundException;
+
+    String getShipmentsList(User instance) throws SQLException, IOException, ClassNotFoundException;
 }

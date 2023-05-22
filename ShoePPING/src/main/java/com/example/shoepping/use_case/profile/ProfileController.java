@@ -34,7 +34,16 @@ public class ProfileController implements IProfileController{
         return salesDao.getSalesList(userSingleton.getUser());
     }
 
+    @Override
+    public String onShipments() throws SQLException, IOException, ClassNotFoundException {
+        UserSingleton userSingleton = UserSingleton.getInstance();
+        if(userSingleton.isChecked()){
+            return "Not available yet!";
+        }
 
+        SalesDaoJDBC salesDao = new SalesDaoJDBC();
+        return salesDao.getShipmentsList(userSingleton.getUser());
+    }
 
 
 }

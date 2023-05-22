@@ -8,4 +8,6 @@ public interface IProfileController {
     String onOrders() throws SQLException, IOException, ClassNotFoundException;
     String[] setLabels();
     String onSales() throws SQLException, IOException, ClassNotFoundException;
+
+    String onShipments() throws SQLException, IOException, ClassNotFoundException;
 }
