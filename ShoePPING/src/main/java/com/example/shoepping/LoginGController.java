@@ -90,7 +90,7 @@ public class LoginGController implements ILoginView {
     }
 
     public void onLoginSuccessAdmin(){
-        System.out.println("Sei l'amministratore, benvenuto.");
+        System.out.println("Sei l'amministratore, benvenuto!");
     }
 
 
