@@ -8,22 +8,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="myShipmentsPane" prefHeight="515.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shoepping.MyShipmentsGController">
+<AnchorPane fx:id="myShipmentsPane" prefHeight="515.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shoepping.MyShipmentsGController">
     <ImageView fitHeight="542.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../../../drawable/profilebackground.png"/>
+        <Image url="@../../../drawable/profilebackground.png" />
     </ImageView>
-    <ImageView fx:id="backButton" fitHeight="30.0" fitWidth="30.0" layoutX="299.0" layoutY="28.0"
-               onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../../../drawable/arrowleft.png"/>
+    <ImageView fx:id="backButton" fitHeight="30.0" fitWidth="30.0" layoutX="299.0" layoutY="28.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../../drawable/arrowleft.png" />
     </ImageView>
-    <Label layoutX="444.0" layoutY="26.0" text="My sales" textFill="#554b4d">
+    <Label layoutX="413.0" layoutY="25.0" text="My shipments" textFill="#554b4d">
         <font>
-            <Font name="System Bold" size="24.0"/>
+            <Font name="System Bold" size="24.0" />
         </font>
     </Label>
     <VBox layoutX="293.0" layoutY="74.0" prefHeight="441.0" prefWidth="399.0">
-        <TextArea fx:id="shipmentsTA" editable="false" focusTraversable="false" prefHeight="433.0" prefWidth="397.0"
-                  text="&#10;"/>
+        <TextArea fx:id="shipmentsTA" editable="false" focusTraversable="false" prefHeight="433.0" prefWidth="397.0" text="&#10;" />
     </VBox>
 </AnchorPane>
