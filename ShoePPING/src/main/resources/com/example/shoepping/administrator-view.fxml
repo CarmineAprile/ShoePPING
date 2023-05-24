@@ -42,12 +42,12 @@
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
-               <TextField fx:id="Id1TA" focusTraversable="false" promptText="Id">
+               <TextField fx:id="id1TA" focusTraversable="false" promptText="Id">
                   <HBox.margin>
                      <Insets left="20.0" right="20.0" />
                   </HBox.margin>
                </TextField>
-               <TextField fx:id="AmountTA" focusTraversable="false" promptText="Amount">
+               <TextField fx:id="amountTA" focusTraversable="false" promptText="Amount">
                   <HBox.margin>
                      <Insets right="20.0" />
                   </HBox.margin>
@@ -78,7 +78,7 @@
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
-               <TextField fx:id="IdTA2" focusTraversable="false" promptText="Id">
+               <TextField fx:id="idTA2" focusTraversable="false" promptText="Id">
                   <HBox.margin>
                      <Insets left="20.0" right="20.0" />
                   </HBox.margin>

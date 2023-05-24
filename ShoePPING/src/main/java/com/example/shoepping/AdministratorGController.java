@@ -11,15 +11,15 @@ public class AdministratorGController {
     @FXML
     AnchorPane administratorPane;
     @FXML
-    TextField Id1TA;
+    TextField id1TA;
     @FXML
-    TextField AmountTA;
+    TextField amountTA;
     @FXML
     Button updateButton1;
     @FXML
     Label amountL;
     @FXML
-    TextField IdTA2;
+    TextField idTA2;
     @FXML
     TextField priceTA;
     @FXML
