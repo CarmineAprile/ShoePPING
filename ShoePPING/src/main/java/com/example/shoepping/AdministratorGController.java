@@ -36,7 +36,7 @@ public class AdministratorGController {
     }
 
     public void updatePrice() {
-        System.out.println("Update priceguibsdhig");
+        System.out.println("Update price");
     }
 
     public void manageSales() {
