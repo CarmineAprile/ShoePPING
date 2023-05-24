@@ -18,4 +18,6 @@ public interface IOrder {
     String getStatusOrder();
 
     int isValid();
+
+    String toStringManage();
 }

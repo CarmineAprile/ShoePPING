@@ -21,4 +21,9 @@ public class OrderList implements IOrderList{
 
         return sb.toString();
     }
+
+    @Override
+    public List<Order> getOrderList() {
+        return orders;
+    }
 }

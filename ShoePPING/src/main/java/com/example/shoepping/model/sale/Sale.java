@@ -7,7 +7,6 @@ public class Sale implements ISale{
     private  String price;
     private String condition;
     private String size;
-
     private String seller;
 
     public Sale(String brand, String item, String price, String condition, String size) {

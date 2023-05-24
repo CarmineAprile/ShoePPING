@@ -22,6 +22,25 @@
             </HBox.margin>
             <Image url="@../../../drawable/iconapp.png" />
          </ImageView>
+         <HBox fx:id="logOutButton" onMouseClicked="#onLogOutClick" prefHeight="70.0" prefWidth="100.0" style="-fx-background-color: #F1CDD4;">
+            <HBox.margin>
+               <Insets left="220.0" />
+            </HBox.margin>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="10.0" top="22.0" />
+               </HBox.margin>
+               <Image url="@../../../drawable/exit-icon.png" />
+            </ImageView>
+            <Label text="EXIT" textFill="#554b4d">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" top="25.0" />
+               </HBox.margin>
+            </Label>
+         </HBox>
       </HBox>
    </AnchorPane>
    <VBox layoutY="70.0" prefHeight="445.0" prefWidth="700.0">
@@ -42,7 +61,7 @@
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
-               <TextField fx:id="id1TA" focusTraversable="false" promptText="Id">
+               <TextField fx:id="id1TA" focusTraversable="false" promptText="ID">
                   <HBox.margin>
                      <Insets left="20.0" right="20.0" />
                   </HBox.margin>
@@ -78,7 +97,7 @@
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
-               <TextField fx:id="idTA2" focusTraversable="false" promptText="Id">
+               <TextField fx:id="idTA2" focusTraversable="false" promptText="ID">
                   <HBox.margin>
                      <Insets left="20.0" right="20.0" />
                   </HBox.margin>
@@ -112,7 +131,7 @@
             </Button>
          </VBox>
          <VBox prefHeight="415.0" prefWidth="0.0">
-            <Line endX="-100.00018310546875" endY="395.29290771484375" startX="-100.0" />
+            <Line endX="-100.00018310546875" endY="395.29290771484375" startX="-100.0" stroke="#554b4d" />
          </VBox>
          <VBox prefWidth="350.0">
             <HBox.margin>

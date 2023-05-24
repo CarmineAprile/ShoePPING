@@ -70,4 +70,9 @@ public class Order implements IOrder{
     public String toString(){
         return "Order:\t\t" + this.getOrder() + "\nDate:\t\t" + this.getDateOrder() + "\nItem:\t\t" + this.getItemOrder() + "\nPrice:\t\t" + this.getPriceOrder() + "$\nCondition:\t" + this.getConditionOrder() + "\nAddress:\t\t" + this.getAddressOrder() + "\nStatus:\t\t" + this.getStatusOrder();
     }
+
+    @Override
+    public String toStringManage(){
+        return "Order: " + this.getOrder() + ", " + this.getDateOrder() + ", " + this.getItemOrder() + ", " + this.getPriceOrder() + ", " + this.getAddressOrder();
+    }
 }

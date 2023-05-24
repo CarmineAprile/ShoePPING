@@ -39,7 +39,6 @@ public class ManageSaleGController implements IManageSaleView {
     public void salva() throws SQLException, IOException, ClassNotFoundException {
         IManageSaleController manageSaleController = new ManageSaleController(this);
         manageSaleController.getSales();
-
     }
 
     @Override

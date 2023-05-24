@@ -234,7 +234,6 @@ public class SimpleQueries {
         }
 
         return shoeSizeList;
-
     }
 
     public static String[] getListPrice(CallableStatement cs, boolean status) throws SQLException {
@@ -411,4 +410,53 @@ public class SimpleQueries {
     }
 
 
+    public static OrderList getManageSalesListAdmin(Connection conn) throws SQLException {
+
+        OrderList orderList = new OrderList();
+        CallableStatement cs;
+
+        cs = conn.prepareCall("{call getManageSale()}");
+
+        boolean status = cs.execute();
+
+        if (status) {
+            ResultSet rs = cs.getResultSet();
+            while (rs.next()) {
+                Order order = new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                orderList.addOrder(order);
+            }
+
+            status = cs.getMoreResults();
+
+            if (status) {
+                rs = cs.getResultSet();
+                while (rs.next()) {
+                    Order order = new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                    orderList.addOrder(order);
+                }
+            }
+        }
+
+        return orderList;
+    }
+
+    public static void confirmOrder(Connection conn, Order order) throws SQLException {
+        CallableStatement cs;
+
+        cs = conn.prepareCall("{call confirmOrder(?)}");
+
+        cs.setInt(1, order.getOrder());
+
+        cs.executeQuery();
+    }
+
+    public static void refuseOrder(Connection conn, Order order) throws SQLException {
+        CallableStatement cs;
+
+        cs = conn.prepareCall("{call refuseOrder(?)}");
+
+        cs.setInt(1, order.getOrder());
+
+        cs.executeQuery();
+    }
 }
