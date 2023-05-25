@@ -36,8 +36,9 @@ public class Shoe implements IShoe{
         // 1. check for ID is int
         // 2. check for amount is empty
         // 3. check for amount is int
-        // 4. check for pice is empty
+        // 4. check for price is empty
         // 5. check for price is numeric
+
         if(getID().isEmpty()){
             return 0;
         }else if(isNotAnInt(getID())){
@@ -53,8 +54,6 @@ public class Shoe implements IShoe{
         }else return -1;
     }
 
-
-
     private boolean isNotAnInt(String value){
         try{
             Integer.parseInt(value);
@@ -63,5 +62,4 @@ public class Shoe implements IShoe{
             return true;
         }
     }
-
 }

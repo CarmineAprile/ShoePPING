@@ -1,5 +1,7 @@
 package com.example.shoepping;
 
+import com.example.shoepping.use_case.administrator.controller.AdministratorController;
+import com.example.shoepping.use_case.administrator.controller.IAdministratorController;
 import com.example.shoepping.use_case.administrator.view.IAdministratorView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,8 @@ import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
+import static jdk.internal.org.jline.utils.Log.error;
 
 public class AdministratorGController implements IAdministratorView {
     @FXML
@@ -46,11 +50,25 @@ public class AdministratorGController implements IAdministratorView {
     }
 
     public void addAmount() {
+        String idAmount = id1TA.getText();
+        String amount = amountTA.getText();
 
+        //Serve a "svuotare" le label di errore
+        amountL.setText("");
+
+        IAdministratorController administratorController = new AdministratorController(this);
+        administratorController.onUpdateAmount(idAmount, amount);
     }
     @Override
-    public void onUpdateAmountError() {
-
+    public void onUpdateAmountError(String message, int errorCode) {
+        // 0. check for ID is empty
+        // 1. check for ID is int
+        // 2. check for amount is empty
+        // 3. check for amount is int
+        switch (errorCode){
+            case 0, 1, 2, 3 -> amountL.setText(message);
+            default -> error();
+        }
     }
     @Override
     public void onUpdateAmountSuccess() {
@@ -58,11 +76,25 @@ public class AdministratorGController implements IAdministratorView {
     }
 
     public void updatePrice() {
-        System.out.println("Update price");
+        String idAmount = idTA2.getText();
+        String price = priceTA.getText();
+
+        //Serve a "svuotare" le label di errore
+        priceL.setText("");
+
+        IAdministratorController administratorController = new AdministratorController(this);
+        administratorController.onUpdatePrice(idAmount, price);
     }
     @Override
-    public void onUpdatePriceError() {
-
+    public void onUpdatePriceError(String message, int errorCode) {
+        // 0. check for ID is empty
+        // 1. check for ID is int
+        // 4. check for price is empty
+        // 5. check for price is numeric
+        switch (errorCode){
+            case 0, 1, 4, 5 -> priceL.setText(message);
+            default -> error();
+        }
     }
     @Override
     public void onUpdatePriceSuccess() {
