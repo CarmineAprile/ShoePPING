@@ -47,32 +47,32 @@ public class ManageSalesAdminGController implements IManageSaleAdminView {
         label.setFont(new Font(format, 12));
         label.setPadding(new Insets(5, 30, 5, 5));
 
-        Button buttonConfirm = new Button("Confirm");
-        buttonConfirm.setFont(new Font(format, 12));
-        buttonConfirm.setPadding(new Insets(5,10,5,10));
-        buttonConfirm.setTextFill(Paint.valueOf("green"));
-        buttonConfirm.setFocusTraversable(false);
+        Button confirmed = new Button("Confirm");
+        confirmed.setFont(new Font(format, 12));
+        confirmed.setPadding(new Insets(5,10,5,10));
+        confirmed.setTextFill(Paint.valueOf("green"));
+        confirmed.setFocusTraversable(false);
 
         Label filler = new Label("    ");
         filler.setPadding(new Insets(5, 30, 5, 0));
 
-        Button buttonRefuse = new Button("Refused");
-        buttonRefuse.setFont(new Font(format, 12));
-        buttonRefuse.setPadding(new Insets(5,10,5,10));
-        buttonRefuse.setTextFill(Paint.valueOf("red"));
-        buttonRefuse.setFocusTraversable(false);
+        Button refused = new Button("Refused");
+        refused.setFont(new Font(format, 12));
+        refused.setPadding(new Insets(5,10,5,10));
+        refused.setTextFill(Paint.valueOf("red"));
+        refused.setFocusTraversable(false);
 
         hBox.getChildren().add(label);
-        hBox.getChildren().add(buttonConfirm);
+        hBox.getChildren().add(confirmed);
         hBox.getChildren().add(filler);
-        hBox.getChildren().add(buttonRefuse);
+        hBox.getChildren().add(refused);
         vBoxSales.getChildren().add(hBox);
 
         IManageSaleAdminController manageSaleAdminController = new ManageSaleAdminController(this);
 
-        buttonConfirm.setOnAction(evt -> {
-            hBox.getChildren().remove(buttonConfirm);
-            hBox.getChildren().remove(buttonRefuse);
+        confirmed.setOnAction(evt -> {
+            hBox.getChildren().remove(confirmed);
+            hBox.getChildren().remove(refused);
             filler.setText("Order confirmed");
 
             try {
@@ -82,9 +82,9 @@ public class ManageSalesAdminGController implements IManageSaleAdminView {
             }
         });
 
-        buttonRefuse.setOnAction(evt -> {
-            hBox.getChildren().remove(buttonConfirm);
-            hBox.getChildren().remove(buttonRefuse);
+        refused.setOnAction(evt -> {
+            hBox.getChildren().remove(confirmed);
+            hBox.getChildren().remove(refused);
             filler.setText("Order refused");
 
             try {
