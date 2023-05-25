@@ -1,5 +1,7 @@
 package com.example.shoepping.model.shoe;
 
+import static com.example.shoepping.ValidationNumeric.isNotAPrice;
+
 public class Shoe implements IShoe{
 
     private final String ID;
@@ -51,29 +53,7 @@ public class Shoe implements IShoe{
         }else return -1;
     }
 
-    private boolean isNotAPrice(String price){
 
-        int l = price.length();
-        int cont = 0;
-        boolean findPoint = false;
-
-        for(int i = 0; i<l; i++){
-
-            if(price.charAt(i) == '.'){
-                findPoint = true;
-                if(cont > 3){
-                    return true;
-                }
-                for(int j = 0; j<(l-i); j++){
-                    if(j>2){
-                        return true;
-                    }
-                }
-            }
-            cont++;
-        }
-        return utilityPrice(l, findPoint);
-    }
 
     private boolean isNotAnInt(String value){
         try{
@@ -84,15 +64,4 @@ public class Shoe implements IShoe{
         }
     }
 
-    private boolean utilityPrice(int l, boolean findPoint){
-        if(l>3 && !findPoint)
-            return true;
-
-        try{
-            Double.parseDouble(price);
-            return false;
-        }catch(Exception e){
-            return true;
-        }
-    }
 }

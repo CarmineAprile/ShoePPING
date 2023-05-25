@@ -1,5 +1,7 @@
 package com.example.shoepping.model.sale;
 
+import static com.example.shoepping.ValidationNumeric.isNotAPrice;
+
 public class Sale implements ISale{
 
     private String brand;
@@ -113,15 +115,6 @@ public class Sale implements ISale{
 
     @Override
     public int isValidRecommendedPrice() {
-        // 0. Check for brand is Empty
-        // 1. Check for item is Empty
-        // 2. Check for price is empty
-        // 3. Check for price is numeric
-        // 4. Check for condition is empty
-        // 5. Check for size is empty
-        // 6. Check for size is integer
-
-
         if(price.isEmpty()) {
             return 0;
         }else if (isNotAPrice(price)) {
@@ -129,42 +122,6 @@ public class Sale implements ISale{
         }else if(condition.equals("Select condition")){
             return 2;
         }else return -1;
-    }
-
-    private boolean isNotAPrice(String price){
-
-        int l = price.length();
-        int cont = 0;
-        boolean findPoint = false;
-
-        for(int i = 0; i<l; i++){
-
-            if(price.charAt(i) == '.'){
-                findPoint = true;
-                if(cont > 3){
-                    return true;
-                }
-                for(int j = 0; j<(l-i); j++){
-                    if(j>2){
-                        return true;
-                    }
-                }
-            }
-            cont++;
-        }
-        return utilityPrice(l, findPoint);
-    }
-
-    private boolean utilityPrice(int l, boolean findPoint){
-        if(l>3 && !findPoint)
-            return true;
-
-        try{
-            Double.parseDouble(price);
-            return false;
-        }catch(Exception e){
-            return true;
-        }
     }
 
     private boolean isASize(String size){
