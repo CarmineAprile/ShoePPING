@@ -4,20 +4,20 @@ import static com.example.shoepping.ValidationNumeric.isNotAPrice;
 
 public class Shoe implements IShoe{
 
-    private final String ID;
+    private final String id;
     private final String amount;
     private final String price;
 
 
-    public Shoe(String ID, String amount, String price) {
-        this.ID = ID;
+    public Shoe(String id, String amount, String price) {
+        this.id = id;
         this.amount = amount;
         this.price = price;
     }
 
     @Override
     public String getID() {
-        return this.ID;
+        return this.id;
     }
 
     @Override

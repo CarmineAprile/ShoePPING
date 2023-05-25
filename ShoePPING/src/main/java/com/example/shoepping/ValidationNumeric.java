@@ -2,6 +2,10 @@ package com.example.shoepping;
 
 public class ValidationNumeric {
 
+    private ValidationNumeric() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static boolean isNotAPrice(String price){
 
         int l = price.length();
