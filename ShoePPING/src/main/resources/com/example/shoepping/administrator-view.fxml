@@ -49,7 +49,7 @@
             <Insets top="30.0" />
          </VBox.margin>
          <VBox prefWidth="350.0">
-            <Label alignment="TOP_CENTER" prefHeight="11.0" prefWidth="351.0" text="Update amount" textFill="#554b4d">
+            <Label alignment="TOP_CENTER" prefHeight="11.0" prefWidth="351.0" text="Add amount" textFill="#554b4d">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -71,7 +71,7 @@
                      <Insets right="20.0" />
                   </HBox.margin>
                </TextField>
-               <Button fx:id="updateButton1" focusTraversable="false" mnemonicParsing="false" onAction="#updateAmount" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="UPDATE" textFill="#554b4d">
+               <Button fx:id="addButton" focusTraversable="false" mnemonicParsing="false" onAction="#addAmount" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="ADD" textFill="#554b4d">
                   <font>
                      <Font name="System Bold" size="12.0" />
                   </font>
@@ -107,7 +107,7 @@
                      <Insets right="20.0" />
                   </HBox.margin>
                </TextField>
-               <Button fx:id="updateButton2" focusTraversable="false" mnemonicParsing="false" onAction="#updatePrice" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="UPDATE" textFill="#554b4d">
+               <Button fx:id="updateButton" focusTraversable="false" mnemonicParsing="false" onAction="#updatePrice" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="UPDATE" textFill="#554b4d">
                   <font>
                      <Font name="System Bold" size="12.0" />
                   </font>

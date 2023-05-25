@@ -23,7 +23,7 @@ public class AdministratorGController implements IAdministratorView {
     @FXML
     TextField amountTA;
     @FXML
-    Button updateButton1;
+    Button addButton;
     @FXML
     Label amountL;
     @FXML
@@ -31,7 +31,7 @@ public class AdministratorGController implements IAdministratorView {
     @FXML
     TextField priceTA;
     @FXML
-    Button updateButton2;
+    Button updateButton;
     @FXML
     Label priceL;
     @FXML
@@ -44,7 +44,7 @@ public class AdministratorGController implements IAdministratorView {
         // fare la select per settare il testo della text area
     }
 
-    public void updateAmount() {
+    public void addAmount() {
 
     }
     @Override
