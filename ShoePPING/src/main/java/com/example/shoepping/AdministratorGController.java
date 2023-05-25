@@ -15,7 +15,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class AdministratorGController implements IAdministratorView {
-    public HBox logOutButton;
+    @FXML
+    HBox logOutButton;
     @FXML
     AnchorPane administratorPane;
     @FXML

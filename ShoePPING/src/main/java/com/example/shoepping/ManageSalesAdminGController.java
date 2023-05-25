@@ -3,6 +3,7 @@ package com.example.shoepping;
 import com.example.shoepping.use_case.manage_sale_admin.IManageSaleAdminController;
 import com.example.shoepping.use_case.manage_sale_admin.IManageSaleAdminView;
 import com.example.shoepping.use_case.manage_sale_admin.ManageSaleAdminController;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -20,10 +21,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ManageSalesAdminGController implements IManageSaleAdminView {
-    public AnchorPane manageSaleAdminCatalogPane;
-    public HBox logOutButton;
-    public ImageView backButton;
-    public VBox vBoxSales;
+    @FXML
+    AnchorPane manageSaleAdminCatalogPane;
+    @FXML
+    HBox logOutButton;
+    @FXML
+    ImageView backButton;
+    @FXML
+    VBox vBoxSales;
     String format = "System Bold";
 
     public void salva() throws SQLException, IOException, ClassNotFoundException {
