@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class LoginGController implements ILoginView {
@@ -89,8 +90,13 @@ public class LoginGController implements ILoginView {
         cw.switchPage(root, loginPane);
     }
 
-    public void onLoginSuccessAdmin() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("administrator-view.fxml")));
+    public void onLoginSuccessAdmin() throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("administrator-view.fxml"));
+        Parent root = loader.load();
+
+        AdministratorGController administratorGController = loader.getController();
+        administratorGController.salva();
+
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, loginPane);
     }

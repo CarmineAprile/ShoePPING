@@ -7,9 +7,12 @@ import com.example.shoepping.model.catalog.Catalog;
 import com.example.shoepping.model.catalog.CatalogItem;
 import com.example.shoepping.model.order.Order;
 import com.example.shoepping.model.order.OrderList;
+import com.example.shoepping.model.report.Report;
+import com.example.shoepping.model.report.ReportList;
 import com.example.shoepping.model.sale.Sale;
 import com.example.shoepping.model.sale_storage.SaleStorage;
 import com.example.shoepping.model.sale_storage.SaleStorageItem;
+import com.example.shoepping.model.shoe.Shoe;
 import com.example.shoepping.model.user.User;
 import com.example.shoepping.pattern.observer.ShoeSizeList;
 import com.example.shoepping.pattern.observer.SizeAmount;
@@ -456,6 +459,53 @@ public class SimpleQueries {
         cs = conn.prepareCall("{call refuseOrder(?)}");
 
         cs.setInt(1, order.getOrder());
+
+        cs.executeQuery();
+    }
+
+    public static ReportList getReport(Connection conn) throws SQLException {
+        ReportList reportList = new ReportList();
+        CallableStatement cs;
+
+        cs = conn.prepareCall("{call getReport()}");
+
+        boolean status = cs.execute();
+
+        if (status) {
+            ResultSet rs = cs.getResultSet();
+            while (rs.next()) {
+                Report report = new Report(rs.getInt(1), rs.getString(2), rs.getDouble(3));
+                reportList.addReportPrice(report);
+            }
+
+            status = cs.getMoreResults();
+
+            if (status) {
+                rs = cs.getResultSet();
+                while (rs.next()) {
+                    Report report = new Report(rs.getInt(1), rs.getInt(2), rs.getInt(3));
+                    reportList.addReportAmount(report);
+                }
+            }
+        }
+
+        return reportList;
+    }
+
+    public static void updateAmount(Connection conn, Shoe shoe) throws SQLException {
+        CallableStatement cs = conn.prepareCall("{call addAmount(?, ?, ?)}");
+        cs.setInt(1, Integer.parseInt(shoe.getID()));
+        cs.setInt(2, Integer.parseInt(shoe.getSize()));
+        cs.setInt(3, Integer.parseInt(shoe.getAmount()));
+
+        cs.executeQuery();
+    }
+
+    public static void updatePrice(Connection conn, Shoe shoe) throws SQLException {
+        CallableStatement cs = conn.prepareCall("{call updatePrice(?, ?)}");
+        cs.setInt(1, Integer.parseInt(shoe.getID()));
+        cs.setDouble(2, Double.parseDouble(shoe.getPrice()));
+
 
         cs.executeQuery();
     }

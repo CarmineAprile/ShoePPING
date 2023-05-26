@@ -103,9 +103,12 @@ public class ManageSalesAdminGController implements IManageSaleAdminView {
         cw.switchPage(root, manageSaleAdminCatalogPane);
     }
 
-    public void goBack() throws IOException {
+    public void goBack() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("administrator-view.fxml"));
         Parent root = loader.load();
+
+        AdministratorGController administratorGController = loader.getController();
+        administratorGController.salva();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, manageSaleAdminCatalogPane);

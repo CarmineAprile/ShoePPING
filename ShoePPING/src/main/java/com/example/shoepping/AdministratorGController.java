@@ -26,11 +26,13 @@ public class AdministratorGController implements IAdministratorView {
     @FXML
     TextField amountTA;
     @FXML
+    TextField sizeTA;
+    @FXML
     Button addButton;
     @FXML
     Label amountL;
     @FXML
-    TextField idTA2;
+    TextField id2TA;
     @FXML
     TextField priceTA;
     @FXML
@@ -43,19 +45,21 @@ public class AdministratorGController implements IAdministratorView {
     TextArea catalogTA;
 
 
-    public void salva(){
-        // fare la select per settare il testo della text area
+    public void salva() throws SQLException, IOException, ClassNotFoundException {
+       IAdministratorController administratorController = new AdministratorController(this);
+       catalogTA.setText(administratorController.getReport());
     }
 
-    public void addAmount() {
+    public void addAmount() throws SQLException, IOException, ClassNotFoundException {
         String idAmount = id1TA.getText();
         String amount = amountTA.getText();
+        String size = sizeTA.getText();
 
         //Serve a "svuotare" le label di errore
         amountL.setText("");
 
         IAdministratorController administratorController = new AdministratorController(this);
-        administratorController.onUpdateAmount(idAmount, amount);
+        administratorController.onUpdateAmount(idAmount, amount, size);
     }
     @Override
     public void onUpdateAmountError(String message, int errorCode) {
@@ -63,17 +67,22 @@ public class AdministratorGController implements IAdministratorView {
         // 1. check for ID is int
         // 2. check for amount is empty
         // 3. check for amount is int
-         if(errorCode == 0 || errorCode == 1 || errorCode == 2 || errorCode == 3){
+        // 4. check for size is empty
+        // 5. check for size is int
+         if(errorCode == 0 || errorCode == 1 || errorCode == 2 || errorCode == 3 || errorCode == 4 || errorCode == 5){
             amountL.setText(message);
         }
     }
     @Override
-    public void onUpdateAmountSuccess() {
-
+    public void onUpdateAmountSuccess() throws SQLException, IOException, ClassNotFoundException {
+        id1TA.setText("");
+        amountTA.setText("");
+        sizeTA.setText("");
+        salva();
     }
 
-    public void updatePrice() {
-        String idAmount = idTA2.getText();
+    public void updatePrice() throws SQLException, IOException, ClassNotFoundException {
+        String idAmount = id2TA.getText();
         String price = priceTA.getText();
 
         //Serve a "svuotare" le label di errore
@@ -86,15 +95,18 @@ public class AdministratorGController implements IAdministratorView {
     public void onUpdatePriceError(String message, int errorCode) {
         // 0. check for ID is empty
         // 1. check for ID is int
-        // 4. check for price is empty
-        // 5. check for price is numeric
-        if(errorCode == 0 || errorCode == 1 || errorCode == 4 || errorCode == 5){
+        // 2. check for price is empty
+        // 3. check for price is numeric
+
+        if(errorCode == 0 || errorCode == 1 || errorCode == 2 || errorCode == 3){
             priceL.setText(message);
         }
     }
     @Override
-    public void onUpdatePriceSuccess() {
-
+    public void onUpdatePriceSuccess() throws SQLException, IOException, ClassNotFoundException {
+        id2TA.setText("");
+        priceTA.setText("");
+        salva();
     }
 
     public void manageSales() throws IOException, SQLException, ClassNotFoundException {

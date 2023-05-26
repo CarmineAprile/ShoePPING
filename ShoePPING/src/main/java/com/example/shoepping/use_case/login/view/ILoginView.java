@@ -8,6 +8,6 @@ import java.sql.SQLException;
 public interface ILoginView {
 
     void onLoginSuccessUser() throws IOException, SQLException, ClassNotFoundException, CsvValidationException;
-    void onLoginSuccessAdmin() throws IOException;
+    void onLoginSuccessAdmin() throws IOException, SQLException, ClassNotFoundException;
     void onLoginError(String message, int codeError);
 }

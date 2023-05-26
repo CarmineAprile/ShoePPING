@@ -4,5 +4,9 @@ public interface IShoe {
     String getID();
     String getAmount();
     String getPrice();
-    int isValid();
+
+    String getSize();
+
+    int isValidAmount();
+    int isValidPrice();
 }

@@ -57,34 +57,43 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <HBox prefHeight="3.0" prefWidth="350.0">
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-               <TextField fx:id="id1TA" focusTraversable="false" promptText="ID">
-                  <HBox.margin>
-                     <Insets left="20.0" right="20.0" />
-                  </HBox.margin>
-               </TextField>
-               <TextField fx:id="amountTA" focusTraversable="false" promptText="Amount">
-                  <HBox.margin>
-                     <Insets right="20.0" />
-                  </HBox.margin>
-               </TextField>
-               <Button fx:id="addButton" focusTraversable="false" mnemonicParsing="false" onAction="#addAmount" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="ADD" textFill="#554b4d">
+            <VBox prefHeight="37.0" prefWidth="347.0">
+               <HBox prefHeight="3.0" prefWidth="350.0">
+                  <VBox.margin>
+                     <Insets top="30.0"/>
+                  </VBox.margin>
+                  <TextField fx:id="id1TA" focusTraversable="false" promptText="ID">
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0"/>
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="amountTA" focusTraversable="false" promptText="Amount">
+                     <HBox.margin>
+                        <Insets right="20.0"/>
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="sizeTA" focusTraversable="false" promptText="Size">
+                     <HBox.margin>
+                        <Insets right="20.0"/>
+                     </HBox.margin>
+                  </TextField>
+               </HBox>
+               <Label fx:id="amountL" prefHeight="17.0" prefWidth="357.0" textFill="RED">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" top="5.0"/>
+                  </VBox.margin>
+               </Label>
+               <Button fx:id="addButton" focusTraversable="false" mnemonicParsing="false" onAction="#addAmount"
+                       prefHeight="25.0" prefWidth="373.0"
+                       style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="ADD" textFill="#554b4d">
                   <font>
-                     <Font name="System Bold" size="12.0" />
+                     <Font name="System Bold" size="12.0"/>
                   </font>
-                  <HBox.margin>
-                     <Insets right="20.0" />
-                  </HBox.margin>
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" top="5.0"/>
+                  </VBox.margin>
                </Button>
-            </HBox>
-            <Label fx:id="amountL" prefHeight="17.0" prefWidth="357.0" textFill="RED">
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" top="5.0" />
-               </VBox.margin>
-            </Label>
+            </VBox>
             <Label alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="11.0" prefWidth="351.0" text="Update price" textFill="#554b4d">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -97,7 +106,7 @@
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
-               <TextField fx:id="idTA2" focusTraversable="false" promptText="ID">
+               <TextField fx:id="id2TA" focusTraversable="false" promptText="ID">
                   <HBox.margin>
                      <Insets left="20.0" right="20.0" />
                   </HBox.margin>
