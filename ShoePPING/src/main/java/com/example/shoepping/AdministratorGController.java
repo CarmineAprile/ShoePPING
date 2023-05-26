@@ -16,8 +16,6 @@ import javafx.scene.layout.HBox;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static jdk.internal.org.jline.utils.Log.error;
-
 public class AdministratorGController implements IAdministratorView {
     @FXML
     HBox logOutButton;
@@ -65,9 +63,8 @@ public class AdministratorGController implements IAdministratorView {
         // 1. check for ID is int
         // 2. check for amount is empty
         // 3. check for amount is int
-        switch (errorCode){
-            case 0, 1, 2, 3 -> amountL.setText(message);
-            default -> error();
+         if(errorCode == 0 || errorCode == 1 || errorCode == 2 || errorCode == 3){
+            amountL.setText(message);
         }
     }
     @Override
@@ -91,9 +88,8 @@ public class AdministratorGController implements IAdministratorView {
         // 1. check for ID is int
         // 4. check for price is empty
         // 5. check for price is numeric
-        switch (errorCode){
-            case 0, 1, 4, 5 -> priceL.setText(message);
-            default -> error();
+        if(errorCode == 0 || errorCode == 1 || errorCode == 4 || errorCode == 5){
+            priceL.setText(message);
         }
     }
     @Override
