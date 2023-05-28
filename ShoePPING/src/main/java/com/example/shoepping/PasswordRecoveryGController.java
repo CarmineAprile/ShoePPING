@@ -40,7 +40,7 @@ public class PasswordRecoveryGController {
 
         // Header Text: null
         alert.setHeaderText(null);
-        alert.setContentText("We have sended an e-mail to reset password.");
+        alert.setContentText("We have sent an e-mail to reset the password.");
 
         alert.showAndWait();
     }

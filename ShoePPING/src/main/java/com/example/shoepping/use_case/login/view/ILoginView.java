@@ -9,5 +9,5 @@ public interface ILoginView {
 
     void onLoginSuccessUser() throws IOException, SQLException, ClassNotFoundException, CsvValidationException;
     void onLoginSuccessAdmin() throws IOException, SQLException, ClassNotFoundException;
-    void onLoginError(String message, int codeError);
+    void onLoginError(String message, int codeError) throws Exception;
 }

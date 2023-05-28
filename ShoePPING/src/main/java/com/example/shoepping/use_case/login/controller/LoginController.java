@@ -6,10 +6,7 @@ import com.example.shoepping.dao.user_dao.UserDao;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.login.view.ILoginView;
 import com.example.shoepping.model.user.User;
-import com.opencsv.exceptions.CsvValidationException;
 
-import java.io.IOException;
-import java.sql.SQLException;
 
 public class LoginController implements ILoginController {
 
@@ -18,7 +15,7 @@ public class LoginController implements ILoginController {
         this.loginView = loginView;
     }
 
-    public void checkTrue(User user, boolean check) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+    public void checkTrue(User user, boolean check) throws Exception {
 
         if (check) {
 
@@ -58,7 +55,7 @@ public class LoginController implements ILoginController {
 
     // aggiungere gestione personalizzata dell'eccezione
     @Override
-    public void onLogin(String username, String pass, boolean check) throws SQLException, ClassNotFoundException, IOException, CsvValidationException {
+    public void onLogin(String username, String pass, boolean check) throws Exception {
 
         User user = new User(username, pass);
         UserDao userDao = new UserDAOJDBC();
