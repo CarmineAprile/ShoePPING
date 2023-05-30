@@ -117,11 +117,11 @@ public class RegistrationGController implements IRegistrationView {
         cw.switchPage(root, registrationPane);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Registration succesfull");
+        alert.setTitle("Registration successful");
 
         // Header Text: null
         alert.setHeaderText(null);
-        alert.setContentText("Registration succesfull");
+        alert.setContentText("Registration successful");
 
         alert.showAndWait();
 

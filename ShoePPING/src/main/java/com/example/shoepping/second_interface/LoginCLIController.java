@@ -80,7 +80,7 @@ public class LoginCLIController implements ILoginView {
         recoveryCLIController.start();
     }
 
-    public void registrationMethod(){
+    public void registrationMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         RegistrationCLIController registrationCLIController = new RegistrationCLIController();
         registrationCLIController.start();
     }
