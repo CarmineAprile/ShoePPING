@@ -37,7 +37,7 @@ public class BuyUserGController{
         String[] lista = buyUserController.onNikeList();
 
         BuyUserNikeGController buyUserNikeGController = loader.getController();
-        buyUserNikeGController.salva(lista);
+        buyUserNikeGController.start(lista);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);
@@ -52,7 +52,7 @@ public class BuyUserGController{
         String[] lista = buyUserController.onAdidasList();
 
         BuyUserAdidasGController buyUserAdidasGController = loader.getController();
-        buyUserAdidasGController.salva(lista);
+        buyUserAdidasGController.start(lista);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);
@@ -67,7 +67,7 @@ public class BuyUserGController{
         String[] lista = buyUserController.onNewBalanceList();
 
         BuyUserNewBalanceGController buyUserNewBalanceGController = loader.getController();
-        buyUserNewBalanceGController.salva(lista);
+        buyUserNewBalanceGController.start(lista);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);
@@ -78,7 +78,7 @@ public class BuyUserGController{
         Parent root = loader.load();
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva();
+        profileGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);
@@ -97,7 +97,7 @@ public class BuyUserGController{
         Parent root = loader.load();
 
         BuyCatalogGController buyCatalogGController = loader.getController();
-        buyCatalogGController.salva();
+        buyCatalogGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserPane);

@@ -115,7 +115,7 @@ public class LoginGController implements ILoginView {
     public void onLoginError(MessageBean message, CodeBean codeError) {
         // codeError = 0, manca username
         // codeError = 1, manca password
-        // codeError = 2, password lenght <=6
+        // codeError = 2, password length <=6
         // codeError = 3, login failed
         // codeError = 10, username greater than 20
         // codeError = 20, password greater than 20
@@ -137,7 +137,7 @@ public class LoginGController implements ILoginView {
 
     }
 
-    public void maxLenghtUser() {
+    public void maxLengthUser() {
 
         final int maxLengthUser = 20;
 
@@ -148,7 +148,7 @@ public class LoginGController implements ILoginView {
         }
     }
 
-    public void maxLenghtPass() {
+    public void maxLengthPass() {
 
         final int maxLengthPass = 20;
 

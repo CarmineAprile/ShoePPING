@@ -60,7 +60,7 @@ public class BuyUserNikeGController {
     Label nikePriceL6;
 
 
-    public void salva(String[] lista){
+    public void start(String[] lista){
         setNikePrice(lista);
     }
     public void onBuyClick() throws IOException {
@@ -82,7 +82,7 @@ public class BuyUserNikeGController {
         Parent root = loader.load();
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva();
+        profileGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNikePane);

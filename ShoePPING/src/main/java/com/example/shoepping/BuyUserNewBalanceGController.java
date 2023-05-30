@@ -55,7 +55,7 @@ public class BuyUserNewBalanceGController {
     Label newBalancepriceL5;
 
 
-    public void salva(String[] lista){
+    public void start(String[] lista){
         setNewBalancePrice(lista);
     }
     public void onBuyClick() throws IOException {
@@ -77,7 +77,7 @@ public class BuyUserNewBalanceGController {
         Parent root = loader.load();
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva();
+        profileGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);

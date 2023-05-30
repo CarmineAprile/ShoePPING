@@ -4,8 +4,8 @@ import java.io.IOException;
 
 public interface ISellUserShoeView {
     void onInsertSaleError(String message, int code);
-    void onIsertSaleSuccess() throws IOException;
+    void onInsertSaleSuccess() throws IOException;
 
-    void onReccomendedPriceCalculateError(String message);
-    void onReccomendedPriceCalculateSuccess(String price, String condition);
+    void onRecommendedPriceCalculateError(String message);
+    void onRecommendedPriceCalculateSuccess(String price, String condition);
 }

@@ -42,7 +42,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
     @FXML
     MenuItem averagelyUsed;
     @FXML
-    Button reccomendedPriceButton;
+    Button recommendedPriceButton;
     @FXML
     Label priceL;
     @FXML
@@ -107,7 +107,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
     }
 
     @Override
-    public void onIsertSaleSuccess() throws IOException {
+    public void onInsertSaleSuccess() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-view.fxml"));
         Parent root = loader.load();
 
@@ -115,16 +115,16 @@ public class SellUserShoeGController implements ISellUserShoeView {
         cw.switchPage(root, sellUserShoePane);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Item insered successfully");
+        alert.setTitle("Item inserted successfully");
 
         // Header Text: null
         alert.setHeaderText(null);
-        alert.setContentText("Item insered successfully!");
+        alert.setContentText("Item inserted successfully!");
         alert.showAndWait();
     }
 
 
-    public void applyReccomendedPrice(){
+    public void applyRecommendedPrice(){
         String price = priceTA.getText();
         String condition = conditionMenu.getText();
 
@@ -134,23 +134,23 @@ public class SellUserShoeGController implements ISellUserShoeView {
         sellUserShoeController.onReccomendedPriceCalculate(price, condition);
     }
     @Override
-    public void onReccomendedPriceCalculateError(String message) {
+    public void onRecommendedPriceCalculateError(String message) {
         priceL.setText(message);
     }
     @Override
-    public void onReccomendedPriceCalculateSuccess(String price, String condition) {
+    public void onRecommendedPriceCalculateSuccess(String price, String condition) {
         Adapter adapter = new Adapter();
-        String reccomendedPrice = String.valueOf(adapter.calculatePrice(price, condition));
-        priceTA.setText(reccomendedPrice);
+        String recommendedPrice = String.valueOf(adapter.calculatePrice(price, condition));
+        priceTA.setText(recommendedPrice);
     }
 
     public void onPriceInfo() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Info about reccomended price");
+        alert.setTitle("Info about recommended price");
 
         // Header Text: null
         alert.setHeaderText(null);
-        alert.setContentText("How to use reccomended price:\n\t1) Insert the retail price.\n\t2) Select condition\n\t3) Push the button\n\t4) The reccomended price will be calculated depending on\n\tthe condition of the shoe\n\nOr insert the price you want!");
+        alert.setContentText("How to use recommended price:\n\t1) Insert the retail price.\n\t2) Select condition\n\t3) Push the button\n\t4) The recommended price will be calculated depending on\n\tthe condition of the shoe\n\nOr insert the price you want!");
 
         alert.showAndWait();
     }
@@ -179,7 +179,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
         Parent root = loader.load();
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva();
+        profileGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, sellUserShoePane);
@@ -197,7 +197,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
         conditionMenu.setText("Averagely used");
     }
 
-    public void maxLenghtBrand() {
+    public void maxLengthBrand() {
         final int maxLengthBrand = 20;
 
         if (brandTA.getText().length() > maxLengthBrand) {
@@ -207,7 +207,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
         }
     }
 
-    public void maxLenghtItem() {
+    public void maxLengthItem() {
         final int maxLengthItem = 40;
 
         if (itemTA.getText().length() > maxLengthItem) {
@@ -217,7 +217,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
         }
     }
 
-    public void maxLenghtPrice() {
+    public void maxLengthPrice() {
         final int maxLengthPrice = 6;
 
         if (priceTA.getText().length() > maxLengthPrice) {
@@ -227,7 +227,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
         }
     }
 
-    public void maxLenghtSize() {
+    public void maxLengthSize() {
         final int maxLengthSize = 2;
 
         if (sizeTA.getText().length() > maxLengthSize) {

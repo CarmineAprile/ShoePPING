@@ -74,7 +74,7 @@ public class BuyCatalogGController implements IBuyCatalogView {
     VBox vBoxCatalog;
 
 
-    public void salva() throws SQLException, IOException, ClassNotFoundException {
+    public void start() throws SQLException, IOException, ClassNotFoundException {
         IBuyCatalogController buyUserUsedShoeController = new BuyCatalogController(this);
         buyUserUsedShoeController.getCatalog();
     }
@@ -147,7 +147,7 @@ public class BuyCatalogGController implements IBuyCatalogView {
         Parent root = loader.load();
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva();
+        profileGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyCatalogPane);
@@ -201,7 +201,7 @@ public class BuyCatalogGController implements IBuyCatalogView {
         conditionMenu.setText("Select condition");
         priceFilter.clear();
         vBoxCatalog.getChildren().clear();
-        salva();
+        start();
     }
 
     public void menuConditionAsNew() {

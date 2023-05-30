@@ -16,13 +16,13 @@
         <Image url="@../../../drawable/loginbackground.png" />
     </ImageView>
     <VBox alignment="TOP_CENTER" layoutX="221.0" layoutY="57.0" prefHeight="317.0" prefWidth="271.0" spacing="5.0">
-        <TextField fx:id="registrationUsername" focusTraversable="false" onKeyTyped="#maxLenghtUser" prefHeight="35.0" prefWidth="88.0" promptText="Username" />
+        <TextField fx:id="registrationUsername" focusTraversable="false" onKeyTyped="#maxLengthUser" prefHeight="35.0" prefWidth="88.0" promptText="Username" />
         <Label fx:id="usernameLabel" prefHeight="17.0" prefWidth="270.0" textFill="RED" />
-        <TextField fx:id="registrationPassword" focusTraversable="false" onKeyTyped="#maxLenghtPass" prefHeight="35.0" prefWidth="263.0" promptText="Password" />
+        <TextField fx:id="registrationPassword" focusTraversable="false" onKeyTyped="#maxLengthPass" prefHeight="35.0" prefWidth="263.0" promptText="Password" />
         <Label fx:id="passwordLabel" prefHeight="17.0" prefWidth="270.0" textFill="RED" />
-      <TextField fx:id="registrationRepassword" focusTraversable="false" onKeyTyped="#maxLenghtRepass" prefHeight="35.0" prefWidth="88.0" promptText="Confirm Password" />
+      <TextField fx:id="registrationRepassword" focusTraversable="false" onKeyTyped="#maxLengthRepass" prefHeight="35.0" prefWidth="88.0" promptText="Confirm Password" />
       <Label fx:id="retypeLabel" prefHeight="17.0" prefWidth="382.0" textFill="RED" />
-      <TextField fx:id="registrationEmail" focusTraversable="false" onKeyTyped="#maxLenghtEmail" prefHeight="35.0" prefWidth="88.0" promptText="Email" />
+      <TextField fx:id="registrationEmail" focusTraversable="false" onKeyTyped="#maxLengthEmail" prefHeight="35.0" prefWidth="88.0" promptText="Email" />
       <Label fx:id="emailLabel" prefHeight="17.0" prefWidth="382.0" textFill="RED" />
         <VBox alignment="TOP_CENTER" prefHeight="42.0" prefWidth="271.0" spacing="15.0">
          <Button fx:id="signupButton" mnemonicParsing="false" onAction="#registration" prefHeight="25.0" prefWidth="271.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="SIGN UP" textAlignment="CENTER" textFill="#554b4d">

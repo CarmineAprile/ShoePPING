@@ -1,7 +1,10 @@
 package com.example.shoepping;
 
-import com.example.shoepping.use_case.profile.IProfileController;
-import com.example.shoepping.use_case.profile.ProfileController;
+import com.example.shoepping.bean.EmailBean;
+import com.example.shoepping.bean.UsernameBean;
+import com.example.shoepping.use_case.profile.controller.IProfileController;
+import com.example.shoepping.use_case.profile.controller.ProfileController;
+import com.example.shoepping.use_case.profile.view.IProfileView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +18,7 @@ import javafx.scene.layout.HBox;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class ProfileGController {
+public class ProfileGController implements IProfileView {
     @FXML
     HBox myShipments;
     @FXML
@@ -37,11 +40,9 @@ public class ProfileGController {
     @FXML
     HBox exitButton;
 
-    public void salva(){
-        IProfileController profileController = new ProfileController();
-        String[] valueLabels = profileController.setLabels();
-        usernameLabel.setText(valueLabels[0]);
-        emailLabel.setText(valueLabels[1]);
+    public void start(){
+        IProfileController profileController = new ProfileController(this);
+        profileController.setLabels();
     }
 
     public void goBack() throws IOException {
@@ -128,4 +129,9 @@ public class ProfileGController {
     }
 
 
+    @Override
+    public void setLabels(UsernameBean usernameBean, EmailBean emailBean) {
+        usernameLabel.setText(usernameBean.getUsername());
+        emailLabel.setText(emailBean.getEmail());
+    }
 }

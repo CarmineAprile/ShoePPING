@@ -71,7 +71,7 @@
          <VBox.margin>
             <Insets top="30.0" />
          </VBox.margin>
-         <TextField fx:id="brandTA" focusTraversable="false" onKeyTyped="#maxLenghtBrand" promptText="Insert brand">
+         <TextField fx:id="brandTA" focusTraversable="false" onKeyTyped="#maxLengthBrand" promptText="Insert brand">
             <HBox.margin>
                <Insets left="20.0" />
             </HBox.margin>
@@ -91,7 +91,7 @@
          <VBox.margin>
             <Insets top="5.0" />
          </VBox.margin>
-         <TextField fx:id="itemTA" focusTraversable="false" onKeyTyped="#maxLenghtItem" promptText="Insert item">
+         <TextField fx:id="itemTA" focusTraversable="false" onKeyTyped="#maxLengthItem" promptText="Insert item">
             <HBox.margin>
                <Insets left="20.0" />
             </HBox.margin>
@@ -111,7 +111,7 @@
          <VBox.margin>
             <Insets top="5.0" />
          </VBox.margin>
-         <TextField fx:id="priceTA" focusTraversable="false" onKeyTyped="#maxLenghtPrice" promptText="Insert retail price">
+         <TextField fx:id="priceTA" focusTraversable="false" onKeyTyped="#maxLengthPrice" promptText="Insert retail price">
             <HBox.margin>
                <Insets left="20.0" right="20.0" />
             </HBox.margin>
@@ -126,7 +126,7 @@
                <Insets />
             </HBox.margin>
          </MenuButton>
-         <Button fx:id="reccomendedPriceButton" focusTraversable="false" mnemonicParsing="false" onAction="#applyReccomendedPrice" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="RECCOMENDED PRICE" textFill="#554b4d">
+         <Button fx:id="recommendedPriceButton" focusTraversable="false" mnemonicParsing="false" onAction="#applyRecommendedPrice" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="RECCOMENDED PRICE" textFill="#554b4d">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
@@ -151,7 +151,7 @@
          <VBox.margin>
             <Insets top="5.0" />
          </VBox.margin>
-         <TextField fx:id="sizeTA" focusTraversable="false" onKeyTyped="#maxLenghtSize" promptText="Insert size">
+         <TextField fx:id="sizeTA" focusTraversable="false" onKeyTyped="#maxLengthSize" promptText="Insert size">
             <HBox.margin>
                <Insets left="20.0" />
             </HBox.margin>

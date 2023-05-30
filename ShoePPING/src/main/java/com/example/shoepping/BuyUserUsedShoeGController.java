@@ -84,7 +84,7 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         Parent root = loader.load();
 
         BuyCatalogGController buyCatalogGController = loader.getController();
-        buyCatalogGController.salva();
+        buyCatalogGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserUsedShoePane);
@@ -167,7 +167,7 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         Parent root = loader.load();
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva();
+        profileGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserUsedShoePane);

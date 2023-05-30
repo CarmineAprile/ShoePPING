@@ -93,7 +93,7 @@ public class LoginCLIController implements ILoginView {
     }
 
     @Override
-    public void onLoginSuccessUser() {
+    public void onLoginSuccessUser() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         BuyUserCLIController buyUserCLIController = new BuyUserCLIController();
         buyUserCLIController.start();
     }

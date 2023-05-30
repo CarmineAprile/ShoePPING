@@ -1,18 +1,37 @@
-package com.example.shoepping.use_case.profile;
+package com.example.shoepping.use_case.profile.controller;
 
+import com.example.shoepping.bean.EmailBean;
+import com.example.shoepping.bean.UsernameBean;
 import com.example.shoepping.dao.order_dao.OrderDaoJDBC;
 import com.example.shoepping.dao.sales_dao.SalesDaoJDBC;
 import com.example.shoepping.pattern.singleton.UserSingleton;
+import com.example.shoepping.use_case.profile.view.IProfileView;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class ProfileController implements IProfileController{
 
+    IProfileView profileView;
+
+    public ProfileController (IProfileView profileView){
+        this.profileView = profileView;
+    }
+
+    public ProfileController (){
+        //empty;
+    }
+
     @Override
-    public String[] setLabels(){
+    public void setLabels(){
         UserSingleton userSingleton = UserSingleton.getInstance();
-        return new String[]{userSingleton.getUser().getUsername(), userSingleton.getUser().getEmail()};
+        UsernameBean usernameBean = new UsernameBean();
+        EmailBean emailBean = new EmailBean();
+        usernameBean.setUsername(userSingleton.getUser().getUsername());
+        emailBean.setEmail(userSingleton.getUser().getEmail());
+
+        profileView.setLabels(usernameBean, emailBean);
+
     }
 
     @Override

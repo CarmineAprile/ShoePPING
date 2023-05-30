@@ -53,7 +53,7 @@ public class SellUserShoeController implements ISellUserShoeController{
                 SalesDaoJDBC salesDaoJDBC = new SalesDaoJDBC();
                 salesDaoJDBC.insertSale(sale, userSingleton.getUser().getUsername());
                 // aggiungere la funzione del dao per inserire la sale
-                sellUserShoeView.onIsertSaleSuccess();
+                sellUserShoeView.onInsertSaleSuccess();
             }
         }
     }
@@ -64,10 +64,10 @@ public class SellUserShoeController implements ISellUserShoeController{
         int isValid = sale.isValidRecommendedPrice();
 
         switch (isValid){
-            case 0 -> sellUserShoeView.onReccomendedPriceCalculateError("Please insert a price");
-            case 1 -> sellUserShoeView.onReccomendedPriceCalculateError("Please insert a valid price format");
-            case 2 -> sellUserShoeView.onReccomendedPriceCalculateError("Please select a condition");
-            default -> sellUserShoeView.onReccomendedPriceCalculateSuccess(sale.getPrice(), sale.getCondition());
+            case 0 -> sellUserShoeView.onRecommendedPriceCalculateError("Please insert a price");
+            case 1 -> sellUserShoeView.onRecommendedPriceCalculateError("Please insert a valid price format");
+            case 2 -> sellUserShoeView.onRecommendedPriceCalculateError("Please select a condition");
+            default -> sellUserShoeView.onRecommendedPriceCalculateSuccess(sale.getPrice(), sale.getCondition());
         }
     }
 

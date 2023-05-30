@@ -83,7 +83,7 @@ public class RegistrationGController implements IRegistrationView {
         registrationPresenter.onRegistration(usernameBean,passwordBean,repasswordBean,emailBean, checkedBean);
     }
 
-    public void maxLenghtUser() {
+    public void maxLengthUser() {
         final int maxLengthUser = 20;
 
         if (registrationUsername.getText().length() > maxLengthUser) {
@@ -93,7 +93,7 @@ public class RegistrationGController implements IRegistrationView {
         }
     }
 
-    public void maxLenghtPass() {
+    public void maxLengthPass() {
         final int maxLengthPass = 20;
 
         if (registrationPassword.getText().length() > maxLengthPass) {
@@ -103,7 +103,7 @@ public class RegistrationGController implements IRegistrationView {
         }
     }
 
-    public void maxLenghtRepass() {
+    public void maxLengthRepass() {
         final int maxLengthRepass = 20;
 
         if (registrationRepassword.getText().length() > maxLengthRepass) {
@@ -113,7 +113,7 @@ public class RegistrationGController implements IRegistrationView {
         }
     }
 
-    public void maxLenghtEmail() {
+    public void maxLengthEmail() {
         final int maxLengthEmail = 40;
 
         if (registrationEmail.getText().length() > maxLengthEmail) {
@@ -151,9 +151,9 @@ public class RegistrationGController implements IRegistrationView {
             // 1. Check for Password Empty
             // 2. Check for Password > 6
             // 3. Check for Repassword Empty
-            // 4. Check for corrispondence of Password and Repassword
+            // 4. Check for correspondence of Password and Repassword
             // 5. Check for Email Empty
-            // 6. Check for Email sintax
+            // 6. Check for Email syntax
             // codeError = 10, username greater than 20
             // codeError = 20, password greater than 20
             // codeError = 30, email greater than 40

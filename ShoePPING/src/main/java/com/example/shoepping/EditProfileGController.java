@@ -48,7 +48,7 @@ public class EditProfileGController implements IEditProfileView {
         Parent root = loader.load();
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva();
+        profileGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, editProfilePane);
@@ -95,7 +95,7 @@ public class EditProfileGController implements IEditProfileView {
 
 
         ProfileGController profileGController = loader.getController();
-        profileGController.salva();
+        profileGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, editProfilePane);
