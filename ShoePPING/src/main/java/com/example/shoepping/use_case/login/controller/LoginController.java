@@ -81,30 +81,26 @@ public class LoginController implements ILoginController {
         if (isAdmin && !check.getChecked())
             loginView.onLoginSuccessAdmin();
         else {
+            if(username.getIsValid() == 0){
+                utilityOnLogin("Please enter an Username", 0);
+            } else if(username.getIsValid() == 10){
+                utilityOnLogin("Please enter a Username lower than 20 characters", 10);
+            } else if(pass.getIsValid() == 1){
+                utilityOnLogin("Please enter a Password", 1);
+            } else if(pass.getIsValid() == 2){
+                utilityOnLogin("Please enter a Password greater than 6 characters", 2);
+            }  else if(pass.getIsValid() == 20){
+                utilityOnLogin("Please enter a Password lower than 20 characters", 20);
+            }else checkTrue(user, check.getChecked());
+            }
+        }
+
+        private void utilityOnLogin(String message, int errorCode) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
             MessageBean messageBean = new MessageBean();
             CodeBean codeBean = new CodeBean();
 
-            if(username.getIsValid() == 0){
-                messageBean.setMessage("Please enter an Username");
-                codeBean.setCode(0);
-                loginView.onLoginError(messageBean, codeBean);
-            } else if(username.getIsValid() == 10){
-                messageBean.setMessage("Please enter a Username lower than 20 characters");
-                codeBean.setCode(10);
-                loginView.onLoginError(messageBean, codeBean);
-            } else if(pass.getIsValid() == 1){
-                messageBean.setMessage("Please enter a Password");
-                codeBean.setCode(1);
-                loginView.onLoginError(messageBean, codeBean);
-            } else if(pass.getIsValid() == 2){
-                messageBean.setMessage("Please enter a Password greater than 6 characters");
-                codeBean.setCode(2);
-                loginView.onLoginError(messageBean, codeBean);
-            }  else if(pass.getIsValid() == 20){
-                messageBean.setMessage("Please enter a Password lower than 20 characters");
-                codeBean.setCode(20);
-                loginView.onLoginError(messageBean, codeBean);
-            }else checkTrue(user, check.getChecked());
-            }
+            messageBean.setMessage(message);
+            codeBean.setCode(errorCode);
+            loginView.onLoginError(messageBean, codeBean);
         }
 }
