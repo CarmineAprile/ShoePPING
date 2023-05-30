@@ -48,10 +48,10 @@ public class RecoveryCLIController {
     public void recoverMethod() throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Username: ");
-        reader.readLine();
+        String filler1 = reader.readLine();
         System.out.print("Email: ");
-        reader.readLine();
-        System.out.println("We have sent an email to reset the password");
+        String filler2 = reader.readLine();
+        System.out.println("We have sent an email to " + filler1 + " to reset the password of the user " + filler2);
         LoginCLIController loginCLIController = new LoginCLIController();
         loginCLIController.start();
     }
