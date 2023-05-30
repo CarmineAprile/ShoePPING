@@ -4,6 +4,7 @@ public class CodeBean {
     private int code;
 
     public CodeBean() {
+        // empty constructor
     }
 
     public int getCode() {

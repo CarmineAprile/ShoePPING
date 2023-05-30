@@ -5,6 +5,7 @@ public class UsernameBean {
     private int isValid;
 
     public UsernameBean() {
+        // empty constructor
     }
 
     public String getUsername() {

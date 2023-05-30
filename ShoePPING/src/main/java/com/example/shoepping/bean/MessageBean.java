@@ -4,6 +4,7 @@ public class MessageBean {
     private String message;
 
     public MessageBean() {
+        // empty constructor
     }
 
     public String getMessage() {

@@ -4,6 +4,7 @@ public class CheckedBean {
     boolean isChecked;
 
     public CheckedBean() {
+        // empty constructor
     }
 
     public boolean getChecked() {

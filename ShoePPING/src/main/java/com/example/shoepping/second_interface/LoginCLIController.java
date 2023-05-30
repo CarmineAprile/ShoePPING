@@ -77,8 +77,6 @@ public class LoginCLIController implements ILoginView {
         passwordBean.setPassword(passLogin);
         checkedBean.setChecked(isChecked);
 
-        //check on data length (via bean)
-
         ILoginController loginPresenter = new LoginController(this);
         loginPresenter.onLogin(usernameBean, passwordBean, checkedBean);
 

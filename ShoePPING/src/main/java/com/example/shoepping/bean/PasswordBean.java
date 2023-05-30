@@ -6,6 +6,7 @@ public class PasswordBean {
     private int isValid;
 
     public PasswordBean() {
+        // empty constructor
     }
 
     public String getPassword() {
