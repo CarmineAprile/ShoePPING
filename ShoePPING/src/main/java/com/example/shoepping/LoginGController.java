@@ -1,5 +1,6 @@
 package com.example.shoepping;
 
+import com.example.shoepping.bean.*;
 import com.example.shoepping.use_case.login.controller.ILoginController;
 import com.example.shoepping.use_case.login.controller.LoginController;
 import com.example.shoepping.use_case.login.view.ILoginView;
@@ -59,8 +60,16 @@ public class LoginGController implements ILoginView {
 
         boolean check = checkFS.isSelected();
 
+        UsernameBean usernameBean = new UsernameBean();
+        PasswordBean passwordBean = new PasswordBean();
+        CheckedBean checkedBean = new CheckedBean();
+
+        usernameBean.setUsername(usernameLogin);
+        passwordBean.setPassword(passLogin);
+        checkedBean.setChecked(check);
+
         ILoginController loginPresenter = new LoginController(this);
-        loginPresenter.onLogin(usernameLogin, passLogin, check);
+        loginPresenter.onLogin(usernameBean, passwordBean, checkedBean);
     }
 
     public void googleLogin() {
@@ -103,22 +112,24 @@ public class LoginGController implements ILoginView {
 
 
     @Override
-    public void onLoginError(String message, int codeError) {
+    public void onLoginError(MessageBean message, CodeBean codeError) {
         // codeError = 0, manca username
         // codeError = 1, manca password
         // codeError = 2, password lenght <=6
         // codeError = 3, login failed
+        // codeError = 10, username greater than 20
+        // codeError = 20, password greater than 20
 
-        switch (codeError) {
-            case 0 -> usernameLabel.setText(message);
-            case 1, 2 -> passwordLabel.setText(message);
+        switch (codeError.getCode()) {
+            case 0, 10 -> usernameLabel.setText(message.getMessage());
+            case 1, 2, 20 -> passwordLabel.setText(message.getMessage());
             default ->{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle(message);
+                alert.setTitle(message.getMessage());
 
                 // Header Text: null
                 alert.setHeaderText(null);
-                alert.setContentText(message);
+                alert.setContentText(message.getMessage());
 
                 alert.showAndWait();
             }

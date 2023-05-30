@@ -1,5 +1,6 @@
 package com.example.shoepping.use_case.login.controller;
 
+import com.example.shoepping.bean.*;
 import com.example.shoepping.dao.user_dao.UserDAOCSV;
 import com.example.shoepping.dao.user_dao.UserDAOJDBC;
 import com.example.shoepping.dao.user_dao.UserDao;
@@ -22,6 +23,9 @@ public class LoginController implements ILoginController {
 
     public void checkTrue(User user, boolean check) throws SQLException, ClassNotFoundException, IOException, ManageException, CsvValidationException {
 
+        MessageBean messageBean = new MessageBean();
+        CodeBean codeBean = new CodeBean();
+
         if (check) {
 
             UserDAOCSV userdao = new UserDAOCSV();
@@ -36,7 +40,10 @@ public class LoginController implements ILoginController {
 
                 loginView.onLoginSuccessUser();
             } else {
-                loginView.onLoginError("Login failed! Please try again...", 3);
+                messageBean.setMessage("Login failed! Please try again...");
+                codeBean.setCode(3);
+                loginView.onLoginError(messageBean, codeBean);
+
             }
 
         } else {
@@ -53,31 +60,51 @@ public class LoginController implements ILoginController {
 
                 loginView.onLoginSuccessUser();
             } else {
-                loginView.onLoginError("Login failed! Please try again...", 3);
+                messageBean.setMessage("Login failed! Please try again...");
+                codeBean.setCode(3);
+                loginView.onLoginError(messageBean, codeBean);
             }
         }
     }
 
     // aggiungere gestione personalizzata dell'eccezione
     @Override
-    public void onLogin(String username, String pass, boolean check) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void onLogin(UsernameBean username, PasswordBean pass, CheckedBean check) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
 
-        User user = new User(username, pass);
+        boolean isAdmin = false;
+        User user = new User(username.getUsername(), pass.getPassword());
         UserDao userDao = new UserDAOJDBC();
-        boolean isAdmin = userDao.isAdmin(user);
+        if(username.getIsValid() == -1 && pass.getIsValid() == -1) {
+            isAdmin = userDao.isAdmin(user);
+        }
 
-
-        if (isAdmin && !check)
+        if (isAdmin && !check.getChecked())
             loginView.onLoginSuccessAdmin();
         else {
+            MessageBean messageBean = new MessageBean();
+            CodeBean codeBean = new CodeBean();
 
-            int loginCode = user.isValid();
-            switch (loginCode) {
-                case 0 -> loginView.onLoginError("Please enter an Username", 0);
-                case 1 -> loginView.onLoginError("Please enter a Password", 1);
-                case 2 -> loginView.onLoginError("Please enter a Password greater than 6 characters", 2);
-                default -> checkTrue(user, check);
+            if(username.getIsValid() == 0){
+                messageBean.setMessage("Please enter an Username");
+                codeBean.setCode(0);
+                loginView.onLoginError(messageBean, codeBean);
+            } else if(username.getIsValid() == 10){
+                messageBean.setMessage("Please enter a Username lower than 20 characters");
+                codeBean.setCode(10);
+                loginView.onLoginError(messageBean, codeBean);
+            } else if(pass.getIsValid() == 1){
+                messageBean.setMessage("Please enter a Password");
+                codeBean.setCode(1);
+                loginView.onLoginError(messageBean, codeBean);
+            } else if(pass.getIsValid() == 2){
+                messageBean.setMessage("Please enter a Password greater than 6 characters");
+                codeBean.setCode(2);
+                loginView.onLoginError(messageBean, codeBean);
+            }  else if(pass.getIsValid() == 20){
+                messageBean.setMessage("Please enter a Password lower than 20 characters");
+                codeBean.setCode(20);
+                loginView.onLoginError(messageBean, codeBean);
+            }else checkTrue(user, check.getChecked());
             }
         }
-    }
 }

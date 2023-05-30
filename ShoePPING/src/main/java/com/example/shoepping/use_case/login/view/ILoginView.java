@@ -1,5 +1,7 @@
 package com.example.shoepping.use_case.login.view;
 
+import com.example.shoepping.bean.CodeBean;
+import com.example.shoepping.bean.MessageBean;
 import com.example.shoepping.exception.ManageException;
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -10,5 +12,5 @@ public interface ILoginView {
 
     void onLoginSuccessUser() throws IOException, SQLException, ClassNotFoundException, CsvValidationException;
     void onLoginSuccessAdmin() throws IOException, SQLException, ClassNotFoundException;
-    void onLoginError(String message, int codeError) throws SQLException, ClassNotFoundException, IOException, ManageException, CsvValidationException;
+    void onLoginError(MessageBean message, CodeBean codeError) throws SQLException, ClassNotFoundException, IOException, ManageException, CsvValidationException;
 }
