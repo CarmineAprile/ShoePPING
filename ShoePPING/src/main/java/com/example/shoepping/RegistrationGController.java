@@ -1,5 +1,6 @@
 package com.example.shoepping;
 
+import com.example.shoepping.bean.*;
 import com.example.shoepping.use_case.registration.controller.IRegistrationController;
 import com.example.shoepping.use_case.registration.controller.RegistrationController;
 import com.example.shoepping.use_case.registration.view.IRegistrationView;
@@ -12,6 +13,8 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.util.Objects;
+
+import static jdk.internal.org.jline.utils.Log.error;
 
 public class RegistrationGController implements IRegistrationView {
 
@@ -64,8 +67,20 @@ public class RegistrationGController implements IRegistrationView {
 
         boolean check = checkFS.isSelected();
 
+        UsernameBean usernameBean = new UsernameBean();
+        PasswordBean passwordBean = new PasswordBean();
+        PasswordBean repasswordBean = new PasswordBean();
+        EmailBean emailBean = new EmailBean();
+        CheckedBean checkedBean = new CheckedBean();
+
+        usernameBean.setUsername(user);
+        passwordBean.setPassword(pass);
+        repasswordBean.setPassword(repass);
+        emailBean.setEmail(email);
+        checkedBean.setChecked(check);
+
         IRegistrationController registrationPresenter = new RegistrationController(this);
-        registrationPresenter.onRegistration(user,pass,repass,email, check);
+        registrationPresenter.onRegistration(usernameBean,passwordBean,repasswordBean,emailBean, checkedBean);
     }
 
     public void maxLenghtUser() {
@@ -129,8 +144,8 @@ public class RegistrationGController implements IRegistrationView {
     }
 
     @Override
-    public void onRegistrationError(String message, int codeError) {
-        switch (codeError) {
+    public void onRegistrationError(MessageBean message, CodeBean codeError) {
+        switch (codeError.getCode()) {
 
             // 0. Check for Username Empty
             // 1. Check for Password Empty
@@ -139,29 +154,33 @@ public class RegistrationGController implements IRegistrationView {
             // 4. Check for corrispondence of Password and Repassword
             // 5. Check for Email Empty
             // 6. Check for Email sintax
+            // codeError = 10, username greater than 20
+            // codeError = 20, password greater than 20
+            // codeError = 30, email greater than 40
 
-            case 0 ->
-                usernameLabel.setText(message);
 
-            case 1, 2 ->
-                passwordLabel.setText(message);
+            case 0, 10 ->
+                usernameLabel.setText(message.getMessage());
+
+            case 1, 2, 20 ->
+                passwordLabel.setText(message.getMessage());
 
 
             case 3 ->
-                retypeLabel.setText(message);
+                retypeLabel.setText(message.getMessage());
 
             case 4 -> {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle(message);
+                alert.setTitle(message.getMessage());
 
                 // Header Text: null
                 alert.setHeaderText(null);
-                alert.setContentText(message);
+                alert.setContentText(message.getMessage());
 
                 alert.showAndWait();
             }
-            default ->
-                emailLabel.setText(message);
+            case 5, 6, 30 -> emailLabel.setText(message.getMessage());
+            default -> error();
         }
 
     }

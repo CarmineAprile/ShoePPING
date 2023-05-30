@@ -1,5 +1,6 @@
 package com.example.shoepping.second_interface;
 
+import com.example.shoepping.bean.*;
 import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.use_case.registration.controller.IRegistrationController;
 import com.example.shoepping.use_case.registration.controller.RegistrationController;
@@ -70,10 +71,20 @@ public class RegistrationCLIController implements IRegistrationView {
         boolean isChecked;
         isChecked = check.equals("true");
 
-        //check on data length (via bean)
+        UsernameBean usernameBean = new UsernameBean();
+        PasswordBean passwordBean = new PasswordBean();
+        PasswordBean repasswordBean = new PasswordBean();
+        EmailBean emailBean = new EmailBean();
+        CheckedBean checkedBean = new CheckedBean();
+
+        usernameBean.setUsername(usernameReg);
+        passwordBean.setPassword(passReg);
+        repasswordBean.setPassword(repassReg);
+        emailBean.setEmail(emailReg);
+        checkedBean.setChecked(isChecked);
 
         IRegistrationController registrationController = new RegistrationController(this);
-        registrationController.onRegistration(usernameReg, passReg, repassReg, emailReg,isChecked);
+        registrationController.onRegistration(usernameBean, passwordBean, repasswordBean, emailBean, checkedBean);
     }
 
     @Override
@@ -85,8 +96,8 @@ public class RegistrationCLIController implements IRegistrationView {
     }
 
     @Override
-    public void onRegistrationError(String message, int codeError) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
-        System.out.println(message);
+    public void onRegistrationError(MessageBean message, CodeBean codeError) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+        System.out.println(message.getMessage());
         start();
 
     }

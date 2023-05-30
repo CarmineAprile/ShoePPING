@@ -12,6 +12,6 @@ public class CheckedBean {
     }
 
     public void setChecked(boolean checked) {
-        isChecked = checked;
+        this.isChecked = checked;
     }
 }
