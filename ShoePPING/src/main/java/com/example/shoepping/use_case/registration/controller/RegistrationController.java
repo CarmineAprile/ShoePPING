@@ -47,31 +47,35 @@ public class RegistrationController implements IRegistrationController {
         } else if(email.getIsValid() == 30){
             utilityOnRegistration("Please enter an email lower than 40 characters", 30);
         }else{
-                if (check.getChecked()) {
-                    UserDAOCSV userdao = new UserDAOCSV();
-                    boolean countUser = userdao.checkExistence(user);
-
-                    if (!countUser) {
-                        userdao.addUser(user);
-                        registrationView.onRegistrationSuccess();
-                    } else {
-                        utilityOnRegistration("This username is already taken!", 0);
-                    }
-
-                } else {
-                    UserDAOJDBC userdao = new UserDAOJDBC();
-                    boolean countUser = userdao.checkExistence(user);
-
-                    if (!countUser) {
-                        userdao.addUser(user);
-                        registrationView.onRegistrationSuccess();
-                    } else {
-                        utilityOnRegistration("This username is already taken!", 0);
-                    }
-                }
+                onRegistrationCallDao(check.getChecked(), user);
             }
         }
 
+
+        private void onRegistrationCallDao(boolean isChecked, User user ) throws CsvValidationException, IOException, SQLException, ClassNotFoundException, ManageException {
+            if (isChecked) {
+                UserDAOCSV userdao = new UserDAOCSV();
+                boolean countUser = userdao.checkExistence(user);
+
+                if (!countUser) {
+                    userdao.addUser(user);
+                    registrationView.onRegistrationSuccess();
+                } else {
+                    utilityOnRegistration("This username is already taken!", 0);
+                }
+
+            } else {
+                UserDAOJDBC userdao = new UserDAOJDBC();
+                boolean countUser = userdao.checkExistence(user);
+
+                if (!countUser) {
+                    userdao.addUser(user);
+                    registrationView.onRegistrationSuccess();
+                } else {
+                    utilityOnRegistration("This username is already taken!", 0);
+                }
+            }
+        }
     private void utilityOnRegistration(String message, int errorCode) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         MessageBean messageBean = new MessageBean();
         CodeBean codeBean = new CodeBean();
@@ -80,4 +84,5 @@ public class RegistrationController implements IRegistrationController {
         codeBean.setCode(errorCode);
         registrationView.onRegistrationError(messageBean, codeBean);
     }
+
     }
