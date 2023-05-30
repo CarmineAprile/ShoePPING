@@ -48,6 +48,7 @@ public class AdministratorGController implements IAdministratorView {
     public void salva() throws SQLException, IOException, ClassNotFoundException {
        IAdministratorController administratorController = new AdministratorController(this);
        catalogTA.setText(administratorController.getReport());
+       //passaggio tramite bean, no return -> fare metodo nella view che stampa nella TA
     }
 
     public void addAmount() throws SQLException, IOException, ClassNotFoundException {
