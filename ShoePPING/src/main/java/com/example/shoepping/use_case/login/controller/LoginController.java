@@ -3,9 +3,14 @@ package com.example.shoepping.use_case.login.controller;
 import com.example.shoepping.dao.user_dao.UserDAOCSV;
 import com.example.shoepping.dao.user_dao.UserDAOJDBC;
 import com.example.shoepping.dao.user_dao.UserDao;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.login.view.ILoginView;
 import com.example.shoepping.model.user.User;
+import com.opencsv.exceptions.CsvValidationException;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 
 public class LoginController implements ILoginController {
@@ -15,7 +20,7 @@ public class LoginController implements ILoginController {
         this.loginView = loginView;
     }
 
-    public void checkTrue(User user, boolean check) throws Exception {
+    public void checkTrue(User user, boolean check) throws SQLException, ClassNotFoundException, IOException, ManageException, CsvValidationException {
 
         if (check) {
 
@@ -55,7 +60,7 @@ public class LoginController implements ILoginController {
 
     // aggiungere gestione personalizzata dell'eccezione
     @Override
-    public void onLogin(String username, String pass, boolean check) throws Exception {
+    public void onLogin(String username, String pass, boolean check) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
 
         User user = new User(username, pass);
         UserDao userDao = new UserDAOJDBC();

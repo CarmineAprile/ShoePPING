@@ -1,12 +1,19 @@
 package com.example.shoepping.second_interface;
 
+import com.example.shoepping.exception.ManageException;
+import com.opencsv.exceptions.CsvValidationException;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static jdk.internal.org.jline.utils.Log.error;
+
 public class RecoveryCLIController {
-    public void start() throws Exception {
+    public void start() throws SQLException, ClassNotFoundException, IOException, ManageException, CsvValidationException {
 
         System.out.println("************************************");
         System.out.println("*      ShoePPING Recovery Page     *");
@@ -35,17 +42,17 @@ public class RecoveryCLIController {
         switch (ch){
             case 1 -> recoverMethod();
             case 2 -> goBackMethod();
-            default -> throw new RuntimeException("Invalid choice");
+            default -> error();
 
         }
     }
 
-    public void goBackMethod() throws Exception {
+    public void goBackMethod() throws SQLException, ClassNotFoundException, IOException, ManageException, CsvValidationException {
         LoginCLIController loginCLIController = new LoginCLIController();
         loginCLIController.start();
     }
 
-    public void recoverMethod() throws Exception {
+    public void recoverMethod() throws SQLException, ClassNotFoundException, IOException, ManageException, CsvValidationException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Username: ");
         String filler1 = reader.readLine();

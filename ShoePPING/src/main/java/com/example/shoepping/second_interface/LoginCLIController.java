@@ -1,16 +1,22 @@
 package com.example.shoepping.second_interface;
 
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.use_case.login.controller.ILoginController;
 import com.example.shoepping.use_case.login.controller.LoginController;
 import com.example.shoepping.use_case.login.view.ILoginView;
+import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static jdk.internal.org.jline.utils.Log.error;
+
 public class LoginCLIController implements ILoginView {
-    public void start() throws Exception {
+    public void start() throws SQLException, ClassNotFoundException, IOException, ManageException, CsvValidationException {
         System.out.println("*********************************");
         System.out.println("*      ShoePPING Login Page     *");
         System.out.println("*********************************\n");
@@ -44,12 +50,12 @@ public class LoginCLIController implements ILoginView {
             case 3 -> recoveryMethod();
             case 4 -> registrationMethod();
             case 5 -> System.exit(0);
-            default -> throw new RuntimeException("Invalid choice");
+            default -> error();
 
         }
     }
 
-    public void loginMethod() throws Exception {
+    public void loginMethod() throws SQLException, ClassNotFoundException, IOException, ManageException, CsvValidationException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Username: ");
@@ -69,7 +75,7 @@ public class LoginCLIController implements ILoginView {
 
     }
 
-    public void recoveryMethod() throws Exception {
+    public void recoveryMethod() throws SQLException, ClassNotFoundException, IOException, ManageException, CsvValidationException {
         RecoveryCLIController recoveryCLIController = new RecoveryCLIController();
         recoveryCLIController.start();
     }
@@ -92,7 +98,7 @@ public class LoginCLIController implements ILoginView {
     }
 
     @Override
-    public void onLoginError(String message, int codeError) throws Exception {
+    public void onLoginError(String message, int codeError) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
 
         System.out.println(message);
         start();
