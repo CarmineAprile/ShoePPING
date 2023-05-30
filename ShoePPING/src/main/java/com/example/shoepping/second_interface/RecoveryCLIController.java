@@ -22,24 +22,24 @@ public class RecoveryCLIController {
         System.out.println("1) Recover password");
         System.out.println("2) Go back");
 
-        Scanner scanner = new Scanner(System.in);
-        int ch;
+        Scanner scannerRec = new Scanner(System.in);
+        int chRec;
         while (true) {
             System.out.print("Please enter your choice: ");
             try {
-                ch = scanner.nextInt();
-                if (ch >= 1 && ch <= 2) {
+                chRec = scannerRec.nextInt();
+                if (chRec >= 1 && chRec <= 2) {
                     break;
                 }
                 System.out.println("Invalid option");
             } catch (InputMismatchException ex) {
                 System.out.println("Invalid option: please insert an integer");
-                scanner.nextLine();
+                scannerRec.nextLine();
             }
 
         }
 
-        switch (ch){
+        switch (chRec){
             case 1 -> recoverMethod();
             case 2 -> goBackMethod();
             default -> error();
