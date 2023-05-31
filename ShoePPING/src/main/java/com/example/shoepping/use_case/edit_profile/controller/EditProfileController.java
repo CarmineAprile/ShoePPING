@@ -1,5 +1,6 @@
 package com.example.shoepping.use_case.edit_profile.controller;
 
+import com.example.shoepping.bean.*;
 import com.example.shoepping.dao.user_dao.UserDAOCSV;
 import com.example.shoepping.dao.user_dao.UserDAOJDBC;
 import com.example.shoepping.model.user.User;
@@ -13,45 +14,60 @@ import java.sql.SQLException;
 public class EditProfileController implements IEditProfileController{
 
     IEditProfileView editProfileView;
-    User userNew;
+    static User userNew;
 
     public EditProfileController(IEditProfileView editProfileView){
         this.editProfileView = editProfileView;
     }
     @Override
-    public void onEditProfile(String username, String pass, String repass, String email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+    public void onEditProfile(UsernameBean username, PasswordBean pass, PasswordBean repass, EmailBean email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
 
-        User user = new User(username, pass, repass, email);
+        User user = new User(username.getUsername(), pass.getPassword(), email.getEmail());
         UserSingleton userSingleton = UserSingleton.getInstance();
 
         String oldUsername = userSingleton.getUser().getUsername();
         boolean check = userSingleton.isChecked();
 
-        int registrationCode = user.isValid();
-
-        switch (registrationCode) {
-            case 0 -> editProfileView.onEditProfileError("Please enter an Username", 0);
-            case 1 -> editProfileView.onEditProfileError("Please enter a Password", 1);
-            case 2 -> editProfileView.onEditProfileError("Please enter a Password greater than 6 characters", 2);
-            case 3 -> editProfileView.onEditProfileError("Please enter the Re-password", 3);
-            case 4 -> editProfileView.onEditProfileError("Passwords do not match", 4);
-            case 5 -> editProfileView.onEditProfileError("Please enter an email", 5);
-            case 6 -> editProfileView.onEditProfileError("Please enter a valid email", 6);
-            default -> {
-
-                // Aggiustare da qui in poi e eseguire l'update e aggiornare i dati di user e passarlo in output per salvarlo nel GC cambiare i dati nel DB
+        if(username.getIsValid() == 0){
+            utilityOnEdit("Please enter an Username", 0);
+        } else if(username.getIsValid() == 10){
+            utilityOnEdit("Please enter a Username lower than 20 characters", 10);
+        } else if(pass.getIsValid() == 1){
+            utilityOnEdit("Please enter a Password", 1);
+        } else if(pass.getIsValid() == 2){
+            utilityOnEdit("Please enter a Password greater than 6 characters", 2);
+        }  else if(pass.getIsValid() == 20){
+            utilityOnEdit("Please enter a Password lower than 20 characters", 20);
+        } else if(repass.getIsValid() == 3){
+            utilityOnEdit("Please enter the Re-password", 3);
+        } else if(!(pass.getPassword().equals(repass.getPassword()))){
+            utilityOnEdit("Passwords do not match", 4);
+        } else if(email.getIsValid() == 5){
+            utilityOnEdit("Please enter an email", 5);
+        } else if(email.getIsValid() == 6){
+            utilityOnEdit("Please enter a valid email", 6);
+        } else if(email.getIsValid() == 30){
+            utilityOnEdit("Please enter an email lower than 40 characters", 30);
+        } else {
 
                 if (check) {
                     UserDAOCSV userdao = new UserDAOCSV();
                     boolean countUser = userdao.checkExistence(user);
 
                     if (!countUser) {
-                        editProfileView.onEditProfileSuccess(true);
+                        CheckedBean checkedBean = new CheckedBean();
+                        checkedBean.setChecked(true);
+                        editProfileView.onEditProfileSuccess(checkedBean);
                     } else {
-                        editProfileView.onEditProfileError("This username is already taken!", 0);
+                        MessageBean messageBean = new MessageBean();
+                        CodeBean codeBean = new CodeBean();
+                        messageBean.setMessage("This username is already taken!");
+                        codeBean.setCode(0);
+                        editProfileView.onEditProfileError(messageBean, codeBean);
                     }
 
                 } else {
+
                     UserDAOJDBC userdao = new UserDAOJDBC();
                     boolean countUser = userdao.checkExistence(user);
 
@@ -60,25 +76,42 @@ public class EditProfileController implements IEditProfileController{
                     }
 
                     if (!countUser) {
-                        user.setUsername(username);
-                        user.setPassword(pass);
-                        user.setEmail(email);
+                        user.setUsername(username.getUsername());
+                        user.setPassword(pass.getPassword());
+                        user.setEmail(email.getEmail());
 
                         userdao.updateUser(user, oldUsername);
 
                         userNew = user;
-                        editProfileView.onEditProfileSuccess(false);
+
+                        CheckedBean checkedBean = new CheckedBean();
+                        checkedBean.setChecked(false);
+                        editProfileView.onEditProfileSuccess(checkedBean);
                     } else {
-                        editProfileView.onEditProfileError("This username is already taken!", 0);
+                        MessageBean messageBean = new MessageBean();
+                        CodeBean codeBean = new CodeBean();
+                        messageBean.setMessage("This username is already taken!");
+                        codeBean.setCode(0);
+                        editProfileView.onEditProfileError(messageBean, codeBean);
                     }
                 }
-            }
         }
     }
 
+
     @Override
     public void setNewUser() {
+
         UserSingleton userSingleton = UserSingleton.getInstance();
         userSingleton.setUser(userNew);
+    }
+
+    private void utilityOnEdit(String message, int errorCode) {
+        MessageBean messageBean = new MessageBean();
+        CodeBean codeBean = new CodeBean();
+
+        messageBean.setMessage(message);
+        codeBean.setCode(errorCode);
+        editProfileView.onEditProfileError(messageBean, codeBean);
     }
 }

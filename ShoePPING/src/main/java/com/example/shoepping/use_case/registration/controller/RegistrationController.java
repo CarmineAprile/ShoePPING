@@ -24,7 +24,7 @@ public class RegistrationController implements IRegistrationController {
     @Override
     public void onRegistration(UsernameBean username, PasswordBean pass, PasswordBean repass, EmailBean email, CheckedBean check) throws SQLException, ClassNotFoundException, IOException, ManageException, CsvValidationException {
 
-        User user = new User(username.getUsername(), pass.getPassword(), repass.getPassword(), email.getEmail());
+        User user = new User(username.getUsername(), pass.getPassword(), email.getEmail());
 
         if(username.getIsValid() == 0){
             utilityOnRegistration("Please enter an Username", 0);

@@ -69,8 +69,9 @@ public class ProfileCLIController implements IProfileView {
         System.out.println("Email: " + emailBean.getEmail());
     }
 
-    public void editMethod(){
-        //TODO
+    public void editMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+        EditProfileCLIController editProfileCLIController = new EditProfileCLIController();
+        editProfileCLIController.start();
     }
 
     public void ordersMethod(){

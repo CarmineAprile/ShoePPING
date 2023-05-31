@@ -11,77 +11,77 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="editProfilePane" prefHeight="515.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shoepping.EditProfileGController">
-   <children>
-      <ImageView fitHeight="515.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../drawable/profilebackground.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="backButton" fitHeight="30.0" fitWidth="30.0" layoutX="299.0" layoutY="28.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../drawable/arrowleft.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="430.0" layoutY="25.0" text="Edit Profile" textFill="#554b4d">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
+<AnchorPane fx:id="editProfilePane" prefHeight="515.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shoepping.EditProfileGController">
+   <ImageView fitHeight="515.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../../../drawable/profilebackground.png"/>
+   </ImageView>
+   <ImageView fx:id="backButton" fitHeight="30.0" fitWidth="30.0" layoutX="299.0" layoutY="28.0"
+              onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../../../drawable/arrowleft.png"/>
+   </ImageView>
+   <Label layoutX="430.0" layoutY="25.0" text="Edit Profile" textFill="#554b4d">
+      <font>
+         <Font name="System Bold" size="24.0"/>
+      </font>
+   </Label>
+   <VBox layoutX="292.0" layoutY="74.0" prefHeight="441.0" prefWidth="400.0">
+      <TextField fx:id="usernameTA" focusTraversable="false" onKeyTyped="#maxLengthUser" prefHeight="35.0"
+                 prefWidth="452.0" promptText="New Username">
+         <VBox.margin>
+            <Insets top="30.0"/>
+         </VBox.margin>
+      </TextField>
+      <Label fx:id="usernameLabel" prefHeight="18.0" prefWidth="430.0" textFill="RED">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0"/>
+         </VBox.margin>
       </Label>
-      <VBox layoutX="292.0" layoutY="74.0" prefHeight="441.0" prefWidth="400.0">
-         <children>
-            <TextField fx:id="usernameTA" focusTraversable="false" onKeyTyped="#maxLenghtUser" prefHeight="35.0" prefWidth="452.0" promptText="New Username">
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-            </TextField>
-            <Label fx:id="usernameLabel" prefHeight="18.0" prefWidth="430.0" textFill="RED">
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="passwordTA" focusTraversable="false" onKeyTyped="#maxLenghtPass" prefHeight="35.0" prefWidth="452.0" promptText="New Password">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </TextField>
-            <Label fx:id="passwordLabel" prefHeight="18.0" prefWidth="458.0" textFill="RED">
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="repasswordTA" focusTraversable="false" layoutX="10.0" layoutY="63.0" onKeyTyped="#maxLenghtRepass" prefHeight="35.0" prefWidth="452.0" promptText="Confirm New Password">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </TextField>
-            <Label fx:id="repasswordLabel" prefHeight="18.0" prefWidth="440.0" textFill="RED">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="emailTA" focusTraversable="false" onKeyTyped="#maxLenghtEmail" prefHeight="35.0" prefWidth="452.0" promptText="New Email">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </TextField>
-            <Label fx:id="emailLabel" prefHeight="18.0" prefWidth="470.0" textFill="RED">
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Button fx:id="editButton" mnemonicParsing="false" onAction="#editProfile" prefHeight="25.0" prefWidth="443.0" style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="EDIT PROFILE" textAlignment="CENTER" textFill="#554b4d">
-               <effect>
-                  <DropShadow height="5.0" radius="2.0" width="5.0" />
-               </effect>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-      </VBox>
-   </children>
+      <TextField fx:id="passwordTA" focusTraversable="false" onKeyTyped="#maxLengthPass" prefHeight="35.0"
+                 prefWidth="452.0" promptText="New Password">
+         <VBox.margin>
+            <Insets/>
+         </VBox.margin>
+      </TextField>
+      <Label fx:id="passwordLabel" prefHeight="18.0" prefWidth="458.0" textFill="RED">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0"/>
+         </VBox.margin>
+      </Label>
+      <TextField fx:id="repasswordTA" focusTraversable="false" layoutX="10.0" layoutY="63.0"
+                 onKeyTyped="#maxLengthRepass" prefHeight="35.0" prefWidth="452.0" promptText="Confirm New Password">
+         <VBox.margin>
+            <Insets/>
+         </VBox.margin>
+      </TextField>
+      <Label fx:id="repasswordLabel" prefHeight="18.0" prefWidth="440.0" textFill="RED">
+         <VBox.margin>
+            <Insets top="5.0"/>
+         </VBox.margin>
+      </Label>
+      <TextField fx:id="emailTA" focusTraversable="false" onKeyTyped="#maxLengthEmail" prefHeight="35.0"
+                 prefWidth="452.0" promptText="New Email">
+         <VBox.margin>
+            <Insets/>
+         </VBox.margin>
+      </TextField>
+      <Label fx:id="emailLabel" prefHeight="18.0" prefWidth="470.0" textFill="RED">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0"/>
+         </VBox.margin>
+      </Label>
+      <Button fx:id="editButton" mnemonicParsing="false" onAction="#editProfile" prefHeight="25.0" prefWidth="443.0"
+              style="-fx-background-color: #F1CDD4; -fx-background-radius: 20;" text="EDIT PROFILE"
+              textAlignment="CENTER" textFill="#554b4d">
+         <effect>
+            <DropShadow height="5.0" radius="2.0" width="5.0"/>
+         </effect>
+         <font>
+            <Font name="System Bold" size="12.0"/>
+         </font>
+         <VBox.margin>
+            <Insets top="5.0"/>
+         </VBox.margin>
+      </Button>
+   </VBox>
 </AnchorPane>

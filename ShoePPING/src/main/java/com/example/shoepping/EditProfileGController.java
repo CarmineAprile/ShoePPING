@@ -1,5 +1,6 @@
 package com.example.shoepping;
 
+import com.example.shoepping.bean.*;
 import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.use_case.edit_profile.controller.EditProfileController;
 import com.example.shoepping.use_case.edit_profile.controller.IEditProfileController;
@@ -55,7 +56,6 @@ public class EditProfileGController implements IEditProfileView {
     }
 
     public void editProfile() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
-        // aggiungere controllo su check fyleSystem
 
         String username = usernameTA.getText();
         String pass = passwordTA.getText();
@@ -68,18 +68,28 @@ public class EditProfileGController implements IEditProfileView {
         repasswordLabel.setText("");
         emailLabel.setText("");
 
+        UsernameBean usernameBean = new UsernameBean();
+        PasswordBean passwordBean = new PasswordBean();
+        PasswordBean repasswordBean = new PasswordBean();
+        EmailBean emailBean = new EmailBean();
+
+        usernameBean.setUsername(username);
+        passwordBean.setPassword(pass);
+        repasswordBean.setPassword(repass);
+        emailBean.setEmail(email);
+
         IEditProfileController editProfileController = new EditProfileController(this);
-        editProfileController.onEditProfile(username,pass,repass,email);
+        editProfileController.onEditProfile(usernameBean,passwordBean,repasswordBean,emailBean);
 
     }
 
     @Override
-    public void onEditProfileSuccess(boolean isChecked) throws IOException {
+    public void onEditProfileSuccess(CheckedBean checkedBean) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
         Parent root = loader.load();
 
-        if(isChecked){
+        if(checkedBean.getChecked()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Edit profile with File-System");
 
@@ -103,8 +113,8 @@ public class EditProfileGController implements IEditProfileView {
     }
 
     @Override
-    public void onEditProfileError(String message, int codeError) {
-        switch (codeError) {
+    public void onEditProfileError(MessageBean messageBean, CodeBean codeBean) {
+        switch (codeBean.getCode()) {
 
             // 0. Check for Username Empty
             // 1. Check for Password Empty
@@ -113,33 +123,36 @@ public class EditProfileGController implements IEditProfileView {
             // 4. Check for corrispondence of Password and Repassword
             // 5. Check for Email Empty
             // 6. Check for Email sintax
+            // codeError = 10, username greater than 20
+            // codeError = 20, password greater than 20
+            // codeError = 30, email greater than 40
 
-            case 0 ->
-                    usernameLabel.setText(message);
+            case 0, 10 ->
+                    usernameLabel.setText(messageBean.getMessage());
 
-            case 1, 2 ->
-                    passwordLabel.setText(message);
+            case 1, 2, 20 ->
+                    passwordLabel.setText(messageBean.getMessage());
 
 
             case 3 ->
-                    repasswordLabel.setText(message);
+                    repasswordLabel.setText(messageBean.getMessage());
 
             case 4 -> {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle(message);
+                alert.setTitle(messageBean.getMessage());
 
                 // Header Text: null
                 alert.setHeaderText(null);
-                alert.setContentText(message);
+                alert.setContentText(messageBean.getMessage());
 
                 alert.showAndWait();
             }
             default ->
-                    emailLabel.setText(message);
+                    emailLabel.setText(messageBean.getMessage());
         }
     }
 
-    public void maxLenghtUser() {
+    public void maxLengthUser() {
         final int maxLengthUser = 20;
 
         if (usernameTA.getText().length() > maxLengthUser) {
@@ -149,7 +162,7 @@ public class EditProfileGController implements IEditProfileView {
         }
     }
 
-    public void maxLenghtPass() {
+    public void maxLengthPass() {
         final int maxLengthPass = 20;
 
         if (passwordTA.getText().length() > maxLengthPass) {
@@ -159,7 +172,7 @@ public class EditProfileGController implements IEditProfileView {
         }
     }
 
-    public void maxLenghtRepass() {
+    public void maxLengthRepass() {
         final int maxLengthRepass = 20;
 
         if (repasswordTA.getText().length() > maxLengthRepass) {
@@ -169,7 +182,7 @@ public class EditProfileGController implements IEditProfileView {
         }
     }
 
-    public void maxLenghtEmail() {
+    public void maxLengthEmail() {
         final int maxLengthEmail = 40;
 
         if (emailTA.getText().length() > maxLengthEmail) {
