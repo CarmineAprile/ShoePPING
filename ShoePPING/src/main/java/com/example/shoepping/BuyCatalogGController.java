@@ -101,7 +101,7 @@ public class BuyCatalogGController implements IBuyCatalogView {
         Parent root = loader.load();
 
         BuyUserUsedShoeGController buyUserUsedShoeGController = loader.getController();
-        buyUserUsedShoeGController.salva(label.getText());
+        buyUserUsedShoeGController.start(label.getText());
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyCatalogPane);

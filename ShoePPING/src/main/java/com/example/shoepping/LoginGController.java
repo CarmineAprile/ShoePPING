@@ -104,7 +104,7 @@ public class LoginGController implements ILoginView {
         Parent root = loader.load();
 
         AdministratorGController administratorGController = loader.getController();
-        administratorGController.salva();
+        administratorGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, loginPane);

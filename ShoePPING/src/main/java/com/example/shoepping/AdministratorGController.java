@@ -45,7 +45,7 @@ public class AdministratorGController implements IAdministratorView {
     TextArea catalogTA;
 
 
-    public void salva() throws SQLException, IOException, ClassNotFoundException {
+    public void start() throws SQLException, IOException, ClassNotFoundException {
        IAdministratorController administratorController = new AdministratorController(this);
        catalogTA.setText(administratorController.getReport());
        //passaggio tramite bean, no return -> fare metodo nella view che stampa nella TA
@@ -79,7 +79,7 @@ public class AdministratorGController implements IAdministratorView {
         id1TA.setText("");
         amountTA.setText("");
         sizeTA.setText("");
-        salva();
+        start();
     }
 
     public void updatePrice() throws SQLException, IOException, ClassNotFoundException {
@@ -107,7 +107,7 @@ public class AdministratorGController implements IAdministratorView {
     public void onUpdatePriceSuccess() throws SQLException, IOException, ClassNotFoundException {
         id2TA.setText("");
         priceTA.setText("");
-        salva();
+        start();
     }
 
     public void manageSales() throws IOException, SQLException, ClassNotFoundException {
@@ -115,7 +115,7 @@ public class AdministratorGController implements IAdministratorView {
         Parent root = loader.load();
 
         ManageSalesAdminGController manageSalesAdminGController = loader.getController();
-        manageSalesAdminGController.salva();
+        manageSalesAdminGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, administratorPane);

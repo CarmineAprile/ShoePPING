@@ -36,7 +36,7 @@ public class ManageSaleGController implements IManageSaleView {
 
     String format = "System Bold";
 
-    public void salva() throws SQLException, IOException, ClassNotFoundException {
+    public void start() throws SQLException, IOException, ClassNotFoundException {
         IManageSaleController manageSaleController = new ManageSaleController(this);
         manageSaleController.getSales();
     }

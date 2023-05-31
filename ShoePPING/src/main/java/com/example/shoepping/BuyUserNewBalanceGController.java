@@ -96,7 +96,7 @@ public class BuyUserNewBalanceGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-new-balance-1(327-Moonbeam).png", newBalancemodel1.getText(), newBalancepriceL1.getText(), 3);
+        buyShoeGController.start("/drawable/shoe-new-balance-1(327-Moonbeam).png", newBalancemodel1.getText(), newBalancepriceL1.getText(), 3);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -107,7 +107,7 @@ public class BuyUserNewBalanceGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-new-balance-2(X-Racer-Bodega).png", newBalancemodel2.getText(), newBalancepriceL2.getText(), 3);
+        buyShoeGController.start("/drawable/shoe-new-balance-2(X-Racer-Bodega).png", newBalancemodel2.getText(), newBalancepriceL2.getText(), 3);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -118,7 +118,7 @@ public class BuyUserNewBalanceGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-new-balance-3(Shando).png", newBalancemodel3.getText(), newBalancepriceL3.getText(), 3);
+        buyShoeGController.start("/drawable/shoe-new-balance-3(Shando).png", newBalancemodel3.getText(), newBalancepriceL3.getText(), 3);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -129,7 +129,7 @@ public class BuyUserNewBalanceGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-new-balance-4(530).png", newBalancemodel4.getText(), newBalancepriceL4.getText(), 3);
+        buyShoeGController.start("/drawable/shoe-new-balance-4(530).png", newBalancemodel4.getText(), newBalancepriceL4.getText(), 3);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);
@@ -140,7 +140,7 @@ public class BuyUserNewBalanceGController {
         Parent root = loader.load();
 
         BuyShoeGController buyShoeGController= loader.getController();
-        buyShoeGController.salva("/drawable/shoe-new-balance-5(550-White-Red).png", newBalancemodel5.getText(), newBalancepriceL5.getText(), 3);
+        buyShoeGController.start("/drawable/shoe-new-balance-5(550-White-Red).png", newBalancemodel5.getText(), newBalancepriceL5.getText(), 3);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserNewBalancePane);

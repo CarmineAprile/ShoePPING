@@ -72,7 +72,7 @@ public class ProfileGController implements IProfileView {
 
 
         String orders = profileController.onOrders();
-        myOrdersGController.salva(orders);
+        myOrdersGController.start(orders);
 
 
         ChangeWindow cw = new ChangeWindow();
@@ -88,7 +88,7 @@ public class ProfileGController implements IProfileView {
         IProfileController profileController = new ProfileController();
 
         String sales = profileController.onSales();
-        mySalesGController.salva(sales);
+        mySalesGController.start(sales);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, profilePane);
@@ -103,7 +103,7 @@ public class ProfileGController implements IProfileView {
         IProfileController profileController = new ProfileController();
 
         String shipments = profileController.onShipments();
-        myShipmentsGController.salva(shipments);
+        myShipmentsGController.start(shipments);
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, profilePane);

@@ -17,7 +17,7 @@ public class MySalesGController {
     @FXML
     TextArea salesTA;
 
-    public void salva(String sales) {
+    public void start(String sales) {
         salesTA.setText(sales);
     }
 

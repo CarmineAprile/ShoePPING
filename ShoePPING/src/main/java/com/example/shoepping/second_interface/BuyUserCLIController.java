@@ -41,41 +41,41 @@ public class BuyUserCLIController {
         }
 
         switch (chBuy){
-            case 1 -> NikeMethod();
-            case 2 -> AdidasMethod();
-            case 3 -> NewBalanceMethod();
-            case 4 -> ProfileMethod();
-            case 5 -> SellMethod();
-            case 6 -> CatalogMethod();
+            case 1 -> nikeMethod();
+            case 2 -> adidasMethod();
+            case 3 -> newBalanceMethod();
+            case 4 -> profileMethod();
+            case 5 -> sellMethod();
+            case 6 -> catalogMethod();
             default -> error();
 
         }
     }
 
-    public void NikeMethod(){
+    public void nikeMethod(){
         //TODO
     }
 
-    public void AdidasMethod(){
+    public void adidasMethod(){
         //TODO
     }
 
-    public void NewBalanceMethod(){
+    public void newBalanceMethod(){
         //TODO
     }
 
-    public void ProfileMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void profileMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         ProfileCLIController profileCLIController = new ProfileCLIController();
         profileCLIController.start();
     }
 
-    public void SellMethod(){
+    public void sellMethod(){
         SellUserShoeCLIController sellUserShoeCLIController = new SellUserShoeCLIController();
         sellUserShoeCLIController.start();
 
     }
 
-    public void CatalogMethod(){
+    public void catalogMethod(){
         BuyCatalogCLIController buyCatalogCLIController = new BuyCatalogCLIController();
         buyCatalogCLIController.start();
     }

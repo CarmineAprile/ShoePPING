@@ -31,7 +31,7 @@ public class ManageSalesAdminGController implements IManageSaleAdminView {
     VBox vBoxSales;
     String format = "System Bold";
 
-    public void salva() throws SQLException, IOException, ClassNotFoundException {
+    public void start() throws SQLException, IOException, ClassNotFoundException {
         IManageSaleAdminController manageSaleAdminController = new ManageSaleAdminController(this);
         manageSaleAdminController.getSales();
     }
@@ -108,7 +108,7 @@ public class ManageSalesAdminGController implements IManageSaleAdminView {
         Parent root = loader.load();
 
         AdministratorGController administratorGController = loader.getController();
-        administratorGController.salva();
+        administratorGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, manageSaleAdminCatalogPane);

@@ -78,7 +78,7 @@ public class BuyShoeGController implements IBuyShoeView {
     Label cardDateCVVLabel;
     @FXML
     Button confirmButton;
-    /* serve per capire in che schermata andae quando viene effettuato il goBack()
+    /* serve per capire in che schermata andare quando viene effettuato il goBack()
     UNO: torna al catalogo delle nike
     DUE: torna al catalogo delle adidas
     TRE: torna al catalogo delle newBalance
@@ -86,7 +86,7 @@ public class BuyShoeGController implements IBuyShoeView {
     int reference;
     static final String BUY_USER_VIEW_FXML = "buy-user-view.fxml";
 
-    public void salva(String shoe, String model, String price, int reference) throws SQLException, IOException, ClassNotFoundException {
+    public void start(String shoe, String model, String price, int reference) throws SQLException, IOException, ClassNotFoundException {
 
         this.reference = reference;
 
@@ -252,7 +252,7 @@ public class BuyShoeGController implements IBuyShoeView {
         }
     }
 
-    public void maxLenghtAddress() {
+    public void maxLengthAddress() {
         final int maxLengthAddress = 40;
 
         if (addressTA.getText().length() > maxLengthAddress) {
@@ -262,7 +262,7 @@ public class BuyShoeGController implements IBuyShoeView {
         }
     }
 
-    public void maxLenghtCardID() {
+    public void maxLengthCardID() {
         final int maxLengthCardID = 19;
 
         if (cardIDTA.getText().length() > maxLengthCardID) {
@@ -272,7 +272,7 @@ public class BuyShoeGController implements IBuyShoeView {
         }
     }
 
-    public void maxLenghtDate() {
+    public void maxLengthDate() {
         final int maxLengthDate = 5;
 
         if (cardDateTA.getText().length() > maxLengthDate) {
@@ -282,7 +282,7 @@ public class BuyShoeGController implements IBuyShoeView {
         }
     }
 
-    public void maxLenghtCVC() {
+    public void maxLengthCVC() {
         final int maxLengthCVC = 3;
 
         if (cardCVCTA.getText().length() > maxLengthCVC) {

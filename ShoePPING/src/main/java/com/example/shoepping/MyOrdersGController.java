@@ -18,7 +18,7 @@ public class MyOrdersGController {
     TextArea ordersTA;
 
 
-    public void salva(String orders){
+    public void start(String orders){
         ordersTA.setText(orders);
     }
 

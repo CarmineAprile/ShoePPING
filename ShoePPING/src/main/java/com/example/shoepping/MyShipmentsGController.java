@@ -18,7 +18,7 @@ public class MyShipmentsGController {
     @FXML
     TextArea shipmentsTA;
 
-    public void salva(String shipments) {
+    public void start(String shipments) {
         shipmentsTA.setText(shipments);
     }
 

@@ -147,7 +147,7 @@
                   <Insets left="25.0" top="5.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="addressTA" focusTraversable="false" onKeyTyped="#maxLenghtAddress">
+            <TextField fx:id="addressTA" focusTraversable="false" onKeyTyped="#maxLengthAddress">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" top="10.0" />
                </VBox.margin>
@@ -165,7 +165,7 @@
                   <Insets left="25.0" top="5.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="cardIDTA" focusTraversable="false" layoutX="35.0" layoutY="167.0" onKeyTyped="#maxLenghtCardID" promptText="XXXX  XXXX  XXXX  XXXX">
+            <TextField fx:id="cardIDTA" focusTraversable="false" layoutX="35.0" layoutY="167.0" onKeyTyped="#maxLengthCardID" promptText="XXXX  XXXX  XXXX  XXXX">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" top="10.0" />
                </VBox.margin>
@@ -179,8 +179,8 @@
                <VBox.margin>
                   <Insets left="25.0" right="25.0" top="5.0" />
                </VBox.margin>
-               <TextField fx:id="cardDateTA" focusTraversable="false" onKeyTyped="#maxLenghtDate" promptText="MM/YY" />
-               <TextField fx:id="cardCVCTA" focusTraversable="false" layoutX="10.0" layoutY="10.0" onKeyTyped="#maxLenghtCVC" prefHeight="25.0" prefWidth="99.0" promptText="CVC">
+               <TextField fx:id="cardDateTA" focusTraversable="false" onKeyTyped="#maxLengthDate" promptText="MM/YY" />
+               <TextField fx:id="cardCVCTA" focusTraversable="false" layoutX="10.0" layoutY="10.0" onKeyTyped="#maxLengthCVC" prefHeight="25.0" prefWidth="99.0" promptText="CVC">
                   <HBox.margin>
                      <Insets left="55.0" />
                   </HBox.margin>

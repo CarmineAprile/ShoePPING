@@ -160,7 +160,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
         Parent root = loader.load();
 
         ManageSaleGController manageSaleGController = loader.getController();
-        manageSaleGController.salva();
+        manageSaleGController.start();
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, sellUserShoePane);
