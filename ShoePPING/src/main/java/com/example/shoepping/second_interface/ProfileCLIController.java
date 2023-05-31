@@ -51,13 +51,13 @@ public class ProfileCLIController implements IProfileView {
         }
 
         switch (chPro){
-            case 1 -> EditMethod();
-            case 2 -> OrdersMethod();
-            case 3 -> SalesMethod();
-            case 4 -> ShipmentsMethod();
-            case 5 -> AboutMethod();
-            case 6 -> GoBackMethod();
-            case 7 -> ExitMethod();
+            case 1 -> editMethod();
+            case 2 -> ordersMethod();
+            case 3 -> salesMethod();
+            case 4 -> shipmentsMethod();
+            case 5 -> aboutMethod();
+            case 6 -> goBackMethod();
+            case 7 -> exitMethod();
             default -> error();
 
         }
@@ -69,33 +69,33 @@ public class ProfileCLIController implements IProfileView {
         System.out.println("Email: " + emailBean.getEmail());
     }
 
-    public void EditMethod(){
+    public void editMethod(){
         //TODO
     }
 
-    public void OrdersMethod(){
+    public void ordersMethod(){
         //TODO
     }
 
-    public void SalesMethod(){
+    public void salesMethod(){
         //TODO
     }
 
-    public void ShipmentsMethod(){
+    public void shipmentsMethod(){
         //TODO
     }
 
-    public void AboutMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void aboutMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         System.out.println("ShoePPING app for ISPW project.\nDevelopers: Carmine Aprile, Daniele Ausili.");
         start();
     }
 
-    public void GoBackMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void goBackMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         BuyUserCLIController buyUserCLIController = new BuyUserCLIController();
         buyUserCLIController.start();
     }
 
-    public void ExitMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void exitMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         LoginCLIController loginCLIController = new LoginCLIController();
         loginCLIController.start();
     }

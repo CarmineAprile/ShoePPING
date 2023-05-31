@@ -19,7 +19,7 @@ public class ProfileController implements IProfileController{
     }
 
     public ProfileController (){
-        //empty;
+        
     }
 
     @Override
