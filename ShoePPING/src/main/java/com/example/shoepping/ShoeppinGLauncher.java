@@ -18,7 +18,7 @@ public class ShoeppinGLauncher extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        //remove window decoration
+        //removes window decoration
 
         stage.initStyle(StageStyle.UNDECORATED);
 
