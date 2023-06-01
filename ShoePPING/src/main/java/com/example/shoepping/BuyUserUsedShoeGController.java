@@ -1,5 +1,6 @@
 package com.example.shoepping;
 
+import com.example.shoepping.bean.*;
 import com.example.shoepping.use_case.buy_user_used_shoe.controller.BuyUserUsedShoeController;
 import com.example.shoepping.use_case.buy_user_used_shoe.controller.IBuyUserUsedShoeController;
 import com.example.shoepping.use_case.buy_user_used_shoe.view.IBuyUserUsedShoeView;
@@ -66,7 +67,10 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
 
     public void start(String label) throws SQLException, IOException, ClassNotFoundException {
         IBuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
-        sellIDUpdate = buyUserUsedShoeController.setLabels(label);
+
+        LabelBean labelBean = new LabelBean();
+        labelBean.setLabel(label);
+        sellIDUpdate = buyUserUsedShoeController.setLabels(labelBean);
     }
 
     @Override
@@ -106,25 +110,45 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         cardIDUsedL.setText("");
         cardDateCVVUsedLabel.setText("");
 
-        String[] userDataVec = {address, cardID, cardDate, cardCVC, condition};
+        UserVecBean userVecBean = new UserVecBean();
+        userVecBean.setAddressVec(address);
+        userVecBean.setCardIDVec(cardID);
+        userVecBean.setCardDateVec(cardDate);
+        userVecBean.setCardCVCVec(cardCVC);
+        userVecBean.setConditionVec(condition);
+
+        ModelShoeBean modelShoeBean = new ModelShoeBean();
+        BrandBean brandBean = new BrandBean();
+        PriceBean priceBean = new PriceBean();
+        SizeShoeBean sizeShoeBean = new SizeShoeBean();
+        SellerBean sellerBean = new SellerBean();
+        SellIdUpdateBean sellIdUpdateBean = new SellIdUpdateBean();
+
+        modelShoeBean.setModelShoe(item);
+        brandBean.setBrand(brand);
+        priceBean.setPrice(price);
+        sizeShoeBean.setSizeShoe(size);
+        sellerBean.setSeller(seller);
+        sellIdUpdateBean.setSellIdUpdate(sellIDUpdate);
+
 
         IBuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
-        buyUserUsedShoeController.onConfirm(item, brand, price, size, seller, userDataVec, sellIDUpdate);
+        buyUserUsedShoeController.onConfirm(modelShoeBean, brandBean, priceBean, sizeShoeBean, sellerBean, userVecBean, sellIdUpdateBean);
 
     }
 
     @Override
-    public void onConfirmError(String message, int code) {
+    public void onConfirmError(MessageBean message, CodeBean code) {
         /*
         0 empty address
         1 invalid cardID
         2 invalid expiration cardDate
         3 invalid CVC
          */
-        switch (code){
-            case 0 -> addressUsedL.setText(message);
-            case 1 -> cardIDUsedL.setText(message);
-            case 2, 3 -> cardDateCVVUsedLabel.setText(message);
+        switch (code.getCode()){
+            case 0 -> addressUsedL.setText(message.getMessage());
+            case 1 -> cardIDUsedL.setText(message.getMessage());
+            case 2, 3 -> cardDateCVVUsedLabel.setText(message.getMessage());
             default -> error();
         }
     }

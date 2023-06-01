@@ -1,5 +1,6 @@
 package com.example.shoepping.use_case.buy_catalog.controller;
 
+import com.example.shoepping.bean.*;
 import com.example.shoepping.dao.catalog_dao.CatalogDao;
 import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.catalog.Catalog;
@@ -27,22 +28,25 @@ public class BuyCatalogController implements IBuyCatalogController {
         Catalog catalogShoe = catalogDao.getCatalog();
 
         for(CatalogItem catalogItem : catalogShoe.getCatalog()){
-            buyUserUsedShoeView.setShoeLabel(catalogItem.toString());
+            ModelShoeBean modelShoeBean = new ModelShoeBean();
+            modelShoeBean.setModelShoe(catalogItem.toString());
+            buyUserUsedShoeView.setShoeLabel(modelShoeBean);
         }
     }
 
     @Override
-    public void setFilter(String item, String brand, String size, String condition, String price) throws SQLException, IOException, ClassNotFoundException, ManageException {
+    public void setFilter(ModelShoeBean item, BrandBean brand, SizeShoeBean size, ConditionBean condition, PriceBean price) throws SQLException, IOException, ClassNotFoundException, ManageException {
 
 
-        if(!price.isEmpty()){
+        if(!price.getPrice().isEmpty()){
             try{
-                Integer.parseInt(price);
+                Integer.parseInt(price.getPrice());
             }catch(Exception e){
                 try{
-                    Double.parseDouble(price);
+                    Double.parseDouble(price.getPrice());
                 }catch(Exception exception){
                     buyUserUsedShoeView.onApplyFilterError();
+                    return;
                 }
             }
         }
@@ -52,30 +56,32 @@ public class BuyCatalogController implements IBuyCatalogController {
         catalog = catalogDao.getCatalog();
 
 
-        if(!item.isEmpty()){
+        if(!item.getModelShoe().isEmpty()){
             Criteria criteriaFind = new CriteriaFind();
-            catalog = criteriaFind.meetCriteria(catalog, item);
+            catalog = criteriaFind.meetCriteria(catalog, item.getModelShoe());
         }
 
-        if(!brand.equals("Select brand")){
+        if(!brand.getBrand().equals("Select brand")){
             Criteria criteriaBrand = new CriteriaBrand();
-            catalog = criteriaBrand.meetCriteria(catalog, brand);
+            catalog = criteriaBrand.meetCriteria(catalog, brand.getBrand());
         }
-        if(!size.equals("Select size")){
+        if(!size.getSizeShoe().equals("Select size")){
             Criteria criteriaSize = new CriteriaSize();
-            catalog = criteriaSize.meetCriteria(catalog, size);
+            catalog = criteriaSize.meetCriteria(catalog, size.getSizeShoe());
         }
-        if(!condition.equals("Select condition")){
+        if(!condition.getCondition().equals("Select condition")){
             Criteria criteriaCondition = new CriteriaCondition();
-            catalog = criteriaCondition.meetCriteria(catalog, condition);
+            catalog = criteriaCondition.meetCriteria(catalog, condition.getCondition());
         }
-        if(!price.isEmpty()){
+        if(!price.getPrice().isEmpty()){
             Criteria criteriaPrice = new CriteriaPrice();
-            catalog = criteriaPrice.meetCriteria(catalog, price);
+            catalog = criteriaPrice.meetCriteria(catalog, price.getPrice());
         }
 
         for(CatalogItem catalogItem : catalog.getCatalog()){
-            buyUserUsedShoeView.setShoeLabel(catalogItem.toString());
+            ModelShoeBean modelShoeBean = new ModelShoeBean();
+            modelShoeBean.setModelShoe(catalogItem.toString());
+            buyUserUsedShoeView.setShoeLabel(modelShoeBean);
         }
     }
 }

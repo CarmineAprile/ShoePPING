@@ -1,5 +1,6 @@
 package com.example.shoepping;
 
+import com.example.shoepping.bean.*;
 import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.use_case.buy_catalog.controller.BuyCatalogController;
 import com.example.shoepping.use_case.buy_catalog.controller.IBuyCatalogController;
@@ -80,8 +81,8 @@ public class BuyCatalogGController implements IBuyCatalogView {
     }
 
     @Override
-    public void setShoeLabel(String item) {
-        Label label = new Label(item);
+    public void setShoeLabel(ModelShoeBean item) {
+        Label label = new Label(item.getModelShoe());
         label.setFont(new Font("System Bold", 14));
         label.setPadding(new Insets(0, 0, 10, 0));
         vBoxCatalog.getChildren().add(label);
@@ -124,7 +125,19 @@ public class BuyCatalogGController implements IBuyCatalogView {
         String condition = conditionMenu.getText();
         String price = priceFilter.getText();
 
-        buyCatalogController.setFilter(item, brand, size, condition, price);
+        ModelShoeBean modelShoeBean = new ModelShoeBean();
+        BrandBean brandBean = new BrandBean();
+        SizeShoeBean sizeShoeBean = new SizeShoeBean();
+        ConditionBean conditionBean = new ConditionBean();
+        PriceBean priceBean = new PriceBean();
+
+        modelShoeBean.setModelShoe(item);
+        brandBean.setBrand(brand);
+        sizeShoeBean.setSizeShoe(size);
+        conditionBean.setCondition(condition);
+        priceBean.setPrice(price);
+
+        buyCatalogController.setFilter(modelShoeBean, brandBean, sizeShoeBean, conditionBean, priceBean);
     }
 
     public void onBuyClick() throws IOException {

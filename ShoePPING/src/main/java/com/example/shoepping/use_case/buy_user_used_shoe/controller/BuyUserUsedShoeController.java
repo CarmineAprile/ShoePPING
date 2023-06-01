@@ -1,6 +1,6 @@
 package com.example.shoepping.use_case.buy_user_used_shoe.controller;
 
-import com.example.shoepping.ValidationCard;
+import com.example.shoepping.bean.*;
 import com.example.shoepping.dao.catalog_dao.CatalogDao;
 import com.example.shoepping.dao.insert_order_dao.InsertOrderDao;
 import com.example.shoepping.model.catalog.Catalog;
@@ -26,7 +26,7 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
     }
 
     @Override
-    public String setLabels(String label) throws SQLException, IOException, ClassNotFoundException {
+    public String setLabels(LabelBean label) throws SQLException, IOException, ClassNotFoundException {
 
         CatalogDao catalogDao = new CatalogDao();
 
@@ -35,9 +35,9 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
         String sellIDUpdate = null;
 
         StringBuilder sellID = new StringBuilder();
-        for(int i = 6; i<label.length(); i++){
-            if((label.charAt(i) != ',')){
-                sellID.append(label.charAt(i));
+        for(int i = 6; i<label.getLabel().length(); i++){
+            if((label.getLabel().charAt(i) != ',')){
+                sellID.append(label.getLabel().charAt(i));
             }else {
                 sellIDUpdate = String.valueOf(sellID);
                 break;
@@ -55,7 +55,7 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
     }
 
     @Override
-    public void onConfirm(String item, String brand, String price, String size, String seller, String[] userDataVec, String sellIDUpdate) throws SQLException, IOException, ClassNotFoundException {
+    public void onConfirm(ModelShoeBean item, BrandBean brand, PriceBean price, SizeShoeBean size, SellerBean seller, UserVecBean userDataVec, SellIdUpdateBean sellIDUpdate) throws SQLException, IOException, ClassNotFoundException{
 
         UserSingleton userSingleton = UserSingleton.getInstance();
         User user = userSingleton.getUser();
@@ -66,14 +66,8 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
 
         String dateOrder = ZonedDateTime.now(ZoneId.of("Europe/Rome")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        Order order = new Order(dateOrder, item, Double.parseDouble(price), conditionOrder, userDataVec[0], statusOrder);
-        Sale sale = new Sale(brand, item, price, userDataVec[4], size, seller);
-
-        int orderCode = order.isValid();
-
-        boolean cardIDCode = ValidationCard.valCardID(userDataVec[1]);
-        boolean cardDateCode = ValidationCard.valCardDate(userDataVec[2]);
-        boolean cardCVCCode = ValidationCard.valCardCVC(userDataVec[3]);
+        Order order = new Order(dateOrder, item.getModelShoe(), Double.parseDouble(price.getPrice()), conditionOrder, userDataVec.getAddressVec(), statusOrder);
+        Sale sale = new Sale(brand.getBrand(), item.getModelShoe(), price.getPrice(), userDataVec.getConditionVec(), size.getSizeShoe(), seller.getSeller());
 
         /*
         0 empty address
@@ -81,21 +75,29 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
         2 invalid expiration cardDate
         3 invalid CVC
         */
+        userDataVec.isValid();
 
-        if(orderCode == 0){
-            buyUserUsedShoeView.onConfirmError("Please enter an address", 0);
-        }else if(!cardIDCode){
-            buyUserUsedShoeView.onConfirmError("Please insert a valid card ID", 1);
-        }else if(!cardDateCode){
-            buyUserUsedShoeView.onConfirmError("Please insert a valid expiration card date", 2);
-        }else if(!cardCVCCode){
-            buyUserUsedShoeView.onConfirmError("Please insert a valid CVC", 3);
+        if(userDataVec.getIsValid() == 0){
+            utilityOnConfirm("Please enter an address", 0);
+        }else if(userDataVec.getIsValid() == 1){
+            utilityOnConfirm("Please insert a valid card ID", 1);
+        }else if(userDataVec.getIsValid() == 2){
+            utilityOnConfirm("Please insert a valid expiration card date", 2);
+        }else if(userDataVec.getIsValid() == 3){
+            utilityOnConfirm("Please insert a valid CVC", 3);
         }else{
             InsertOrderDao insertOrderDao = new InsertOrderDao();
-            insertOrderDao.insertOrderCatalog(order, user, isChecked, sellIDUpdate, sale);
+            insertOrderDao.insertOrderCatalog(order, user, isChecked, sellIDUpdate.getSellIdUpdate(), sale);
             buyUserUsedShoeView.onConfirmSuccess();
         }
+    }
 
+    private void utilityOnConfirm(String message, int errorCode) {
+        MessageBean messageBean = new MessageBean();
+        CodeBean codeBean = new CodeBean();
 
+        messageBean.setMessage(message);
+        codeBean.setCode(errorCode);
+        buyUserUsedShoeView.onConfirmError(messageBean, codeBean);
     }
 }
