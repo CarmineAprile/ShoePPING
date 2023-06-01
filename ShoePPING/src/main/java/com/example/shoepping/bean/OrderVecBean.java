@@ -17,47 +17,47 @@ public class OrderVecBean {
         // empty constructor
     }
 
-    public String getModelShoeVec() {
+    public String getModelShoeOrderVec() {
         return modelShoe;
     }
 
-    public void setModelShoeVec(String modelShoe) {
+    public void setModelShoeOrderVec(String modelShoe) {
         this.modelShoe = modelShoe;
     }
 
-    public String getPriceShoeVec() {
+    public String getPriceShoeOrderVec() {
         return priceShoe;
     }
 
-    public void setPriceShoeVec(String priceShoe) {
+    public void setPriceShoeOrderVec(String priceShoe) {
         this.priceShoe = priceShoe;
     }
 
-    public String getSizeVec() {
+    public String getSizeOrderVec() {
         return size;
     }
 
-    public void setSizeVec(String size) {
+    public void setSizeOrderVec(String size) {
         this.size = size;
     }
 
-    public String getAddressVec() {
+    public String getAddressOrderVec() {
         return address;
     }
 
-    public void setAddressVec(String address) {
+    public void setAddressOrderVec(String address) {
         this.address = address;
     }
 
-    public void setCardIDVec(String cardID) {
+    public void setCardIDOrderVec(String cardID) {
         this.cardID = cardID;
     }
 
-    public void setCardDateVec(String cardDate) {
+    public void setCardDateOrderVec(String cardDate) {
         this.cardDate = cardDate;
     }
 
-    public void setCardCVCVec(String cardCVC) {
+    public void setCardCVCOrderVec(String cardCVC) {
         this.cardCVC = cardCVC;
     }
 

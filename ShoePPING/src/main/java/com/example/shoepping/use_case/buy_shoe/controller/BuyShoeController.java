@@ -82,7 +82,7 @@ public class BuyShoeController implements IBuyShoeController{
 
         String dateOrder = ZonedDateTime.now(ZoneId.of("Europe/Rome")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        Order order = new Order(dateOrder, orderVec.getModelShoeVec(), Double.parseDouble(orderVec.getPriceShoeVec()), conditionOrder, orderVec.getAddressVec(), statusOrder);
+        Order order = new Order(dateOrder, orderVec.getModelShoeOrderVec(), Double.parseDouble(orderVec.getPriceShoeOrderVec()), conditionOrder, orderVec.getAddressOrderVec(), statusOrder);
 
         /*
         0 not selected size
@@ -105,7 +105,7 @@ public class BuyShoeController implements IBuyShoeController{
             utilityOnConfirm("Please insert a valid CVC", 4);
         }else{
             InsertOrderDao insertOrderDao = new InsertOrderDao();
-            insertOrderDao.insertOrder(order, user, Integer.parseInt(orderVec.getSizeVec()), isChecked);
+            insertOrderDao.insertOrder(order, user, Integer.parseInt(orderVec.getSizeOrderVec()), isChecked);
             buyShoeView.onConfirmSuccess();
         }
 

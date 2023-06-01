@@ -165,13 +165,13 @@ public class BuyShoeGController implements IBuyShoeView {
         cardDateCVVLabel.setText("");
 
         OrderVecBean orderVecBean = new OrderVecBean();
-        orderVecBean.setModelShoeVec(model);
-        orderVecBean.setPriceShoeVec(removeLastChar(price));
-        orderVecBean.setSizeVec(size);
-        orderVecBean.setAddressVec(address);
-        orderVecBean.setCardIDVec(cardID);
-        orderVecBean.setCardDateVec(cardDate);
-        orderVecBean.setCardCVCVec(cardCVC);
+        orderVecBean.setModelShoeOrderVec(model);
+        orderVecBean.setPriceShoeOrderVec(removeLastChar(price));
+        orderVecBean.setSizeOrderVec(size);
+        orderVecBean.setAddressOrderVec(address);
+        orderVecBean.setCardIDOrderVec(cardID);
+        orderVecBean.setCardDateOrderVec(cardDate);
+        orderVecBean.setCardCVCOrderVec(cardCVC);
 
         IBuyShoeController buyShoeController = new BuyShoeController(this);
         buyShoeController.onConfirm(orderVecBean);

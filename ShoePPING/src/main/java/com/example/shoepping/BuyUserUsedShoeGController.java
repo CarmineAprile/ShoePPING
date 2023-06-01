@@ -111,11 +111,11 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         cardDateCVVUsedLabel.setText("");
 
         UserVecBean userVecBean = new UserVecBean();
-        userVecBean.setAddressVec(address);
-        userVecBean.setCardIDVec(cardID);
-        userVecBean.setCardDateVec(cardDate);
-        userVecBean.setCardCVCVec(cardCVC);
-        userVecBean.setConditionVec(condition);
+        userVecBean.setAddressUserVec(address);
+        userVecBean.setCardIDUserVec(cardID);
+        userVecBean.setCardDateUserVec(cardDate);
+        userVecBean.setCardCVCUserVec(cardCVC);
+        userVecBean.setConditionUserVec(condition);
 
         ModelShoeBean modelShoeBean = new ModelShoeBean();
         BrandBean brandBean = new BrandBean();

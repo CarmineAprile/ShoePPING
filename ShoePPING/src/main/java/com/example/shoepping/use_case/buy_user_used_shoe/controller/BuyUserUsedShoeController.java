@@ -66,8 +66,8 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
 
         String dateOrder = ZonedDateTime.now(ZoneId.of("Europe/Rome")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        Order order = new Order(dateOrder, item.getModelShoe(), Double.parseDouble(price.getPrice()), conditionOrder, userDataVec.getAddressVec(), statusOrder);
-        Sale sale = new Sale(brand.getBrand(), item.getModelShoe(), price.getPrice(), userDataVec.getConditionVec(), size.getSizeShoe(), seller.getSeller());
+        Order order = new Order(dateOrder, item.getModelShoe(), Double.parseDouble(price.getPrice()), conditionOrder, userDataVec.getAddressUserVec(), statusOrder);
+        Sale sale = new Sale(brand.getBrand(), item.getModelShoe(), price.getPrice(), userDataVec.getConditionUserVec(), size.getSizeShoe(), seller.getSeller());
 
         /*
         0 empty address

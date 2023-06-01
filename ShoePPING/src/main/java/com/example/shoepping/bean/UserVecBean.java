@@ -15,31 +15,31 @@ public class UserVecBean {
         // empty constructor
     }
 
-    public String getAddressVec() {
+    public String getAddressUserVec() {
         return address;
     }
 
-    public void setAddressVec(String address) {
+    public void setAddressUserVec(String address) {
         this.address = address;
     }
 
-    public void setCardIDVec(String cardID) {
+    public void setCardIDUserVec(String cardID) {
         this.cardID = cardID;
     }
 
-    public void setCardDateVec(String cardDate) {
+    public void setCardDateUserVec(String cardDate) {
         this.cardDate = cardDate;
     }
 
-    public void setCardCVCVec(String cardCVC) {
+    public void setCardCVCUserVec(String cardCVC) {
         this.cardCVC = cardCVC;
     }
 
-    public String getConditionVec() {
+    public String getConditionUserVec() {
         return condition;
     }
 
-    public void setConditionVec(String condition) {
+    public void setConditionUserVec(String condition) {
         this.condition = condition;
     }
 
