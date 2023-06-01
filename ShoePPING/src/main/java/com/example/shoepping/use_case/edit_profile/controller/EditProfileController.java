@@ -49,52 +49,7 @@ public class EditProfileController implements IEditProfileController{
         } else if(email.getIsValid() == 30) {
             utilityOnEdit("Please enter an email lower than 40 characters", 30);
         } else {
-
-                if (check) {
-                    UserDAOCSV userdao = new UserDAOCSV();
-                    boolean countUser = userdao.checkExistence(user);
-
-                    if (!countUser) {
-                        CheckedBean checkedBean = new CheckedBean();
-                        checkedBean.setChecked(true);
-                        editProfileView.onEditProfileSuccess(checkedBean);
-                    } else {
-                        MessageBean messageBean = new MessageBean();
-                        CodeBean codeBean = new CodeBean();
-                        messageBean.setMessage("This username is already taken!");
-                        codeBean.setCode(0);
-                        editProfileView.onEditProfileError(messageBean, codeBean);
-                    }
-
-                } else {
-
-                    UserDAOJDBC userdao = new UserDAOJDBC();
-                    boolean countUser = userdao.checkExistence(user);
-
-                    if(oldUsername.equals(user.getUsername())){
-                        countUser = false;
-                    }
-
-                    if (!countUser) {
-                        user.setUsername(username.getUsername());
-                        user.setPassword(pass.getPassword());
-                        user.setEmail(email.getEmail());
-
-                        userdao.updateUser(user, oldUsername);
-
-                        userNew = user;
-
-                        CheckedBean checkedBean = new CheckedBean();
-                        checkedBean.setChecked(false);
-                        editProfileView.onEditProfileSuccess(checkedBean);
-                    } else {
-                        MessageBean messageBean = new MessageBean();
-                        CodeBean codeBean = new CodeBean();
-                        messageBean.setMessage("This username is already taken!");
-                        codeBean.setCode(0);
-                        editProfileView.onEditProfileError(messageBean, codeBean);
-                    }
-                }
+            utilityOnEdit(check, user, oldUsername, username, pass, email);
         }
     }
 
@@ -113,5 +68,53 @@ public class EditProfileController implements IEditProfileController{
         messageBean.setMessage(message);
         codeBean.setCode(errorCode);
         editProfileView.onEditProfileError(messageBean, codeBean);
+    }
+
+    private void utilityOnEdit(boolean check, User user, String oldUsername, UsernameBean username, PasswordBean pass, EmailBean email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+        if (check) {
+            UserDAOCSV userdao = new UserDAOCSV();
+            boolean countUser = userdao.checkExistence(user);
+
+            if (!countUser) {
+                CheckedBean checkedBean = new CheckedBean();
+                checkedBean.setChecked(true);
+                editProfileView.onEditProfileSuccess(checkedBean);
+            } else {
+                MessageBean messageBean = new MessageBean();
+                CodeBean codeBean = new CodeBean();
+                messageBean.setMessage("This username is already taken!");
+                codeBean.setCode(0);
+                editProfileView.onEditProfileError(messageBean, codeBean);
+            }
+
+        } else {
+
+            UserDAOJDBC userdao = new UserDAOJDBC();
+            boolean countUser = userdao.checkExistence(user);
+
+            if(oldUsername.equals(user.getUsername())){
+                countUser = false;
+            }
+
+            if (!countUser) {
+                user.setUsername(username.getUsername());
+                user.setPassword(pass.getPassword());
+                user.setEmail(email.getEmail());
+
+                userdao.updateUser(user, oldUsername);
+
+                userNew = user;
+
+                CheckedBean checkedBean = new CheckedBean();
+                checkedBean.setChecked(false);
+                editProfileView.onEditProfileSuccess(checkedBean);
+            } else {
+                MessageBean messageBean = new MessageBean();
+                CodeBean codeBean = new CodeBean();
+                messageBean.setMessage("This username is already taken!");
+                codeBean.setCode(0);
+                editProfileView.onEditProfileError(messageBean, codeBean);
+            }
+        }
     }
 }
