@@ -2,6 +2,7 @@ package com.example.shoepping;
 
 
 
+import com.example.shoepping.bean.*;
 import com.example.shoepping.use_case.buy_shoe.controller.BuyShoeController;
 import com.example.shoepping.use_case.buy_shoe.controller.IBuyShoeController;
 import com.example.shoepping.use_case.buy_shoe.view.IBuyShoeView;
@@ -91,7 +92,11 @@ public class BuyShoeGController implements IBuyShoeView {
         this.reference = reference;
 
         IBuyShoeController buyShoeController = new BuyShoeController(this);
-        buyShoeController.getSizeAmountList(model);
+
+        ModelShoeBean modelShoeBean = new ModelShoeBean();
+        modelShoeBean.setModelShoe(model);
+
+        buyShoeController.getSizeAmountList(modelShoeBean);
 
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(shoe)));
         shoeImage.setImage(image);
@@ -159,12 +164,17 @@ public class BuyShoeGController implements IBuyShoeView {
         cardIDL.setText("");
         cardDateCVVLabel.setText("");
 
-
-        String[] orderVec = {model, removeLastChar(price), size, address, cardID, cardDate, cardCVC};
-
+        OrderVecBean orderVecBean = new OrderVecBean();
+        orderVecBean.setModelShoeVec(model);
+        orderVecBean.setPriceShoeVec(removeLastChar(price));
+        orderVecBean.setSizeVec(size);
+        orderVecBean.setAddressVec(address);
+        orderVecBean.setCardIDVec(cardID);
+        orderVecBean.setCardDateVec(cardDate);
+        orderVecBean.setCardCVCVec(cardCVC);
 
         IBuyShoeController buyShoeController = new BuyShoeController(this);
-        buyShoeController.onConfirm(orderVec);
+        buyShoeController.onConfirm(orderVecBean);
     }
     @Override
     public void onConfirmSuccess() throws IOException {
@@ -186,7 +196,7 @@ public class BuyShoeGController implements IBuyShoeView {
     }
 
     @Override
-    public void onConfirmError(String message, int code) {
+    public void onConfirmError(MessageBean message, CodeBean code) {
         /*
         0 not selected size
         1 empty address
@@ -194,11 +204,11 @@ public class BuyShoeGController implements IBuyShoeView {
         3 invalid expiration cardDate
         4 invalid CVC
          */
-        switch (code){
-            case 0 -> sizeL.setText(message);
-            case 1 -> addressL.setText(message);
-            case 2 -> cardIDL.setText(message);
-            case 3, 4 -> cardDateCVVLabel.setText(message);
+        switch (code.getCode()){
+            case 0 -> sizeL.setText(message.getMessage());
+            case 1 -> addressL.setText(message.getMessage());
+            case 2 -> cardIDL.setText(message.getMessage());
+            case 3, 4 -> cardDateCVVLabel.setText(message.getMessage());
             default -> error();
         }
     }
@@ -235,8 +245,8 @@ public class BuyShoeGController implements IBuyShoeView {
     }
 
     @Override
-    public void onDisable(int i) {
-        switch (i){
+    public void onDisable(SizeShoeBean sizeShoeBean) {
+        switch (sizeShoeBean.getSizeShoe()){
             case 37 -> item37.setDisable(true);
             case 38 -> item38.setDisable(true);
             case 39 -> item39.setDisable(true);

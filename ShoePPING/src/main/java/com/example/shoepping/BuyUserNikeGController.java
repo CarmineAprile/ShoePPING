@@ -123,7 +123,6 @@ public class BuyUserNikeGController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
 
-
         BuyShoeGController buyShoeGController= loader.getController();
         buyShoeGController.start("/drawable/shoe-nike-3(Air-Max-2017).png", nikeModel3.getText(), nikePriceL3.getText(), 1);
 
@@ -134,7 +133,6 @@ public class BuyUserNikeGController {
     public void onNike4() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SCHERMATA));
         Parent root = loader.load();
-
 
         BuyShoeGController buyShoeGController= loader.getController();
         buyShoeGController.start("/drawable/shoe-nike-4(Nike-Air-Max-90-South-Beach).png", nikeModel4.getText(), nikePriceL4.getText(), 1);

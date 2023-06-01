@@ -1,6 +1,6 @@
 package com.example.shoepping.use_case.buy_shoe.controller;
 
-import com.example.shoepping.ValidationCard;
+import com.example.shoepping.bean.*;
 import com.example.shoepping.dao.insert_order_dao.InsertOrderDao;
 import com.example.shoepping.dao.size_dao.SizeDaoJDBC;
 import com.example.shoepping.model.order.Order;
@@ -28,19 +28,22 @@ public class BuyShoeController implements IBuyShoeController{
     @Override
     public void onUpdate(ShoeSizeList shoeSizeList) {
         int i = 37;
+        SizeShoeBean sizeShoeBean = new SizeShoeBean();
+
         for (SizeButton button : shoeSizeList.buttons) {
             if(!button.getIsAvailable()){
-                buyShoeView.onDisable(i);
+                sizeShoeBean.setSizeShoe(i);
+                buyShoeView.onDisable(sizeShoeBean);
             }
             i++;
         }
     }
 
     @Override
-    public void getSizeAmountList(String model) throws SQLException, IOException, ClassNotFoundException {
+    public void getSizeAmountList(ModelShoeBean modelShoeBean) throws SQLException, IOException, ClassNotFoundException {
         ShoeSizeList shoeSizeList;
         SizeDaoJDBC sizeDao = new SizeDaoJDBC();
-        shoeSizeList = sizeDao.getSizeList(model);
+        shoeSizeList = sizeDao.getSizeList(modelShoeBean.getModelShoe());
 
         ShoeSizeButton observer37 = new ShoeSizeButton();
         ShoeSizeButton observer38 = new ShoeSizeButton();
@@ -68,7 +71,7 @@ public class BuyShoeController implements IBuyShoeController{
         onUpdate(shoeSizeList);
     }
 
-    public void onConfirm(String[] orderVec) throws SQLException, IOException, ClassNotFoundException {
+    public void onConfirm(OrderVecBean orderVec) throws SQLException, IOException, ClassNotFoundException {
 
         UserSingleton userSingleton = UserSingleton.getInstance();
         User user = userSingleton.getUser();
@@ -79,12 +82,9 @@ public class BuyShoeController implements IBuyShoeController{
 
         String dateOrder = ZonedDateTime.now(ZoneId.of("Europe/Rome")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        Order order = new Order(dateOrder, orderVec[0], Double.parseDouble(orderVec[1]), conditionOrder, orderVec[3], statusOrder);
-        int orderCode = order.isValid();
+        // String[] orderVec = {model, removeLastChar(price), size, address, cardID, cardDate, cardCVC};
 
-        boolean cardIDCode = ValidationCard.valCardID(orderVec[4]);
-        boolean cardDateCode = ValidationCard.valCardDate(orderVec[5]);
-        boolean cardCVCCode = ValidationCard.valCardCVC(orderVec[6]);
+        Order order = new Order(dateOrder, orderVec.getModelShoeVec(), Double.parseDouble(orderVec.getPriceShoeVec()), conditionOrder, orderVec.getAddressVec(), statusOrder);
 
         /*
         0 not selected size
@@ -93,25 +93,34 @@ public class BuyShoeController implements IBuyShoeController{
         3 invalid expiration cardDate
         4 invalid CVC
          */
+        orderVec.isValid();
 
-        if(orderVec[2].equals("Select size")){
-            buyShoeView.onConfirmError("Please select a size", 0);
-        }else if(orderCode == 0){
-            buyShoeView.onConfirmError("Please enter an address", 1);
-        }else if(!cardIDCode){
-            buyShoeView.onConfirmError("Please insert a valid card ID", 2);
-        }else if(!cardDateCode){
-            buyShoeView.onConfirmError("Please insert a valid expiration card date", 3);
-        }else if(!cardCVCCode){
-            buyShoeView.onConfirmError("Please insert a valid CVC", 4);
+        if(orderVec.getIsValid() == 0){
+            utilityOnConfirm("Please select a size", 0);
+        }else if(orderVec.getIsValid() == 1){
+            utilityOnConfirm("Please select an address", 1);
+        }else if(orderVec.getIsValid() == 2){
+            utilityOnConfirm("Please insert a valid card ID", 2);
+        }else if(orderVec.getIsValid() == 3){
+            utilityOnConfirm("Please insert a valid expiration card date", 3);
+        }else if(orderVec.getIsValid() == 4){
+            utilityOnConfirm("Please insert a valid CVC", 4);
         }else{
             InsertOrderDao insertOrderDao = new InsertOrderDao();
-            insertOrderDao.insertOrder(order, user, Integer.parseInt(orderVec[2]), isChecked);
+            insertOrderDao.insertOrder(order, user, Integer.parseInt(orderVec.getSizeVec()), isChecked);
             buyShoeView.onConfirmSuccess();
         }
 
     }
 
+    private void utilityOnConfirm(String message, int errorCode) {
+        MessageBean messageBean = new MessageBean();
+        CodeBean codeBean = new CodeBean();
+
+        messageBean.setMessage(message);
+        codeBean.setCode(errorCode);
+        buyShoeView.onConfirmError(messageBean, codeBean);
+    }
 
 
 

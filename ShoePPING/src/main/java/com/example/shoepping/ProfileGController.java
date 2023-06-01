@@ -67,13 +67,10 @@ public class ProfileGController implements IProfileView {
         Parent root = loader.load();
 
         MyOrdersGController myOrdersGController = loader.getController();
-
         IProfileController profileController = new ProfileController();
-
 
         String orders = profileController.onOrders();
         myOrdersGController.start(orders);
-
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, profilePane);
@@ -84,7 +81,6 @@ public class ProfileGController implements IProfileView {
         Parent root = loader.load();
 
         MySalesGController mySalesGController = loader.getController();
-
         IProfileController profileController = new ProfileController();
 
         String sales = profileController.onSales();
@@ -99,7 +95,6 @@ public class ProfileGController implements IProfileView {
         Parent root = loader.load();
 
         MyShipmentsGController myShipmentsGController = loader.getController();
-
         IProfileController profileController = new ProfileController();
 
         String shipments = profileController.onShipments();
