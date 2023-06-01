@@ -1,5 +1,7 @@
 package com.example.shoepping.use_case.manage_sale.controller;
 
+import com.example.shoepping.bean.ItemDataBean;
+import com.example.shoepping.bean.SaleBean;
 import com.example.shoepping.dao.sales_dao.SalesDaoJDBC;
 import com.example.shoepping.model.sale_storage.SaleStorage;
 import com.example.shoepping.model.sale_storage.SaleStorageItem;
@@ -44,28 +46,35 @@ public class ManageSaleController implements IManageSaleController{
             itemData.add(saleStorageItem.getStorageAddress());                  //index 7: Address
             itemData.add(saleStorageItem.getStorageSeller());                   //index 8: Seller
             itemData.add(String.valueOf(saleStorageItem.getStorageIsChecked()));//index 9: Check
-            manageSaleView.setSaleButton(saleStorageItem.toString(), itemData);
+
+            SaleBean saleBean = new SaleBean();
+            ItemDataBean itemDataBean = new ItemDataBean();
+
+            saleBean.setSale(saleStorageItem.toString());
+            itemDataBean.setItemData(itemData);
+
+            manageSaleView.setSaleButton(saleBean, itemDataBean);
         }
     }
 
     @Override
-    public void onConfirmSale(List<String> itemData) throws SQLException, IOException, ClassNotFoundException {
+    public void onConfirmSale(ItemDataBean itemData) throws SQLException, IOException, ClassNotFoundException {
 
         SalesDaoJDBC salesDao = new SalesDaoJDBC();
 
         SaleStorageItem saleStorageItem = new SaleStorageItem();
-        saleStorageItem.setValues(itemData);
+        saleStorageItem.setValues(itemData.getItemData());
 
         salesDao.confirmSale(saleStorageItem);
     }
 
     @Override
-    public void onRefuseSale(List<String> itemData) throws SQLException, IOException, ClassNotFoundException {
+    public void onRefuseSale(ItemDataBean itemData) throws SQLException, IOException, ClassNotFoundException {
 
         SalesDaoJDBC salesDao = new SalesDaoJDBC();
 
         SaleStorageItem saleStorageItem = new SaleStorageItem();
-        saleStorageItem.setValues(itemData);
+        saleStorageItem.setValues(itemData.getItemData());
 
         salesDao.refuseSale(saleStorageItem);
     }
