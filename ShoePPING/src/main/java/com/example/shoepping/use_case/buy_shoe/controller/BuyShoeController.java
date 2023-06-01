@@ -32,7 +32,7 @@ public class BuyShoeController implements IBuyShoeController{
 
         for (SizeButton button : shoeSizeList.buttons) {
             if(!button.getIsAvailable()){
-                sizeShoeBean.setSizeShoe(i);
+                sizeShoeBean.setSizeShoe(String.valueOf(i));
                 buyShoeView.onDisable(sizeShoeBean);
             }
             i++;
@@ -81,8 +81,6 @@ public class BuyShoeController implements IBuyShoeController{
         String statusOrder = "payed";
 
         String dateOrder = ZonedDateTime.now(ZoneId.of("Europe/Rome")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
-        // String[] orderVec = {model, removeLastChar(price), size, address, cardID, cardDate, cardCVC};
 
         Order order = new Order(dateOrder, orderVec.getModelShoeVec(), Double.parseDouble(orderVec.getPriceShoeVec()), conditionOrder, orderVec.getAddressVec(), statusOrder);
 

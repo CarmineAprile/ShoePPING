@@ -1,5 +1,6 @@
 package com.example.shoepping;
 
+import com.example.shoepping.bean.*;
 import com.example.shoepping.pattern.adapter.Adapter;
 import com.example.shoepping.use_case.sell_user_shoe.controller.ISellUserShoeController;
 import com.example.shoepping.use_case.sell_user_shoe.controller.SellUserShoeController;
@@ -70,12 +71,24 @@ public class SellUserShoeGController implements ISellUserShoeView {
         priceL.setText("");
         sizeL.setText("");
 
+        BrandBean brandBean = new BrandBean();
+        ModelShoeBean modelShoeBean = new ModelShoeBean();
+        PriceBean priceBean = new PriceBean();
+        ConditionBean conditionBean = new ConditionBean();
+        SizeShoeBean sizeShoeBean = new SizeShoeBean();
+
+        brandBean.setBrand(brand);
+        modelShoeBean.setModelShoe(item);
+        priceBean.setPrice(price);
+        conditionBean.setCondition(condition);
+        sizeShoeBean.setSizeShoe(size);
+
         ISellUserShoeController sellUserShoeController = new SellUserShoeController(this);
-        sellUserShoeController.onInsertSale(brand, item, price, condition, size);
+        sellUserShoeController.onInsertSale(brandBean, modelShoeBean, priceBean, conditionBean, sizeShoeBean);
     }
 
     @Override
-    public void onInsertSaleError(String message, int code) {
+    public void onInsertSaleError(MessageBean message, CodeBean code) {
 
         // 0. Check for brand is Empty
         // 1. Check for item is Empty
@@ -87,18 +100,18 @@ public class SellUserShoeGController implements ISellUserShoeView {
         // 7. Check for size between 30 and 60
         // 8. Check for  user logged with csv
 
-        switch (code){
-            case 0 -> brandL.setText(message);
-            case 1 -> itemL.setText(message);
-            case 2, 3, 4 -> priceL.setText(message);
-            case 5, 6, 7 -> sizeL.setText(message);
+        switch (code.getCode()){
+            case 0 -> brandL.setText(message.getMessage());
+            case 1 -> itemL.setText(message.getMessage());
+            case 2, 3, 4 -> priceL.setText(message.getMessage());
+            case 5, 6, 7 -> sizeL.setText(message.getMessage());
             case 8 -> {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Insert sale with File-System");
 
                 // Header Text: null
                 alert.setHeaderText(null);
-                alert.setContentText(message);
+                alert.setContentText(message.getMessage());
 
                 alert.showAndWait();
             }
@@ -130,12 +143,17 @@ public class SellUserShoeGController implements ISellUserShoeView {
 
         priceL.setText("");
 
+        PriceBean priceBean = new PriceBean();
+        ConditionBean conditionBean = new ConditionBean();
+        priceBean.setPrice(price);
+        conditionBean.setCondition(condition);
+
         ISellUserShoeController sellUserShoeController = new SellUserShoeController(this);
-        sellUserShoeController.onReccomendedPriceCalculate(price, condition);
+        sellUserShoeController.onReccomendedPriceCalculate(priceBean, conditionBean);
     }
     @Override
-    public void onRecommendedPriceCalculateError(String message) {
-        priceL.setText(message);
+    public void onRecommendedPriceCalculateError(MessageBean message) {
+        priceL.setText(message.getMessage());
     }
     @Override
     public void onRecommendedPriceCalculateSuccess(String price, String condition) {

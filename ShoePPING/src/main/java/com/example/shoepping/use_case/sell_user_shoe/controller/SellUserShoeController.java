@@ -1,5 +1,6 @@
 package com.example.shoepping.use_case.sell_user_shoe.controller;
 
+import com.example.shoepping.bean.*;
 import com.example.shoepping.dao.sales_dao.SalesDaoJDBC;
 import com.example.shoepping.model.sale.Sale;
 import com.example.shoepping.pattern.singleton.UserSingleton;
@@ -18,17 +19,17 @@ public class SellUserShoeController implements ISellUserShoeController{
 
 
     @Override
-    public void onInsertSale(String brand, String item, String price, String condition, String size) throws IOException, SQLException, ClassNotFoundException {
+    public void onInsertSale(BrandBean brand, ModelShoeBean item, PriceBean price, ConditionBean condition, SizeShoeBean size) throws IOException, SQLException, ClassNotFoundException {
 
         UserSingleton userSingleton = UserSingleton.getInstance();
 
         if(userSingleton.isChecked()){
             // 8. Check for  user logged with csv
-            sellUserShoeView.onInsertSaleError("Not available yet!", 8);
+            utilityOnSellUser("Not available yet!", 8);
             return;
         }
 
-        Sale sale = new Sale(brand, item, price, condition, size);
+        Sale sale = new Sale(brand.getBrand(), item.getModelShoe(), price.getPrice(), condition.getCondition(), String.valueOf(size.getSizeShoe()));
 
         // 0. Check for brand is Empty
         // 1. Check for item is Empty
@@ -39,37 +40,56 @@ public class SellUserShoeController implements ISellUserShoeController{
         // 6. Check for size is integer
         // 7. Check for size between 30 and 60
 
-
-        switch (sale.isValid()){
-            case 0 -> sellUserShoeView.onInsertSaleError("Please insert a brand", 0);
-            case 1 -> sellUserShoeView.onInsertSaleError("Please insert an item", 1);
-            case 2 -> sellUserShoeView.onInsertSaleError("Please insert a price", 2);
-            case 3 -> sellUserShoeView.onInsertSaleError("Please insert a valid price format", 3);
-            case 4 -> sellUserShoeView.onInsertSaleError("Please select a condition", 4);
-            case 5 -> sellUserShoeView.onInsertSaleError("Please insert a size", 5);
-            case 6 -> sellUserShoeView.onInsertSaleError("Please insert an integer", 6);
-            case 7 -> sellUserShoeView.onInsertSaleError("Please insert a size value between 30 and 60", 7);
-            default -> {
+        if(brand.getIsValid() == 0){
+            utilityOnSellUser("Please insert a brand", 0);
+        }else if(item.getIsValid() == 1){
+            utilityOnSellUser("Please insert an item", 1);
+        }else if(price.getIsValid() == 2){
+            utilityOnSellUser("Please insert a price", 2);
+        }else if(price.getIsValid() == 3){
+            utilityOnSellUser("Please insert a valid price format", 3);
+        }else if(condition.getIsValid() == 4){
+            utilityOnSellUser("Please select a condition", 4);
+        }else if(size.getIsValid() == 5){
+            utilityOnSellUser("Please insert a size", 5);
+        }else if(size.getIsValid() == 6){
+            utilityOnSellUser("Please insert an integer", 6);
+        }else if(size.getIsValid() == 7){
+            utilityOnSellUser("Please insert a size value between 30 and 60", 7);
+        }else {
                 SalesDaoJDBC salesDaoJDBC = new SalesDaoJDBC();
                 salesDaoJDBC.insertSale(sale, userSingleton.getUser().getUsername());
                 // aggiungere la funzione del dao per inserire la sale
                 sellUserShoeView.onInsertSaleSuccess();
             }
-        }
+    }
+
+    private void utilityOnSellUser(String message, int errorCode) {
+        MessageBean messageBean = new MessageBean();
+        CodeBean codeBean = new CodeBean();
+
+        messageBean.setMessage(message);
+        codeBean.setCode(errorCode);
+        sellUserShoeView.onInsertSaleError(messageBean, codeBean);
     }
     @Override
-    public void onReccomendedPriceCalculate(String price, String condition) {
+    public void onReccomendedPriceCalculate(PriceBean price, ConditionBean condition) {
 
-        Sale sale = new Sale(price, condition);
-        int isValid = sale.isValidRecommendedPrice();
+        Sale sale = new Sale(price.getPrice(), condition.getCondition());
+        MessageBean messageBean = new MessageBean();
 
-        switch (isValid){
-            case 0 -> sellUserShoeView.onRecommendedPriceCalculateError("Please insert a price");
-            case 1 -> sellUserShoeView.onRecommendedPriceCalculateError("Please insert a valid price format");
-            case 2 -> sellUserShoeView.onRecommendedPriceCalculateError("Please select a condition");
-            default -> sellUserShoeView.onRecommendedPriceCalculateSuccess(sale.getPrice(), sale.getCondition());
+        if(price.getIsValid() == 2){
+            messageBean.setMessage("Please insert a price");
+            sellUserShoeView.onRecommendedPriceCalculateError(messageBean);
+        }else if(price.getIsValid() == 3){
+            messageBean.setMessage("Please insert a valid price format");
+            sellUserShoeView.onRecommendedPriceCalculateError(messageBean);
+        }else if(condition.getIsValid() == 4){
+            messageBean.setMessage("Please select a condition");
+            sellUserShoeView.onRecommendedPriceCalculateError(messageBean);
+        }else {
+            sellUserShoeView.onRecommendedPriceCalculateSuccess(sale.getPrice(), sale.getCondition());
         }
     }
-
 
 }

@@ -13,11 +13,11 @@ import java.sql.SQLException;
 
 public class EditProfileController implements IEditProfileController{
 
-    IEditProfileView editProfileView;
+    static IEditProfileView editProfileView;
     static User userNew;
 
     public EditProfileController(IEditProfileView editProfileView){
-        this.editProfileView = editProfileView;
+        EditProfileController.editProfileView = editProfileView;
     }
     @Override
     public void onEditProfile(UsernameBean username, PasswordBean pass, PasswordBean repass, EmailBean email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
@@ -70,7 +70,7 @@ public class EditProfileController implements IEditProfileController{
         editProfileView.onEditProfileError(messageBean, codeBean);
     }
 
-    private void utilityOnEdit(boolean check, User user, String oldUsername, UsernameBean username, PasswordBean pass, EmailBean email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+    private static void utilityOnEdit(boolean check, User user, String oldUsername, UsernameBean username, PasswordBean pass, EmailBean email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
         if (check) {
             UserDAOCSV userdao = new UserDAOCSV();
             boolean countUser = userdao.checkExistence(user);

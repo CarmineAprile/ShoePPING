@@ -247,16 +247,16 @@ public class BuyShoeGController implements IBuyShoeView {
     @Override
     public void onDisable(SizeShoeBean sizeShoeBean) {
         switch (sizeShoeBean.getSizeShoe()){
-            case 37 -> item37.setDisable(true);
-            case 38 -> item38.setDisable(true);
-            case 39 -> item39.setDisable(true);
-            case 40 -> item40.setDisable(true);
-            case 41 -> item41.setDisable(true);
-            case 42 -> item42.setDisable(true);
-            case 43 -> item43.setDisable(true);
-            case 44 -> item44.setDisable(true);
-            case 45 -> item45.setDisable(true);
-            case 46 -> item46.setDisable(true);
+            case "37" -> item37.setDisable(true);
+            case "38" -> item38.setDisable(true);
+            case "39" -> item39.setDisable(true);
+            case "40" -> item40.setDisable(true);
+            case "41" -> item41.setDisable(true);
+            case "42" -> item42.setDisable(true);
+            case "43" -> item43.setDisable(true);
+            case "44" -> item44.setDisable(true);
+            case "45" -> item45.setDisable(true);
+            case "46" -> item46.setDisable(true);
             default -> error();
 
         }
