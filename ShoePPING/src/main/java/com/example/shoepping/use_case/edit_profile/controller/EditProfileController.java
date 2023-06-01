@@ -48,6 +48,8 @@ public class EditProfileController implements IEditProfileController{
             utilityOnEdit("Please enter a valid email", 6);
         } else if(email.getIsValid() == 30){
             utilityOnEdit("Please enter an email lower than 40 characters", 30);
+        }else if(email.getIsValid() == 30){
+            utilityOnEdit("Please enter an email lower than 40 characters", 30);
         } else {
 
                 if (check) {
