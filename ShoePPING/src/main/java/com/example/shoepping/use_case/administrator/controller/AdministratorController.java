@@ -1,5 +1,6 @@
 package com.example.shoepping.use_case.administrator.controller;
 
+import com.example.shoepping.bean.*;
 import com.example.shoepping.dao.report_dao.ReportDao;
 import com.example.shoepping.dao.update_dao.UpdateDao;
 import com.example.shoepping.model.report.ReportList;
@@ -18,51 +19,76 @@ public class AdministratorController implements IAdministratorController{
     }
 
     @Override
-    public void onUpdateAmount(String id, String amount, String size) throws SQLException, IOException, ClassNotFoundException {
-        Shoe shoe = new Shoe(id, size, amount);
+    public void onUpdateAmount(IdBean id, AmountBean amount, SizeShoeBean size) throws SQLException, IOException, ClassNotFoundException {
+        Shoe shoe = new Shoe(id.getId(), size.getSizeShoe(), amount.getAmount());
 
-        switch (shoe.isValidAmount()){
-            // 0. check for ID is empty
-            // 1. check for ID is int
-            // 2. check for amount is empty
-            // 3. check for amount is int
-            // 4. check for size is empty
-            // 5. check for size is int
-            case 0 -> administratorView.onUpdateAmountError("Please insert an ID", 0);
-            case 1 -> administratorView.onUpdateAmountError("Please insert a valid ID format", 1);
-            case 2 -> administratorView.onUpdateAmountError("Please insert an amount", 2);
-            case 3 -> administratorView.onUpdateAmountError("Please insert a valid amount format", 3);
-            case 4 -> administratorView.onUpdateAmountError("Please insert a size", 4);
-            case 5 -> administratorView.onUpdateAmountError("Please insert a valid size format", 5);
-            default -> // chiama dao per update dei dati
-            {
+        // 0. check for ID is empty
+        // 1. check for ID is int
+        // 2. check for amount is empty
+        // 3. check for amount is int
+        // 5. check for size is empty
+        // 6. check for size is int
+
+        if(id.getIsValid() == 0)
+            utilityOnUpdateAmount("Please insert an ID", 0);
+        else if (id.getIsValid() == 1)
+            utilityOnUpdateAmount("Please insert a valid ID format", 1);
+        else if (amount.getIsValid() == 2)
+            utilityOnUpdateAmount("Please insert an amount", 2);
+        else if (amount.getIsValid() == 3)
+            utilityOnUpdateAmount("Please insert a valid amount format", 3);
+        else if (size.getIsValid() == 5)
+            utilityOnUpdateAmount("Please insert a size", 5);
+        else if (size.getIsValid() == 6)
+            utilityOnUpdateAmount("Please insert a valid size format", 6);
+        else {
+                // chiama dao per update dei dati
                 UpdateDao updateDao = new UpdateDao();
                 updateDao.updateAmount(shoe);
                 administratorView.onUpdateAmountSuccess();
             }
-        }
     }
 
     @Override
-    public void onUpdatePrice(String id, String price) throws SQLException, IOException, ClassNotFoundException {
-        Shoe shoe = new Shoe(id, price);
+    public void onUpdatePrice(IdBean id, PriceBean price) throws SQLException, IOException, ClassNotFoundException {
+        Shoe shoe = new Shoe(id.getId(), price.getPrice());
 
-        switch (shoe.isValidPrice()){
-            // 0. check for ID is empty
-            // 1. check for ID is int
-            // 2. check for price is empty
-            // 3. check for price is numeric
-            case 0 -> administratorView.onUpdatePriceError("Please insert an ID", 0);
-            case 1 -> administratorView.onUpdatePriceError("Please insert a valid ID format", 1);
-            case 2 -> administratorView.onUpdatePriceError("Please insert a price", 2);
-            case 3 -> administratorView.onUpdatePriceError("Please insert a valid price format", 3);
-            default ->
-            {
+        // 0. check for ID is empty
+        // 1. check for ID is int
+        // 2. check for price is empty
+        // 3. check for price is numeric
+
+        if(id.getIsValid() == 0)
+            utilityOnUpdatePrice("Please insert an ID", 0);
+        else if (id.getIsValid() == 1)
+            utilityOnUpdatePrice("Please insert a valid ID format", 1);
+        if(price.getIsValid() == 2)
+            utilityOnUpdatePrice("Please insert a price", 2);
+        else if (price.getIsValid() == 3)
+            utilityOnUpdatePrice("Please insert a valid price format", 3);
+        else {
                 UpdateDao updateDao = new UpdateDao();
                 updateDao.updatePrice(shoe);
                 administratorView.onUpdatePriceSuccess();
             }
-        }
+    }
+
+    private void utilityOnUpdateAmount(String message, int errorCode) {
+        MessageBean messageBean = new MessageBean();
+        CodeBean codeBean = new CodeBean();
+
+        messageBean.setMessage(message);
+        codeBean.setCode(errorCode);
+        administratorView.onUpdateAmountError(messageBean, codeBean);
+    }
+
+    private void utilityOnUpdatePrice(String message, int errorCode) {
+        MessageBean messageBean = new MessageBean();
+        CodeBean codeBean = new CodeBean();
+
+        messageBean.setMessage(message);
+        codeBean.setCode(errorCode);
+        administratorView.onUpdatePriceError(messageBean, codeBean);
     }
 
     @Override

@@ -1,8 +1,11 @@
 package com.example.shoepping;
 
+import com.example.shoepping.bean.*;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.use_case.administrator.controller.AdministratorController;
 import com.example.shoepping.use_case.administrator.controller.IAdministratorController;
 import com.example.shoepping.use_case.administrator.view.IAdministratorView;
+import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -51,7 +54,7 @@ public class AdministratorGController implements IAdministratorView {
        //passaggio tramite bean, no return -> fare metodo nella view che stampa nella TA
     }
 
-    public void addAmount() throws SQLException, IOException, ClassNotFoundException {
+    public void addAmount() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         String idAmount = id1TA.getText();
         String amount = amountTA.getText();
         String size = sizeTA.getText();
@@ -59,19 +62,27 @@ public class AdministratorGController implements IAdministratorView {
         //Serve a "svuotare" le label di errore
         amountL.setText("");
 
+        IdBean idBean = new IdBean();
+        AmountBean amountBean = new AmountBean();
+        SizeShoeBean sizeShoeBean = new SizeShoeBean();
+
+        idBean.setId(idAmount);
+        amountBean.setAmount(amount);
+        sizeShoeBean.setSizeShoe(size);
+
         IAdministratorController administratorController = new AdministratorController(this);
-        administratorController.onUpdateAmount(idAmount, amount, size);
+        administratorController.onUpdateAmount(idBean, amountBean, sizeShoeBean);
     }
     @Override
-    public void onUpdateAmountError(String message, int errorCode) {
+    public void onUpdateAmountError(MessageBean message, CodeBean errorCode) {
         // 0. check for ID is empty
         // 1. check for ID is int
         // 2. check for amount is empty
         // 3. check for amount is int
-        // 4. check for size is empty
-        // 5. check for size is int
-         if(errorCode == 0 || errorCode == 1 || errorCode == 2 || errorCode == 3 || errorCode == 4 || errorCode == 5){
-            amountL.setText(message);
+        // 5. check for size is empty
+        // 6. check for size is int
+         if(errorCode.getCode() == 0 || errorCode.getCode() == 1 || errorCode.getCode() == 2 || errorCode.getCode() == 3 || errorCode.getCode() == 5 || errorCode.getCode() == 6){
+            amountL.setText(message.getMessage());
         }
     }
     @Override
@@ -82,25 +93,31 @@ public class AdministratorGController implements IAdministratorView {
         start();
     }
 
-    public void updatePrice() throws SQLException, IOException, ClassNotFoundException {
+    public void updatePrice() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         String idAmount = id2TA.getText();
         String price = priceTA.getText();
 
         //Serve a "svuotare" le label di errore
         priceL.setText("");
 
+        IdBean idBean = new IdBean();
+        PriceBean priceBean = new PriceBean();
+
+        idBean.setId(idAmount);
+        priceBean.setPrice(price);
+
         IAdministratorController administratorController = new AdministratorController(this);
-        administratorController.onUpdatePrice(idAmount, price);
+        administratorController.onUpdatePrice(idBean, priceBean);
     }
     @Override
-    public void onUpdatePriceError(String message, int errorCode) {
+    public void onUpdatePriceError(MessageBean message, CodeBean errorCode) {
         // 0. check for ID is empty
         // 1. check for ID is int
         // 2. check for price is empty
         // 3. check for price is numeric
 
-        if(errorCode == 0 || errorCode == 1 || errorCode == 2 || errorCode == 3){
-            priceL.setText(message);
+        if(errorCode.getCode() == 0 || errorCode.getCode() == 1 || errorCode.getCode() == 2 || errorCode.getCode() == 3){
+            priceL.setText(message.getMessage());
         }
     }
     @Override
