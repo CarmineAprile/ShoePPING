@@ -12,6 +12,6 @@ import java.sql.SQLException;
 public interface IBuyShoeView {
     void onDisable(SizeShoeBean i);
 
-    void onConfirmSuccess() throws IOException;
+    void onConfirmSuccess() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, ManageException;
     void onConfirmError(MessageBean message, CodeBean code) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException;
 }
