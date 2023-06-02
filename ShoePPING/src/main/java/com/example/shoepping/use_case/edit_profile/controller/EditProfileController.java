@@ -3,6 +3,7 @@ package com.example.shoepping.use_case.edit_profile.controller;
 import com.example.shoepping.bean.*;
 import com.example.shoepping.dao.user_dao.UserDAOCSV;
 import com.example.shoepping.dao.user_dao.UserDAOJDBC;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.user.User;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.edit_profile.view.IEditProfileView;
@@ -18,7 +19,7 @@ public class EditProfileController implements IEditProfileController{
         this.editProfileView = editProfileView;
     }
     @Override
-    public void onEditProfile(UsernameBean username, PasswordBean pass, PasswordBean repass, EmailBean email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+    public void onEditProfile(UsernameBean username, PasswordBean pass, PasswordBean repass, EmailBean email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException, ManageException {
 
         User user = new User(username.getUsername(), pass.getPassword(), email.getEmail());
         UserSingleton userSingleton = UserSingleton.getInstance();
@@ -59,7 +60,7 @@ public class EditProfileController implements IEditProfileController{
         userSingleton.setUser(userNew.getUser());
     }
 
-    private void utilityOnEdit(String message, int errorCode) {
+    private void utilityOnEdit(String message, int errorCode) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         MessageBean messageBean = new MessageBean();
         CodeBean codeBean = new CodeBean();
 
@@ -68,7 +69,7 @@ public class EditProfileController implements IEditProfileController{
         editProfileView.onEditProfileError(messageBean, codeBean);
     }
 
-    private void utilityOnEdit(boolean check, User user, String oldUsername, UsernameBean username, PasswordBean pass, EmailBean email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+    private void utilityOnEdit(boolean check, User user, String oldUsername, UsernameBean username, PasswordBean pass, EmailBean email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException, ManageException {
         if (check) {
             UserDAOCSV userdao = new UserDAOCSV();
             boolean countUser = userdao.checkExistence(user);

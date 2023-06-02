@@ -3,6 +3,7 @@ package com.example.shoepping.use_case.buy_shoe.controller;
 import com.example.shoepping.bean.*;
 import com.example.shoepping.dao.insert_order_dao.InsertOrderDao;
 import com.example.shoepping.dao.size_dao.SizeDaoJDBC;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.order.Order;
 import com.example.shoepping.model.user.User;
 import com.example.shoepping.pattern.observer.ShoeSizeButton;
@@ -10,6 +11,7 @@ import com.example.shoepping.pattern.observer.ShoeSizeList;
 import com.example.shoepping.pattern.observer.SizeButton;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.buy_shoe.view.IBuyShoeView;
+import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -71,7 +73,7 @@ public class BuyShoeController implements IBuyShoeController{
         onUpdate(shoeSizeList);
     }
 
-    public void onConfirm(OrderVecBean orderVec) throws SQLException, IOException, ClassNotFoundException {
+    public void onConfirm(OrderVecBean orderVec) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
 
         UserSingleton userSingleton = UserSingleton.getInstance();
         User user = userSingleton.getUser();
@@ -111,7 +113,7 @@ public class BuyShoeController implements IBuyShoeController{
 
     }
 
-    private void utilityOnConfirm(String message, int errorCode) {
+    private void utilityOnConfirm(String message, int errorCode) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         MessageBean messageBean = new MessageBean();
         CodeBean codeBean = new CodeBean();
 

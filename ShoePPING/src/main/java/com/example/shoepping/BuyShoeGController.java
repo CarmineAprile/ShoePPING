@@ -3,9 +3,11 @@ package com.example.shoepping;
 
 
 import com.example.shoepping.bean.*;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.use_case.buy_shoe.controller.BuyShoeController;
 import com.example.shoepping.use_case.buy_shoe.controller.IBuyShoeController;
 import com.example.shoepping.use_case.buy_shoe.view.IBuyShoeView;
+import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -149,7 +151,7 @@ public class BuyShoeGController implements IBuyShoeView {
         cw.switchPage(root, buyShoePane);
     }
 
-    public void confirm() throws SQLException, IOException, ClassNotFoundException {
+    public void confirm() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         String model = modelLabel.getText();
         String price = priceLabel.getText();
         String size = sizeMenu.getText();

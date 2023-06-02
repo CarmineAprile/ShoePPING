@@ -30,7 +30,7 @@ public class ProfileCLIController implements IProfileView {
         System.out.println("3) My Sales");
         System.out.println("4) My Shipments");
         System.out.println("5) About us");
-        System.out.println("6) Go back");
+        System.out.println("6) Go Home Page");
         System.out.println("7) Exit");
 
         Scanner scannerPro = new Scanner(System.in);
@@ -74,16 +74,28 @@ public class ProfileCLIController implements IProfileView {
         editProfileCLIController.start();
     }
 
-    public void ordersMethod(){
-        //TODO
+    public void ordersMethod() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+        IProfileController profileController = new ProfileController();
+        String orders = profileController.onOrders();
+
+        MyOrdersCLIController myOrdersCLIController = new MyOrdersCLIController();
+        myOrdersCLIController.start(orders);
     }
 
-    public void salesMethod(){
-        //TODO
+    public void salesMethod() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+        IProfileController profileController = new ProfileController();
+        String sales = profileController.onSales();
+
+        MySalesCLIController mySalesCLIController = new MySalesCLIController();
+        mySalesCLIController.start(sales);
     }
 
-    public void shipmentsMethod(){
-        //TODO
+    public void shipmentsMethod() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+        IProfileController profileController = new ProfileController();
+        String shipments = profileController.onShipments();
+
+        MyShipmentsCLIController myShipmentsCLIController = new MyShipmentsCLIController();
+        myShipmentsCLIController.start(shipments);
     }
 
     public void aboutMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {

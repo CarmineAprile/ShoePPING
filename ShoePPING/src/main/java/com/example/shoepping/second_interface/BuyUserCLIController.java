@@ -1,6 +1,7 @@
 package com.example.shoepping.second_interface;
 
 import com.example.shoepping.exception.ManageException;
+import com.example.shoepping.use_case.buy_user.BuyUserController;
 import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.IOException;
@@ -52,8 +53,12 @@ public class BuyUserCLIController {
         }
     }
 
-    public void nikeMethod(){
-        //TODO
+    public void nikeMethod() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+        BuyUserController buyUserController = new BuyUserController();
+        String[] lista = buyUserController.onNikeList();
+
+        BuyUserNikeCLIController buyUserNikeCLIController = new BuyUserNikeCLIController();
+        buyUserNikeCLIController.start(lista);
     }
 
     public void adidasMethod(){
