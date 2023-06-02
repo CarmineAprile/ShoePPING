@@ -84,7 +84,7 @@ public class EditProfileGController implements IEditProfileView {
     }
 
     @Override
-    public void onEditProfileSuccess(CheckedBean checkedBean) throws IOException {
+    public void onEditProfileSuccess(CheckedBean checkedBean, UserBean userNew) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("profile-view.fxml"));
         Parent root = loader.load();
@@ -100,7 +100,7 @@ public class EditProfileGController implements IEditProfileView {
             alert.showAndWait();
         }else {
             IEditProfileController editProfileController = new EditProfileController(this);
-            editProfileController.setNewUser();
+            editProfileController.setNewUser(userNew);
         }
 
 

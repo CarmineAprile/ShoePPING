@@ -3,6 +3,7 @@ package com.example.shoepping.second_interface;
 import com.example.shoepping.bean.CheckedBean;
 import com.example.shoepping.bean.CodeBean;
 import com.example.shoepping.bean.MessageBean;
+import com.example.shoepping.bean.UserBean;
 import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.use_case.edit_profile.view.IEditProfileView;
 import com.opencsv.exceptions.CsvValidationException;
@@ -60,7 +61,7 @@ public class EditProfileCLIController implements IEditProfileView {
     }
 
     @Override
-    public void onEditProfileSuccess(CheckedBean checkedBean) {
+    public void onEditProfileSuccess(CheckedBean checkedBean, UserBean userNew) {
 
     }
 

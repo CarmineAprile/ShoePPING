@@ -13,11 +13,9 @@ import java.sql.SQLException;
 
 public class EditProfileController implements IEditProfileController{
 
-    static IEditProfileView editProfileView;
-    static User userNew;
-
+    IEditProfileView editProfileView;
     public EditProfileController(IEditProfileView editProfileView){
-        EditProfileController.editProfileView = editProfileView;
+        this.editProfileView = editProfileView;
     }
     @Override
     public void onEditProfile(UsernameBean username, PasswordBean pass, PasswordBean repass, EmailBean email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
@@ -55,10 +53,10 @@ public class EditProfileController implements IEditProfileController{
 
 
     @Override
-    public void setNewUser() {
+    public void setNewUser(UserBean userNew) {
 
         UserSingleton userSingleton = UserSingleton.getInstance();
-        userSingleton.setUser(userNew);
+        userSingleton.setUser(userNew.getUser());
     }
 
     private void utilityOnEdit(String message, int errorCode) {
@@ -70,7 +68,7 @@ public class EditProfileController implements IEditProfileController{
         editProfileView.onEditProfileError(messageBean, codeBean);
     }
 
-    private static void utilityOnEdit(boolean check, User user, String oldUsername, UsernameBean username, PasswordBean pass, EmailBean email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
+    private void utilityOnEdit(boolean check, User user, String oldUsername, UsernameBean username, PasswordBean pass, EmailBean email) throws CsvValidationException, IOException, SQLException, ClassNotFoundException {
         if (check) {
             UserDAOCSV userdao = new UserDAOCSV();
             boolean countUser = userdao.checkExistence(user);
@@ -78,7 +76,8 @@ public class EditProfileController implements IEditProfileController{
             if (!countUser) {
                 CheckedBean checkedBean = new CheckedBean();
                 checkedBean.setChecked(true);
-                editProfileView.onEditProfileSuccess(checkedBean);
+                UserBean userBean = new UserBean();
+                editProfileView.onEditProfileSuccess(checkedBean, userBean);
             } else {
                 MessageBean messageBean = new MessageBean();
                 CodeBean codeBean = new CodeBean();
@@ -103,11 +102,13 @@ public class EditProfileController implements IEditProfileController{
 
                 userdao.updateUser(user, oldUsername);
 
-                userNew = user;
+
+                UserBean userBean = new UserBean();
+                userBean.setUser(user);
 
                 CheckedBean checkedBean = new CheckedBean();
                 checkedBean.setChecked(false);
-                editProfileView.onEditProfileSuccess(checkedBean);
+                editProfileView.onEditProfileSuccess(checkedBean, userBean);
             } else {
                 MessageBean messageBean = new MessageBean();
                 CodeBean codeBean = new CodeBean();
