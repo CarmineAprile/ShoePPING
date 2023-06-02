@@ -1,5 +1,7 @@
 package com.example.shoepping;
 
+import com.example.shoepping.bean.ItemDataBean;
+import com.example.shoepping.bean.SaleBean;
 import com.example.shoepping.use_case.manage_sale_admin.IManageSaleAdminController;
 import com.example.shoepping.use_case.manage_sale_admin.IManageSaleAdminView;
 import com.example.shoepping.use_case.manage_sale_admin.ManageSaleAdminController;
@@ -18,7 +20,6 @@ import javafx.scene.text.Font;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 public class ManageSalesAdminGController implements IManageSaleAdminView {
     @FXML
@@ -37,12 +38,12 @@ public class ManageSalesAdminGController implements IManageSaleAdminView {
     }
 
     @Override
-    public void setSaleButton(String order, List<String> itemData) {
+    public void setSaleButton(SaleBean order, ItemDataBean itemData) {
         HBox hBox = new HBox();
         hBox.setPrefWidth(638);
         hBox.setPadding(new Insets(10, 0, 0,0));
 
-        Label label = new Label(order);
+        Label label = new Label(order.getSale());
         label.setPrefWidth(450);
         label.setFont(new Font(format, 12));
         label.setPadding(new Insets(5, 30, 5, 5));

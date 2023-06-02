@@ -1,5 +1,7 @@
 package com.example.shoepping.use_case.manage_sale_admin;
 
+import com.example.shoepping.bean.ItemDataBean;
+import com.example.shoepping.bean.SaleBean;
 import com.example.shoepping.dao.order_dao.OrderDaoJDBC;
 import com.example.shoepping.model.order.Order;
 import com.example.shoepping.model.order.OrderList;
@@ -32,24 +34,31 @@ public class ManageSaleAdminController implements IManageSaleAdminController {
             itemData.add(order.getAddressOrder());                  //index 5: Address
             itemData.add(order.getStatusOrder());                   //index 6: Status
 
-            manageSaleAdminView.setSaleButton(order.toStringManage(), itemData);
+
+            SaleBean orderBean = new SaleBean();
+            ItemDataBean itemDataBean = new ItemDataBean();
+
+            orderBean.setSale(order.toStringManage());
+            itemDataBean.setItemData(itemData);
+
+            manageSaleAdminView.setSaleButton(orderBean, itemDataBean);
         }
     }
 
     @Override
-    public void onConfirmOrder(List<String> itemData) throws SQLException, IOException, ClassNotFoundException {
+    public void onConfirmOrder(ItemDataBean itemData) throws SQLException, IOException, ClassNotFoundException {
 
         OrderDaoJDBC orderDao = new OrderDaoJDBC();
-        Order order = new Order(Integer.parseInt(itemData.get(0)), itemData.get(1), itemData.get(2), Double.parseDouble(itemData.get(3)), itemData.get(4), itemData.get(5), itemData.get(6));
+        Order order = new Order(Integer.parseInt(itemData.getItemData().get(0)), itemData.getItemData().get(1), itemData.getItemData().get(2), Double.parseDouble(itemData.getItemData().get(3)), itemData.getItemData().get(4), itemData.getItemData().get(5), itemData.getItemData().get(6));
 
         orderDao.confirmOrder(order);
     }
 
     @Override
-    public void onRefuseOrder(List<String> itemData) throws SQLException, IOException, ClassNotFoundException {
+    public void onRefuseOrder(ItemDataBean itemData) throws SQLException, IOException, ClassNotFoundException {
 
         OrderDaoJDBC orderDao = new OrderDaoJDBC();
-        Order order = new Order(Integer.parseInt(itemData.get(0)), itemData.get(1), itemData.get(2), Double.parseDouble(itemData.get(3)), itemData.get(4), itemData.get(5), itemData.get(6));
+        Order order = new Order(Integer.parseInt(itemData.getItemData().get(0)), itemData.getItemData().get(1), itemData.getItemData().get(2), Double.parseDouble(itemData.getItemData().get(3)), itemData.getItemData().get(4), itemData.getItemData().get(5), itemData.getItemData().get(6));
 
         orderDao.refuseOrder(order);
 

@@ -1,7 +1,8 @@
 package com.example.shoepping.use_case.manage_sale_admin;
 
-import java.util.List;
+import com.example.shoepping.bean.ItemDataBean;
+import com.example.shoepping.bean.SaleBean;
 
 public interface IManageSaleAdminView {
-    void setSaleButton(String s, List<String> itemData);
+    void setSaleButton(SaleBean s, ItemDataBean itemData);
 }
