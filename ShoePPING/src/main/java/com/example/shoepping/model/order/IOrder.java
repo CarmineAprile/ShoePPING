@@ -16,8 +16,5 @@ public interface IOrder {
     String getAddressOrder();
 
     String getStatusOrder();
-
-    int isValid();
-
     String toStringManage();
 }

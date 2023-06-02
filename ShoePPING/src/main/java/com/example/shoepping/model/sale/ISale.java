@@ -7,8 +7,4 @@ public interface ISale {
     String getCondition();
     String getSize();
     String getSeller();
-
-    int isValid();
-
-    int isValidRecommendedPrice();
 }

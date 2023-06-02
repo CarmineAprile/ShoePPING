@@ -57,15 +57,6 @@ public class Order implements IOrder{
     public String getStatusOrder() {
         return statusOrder;
     }
-
-    @Override
-    public int isValid() {
-        // 0. Check for address is empty
-        if (addressOrder.isEmpty())
-            return 0;
-        else return -1;
-    }
-
     @Override
     public String toString(){
         return "Order:\t\t" + this.getOrder() + "\nDate:\t\t" + this.getDateOrder() + "\nItem:\t\t" + this.getItemOrder() + "\nPrice:\t\t" + this.getPriceOrder() + "$\nCondition:\t" + this.getConditionOrder() + "\nAddress:\t\t" + this.getAddressOrder() + "\nStatus:\t\t" + this.getStatusOrder();
