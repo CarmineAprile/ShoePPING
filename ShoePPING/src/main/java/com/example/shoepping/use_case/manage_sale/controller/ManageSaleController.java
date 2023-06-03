@@ -3,10 +3,12 @@ package com.example.shoepping.use_case.manage_sale.controller;
 import com.example.shoepping.bean.ItemDataBean;
 import com.example.shoepping.bean.SaleBean;
 import com.example.shoepping.dao.sales_dao.SalesDaoJDBC;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.sale_storage.SaleStorage;
 import com.example.shoepping.model.sale_storage.SaleStorageItem;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.manage_sale.view.IManageSaleView;
+import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -22,7 +24,7 @@ public class ManageSaleController implements IManageSaleController{
 
 
     @Override
-    public void getSales() throws SQLException, IOException, ClassNotFoundException {
+    public void getSales() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
 
 
         UserSingleton userSingleton = UserSingleton.getInstance();

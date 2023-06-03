@@ -2,9 +2,11 @@ package com.example.shoepping;
 
 import com.example.shoepping.bean.ItemDataBean;
 import com.example.shoepping.bean.SaleBean;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.use_case.manage_sale.controller.IManageSaleController;
 import com.example.shoepping.use_case.manage_sale.controller.ManageSaleController;
 import com.example.shoepping.use_case.manage_sale.view.IManageSaleView;
+import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -37,7 +39,7 @@ public class ManageSaleGController implements IManageSaleView {
 
     String format = "System Bold";
 
-    public void start() throws SQLException, IOException, ClassNotFoundException {
+    public void start() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         IManageSaleController manageSaleController = new ManageSaleController(this);
         manageSaleController.getSales();
     }

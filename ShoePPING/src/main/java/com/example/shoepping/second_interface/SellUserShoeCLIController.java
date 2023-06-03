@@ -88,8 +88,9 @@ public class SellUserShoeCLIController implements ISellUserShoeView {
         sellUserShoeController.onInsertSale(brandBean, modelShoeBean, priceBean, conditionBean, sizeShoeBean);
 
     }
-    public void manageMethod() {
-        // TODO
+    public void manageMethod() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+        ManageSaleCLIController manageSaleCLIController = new ManageSaleCLIController();
+        manageSaleCLIController.start();
     }
     public void recommendedMethod() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, ManageException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

@@ -175,7 +175,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
         alert.showAndWait();
     }
 
-    public void manageSales() throws IOException, SQLException, ClassNotFoundException {
+    public void manageSales() throws IOException, SQLException, ClassNotFoundException, CsvValidationException, ManageException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("manage-sales.fxml"));
         Parent root = loader.load();
 
