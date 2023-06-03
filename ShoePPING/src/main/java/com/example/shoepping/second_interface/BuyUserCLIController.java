@@ -61,12 +61,20 @@ public class BuyUserCLIController {
         buyUserNikeCLIController.start(lista);
     }
 
-    public void adidasMethod(){
-        //TODO
+    public void adidasMethod() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+        BuyUserController buyUserController = new BuyUserController();
+        String[] lista = buyUserController.onAdidasList();
+
+        BuyUserAdidasCLIController buyUserAdidasCLIController = new BuyUserAdidasCLIController();
+        buyUserAdidasCLIController.start(lista);
     }
 
-    public void newBalanceMethod(){
-        //TODO
+    public void newBalanceMethod() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+        BuyUserController buyUserController = new BuyUserController();
+        String[] lista = buyUserController.onNewBalanceList();
+
+        BuyUserNewBalanceCLIController buyUserNewBalanceCLIController = new BuyUserNewBalanceCLIController();
+        buyUserNewBalanceCLIController.start(lista);
     }
 
     public void profileMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {

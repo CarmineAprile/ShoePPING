@@ -4,6 +4,7 @@ public class SellIdUpdateBean {
     private String sellIdUpdate;
 
     public SellIdUpdateBean() {
+        //empty constructor
     }
 
     public String getSellIdUpdate() {
