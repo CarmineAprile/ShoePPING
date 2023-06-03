@@ -165,10 +165,9 @@ public class BuyShoeCLIController implements IBuyShoeView {
     public void buyMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         BuyUserCLIController buyUserCLIController = new BuyUserCLIController();
         buyUserCLIController.start();
-
     }
 
-    public void sellMethod(){
+    public void sellMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         SellUserShoeCLIController sellUserShoeCLIController = new SellUserShoeCLIController();
         sellUserShoeCLIController.start();
 

@@ -100,7 +100,7 @@ public class BuyUserNikeCLIController {
         buyUserCLIController.start();
     }
 
-    public void sellNikeMethod(){
+    public void sellNikeMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         SellUserShoeCLIController sellUserShoeCLIController = new SellUserShoeCLIController();
         sellUserShoeCLIController.start();
 

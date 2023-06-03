@@ -82,7 +82,7 @@ public class BuyUserCLIController {
         profileCLIController.start();
     }
 
-    public void sellMethod(){
+    public void sellMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         SellUserShoeCLIController sellUserShoeCLIController = new SellUserShoeCLIController();
         sellUserShoeCLIController.start();
 

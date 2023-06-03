@@ -2,9 +2,11 @@ package com.example.shoepping.use_case.sell_user_shoe.controller;
 
 import com.example.shoepping.bean.*;
 import com.example.shoepping.dao.sales_dao.SalesDaoJDBC;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.sale.Sale;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.sell_user_shoe.view.ISellUserShoeView;
+import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -73,7 +75,7 @@ public class SellUserShoeController implements ISellUserShoeController{
         sellUserShoeView.onInsertSaleError(messageBean, codeBean);
     }
     @Override
-    public void onReccomendedPriceCalculate(PriceBean price, ConditionBean condition) {
+    public void onReccomendedPriceCalculate(PriceBean price, ConditionBean condition) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
 
         Sale sale = new Sale(price.getPrice(), condition.getCondition());
         MessageBean messageBean = new MessageBean();
@@ -88,7 +90,13 @@ public class SellUserShoeController implements ISellUserShoeController{
             messageBean.setMessage("Please select a condition");
             sellUserShoeView.onRecommendedPriceCalculateError(messageBean);
         }else {
-            sellUserShoeView.onRecommendedPriceCalculateSuccess(sale.getPrice(), sale.getCondition());
+            PriceBean priceBean = new PriceBean();
+            ConditionBean conditionBean = new ConditionBean();
+
+            priceBean.setPrice(sale.getPrice());
+            conditionBean.setCondition(condition.getCondition());
+
+            sellUserShoeView.onRecommendedPriceCalculateSuccess(priceBean, conditionBean);
         }
     }
 

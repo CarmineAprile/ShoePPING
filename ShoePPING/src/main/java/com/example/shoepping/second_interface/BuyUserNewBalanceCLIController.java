@@ -93,7 +93,7 @@ public class BuyUserNewBalanceCLIController {
         buyUserCLIController.start();
     }
 
-    public void sellNBMethod(){
+    public void sellNBMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         SellUserShoeCLIController sellUserShoeCLIController = new SellUserShoeCLIController();
         sellUserShoeCLIController.start();
 

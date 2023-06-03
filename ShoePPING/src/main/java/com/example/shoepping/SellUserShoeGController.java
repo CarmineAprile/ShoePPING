@@ -1,10 +1,12 @@
 package com.example.shoepping;
 
 import com.example.shoepping.bean.*;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.pattern.adapter.Adapter;
 import com.example.shoepping.use_case.sell_user_shoe.controller.ISellUserShoeController;
 import com.example.shoepping.use_case.sell_user_shoe.controller.SellUserShoeController;
 import com.example.shoepping.use_case.sell_user_shoe.view.ISellUserShoeView;
+import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -137,7 +139,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
     }
 
 
-    public void applyRecommendedPrice(){
+    public void applyRecommendedPrice() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         String price = priceTA.getText();
         String condition = conditionMenu.getText();
 
@@ -156,9 +158,9 @@ public class SellUserShoeGController implements ISellUserShoeView {
         priceL.setText(message.getMessage());
     }
     @Override
-    public void onRecommendedPriceCalculateSuccess(String price, String condition) {
+    public void onRecommendedPriceCalculateSuccess(PriceBean price, ConditionBean condition) {
         Adapter adapter = new Adapter();
-        String recommendedPrice = String.valueOf(adapter.calculatePrice(price, condition));
+        String recommendedPrice = String.valueOf(adapter.calculatePrice(price.getPrice(), condition.getCondition()));
         priceTA.setText(recommendedPrice);
     }
 
