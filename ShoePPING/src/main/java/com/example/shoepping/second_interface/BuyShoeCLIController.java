@@ -95,9 +95,10 @@ public class BuyShoeCLIController implements IBuyShoeView {
 
     @Override
     public void onDisable(SizeShoeBean i) {
-        for(int j = 0; j < sizes.size() - 1; j++){
+        for(int j = 0; j < sizes.size(); j++){
             if(sizes.get(j).equals(i.getSizeShoe())){
                 sizes.remove(j);
+                j--;
             }
         }
     }
