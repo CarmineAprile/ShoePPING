@@ -50,56 +50,56 @@ public class BuyUserAdidasCLIController {
         }
 
         switch (chAdidas){
-            case 1 -> shoe1Method(lista);
-            case 2 -> shoe2Method(lista);
-            case 3 -> shoe3Method(lista);
-            case 4 -> shoe4Method(lista);
-            case 5 -> shoe5Method(lista);
-            case 6 -> goBackMethod();
-            case 7 -> sellMethod();
-            case 8 -> profileMethod();
+            case 1 -> shoe1AdidasMethod(lista);
+            case 2 -> shoe2AdidasMethod(lista);
+            case 3 -> shoe3AdidasMethod(lista);
+            case 4 -> shoe4AdidasMethod(lista);
+            case 5 -> shoe5AdidasMethod(lista);
+            case 6 -> goBackAdidasMethod();
+            case 7 -> sellAdidasMethod();
+            case 8 -> profileAdidasMethod();
             default -> error();
 
         }
     }
 
-    public void shoe1Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe1AdidasMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("Gazelle", lista[0] + '$', 2);
     }
 
-    public void shoe2Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe2AdidasMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("Stan Smith", lista[1] + '$', 2);
     }
 
-    public void shoe3Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe3AdidasMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("Yeezy Boost 350", lista[2] + '$', 2);
     }
 
-    public void shoe4Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe4AdidasMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("EQT Flurro Yellow", lista[3] + '$', 2);
     }
 
-    public void shoe5Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe5AdidasMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("Superstar", lista[4] + '$', 2);
     }
 
-    public void goBackMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void goBackAdidasMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         BuyUserCLIController buyUserCLIController = new BuyUserCLIController();
         buyUserCLIController.start();
     }
 
-    public void sellMethod(){
+    public void sellAdidasMethod(){
         SellUserShoeCLIController sellUserShoeCLIController = new SellUserShoeCLIController();
         sellUserShoeCLIController.start();
 
     }
 
-    public void profileMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void profileAdidasMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         ProfileCLIController profileCLIController = new ProfileCLIController();
         profileCLIController.start();
     }

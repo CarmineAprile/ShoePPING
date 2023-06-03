@@ -51,62 +51,62 @@ public class BuyUserNikeCLIController {
         }
 
         switch (chNike){
-            case 1 -> shoe1Method(lista);
-            case 2 -> shoe2Method(lista);
-            case 3 -> shoe3Method(lista);
-            case 4 -> shoe4Method(lista);
-            case 5 -> shoe5Method(lista);
-            case 6 -> shoe6Method(lista);
-            case 7 -> goBackMethod();
-            case 8 -> sellMethod();
-            case 9 -> profileMethod();
+            case 1 -> shoe1NikeMethod(lista);
+            case 2 -> shoe2NikeMethod(lista);
+            case 3 -> shoe3NikeMethod(lista);
+            case 4 -> shoe4NikeMethod(lista);
+            case 5 -> shoe5NikeMethod(lista);
+            case 6 -> shoe6NikeMethod(lista);
+            case 7 -> goBackNikeMethod();
+            case 8 -> sellNikeMethod();
+            case 9 -> profileNikeMethod();
             default -> error();
 
         }
     }
 
-    public void shoe1Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe1NikeMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("Air Max 97", lista[0] + '$', 1);
     }
 
-    public void shoe2Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe2NikeMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("Air Jordan 1 Mid", lista[1] + '$', 1);
     }
 
-    public void shoe3Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe3NikeMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("Air Max 2017", lista[2] + '$', 1);
     }
 
-    public void shoe4Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe4NikeMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("Air Max 90", lista[3] + '$', 1);
     }
 
-    public void shoe5Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe5NikeMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("Air Huarache", lista[4] + '$', 1);
     }
 
-    public void shoe6Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe6NikeMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("Air Max 94", lista[5] + '$', 1);
     }
 
-    public void goBackMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void goBackNikeMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         BuyUserCLIController buyUserCLIController = new BuyUserCLIController();
         buyUserCLIController.start();
     }
 
-    public void sellMethod(){
+    public void sellNikeMethod(){
         SellUserShoeCLIController sellUserShoeCLIController = new SellUserShoeCLIController();
         sellUserShoeCLIController.start();
 
     }
 
-    public void profileMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void profileNikeMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         ProfileCLIController profileCLIController = new ProfileCLIController();
         profileCLIController.start();
     }

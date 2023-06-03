@@ -50,56 +50,56 @@ public class BuyUserNewBalanceCLIController {
         }
 
         switch (chNB){
-            case 1 -> shoe1Method(lista);
-            case 2 -> shoe2Method(lista);
-            case 3 -> shoe3Method(lista);
-            case 4 -> shoe4Method(lista);
-            case 5 -> shoe5Method(lista);
-            case 6 -> goBackMethod();
-            case 7 -> sellMethod();
-            case 8 -> profileMethod();
+            case 1 -> shoe1NBMethod(lista);
+            case 2 -> shoe2NBMethod(lista);
+            case 3 -> shoe3NBMethod(lista);
+            case 4 -> shoe4NBMethod(lista);
+            case 5 -> shoe5NBMethod(lista);
+            case 6 -> goBackNBMethod();
+            case 7 -> sellNBMethod();
+            case 8 -> profileNBMethod();
             default -> error();
 
         }
     }
 
-    public void shoe1Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe1NBMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("327 Moonbeam", lista[0] + '$', 3);
     }
 
-    public void shoe2Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe2NBMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("X-Racer Bodega", lista[1] + '$', 3);
     }
 
-    public void shoe3Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe3NBMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("Shando", lista[2] + '$', 3);
     }
 
-    public void shoe4Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe4NBMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("530", lista[3] + '$', 3);
     }
 
-    public void shoe5Method(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
+    public void shoe5NBMethod(String[] lista) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         BuyShoeCLIController buyShoeCLIController = new BuyShoeCLIController();
         buyShoeCLIController.start("550 White-Red", lista[4] + '$', 3);
     }
 
-    public void goBackMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void goBackNBMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         BuyUserCLIController buyUserCLIController = new BuyUserCLIController();
         buyUserCLIController.start();
     }
 
-    public void sellMethod(){
+    public void sellNBMethod(){
         SellUserShoeCLIController sellUserShoeCLIController = new SellUserShoeCLIController();
         sellUserShoeCLIController.start();
 
     }
 
-    public void profileMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void profileNBMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         ProfileCLIController profileCLIController = new ProfileCLIController();
         profileCLIController.start();
     }
