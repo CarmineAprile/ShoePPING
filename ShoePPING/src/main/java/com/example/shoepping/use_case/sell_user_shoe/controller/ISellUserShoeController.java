@@ -8,6 +8,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public interface ISellUserShoeController {
-    void onInsertSale(BrandBean brand, ModelShoeBean item, PriceBean price, ConditionBean condition, SizeShoeBean size) throws IOException, SQLException, ClassNotFoundException;
+    void onInsertSale(BrandBean brand, ModelShoeBean item, PriceBean price, ConditionBean condition, SizeShoeBean size) throws IOException, SQLException, ClassNotFoundException, CsvValidationException, ManageException;
     void onReccomendedPriceCalculate(PriceBean price, ConditionBean condition) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException;
 }

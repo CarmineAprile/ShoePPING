@@ -59,7 +59,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
     @FXML
     Button manageSales;
 
-    public void insertSale() throws IOException, SQLException, ClassNotFoundException {
+    public void insertSale() throws IOException, SQLException, ClassNotFoundException, CsvValidationException, ManageException {
         String brand = brandTA.getText();
         String item = itemTA.getText();
         String price = priceTA.getText();

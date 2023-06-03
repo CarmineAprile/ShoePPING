@@ -59,7 +59,7 @@ public class SellUserShoeCLIController implements ISellUserShoeView {
 
     }
 
-    public void saleMethod() throws IOException, SQLException, ClassNotFoundException {
+    public void saleMethod() throws IOException, SQLException, ClassNotFoundException, CsvValidationException, ManageException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Brand: ");
         String brandSell = reader.readLine();

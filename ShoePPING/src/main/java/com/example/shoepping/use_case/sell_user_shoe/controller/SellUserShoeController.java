@@ -21,7 +21,7 @@ public class SellUserShoeController implements ISellUserShoeController{
 
 
     @Override
-    public void onInsertSale(BrandBean brand, ModelShoeBean item, PriceBean price, ConditionBean condition, SizeShoeBean size) throws IOException, SQLException, ClassNotFoundException {
+    public void onInsertSale(BrandBean brand, ModelShoeBean item, PriceBean price, ConditionBean condition, SizeShoeBean size) throws IOException, SQLException, ClassNotFoundException, CsvValidationException, ManageException {
 
         UserSingleton userSingleton = UserSingleton.getInstance();
 
@@ -66,7 +66,7 @@ public class SellUserShoeController implements ISellUserShoeController{
             }
     }
 
-    private void utilityOnSellUser(String message, int errorCode) {
+    private void utilityOnSellUser(String message, int errorCode) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         MessageBean messageBean = new MessageBean();
         CodeBean codeBean = new CodeBean();
 
