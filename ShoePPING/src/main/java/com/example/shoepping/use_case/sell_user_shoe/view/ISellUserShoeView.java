@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public interface ISellUserShoeView {
-    void onInsertSaleError(MessageBean message, CodeBean code);
-    void onInsertSaleSuccess() throws IOException;
+    void onInsertSaleError(MessageBean message, CodeBean code) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException;
+    void onInsertSaleSuccess() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, ManageException;
 
     void onRecommendedPriceCalculateError(MessageBean message) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException;
     void onRecommendedPriceCalculateSuccess(PriceBean price, ConditionBean condition) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException;
