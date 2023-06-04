@@ -7,7 +7,9 @@ import com.example.shoepping.use_case.buy_user_used_shoe.controller.IBuyUserUsed
 import com.example.shoepping.use_case.buy_user_used_shoe.view.IBuyUserUsedShoeView;
 import com.opencsv.exceptions.CsvValidationException;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -16,6 +18,14 @@ import static jdk.internal.org.jline.utils.Log.error;
 
 public class BuyUserUsedShoeCLIController implements IBuyUserUsedShoeView {
     String sellIDUpdate;
+
+    IdBean shoeSaleB;
+    BrandBean shoeBrandB;
+    ModelShoeBean shoeItemB;
+    PriceBean shoePriceB;
+    SizeShoeBean shoeSizeB;
+    SellerBean shoeUsernameB;
+    ConditionBean shoeConditionB;
 
     public void start(String element) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         System.out.println("************************************");
@@ -63,9 +73,30 @@ public class BuyUserUsedShoeCLIController implements IBuyUserUsedShoeView {
         }
     }
 
-    public void confirmMethod() {
-        // TODO
-        // salvare i dati di onLabelsUpdate
+    public void confirmMethod() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, ManageException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Shipping address: ");
+        String addressBuy = reader.readLine();
+        System.out.print("Card ID: ");
+        String cardIdBuy = reader.readLine();
+        System.out.print("Card Date: ");
+        String cardDateBuy = reader.readLine();
+        System.out.print("Card CVC: ");
+        String cardCVCBuy = reader.readLine();
+
+        UserVecBean userVecBean = new UserVecBean();
+        userVecBean.setAddressUserVec(addressBuy);
+        userVecBean.setCardIDUserVec(cardIdBuy);
+        userVecBean.setCardDateUserVec(cardDateBuy);
+        userVecBean.setCardCVCUserVec(cardCVCBuy);
+        userVecBean.setConditionUserVec(shoeConditionB.getCondition());
+
+        SellIdUpdateBean sellIdUpdateBean = new SellIdUpdateBean();
+        sellIdUpdateBean.setSellIdUpdate(shoeSaleB.getId());
+
+        IBuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
+        buyUserUsedShoeController.onConfirm(shoeItemB, shoeBrandB, shoePriceB, shoeSizeB, shoeUsernameB, userVecBean, sellIdUpdateBean);
+
     }
     public void goBackMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         BuyCatalogCLIController buyCatalogCLIController = new BuyCatalogCLIController();
@@ -92,6 +123,14 @@ public class BuyUserUsedShoeCLIController implements IBuyUserUsedShoeView {
         System.out.println("Size: " + shoeSize.getSizeShoe());
         System.out.println("Condition: " + shoeCondition.getCondition());
         System.out.println("Seller: " + shoeUsername.getSeller());
+
+        shoeSaleB = shoeSale;
+        shoeBrandB = shoeBrand;
+        shoeItemB = shoeItem;
+        shoePriceB = shoePrice;
+        shoeSizeB = shoeSize;
+        shoeUsernameB = shoeUsername;
+        shoeConditionB = shoeCondition;
     }
 
     @Override
