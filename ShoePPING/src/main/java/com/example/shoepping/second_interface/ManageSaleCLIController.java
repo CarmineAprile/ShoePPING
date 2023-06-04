@@ -105,7 +105,7 @@ public class ManageSaleCLIController implements IManageSaleView {
 
                     manageSaleController.onRefuseSale(itemDataBean);
                 } catch (SQLException | IOException | ClassNotFoundException e) {
-                    throw new RuntimeException(e);
+                    throw new ManageException("Error: " + e);
                 }
             }
         }
