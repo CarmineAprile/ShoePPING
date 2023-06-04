@@ -5,6 +5,7 @@ import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.use_case.buy_catalog.controller.BuyCatalogController;
 import com.example.shoepping.use_case.buy_catalog.controller.IBuyCatalogController;
 import com.example.shoepping.use_case.buy_catalog.view.IBuyCatalogView;
+import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -113,7 +114,7 @@ public class BuyCatalogGController implements IBuyCatalogView {
         maxPriceL.setText("Please insert a valid price");
     }
 
-    public void apply() throws SQLException, IOException, ClassNotFoundException, ManageException {
+    public void apply() throws SQLException, IOException, ClassNotFoundException, ManageException, CsvValidationException {
         BuyCatalogController buyCatalogController = new BuyCatalogController(this);
 
         vBoxCatalog.getChildren().clear();

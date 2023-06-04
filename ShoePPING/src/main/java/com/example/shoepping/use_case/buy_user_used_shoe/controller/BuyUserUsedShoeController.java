@@ -3,6 +3,7 @@ package com.example.shoepping.use_case.buy_user_used_shoe.controller;
 import com.example.shoepping.bean.*;
 import com.example.shoepping.dao.catalog_dao.CatalogDao;
 import com.example.shoepping.dao.insert_order_dao.InsertOrderDao;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.catalog.Catalog;
 import com.example.shoepping.model.catalog.CatalogItem;
 import com.example.shoepping.model.order.Order;
@@ -10,6 +11,7 @@ import com.example.shoepping.model.sale.Sale;
 import com.example.shoepping.model.user.User;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.buy_user_used_shoe.view.IBuyUserUsedShoeView;
+import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -47,7 +49,24 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
 
         for (CatalogItem catalogItem : catalog.getCatalog()){
             if(catalogItem.getShoeSale() == Integer.parseInt(sellID.toString())){
-                buyUserUsedShoeView.onLabelsUpdate(catalogItem.getShoeSale(), catalogItem.getShoeBrand(), catalogItem.getShoeItem(), catalogItem.getShoePrice(), catalogItem.getShoeSize(), catalogItem.getShoeUsername(), catalogItem.getShoeCondition());
+
+                IdBean idBean = new IdBean();
+                BrandBean brandBean = new BrandBean();
+                ModelShoeBean modelShoeBean = new ModelShoeBean();
+                PriceBean priceBean = new PriceBean();
+                SizeShoeBean sizeShoeBean = new SizeShoeBean();
+                SellerBean sellerBean = new SellerBean();
+                ConditionBean conditionBean = new ConditionBean();
+
+                idBean.setId(String.valueOf(catalogItem.getShoeSale()));
+                brandBean.setBrand(catalogItem.getShoeBrand());
+                modelShoeBean.setModelShoe(catalogItem.getShoeItem());
+                priceBean.setPrice(String.valueOf(catalogItem.getShoePrice()));
+                sizeShoeBean.setSizeShoe(String.valueOf(catalogItem.getShoeSize()));
+                sellerBean.setSeller(catalogItem.getShoeUsername());
+                conditionBean.setCondition(catalogItem.getShoeCondition());
+
+                buyUserUsedShoeView.onLabelsUpdate(idBean, brandBean, modelShoeBean, priceBean, sizeShoeBean, sellerBean, conditionBean);
             }
         }
 
@@ -55,7 +74,7 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
     }
 
     @Override
-    public void onConfirm(ModelShoeBean item, BrandBean brand, PriceBean price, SizeShoeBean size, SellerBean seller, UserVecBean userDataVec, SellIdUpdateBean sellIDUpdate) throws SQLException, IOException, ClassNotFoundException{
+    public void onConfirm(ModelShoeBean item, BrandBean brand, PriceBean price, SizeShoeBean size, SellerBean seller, UserVecBean userDataVec, SellIdUpdateBean sellIDUpdate) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
 
         UserSingleton userSingleton = UserSingleton.getInstance();
         User user = userSingleton.getUser();
@@ -92,7 +111,7 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
         }
     }
 
-    private void utilityOnConfirm(String message, int errorCode) {
+    private void utilityOnConfirm(String message, int errorCode) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         MessageBean messageBean = new MessageBean();
         CodeBean codeBean = new CodeBean();
 

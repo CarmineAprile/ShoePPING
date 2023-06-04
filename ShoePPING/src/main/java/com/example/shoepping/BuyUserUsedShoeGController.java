@@ -1,9 +1,11 @@
 package com.example.shoepping;
 
 import com.example.shoepping.bean.*;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.use_case.buy_user_used_shoe.controller.BuyUserUsedShoeController;
 import com.example.shoepping.use_case.buy_user_used_shoe.controller.IBuyUserUsedShoeController;
 import com.example.shoepping.use_case.buy_user_used_shoe.view.IBuyUserUsedShoeView;
+import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -74,13 +76,13 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
     }
 
     @Override
-    public void onLabelsUpdate(int shoeSale, String shoeBrand, String shoeItem, double shoePrice, int shoeSize, String shoeUsername, String shoeCondition) {
-        modelLabel.setText(shoeItem);
-        brandLabel.setText(shoeBrand);
-        priceL.setText(String.valueOf(shoePrice)+'$');
-        sizeL.setText(String.valueOf(shoeSize));
-        conditionL.setText(shoeCondition);
-        sellerL.setText(shoeUsername);
+    public void onLabelsUpdate(IdBean shoeSale, BrandBean shoeBrand, ModelShoeBean shoeItem, PriceBean shoePrice, SizeShoeBean shoeSize, SellerBean shoeUsername, ConditionBean shoeCondition) {
+        modelLabel.setText(shoeItem.getModelShoe());
+        brandLabel.setText(shoeBrand.getBrand());
+        priceL.setText(String.valueOf(shoePrice.getPrice())+'$');
+        sizeL.setText(String.valueOf(shoeSize.getSizeShoe()));
+        conditionL.setText(shoeCondition.getCondition());
+        sellerL.setText(shoeUsername.getSeller());
     }
 
     public void goBack() throws IOException, SQLException, ClassNotFoundException {
@@ -93,7 +95,7 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyUserUsedShoePane);
     }
-    public void confirm() throws SQLException, IOException, ClassNotFoundException {
+    public void confirm() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         String item = modelLabel.getText();
         String brand = brandLabel.getText();
         String price = removeLastChar(priceL.getText());

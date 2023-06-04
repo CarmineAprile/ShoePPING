@@ -7,6 +7,7 @@ import com.example.shoepping.model.catalog.Catalog;
 import com.example.shoepping.model.catalog.CatalogItem;
 import com.example.shoepping.pattern.filter.*;
 import com.example.shoepping.use_case.buy_catalog.view.IBuyCatalogView;
+import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -35,7 +36,7 @@ public class BuyCatalogController implements IBuyCatalogController {
     }
 
     @Override
-    public void setFilter(ModelShoeBean item, BrandBean brand, SizeShoeBean size, ConditionBean condition, PriceBean price) throws SQLException, IOException, ClassNotFoundException, ManageException {
+    public void setFilter(ModelShoeBean item, BrandBean brand, SizeShoeBean size, ConditionBean condition, PriceBean price) throws SQLException, IOException, ClassNotFoundException, ManageException, CsvValidationException {
 
 
         if(!price.getPrice().isEmpty()){

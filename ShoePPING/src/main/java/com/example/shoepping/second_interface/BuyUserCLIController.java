@@ -88,7 +88,7 @@ public class BuyUserCLIController {
 
     }
 
-    public void catalogMethod(){
+    public void catalogMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         BuyCatalogCLIController buyCatalogCLIController = new BuyCatalogCLIController();
         buyCatalogCLIController.start();
     }
