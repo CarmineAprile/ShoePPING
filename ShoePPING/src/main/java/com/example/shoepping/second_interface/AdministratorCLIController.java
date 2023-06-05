@@ -109,7 +109,7 @@ public class AdministratorCLIController implements IAdministratorView {
 
     @Override
     public void onUpdateAmountError(MessageBean message, CodeBean errorCode) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
-        System.out.println(message.getMessage());
+        System.out.println("Update amount error: " + message.getMessage());
         start();
     }
 
@@ -121,7 +121,7 @@ public class AdministratorCLIController implements IAdministratorView {
 
     @Override
     public void onUpdatePriceError(MessageBean message, CodeBean errorCode) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
-        System.out.println(message.getMessage());
+        System.out.println("Update price error: " + message.getMessage());
         start();
     }
 
