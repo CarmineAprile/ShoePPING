@@ -56,9 +56,9 @@ public class BuyCatalogCLIController implements IBuyCatalogView {
         switch (chManCat){
             case 1 -> selectMethod();
             case 2 -> filterMethod();
-            case 3 -> buyMethod();
-            case 4 -> sellMethod();
-            case 5 -> profileMethod();
+            case 3 -> buyCatalogMethod();
+            case 4 -> sellCatalogMethod();
+            case 5 -> profileCatalogMethod();
 
             default -> error();
 
@@ -92,15 +92,15 @@ public class BuyCatalogCLIController implements IBuyCatalogView {
     public void filterMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         onApplyFilterError();
     }
-    public void buyMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void buyCatalogMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         BuyUserCLIController buyUserCLIController = new BuyUserCLIController();
         buyUserCLIController.start();
     }
-    public void sellMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void sellCatalogMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         SellUserShoeCLIController sellUserShoeCLIController = new SellUserShoeCLIController();
         sellUserShoeCLIController.start();
     }
-    public void profileMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void profileCatalogMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         ProfileCLIController profileCLIController = new ProfileCLIController();
         profileCLIController.start();
     }
