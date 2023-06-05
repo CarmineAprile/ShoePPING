@@ -2,9 +2,9 @@ package com.example.shoepping;
 
 import com.example.shoepping.bean.ItemDataBean;
 import com.example.shoepping.bean.SaleBean;
-import com.example.shoepping.use_case.manage_sale_admin.IManageSaleAdminController;
-import com.example.shoepping.use_case.manage_sale_admin.IManageSaleAdminView;
-import com.example.shoepping.use_case.manage_sale_admin.ManageSaleAdminController;
+import com.example.shoepping.use_case.manage_sale_admin.controller.IManageSaleAdminController;
+import com.example.shoepping.use_case.manage_sale_admin.view.IManageSaleAdminView;
+import com.example.shoepping.use_case.manage_sale_admin.controller.ManageSaleAdminController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;

@@ -99,7 +99,7 @@ public class LoginCLIController implements ILoginView {
     }
 
     @Override
-    public void onLoginSuccessAdmin() {
+    public void onLoginSuccessAdmin() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         AdministratorCLIController administratorCLIController = new AdministratorCLIController();
         administratorCLIController.start();
     }

@@ -1,4 +1,4 @@
-package com.example.shoepping.use_case.manage_sale_admin;
+package com.example.shoepping.use_case.manage_sale_admin.controller;
 
 import com.example.shoepping.bean.ItemDataBean;
 

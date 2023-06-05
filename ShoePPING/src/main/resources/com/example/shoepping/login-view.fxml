@@ -19,9 +19,9 @@
       <Image url="@../../../drawable/loginbackground.png" />
    </ImageView>
    <VBox alignment="TOP_CENTER" layoutX="221.0" layoutY="57.0" prefHeight="317.0" prefWidth="271.0" spacing="5.0">
-      <TextField fx:id="loginUsername" focusTraversable="false" onKeyTyped="#maxLengthUser" prefHeight="35.0" prefWidth="88.0" promptText="Username" text="paolino" />
+      <TextField fx:id="loginUsername" focusTraversable="false" onKeyTyped="#maxLengthUser" prefHeight="35.0" prefWidth="88.0" promptText="Username" />
       <Label fx:id="usernameLabel" prefHeight="17.0" prefWidth="270.0" textFill="RED" />
-      <PasswordField fx:id="loginPassword" focusTraversable="false" onKeyTyped="#maxLengthPass" prefHeight="35.0" prefWidth="271.0" promptText="Password" text="paperino" />
+      <PasswordField fx:id="loginPassword" focusTraversable="false" onKeyTyped="#maxLengthPass" prefHeight="35.0" prefWidth="271.0" promptText="Password" />
       <Label fx:id="passwordLabel" prefHeight="17.0" prefWidth="270.0" textFill="RED" />
       <VBox alignment="TOP_CENTER" prefHeight="191.0" prefWidth="271.0" spacing="15.0">
          <Text fx:id="forgotPassword" fill="#554b4d" onMouseClicked="#passwordRecovery" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password?" textAlignment="RIGHT" wrappingWidth="102.5865478515625">

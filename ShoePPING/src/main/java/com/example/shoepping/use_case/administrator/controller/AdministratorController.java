@@ -3,9 +3,11 @@ package com.example.shoepping.use_case.administrator.controller;
 import com.example.shoepping.bean.*;
 import com.example.shoepping.dao.report_dao.ReportDao;
 import com.example.shoepping.dao.update_dao.UpdateDao;
+import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.report.ReportList;
 import com.example.shoepping.model.shoe.Shoe;
 import com.example.shoepping.use_case.administrator.view.IAdministratorView;
+import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -19,7 +21,7 @@ public class AdministratorController implements IAdministratorController{
     }
 
     @Override
-    public void onUpdateAmount(IdBean id, AmountBean amount, SizeShoeBean size) throws SQLException, IOException, ClassNotFoundException {
+    public void onUpdateAmount(IdBean id, AmountBean amount, SizeShoeBean size) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         Shoe shoe = new Shoe(id.getId(), size.getSizeShoe(), amount.getAmount());
 
         // 0. check for ID is empty
@@ -50,7 +52,7 @@ public class AdministratorController implements IAdministratorController{
     }
 
     @Override
-    public void onUpdatePrice(IdBean id, PriceBean price) throws SQLException, IOException, ClassNotFoundException {
+    public void onUpdatePrice(IdBean id, PriceBean price) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
         Shoe shoe = new Shoe(id.getId(), price.getPrice());
 
         // 0. check for ID is empty
@@ -73,7 +75,7 @@ public class AdministratorController implements IAdministratorController{
             }
     }
 
-    private void utilityOnUpdateAmount(String message, int errorCode) {
+    private void utilityOnUpdateAmount(String message, int errorCode) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         MessageBean messageBean = new MessageBean();
         CodeBean codeBean = new CodeBean();
 
@@ -82,7 +84,7 @@ public class AdministratorController implements IAdministratorController{
         administratorView.onUpdateAmountError(messageBean, codeBean);
     }
 
-    private void utilityOnUpdatePrice(String message, int errorCode) {
+    private void utilityOnUpdatePrice(String message, int errorCode) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         MessageBean messageBean = new MessageBean();
         CodeBean codeBean = new CodeBean();
 

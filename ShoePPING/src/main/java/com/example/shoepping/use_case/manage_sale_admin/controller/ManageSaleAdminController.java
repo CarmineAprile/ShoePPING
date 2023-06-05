@@ -1,10 +1,11 @@
-package com.example.shoepping.use_case.manage_sale_admin;
+package com.example.shoepping.use_case.manage_sale_admin.controller;
 
 import com.example.shoepping.bean.ItemDataBean;
 import com.example.shoepping.bean.SaleBean;
 import com.example.shoepping.dao.order_dao.OrderDaoJDBC;
 import com.example.shoepping.model.order.Order;
 import com.example.shoepping.model.order.OrderList;
+import com.example.shoepping.use_case.manage_sale_admin.view.IManageSaleAdminView;
 
 import java.io.IOException;
 import java.sql.SQLException;

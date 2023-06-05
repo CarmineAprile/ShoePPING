@@ -11,6 +11,6 @@ import java.sql.SQLException;
 public interface ILoginView {
 
     void onLoginSuccessUser() throws IOException, SQLException, ClassNotFoundException, CsvValidationException, ManageException;
-    void onLoginSuccessAdmin() throws IOException, SQLException, ClassNotFoundException;
+    void onLoginSuccessAdmin() throws IOException, SQLException, ClassNotFoundException, CsvValidationException, ManageException;
     void onLoginError(MessageBean message, CodeBean codeError) throws SQLException, ClassNotFoundException, IOException, ManageException, CsvValidationException;
 }
