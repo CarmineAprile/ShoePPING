@@ -77,7 +77,7 @@ public class AdministratorGController implements IAdministratorView {
         // 0. check for ID is empty
         // 1. check for ID is int
         // 2. check for amount is empty
-        // 3. check for amount is int
+        // 3. check for amount is a positive integer
         // 5. check for size is empty
         // 6. check for size is int
          if(errorCode.getCode() == 0 || errorCode.getCode() == 1 || errorCode.getCode() == 2 || errorCode.getCode() == 3 || errorCode.getCode() == 5 || errorCode.getCode() == 6){
