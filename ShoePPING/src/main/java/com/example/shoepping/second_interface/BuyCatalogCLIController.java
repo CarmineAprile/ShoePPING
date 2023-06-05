@@ -37,23 +37,23 @@ public class BuyCatalogCLIController implements IBuyCatalogView {
         System.out.println("4) Sell");
         System.out.println("5) Profile");
 
-        Scanner scannerManage = new Scanner(System.in);
-        int chManage;
+        Scanner scannerManCat = new Scanner(System.in);
+        int chManCat;
         while (true) {
             System.out.print("Please enter your choice: ");
             try {
-                chManage = scannerManage.nextInt();
-                if (chManage >= 1 && chManage <= 5) {
+                chManCat = scannerManCat.nextInt();
+                if (chManCat >= 1 && chManCat <= 5) {
                     break;
                 }
                 System.out.println("Invalid option");
             } catch (InputMismatchException ex) {
                 System.out.println("Invalid option: please insert an integer");
-                scannerManage.nextLine();
+                scannerManCat.nextLine();
             }
         }
 
-        switch (chManage){
+        switch (chManCat){
             case 1 -> selectMethod();
             case 2 -> filterMethod();
             case 3 -> buyMethod();
