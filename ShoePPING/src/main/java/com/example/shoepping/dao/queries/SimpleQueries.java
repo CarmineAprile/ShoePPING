@@ -274,7 +274,6 @@ public class SimpleQueries {
 
     public static void insertOrderCatalog(Connection conn, Order order, User user, boolean check, String sellID, Sale sale) throws SQLException {
 
-        CallableStatement cs1;
         CallableStatement cs2;
 
         int isChecked;
@@ -304,11 +303,12 @@ public class SimpleQueries {
 
         cs2.execute();
 
-        cs1 = conn.prepareCall("{call deleteCatalog(?)}");
+        try (CallableStatement cs1 = conn.prepareCall("{call deleteCatalog(?)}")) {
 
-        cs1.setInt(1, Integer.parseInt(sellID));
+            cs1.setInt(1, Integer.parseInt(sellID));
 
-        cs1.execute();
+            cs1.execute();
+        }
     }
 
     public static void insertOrderMethod(Connection conn, Order order, User user, boolean check) throws SQLException {
