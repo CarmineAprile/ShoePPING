@@ -28,12 +28,13 @@ public class SimpleQueries {
 
 
     public static int selectUser(Connection conn, String username, String passd) throws SQLException {
-        CallableStatement cs = conn.prepareCall("{call login(?,?,?)}");
-        cs.setString(1, username);
-        cs.setString(2, passd);
-        cs.registerOutParameter(3, Types.NUMERIC);
-        cs.executeQuery();
-        return cs.getInt(3);
+        try (CallableStatement cs = conn.prepareCall("{call login(?,?,?)}")) {
+            cs.setString(1, username);
+            cs.setString(2, passd);
+            cs.registerOutParameter(3, Types.NUMERIC);
+            cs.executeQuery();
+            return cs.getInt(3);
+        }
     }
 
     public static void insertUser(Connection conn, String username, String passd, String email) throws ManageException {
