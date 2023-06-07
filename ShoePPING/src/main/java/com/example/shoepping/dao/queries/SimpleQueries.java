@@ -39,12 +39,13 @@ public class SimpleQueries {
 
     public static void insertUser(Connection conn, String username, String passd, String email) throws ManageException {
         try {
-            CallableStatement cs = conn.prepareCall("{call addNewUser(?, ?, ?)}");
-            cs.setString(1, username);
-            cs.setString(2, passd);
-            cs.setString(3, email);
+            try (CallableStatement cs = conn.prepareCall("{call addNewUser(?, ?, ?)}")) {
+                cs.setString(1, username);
+                cs.setString(2, passd);
+                cs.setString(3, email);
 
-            cs.executeQuery();
+                cs.executeQuery();
+            }
         }catch (SQLException e){
             throw new ManageException("Failed insert: " + e.getMessage());
         }
@@ -64,33 +65,36 @@ public class SimpleQueries {
 
     public static int isAdmin(Connection conn, String username, String passd) throws SQLException {
 
-        CallableStatement cs = conn.prepareCall("{call isAdmin(?, ?, ?)}");
-        cs.setString(1, username);
-        cs.setString(2, passd);
-        cs.registerOutParameter(3, Types.NUMERIC);
+        try (CallableStatement cs = conn.prepareCall("{call isAdmin(?, ?, ?)}")) {
+            cs.setString(1, username);
+            cs.setString(2, passd);
+            cs.registerOutParameter(3, Types.NUMERIC);
 
-        cs.executeQuery();
-        return cs.getInt(3);
+            cs.executeQuery();
+            return cs.getInt(3);
+        }
     }
 
     public static String getEmailUser(Connection conn, String username) throws SQLException {
-        CallableStatement cs = conn.prepareCall("{call getEmailUser(?, ?)}");
-        cs.setString(1, username);
-        cs.registerOutParameter(2, Types.VARCHAR);
+        try (CallableStatement cs = conn.prepareCall("{call getEmailUser(?, ?)}")) {
+            cs.setString(1, username);
+            cs.registerOutParameter(2, Types.VARCHAR);
 
-        cs.executeQuery();
-        return cs.getString(2);
+            cs.executeQuery();
+            return cs.getString(2);
+        }
     }
 
     public static void updateUser(Connection conn, String username, String passd, String email, String oldUsername) throws SQLException {
 
-            CallableStatement cs = conn.prepareCall("{call updateUser(?, ?, ?, ?)}");
+        try (CallableStatement cs = conn.prepareCall("{call updateUser(?, ?, ?, ?)}")) {
             cs.setString(1, username);
             cs.setString(2, passd);
             cs.setString(3, email);
             cs.setString(4, oldUsername);
 
             cs.executeQuery();
+        }
     }
 
     public static String getOrderList(Connection conn, String username, boolean check) throws SQLException {
