@@ -26,12 +26,9 @@ public class AmountBean {
             this.isValid = 2;
         else if(isNotAnInt(amount))
             this.isValid = 3;
-        else if(Integer.parseInt(amount) < 0)
-            this.isValid = 4;
         else this.isValid = -1;
     }
 
-    // control on amount is a positive integer
     private boolean isNotAnInt(String value){
         try{
             Integer.parseInt(value);
