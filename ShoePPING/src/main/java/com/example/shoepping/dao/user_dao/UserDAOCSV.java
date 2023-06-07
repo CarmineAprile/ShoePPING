@@ -44,18 +44,19 @@ public class UserDAOCSV implements UserDao {
 
     @Override
     public boolean checkExistence(User instance) throws IOException, CsvValidationException {
-        CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)));
-        String[] rec;
-        boolean exist = false;
+        boolean exist;
+        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
+            String[] rec;
+            exist = false;
 
-        while ((rec = csvReader.readNext()) != null) {
+            while ((rec = csvReader.readNext()) != null) {
 
-            boolean recordFound = rec[USERNAME_INDEX].equals(instance.getUsername());
-            if (recordFound) {
-                exist = true;
+                boolean recordFound = rec[USERNAME_INDEX].equals(instance.getUsername());
+                if (recordFound) {
+                    exist = true;
+                }
             }
         }
-        csvReader.close();
 
         return exist;
     }
@@ -63,18 +64,18 @@ public class UserDAOCSV implements UserDao {
     @Override
     public void addUser(User instance) throws IOException {
         // create csvWriter object passing file reader as a parameter
-        CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(fd, true)));
+        try (CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(fd, true)))) {
 
-        String[] rec = new String[3];
+            String[] rec = new String[3];
 
-        rec[USERNAME_INDEX] = String.valueOf(instance.getUsername());
-        rec[PASSWORD_INDEX] = instance.getPassword();
-        rec[EMAIL_INDEX] = instance.getEmail();
+            rec[USERNAME_INDEX] = String.valueOf(instance.getUsername());
+            rec[PASSWORD_INDEX] = instance.getPassword();
+            rec[EMAIL_INDEX] = instance.getEmail();
 
 
-        csvWriter.writeNext(rec);
-        csvWriter.flush();
-        csvWriter.close();
+            csvWriter.writeNext(rec);
+            csvWriter.flush();
+        }
     }
 
     @Override
@@ -84,18 +85,19 @@ public class UserDAOCSV implements UserDao {
 
     @Override
     public String getEmail(User instance) throws CsvValidationException, IOException {
-        CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)));
-        String[] rec;
-        String email = "";
+        String email;
+        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
+            String[] rec;
+            email = "";
 
-        while ((rec = csvReader.readNext()) != null) {
+            while ((rec = csvReader.readNext()) != null) {
 
-            boolean recordFound = rec[USERNAME_INDEX].equals(instance.getUsername());
-            if (recordFound) {
-                email = rec[2];
+                boolean recordFound = rec[USERNAME_INDEX].equals(instance.getUsername());
+                if (recordFound) {
+                    email = rec[2];
+                }
             }
         }
-        csvReader.close();
 
         return email;
     }
