@@ -388,19 +388,20 @@ public class SimpleQueries {
 
         cs.executeQuery();
 
-        CallableStatement cs2 = conn.prepareCall("{call storeSale(?,?,?,?,?,?,?,?,?,?)}");
-        cs2.setInt(1, saleStorageItem.getStorageSale());
-        cs2.setString(2, saleStorageItem.getStorageBrand());
-        cs2.setString(3, saleStorageItem.getStorageItem());
-        cs2.setDouble(4, saleStorageItem.getStoragePrice());
-        cs2.setInt(5, saleStorageItem.getStorageSize());
-        cs2.setString(6, saleStorageItem.getStorageCondition());
-        cs2.setString(7, saleStorageItem.getStorageBuyer());
-        cs2.setString(8, saleStorageItem.getStorageAddress());
-        cs2.setString(9, saleStorageItem.getStorageSeller());
-        cs2.setInt(10, saleStorageItem.getStorageIsChecked());
+        try (CallableStatement cs2 = conn.prepareCall("{call storeSale(?,?,?,?,?,?,?,?,?,?)}")) {
+            cs2.setInt(1, saleStorageItem.getStorageSale());
+            cs2.setString(2, saleStorageItem.getStorageBrand());
+            cs2.setString(3, saleStorageItem.getStorageItem());
+            cs2.setDouble(4, saleStorageItem.getStoragePrice());
+            cs2.setInt(5, saleStorageItem.getStorageSize());
+            cs2.setString(6, saleStorageItem.getStorageCondition());
+            cs2.setString(7, saleStorageItem.getStorageBuyer());
+            cs2.setString(8, saleStorageItem.getStorageAddress());
+            cs2.setString(9, saleStorageItem.getStorageSeller());
+            cs2.setInt(10, saleStorageItem.getStorageIsChecked());
 
-        cs2.executeQuery();
+            cs2.executeQuery();
+        }
     }
 
     public static void refuseSale(Connection conn, SaleStorageItem saleStorageItem) throws SQLException {
@@ -422,26 +423,26 @@ public class SimpleQueries {
     public static OrderList getManageSalesListAdmin(Connection conn) throws SQLException {
 
         OrderList orderList = new OrderList();
-        CallableStatement cs;
 
-        cs = conn.prepareCall("{call getManageSale()}");
+        try (CallableStatement cs = conn.prepareCall("{call getManageSale()}")) {
 
-        boolean status = cs.execute();
-
-        if (status) {
-            ResultSet rs = cs.getResultSet();
-            while (rs.next()) {
-                Order order = new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6), rs.getString(7));
-                orderList.addOrder(order);
-            }
-
-            status = cs.getMoreResults();
+            boolean status = cs.execute();
 
             if (status) {
-                rs = cs.getResultSet();
+                ResultSet rs = cs.getResultSet();
                 while (rs.next()) {
                     Order order = new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6), rs.getString(7));
                     orderList.addOrder(order);
+                }
+
+                status = cs.getMoreResults();
+
+                if (status) {
+                    rs = cs.getResultSet();
+                    while (rs.next()) {
+                        Order order = new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                        orderList.addOrder(order);
+                    }
                 }
             }
         }
@@ -450,13 +451,13 @@ public class SimpleQueries {
     }
 
     public static void confirmOrder(Connection conn, Order order) throws SQLException {
-        CallableStatement cs;
 
-        cs = conn.prepareCall("{call confirmOrder(?)}");
+        try (CallableStatement cs = conn.prepareCall("{call confirmOrder(?)}")) {
 
-        cs.setInt(1, order.getOrder());
+            cs.setInt(1, order.getOrder());
 
-        cs.executeQuery();
+            cs.executeQuery();
+        }
     }
 
     public static void refuseOrder(Connection conn, Order order) throws SQLException {
