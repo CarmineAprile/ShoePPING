@@ -25,18 +25,19 @@ public class UserDAOCSV implements UserDao {
 
     @Override
     public boolean checkLogin(User instance) throws IOException, CsvValidationException {
-        CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)));
-        String[] rec;
-        boolean exist = false;
+        boolean exist;
+        try (CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)))) {
+            String[] rec;
+            exist = false;
 
-        while ((rec = csvReader.readNext()) != null) {
+            while ((rec = csvReader.readNext()) != null) {
 
-            boolean recordFound = (rec[USERNAME_INDEX].equals(instance.getUsername()) && rec[PASSWORD_INDEX].equals(instance.getPassword()));
-            if (recordFound) {
-                exist = true;
+                boolean recordFound = (rec[USERNAME_INDEX].equals(instance.getUsername()) && rec[PASSWORD_INDEX].equals(instance.getPassword()));
+                if (recordFound) {
+                    exist = true;
+                }
             }
         }
-        csvReader.close();
 
         return exist;
     }
