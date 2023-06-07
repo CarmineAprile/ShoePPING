@@ -352,15 +352,16 @@ public class SimpleQueries {
     }
 
     public static void insertSale(Connection conn, Sale sale, String username) throws SQLException {
-        CallableStatement cs = conn.prepareCall("{call insertSale(?, ?, ?, ?, ?, ?)}");
-        cs.setString(1, sale.getBrand());
-        cs.setString(2, sale.getItem());
-        cs.setDouble(3, Double.parseDouble(sale.getPrice()));
-        cs.setInt(4, Integer.parseInt(sale.getSize()));
-        cs.setString(5, username);
-        cs.setString(6, sale.getCondition());
+        try (CallableStatement cs = conn.prepareCall("{call insertSale(?, ?, ?, ?, ?, ?)}")) {
+            cs.setString(1, sale.getBrand());
+            cs.setString(2, sale.getItem());
+            cs.setDouble(3, Double.parseDouble(sale.getPrice()));
+            cs.setInt(4, Integer.parseInt(sale.getSize()));
+            cs.setString(5, username);
+            cs.setString(6, sale.getCondition());
 
-        cs.executeQuery();
+            cs.executeQuery();
+        }
     }
 
     public static SaleStorage getSaleStorage(Connection conn, String username) throws SQLException {
