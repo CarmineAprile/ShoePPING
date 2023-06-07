@@ -222,23 +222,23 @@ public class SimpleQueries {
 
     public static ShoeSizeList getSizeList(Connection conn, String model) throws SQLException {
         ShoeSizeList shoeSizeList = new ShoeSizeList();
-        CallableStatement cs;
 
 
-        cs = conn.prepareCall("{call getSizeList(?)}");
-        cs.setString(1, model);
+        try (CallableStatement cs = conn.prepareCall("{call getSizeList(?)}")) {
+            cs.setString(1, model);
 
 
-        boolean status = cs.execute();
+            boolean status = cs.execute();
 
-        if(status){
-            ResultSet rs = cs.getResultSet();
-            while (rs.next()){
-                int size = rs.getInt(1);
-                int amount = rs.getInt(2);
+            if (status) {
+                ResultSet rs = cs.getResultSet();
+                while (rs.next()) {
+                    int size = rs.getInt(1);
+                    int amount = rs.getInt(2);
 
-                SizeAmount sizeAmount = new SizeAmount(size, amount);
-                shoeSizeList.addSizeAmount(sizeAmount);
+                    SizeAmount sizeAmount = new SizeAmount(size, amount);
+                    shoeSizeList.addSizeAmount(sizeAmount);
+                }
             }
         }
 
