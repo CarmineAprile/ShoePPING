@@ -222,23 +222,23 @@ public class SimpleQueries {
 
     public static ShoeSizeList getSizeList(Connection conn, String model) throws SQLException {
         ShoeSizeList shoeSizeList = new ShoeSizeList();
-        CallableStatement cs;
 
 
-        cs = conn.prepareCall("{call getSizeList(?)}");
-        cs.setString(1, model);
+        try (CallableStatement cs = conn.prepareCall("{call getSizeList(?)}")) {
+            cs.setString(1, model);
 
 
-        boolean status = cs.execute();
+            boolean status = cs.execute();
 
-        if(status){
-            ResultSet rs = cs.getResultSet();
-            while (rs.next()){
-                int size = rs.getInt(1);
-                int amount = rs.getInt(2);
+            if (status) {
+                ResultSet rs = cs.getResultSet();
+                while (rs.next()) {
+                    int size = rs.getInt(1);
+                    int amount = rs.getInt(2);
 
-                SizeAmount sizeAmount = new SizeAmount(size, amount);
-                shoeSizeList.addSizeAmount(sizeAmount);
+                    SizeAmount sizeAmount = new SizeAmount(size, amount);
+                    shoeSizeList.addSizeAmount(sizeAmount);
+                }
             }
         }
 
@@ -261,15 +261,15 @@ public class SimpleQueries {
 
     public static void insertOrder(Connection conn, Order order, User user, int size, boolean check) throws SQLException {
 
-        CallableStatement cs1;
         insertOrderMethod(conn, order, user, check);
 
-        cs1 = conn.prepareCall("{call updateStorage(?, ?)}");
+        try (CallableStatement cs1 = conn.prepareCall("{call updateStorage(?, ?)}")) {
 
-        cs1.setString(1, order.getItemOrder());
-        cs1.setInt(2, size);
+            cs1.setString(1, order.getItemOrder());
+            cs1.setInt(2, size);
 
-        cs1.execute();
+            cs1.execute();
+        }
     }
 
     public static void insertOrderCatalog(Connection conn, Order order, User user, boolean check, String sellID, Sale sale) throws SQLException {
