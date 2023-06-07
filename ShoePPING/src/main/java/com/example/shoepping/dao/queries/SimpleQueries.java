@@ -99,19 +99,27 @@ public class SimpleQueries {
 
     public static String getOrderList(Connection conn, String username, boolean check) throws SQLException {
         OrderList orderList = new OrderList();
-        CallableStatement cs;
+        CallableStatement csCSV = null;
+        CallableStatement csSQL = null;
+        ResultSet rs;
+        boolean status;
 
         if(check){
-            cs = conn.prepareCall("{call getOrdersCSV(?)}");
+            csCSV = conn.prepareCall("{call getOrdersCSV(?)}");
+            csCSV.setString(1, username);
+            status = csCSV.execute();
         }else {
-            cs = conn.prepareCall("{call getOrdersSQL(?)}");
+            csSQL = conn.prepareCall("{call getOrdersSQL(?)}");
+            csSQL.setString(1, username);
+            status = csSQL.execute();
         }
-            cs.setString(1, username);
 
-        boolean status = cs.execute();
 
         if(status){
-            ResultSet rs = cs.getResultSet();
+            if(check)
+                    rs = csCSV.getResultSet();
+            else rs = csSQL.getResultSet();
+
             while (rs.next()){
                 Order order = new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6), rs.getString(7));
                 orderList.addOrder(order);
