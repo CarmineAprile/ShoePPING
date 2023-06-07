@@ -461,37 +461,37 @@ public class SimpleQueries {
     }
 
     public static void refuseOrder(Connection conn, Order order) throws SQLException {
-        CallableStatement cs;
 
-        cs = conn.prepareCall("{call refuseOrder(?)}");
+        try (CallableStatement cs = conn.prepareCall("{call refuseOrder(?)}")) {
 
-        cs.setInt(1, order.getOrder());
+            cs.setInt(1, order.getOrder());
 
-        cs.executeQuery();
+            cs.executeQuery();
+        }
     }
 
     public static ReportList getReport(Connection conn) throws SQLException {
         ReportList reportList = new ReportList();
-        CallableStatement cs;
 
-        cs = conn.prepareCall("{call getReport()}");
+        try (CallableStatement cs = conn.prepareCall("{call getReport()}")) {
 
-        boolean status = cs.execute();
-
-        if (status) {
-            ResultSet rs = cs.getResultSet();
-            while (rs.next()) {
-                Report report = new Report(rs.getInt(1), rs.getString(2), rs.getDouble(3));
-                reportList.addReportPrice(report);
-            }
-
-            status = cs.getMoreResults();
+            boolean status = cs.execute();
 
             if (status) {
-                rs = cs.getResultSet();
+                ResultSet rs = cs.getResultSet();
                 while (rs.next()) {
-                    Report report = new Report(rs.getInt(1), rs.getInt(2), rs.getInt(3));
-                    reportList.addReportAmount(report);
+                    Report report = new Report(rs.getInt(1), rs.getString(2), rs.getDouble(3));
+                    reportList.addReportPrice(report);
+                }
+
+                status = cs.getMoreResults();
+
+                if (status) {
+                    rs = cs.getResultSet();
+                    while (rs.next()) {
+                        Report report = new Report(rs.getInt(1), rs.getInt(2), rs.getInt(3));
+                        reportList.addReportAmount(report);
+                    }
                 }
             }
         }
@@ -500,20 +500,22 @@ public class SimpleQueries {
     }
 
     public static void updateAmount(Connection conn, Shoe shoe) throws SQLException {
-        CallableStatement cs = conn.prepareCall("{call addAmount(?, ?, ?)}");
-        cs.setInt(1, Integer.parseInt(shoe.getID()));
-        cs.setInt(2, Integer.parseInt(shoe.getSize()));
-        cs.setInt(3, Integer.parseInt(shoe.getAmount()));
+        try (CallableStatement cs = conn.prepareCall("{call addAmount(?, ?, ?)}")) {
+            cs.setInt(1, Integer.parseInt(shoe.getID()));
+            cs.setInt(2, Integer.parseInt(shoe.getSize()));
+            cs.setInt(3, Integer.parseInt(shoe.getAmount()));
 
-        cs.executeQuery();
+            cs.executeQuery();
+        }
     }
 
     public static void updatePrice(Connection conn, Shoe shoe) throws SQLException {
-        CallableStatement cs = conn.prepareCall("{call updatePrice(?, ?)}");
-        cs.setInt(1, Integer.parseInt(shoe.getID()));
-        cs.setDouble(2, Double.parseDouble(shoe.getPrice()));
+        try (CallableStatement cs = conn.prepareCall("{call updatePrice(?, ?)}")) {
+            cs.setInt(1, Integer.parseInt(shoe.getID()));
+            cs.setDouble(2, Double.parseDouble(shoe.getPrice()));
 
 
-        cs.executeQuery();
+            cs.executeQuery();
+        }
     }
 }
