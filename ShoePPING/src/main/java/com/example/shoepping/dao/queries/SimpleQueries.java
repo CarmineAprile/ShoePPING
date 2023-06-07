@@ -53,12 +53,13 @@ public class SimpleQueries {
 
     public static int checkUserExistence(Connection conn, String username) throws SQLException {
 
-        CallableStatement cs = conn.prepareCall("{call checkUserExistence(?, ?)}");
-        cs.setString(1, username);
-        cs.registerOutParameter(2, Types.NUMERIC);
+        try (CallableStatement cs = conn.prepareCall("{call checkUserExistence(?, ?)}")) {
+            cs.setString(1, username);
+            cs.registerOutParameter(2, Types.NUMERIC);
 
-        cs.executeQuery();
-        return cs.getInt(2);
+            cs.executeQuery();
+            return cs.getInt(2);
+        }
     }
 
     public static int isAdmin(Connection conn, String username, String passd) throws SQLException {
