@@ -28,22 +28,24 @@ public class SimpleQueries {
 
 
     public static int selectUser(Connection conn, String username, String passd) throws SQLException {
-        CallableStatement cs = conn.prepareCall("{call login(?,?,?)}");
-        cs.setString(1, username);
-        cs.setString(2, passd);
-        cs.registerOutParameter(3, Types.NUMERIC);
-        cs.executeQuery();
-        return cs.getInt(3);
+        try (CallableStatement cs = conn.prepareCall("{call login(?,?,?)}")) {
+            cs.setString(1, username);
+            cs.setString(2, passd);
+            cs.registerOutParameter(3, Types.NUMERIC);
+            cs.executeQuery();
+            return cs.getInt(3);
+        }
     }
 
     public static void insertUser(Connection conn, String username, String passd, String email) throws ManageException {
         try {
-            CallableStatement cs = conn.prepareCall("{call addNewUser(?, ?, ?)}");
-            cs.setString(1, username);
-            cs.setString(2, passd);
-            cs.setString(3, email);
+            try (CallableStatement cs = conn.prepareCall("{call addNewUser(?, ?, ?)}")) {
+                cs.setString(1, username);
+                cs.setString(2, passd);
+                cs.setString(3, email);
 
-            cs.executeQuery();
+                cs.executeQuery();
+            }
         }catch (SQLException e){
             throw new ManageException("Failed insert: " + e.getMessage());
         }
@@ -63,33 +65,36 @@ public class SimpleQueries {
 
     public static int isAdmin(Connection conn, String username, String passd) throws SQLException {
 
-        CallableStatement cs = conn.prepareCall("{call isAdmin(?, ?, ?)}");
-        cs.setString(1, username);
-        cs.setString(2, passd);
-        cs.registerOutParameter(3, Types.NUMERIC);
+        try (CallableStatement cs = conn.prepareCall("{call isAdmin(?, ?, ?)}")) {
+            cs.setString(1, username);
+            cs.setString(2, passd);
+            cs.registerOutParameter(3, Types.NUMERIC);
 
-        cs.executeQuery();
-        return cs.getInt(3);
+            cs.executeQuery();
+            return cs.getInt(3);
+        }
     }
 
     public static String getEmailUser(Connection conn, String username) throws SQLException {
-        CallableStatement cs = conn.prepareCall("{call getEmailUser(?, ?)}");
-        cs.setString(1, username);
-        cs.registerOutParameter(2, Types.VARCHAR);
+        try (CallableStatement cs = conn.prepareCall("{call getEmailUser(?, ?)}")) {
+            cs.setString(1, username);
+            cs.registerOutParameter(2, Types.VARCHAR);
 
-        cs.executeQuery();
-        return cs.getString(2);
+            cs.executeQuery();
+            return cs.getString(2);
+        }
     }
 
     public static void updateUser(Connection conn, String username, String passd, String email, String oldUsername) throws SQLException {
 
-            CallableStatement cs = conn.prepareCall("{call updateUser(?, ?, ?, ?)}");
+        try (CallableStatement cs = conn.prepareCall("{call updateUser(?, ?, ?, ?)}")) {
             cs.setString(1, username);
             cs.setString(2, passd);
             cs.setString(3, email);
             cs.setString(4, oldUsername);
 
             cs.executeQuery();
+        }
     }
 
     public static String getOrderList(Connection conn, String username, boolean check) throws SQLException {
@@ -106,10 +111,11 @@ public class SimpleQueries {
         boolean status = cs.execute();
 
         if(status){
-            ResultSet rs = cs.getResultSet();
-            while (rs.next()){
-                Order order = new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6), rs.getString(7));
-                orderList.addOrder(order);
+            try (ResultSet rs = cs.getResultSet()) {
+                while (rs.next()) {
+                    Order order = new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                    orderList.addOrder(order);
+                }
             }
         }
 
@@ -126,10 +132,11 @@ public class SimpleQueries {
         boolean status = cs.execute();
 
         if(status){
-            ResultSet rs = cs.getResultSet();
-            while (rs.next()){
-                CatalogItem catalogItem = new CatalogItem(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getString(6), rs.getString(7));
-                catalog.addItem(catalogItem);
+            try (ResultSet rs = cs.getResultSet()) {
+                while (rs.next()) {
+                    CatalogItem catalogItem = new CatalogItem(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getString(6), rs.getString(7));
+                    catalog.addItem(catalogItem);
+                }
             }
         }
 
@@ -164,20 +171,21 @@ public class SimpleQueries {
         boolean status = cs.execute();
 
         if(status){
-            ResultSet rs = cs.getResultSet();
-            while (rs.next()){
-                SaleStorageItem saleStorageItem = new SaleStorageItem();
-                saleStorageItem.setStorageSale(rs.getInt(1));
-                saleStorageItem.setStorageBrand(rs.getString(2));
-                saleStorageItem.setStorageItem(rs.getString(3));
-                saleStorageItem.setStoragePrice(rs.getDouble(4));
-                saleStorageItem.setStorageSize(rs.getInt(5));
-                saleStorageItem.setStorageCondition(rs.getString(6));
-                saleStorageItem.setStorageBuyer(rs.getString(7));
-                saleStorageItem.setStorageAddress(rs.getString(8));
-                saleStorageItem.setStorageSeller(rs.getString(9));
-                saleStorageItem.setStorageIsChecked(rs.getInt(10));
-                saleStorage.addItem(saleStorageItem);
+            try (ResultSet rs = cs.getResultSet()) {
+                while (rs.next()) {
+                    SaleStorageItem saleStorageItem = new SaleStorageItem();
+                    saleStorageItem.setStorageSale(rs.getInt(1));
+                    saleStorageItem.setStorageBrand(rs.getString(2));
+                    saleStorageItem.setStorageItem(rs.getString(3));
+                    saleStorageItem.setStoragePrice(rs.getDouble(4));
+                    saleStorageItem.setStorageSize(rs.getInt(5));
+                    saleStorageItem.setStorageCondition(rs.getString(6));
+                    saleStorageItem.setStorageBuyer(rs.getString(7));
+                    saleStorageItem.setStorageAddress(rs.getString(8));
+                    saleStorageItem.setStorageSeller(rs.getString(9));
+                    saleStorageItem.setStorageIsChecked(rs.getInt(10));
+                    saleStorage.addItem(saleStorageItem);
+                }
             }
         }
     }
@@ -227,13 +235,14 @@ public class SimpleQueries {
         boolean status = cs.execute();
 
         if(status){
-            ResultSet rs = cs.getResultSet();
-            while (rs.next()){
-                int size = rs.getInt(1);
-                int amount = rs.getInt(2);
+            try (ResultSet rs = cs.getResultSet()) {
+                while (rs.next()) {
+                    int size = rs.getInt(1);
+                    int amount = rs.getInt(2);
 
-                SizeAmount sizeAmount = new SizeAmount(size, amount);
-                shoeSizeList.addSizeAmount(sizeAmount);
+                    SizeAmount sizeAmount = new SizeAmount(size, amount);
+                    shoeSizeList.addSizeAmount(sizeAmount);
+                }
             }
         }
 
@@ -244,11 +253,12 @@ public class SimpleQueries {
         String[] lista = new String[6];
         int i = 0;
         if(status){
-            ResultSet rs = cs.getResultSet();
-            while (rs.next()){
-                float price = rs.getFloat(1);
-                lista[i] = String.valueOf(price);
-                i++;
+            try (ResultSet rs = cs.getResultSet()) {
+                while (rs.next()) {
+                    float price = rs.getFloat(1);
+                    lista[i] = String.valueOf(price);
+                    i++;
+                }
             }
         }
         return lista;
@@ -337,10 +347,11 @@ public class SimpleQueries {
         boolean status = cs.execute();
 
         if(status){
-            ResultSet rs = cs.getResultSet();
-            while (rs.next()){
-                 CatalogItem catalogItem = new CatalogItem(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getString(6), rs.getString(7));
-                 catalog.addItem(catalogItem);
+            try (ResultSet rs = cs.getResultSet()) {
+                while (rs.next()) {
+                    CatalogItem catalogItem = new CatalogItem(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getString(6), rs.getString(7));
+                    catalog.addItem(catalogItem);
+                }
             }
         }
 
@@ -364,8 +375,9 @@ public class SimpleQueries {
 
         SaleStorage saleStorage = new SaleStorage();
 
-        CallableStatement cs = conn.prepareCall("{call getSaleStorage(?)}");
-        setQuerySale(username, saleStorage, cs);
+        try (CallableStatement cs = conn.prepareCall("{call getSaleStorage(?)}")) {
+            setQuerySale(username, saleStorage, cs);
+        }
 
         return saleStorage;
     }
@@ -383,19 +395,20 @@ public class SimpleQueries {
 
         cs.executeQuery();
 
-        CallableStatement cs2 = conn.prepareCall("{call storeSale(?,?,?,?,?,?,?,?,?,?)}");
-        cs2.setInt(1, saleStorageItem.getStorageSale());
-        cs2.setString(2, saleStorageItem.getStorageBrand());
-        cs2.setString(3, saleStorageItem.getStorageItem());
-        cs2.setDouble(4, saleStorageItem.getStoragePrice());
-        cs2.setInt(5, saleStorageItem.getStorageSize());
-        cs2.setString(6, saleStorageItem.getStorageCondition());
-        cs2.setString(7, saleStorageItem.getStorageBuyer());
-        cs2.setString(8, saleStorageItem.getStorageAddress());
-        cs2.setString(9, saleStorageItem.getStorageSeller());
-        cs2.setInt(10, saleStorageItem.getStorageIsChecked());
+        try (CallableStatement cs2 = conn.prepareCall("{call storeSale(?,?,?,?,?,?,?,?,?,?)}")) {
+            cs2.setInt(1, saleStorageItem.getStorageSale());
+            cs2.setString(2, saleStorageItem.getStorageBrand());
+            cs2.setString(3, saleStorageItem.getStorageItem());
+            cs2.setDouble(4, saleStorageItem.getStoragePrice());
+            cs2.setInt(5, saleStorageItem.getStorageSize());
+            cs2.setString(6, saleStorageItem.getStorageCondition());
+            cs2.setString(7, saleStorageItem.getStorageBuyer());
+            cs2.setString(8, saleStorageItem.getStorageAddress());
+            cs2.setString(9, saleStorageItem.getStorageSeller());
+            cs2.setInt(10, saleStorageItem.getStorageIsChecked());
 
-        cs2.executeQuery();
+            cs2.executeQuery();
+        }
     }
 
     public static void refuseSale(Connection conn, SaleStorageItem saleStorageItem) throws SQLException {
