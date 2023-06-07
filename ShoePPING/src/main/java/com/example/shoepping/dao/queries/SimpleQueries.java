@@ -111,11 +111,10 @@ public class SimpleQueries {
         boolean status = cs.execute();
 
         if(status){
-            try (ResultSet rs = cs.getResultSet()) {
-                while (rs.next()) {
-                    Order order = new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6), rs.getString(7));
-                    orderList.addOrder(order);
-                }
+            ResultSet rs = cs.getResultSet();
+            while (rs.next()){
+                Order order = new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                orderList.addOrder(order);
             }
         }
 
@@ -189,36 +188,36 @@ public class SimpleQueries {
     }
 
     public static String[] getNikePrice(Connection conn) throws SQLException {
-        CallableStatement cs;
 
-        cs = conn.prepareCall("{call getNikePrice()}");
+        try (CallableStatement cs = conn.prepareCall("{call getNikePrice()}")) {
 
-        boolean status = cs.execute();
+            boolean status = cs.execute();
 
-        return getListPrice(cs, status);
+            return getListPrice(cs, status);
+        }
     }
 
     public static String[] getAdidasPrice(Connection conn) throws SQLException {
-        CallableStatement cs;
 
-        cs = conn.prepareCall("{call getAdidasPrice()}");
+        try (CallableStatement cs = conn.prepareCall("{call getAdidasPrice()}")) {
 
-        boolean status = cs.execute();
+            boolean status = cs.execute();
 
-        return getListPrice(cs, status);
+            return getListPrice(cs, status);
+        }
 
 
     }
 
     public static String[] getNewBalancePrice(Connection conn) throws SQLException {
-        CallableStatement cs;
 
 
-        cs = conn.prepareCall("{call getNewBalancePrice()}");
+        try (CallableStatement cs = conn.prepareCall("{call getNewBalancePrice()}")) {
 
-        boolean status = cs.execute();
+            boolean status = cs.execute();
 
-        return getListPrice(cs, status);
+            return getListPrice(cs, status);
+        }
     }
 
     public static ShoeSizeList getSizeList(Connection conn, String model) throws SQLException {
