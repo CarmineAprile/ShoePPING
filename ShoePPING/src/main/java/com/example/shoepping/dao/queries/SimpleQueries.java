@@ -303,31 +303,11 @@ public class SimpleQueries {
         if(check){
             try (CallableStatement cs2 = conn.prepareCall("{call insertSaleStorageCSV(?, ?, ?, ?, ?, ?, ?, ?, ?)}")) {
 
-                cs2.setString(1, sale.getBrand());
-                cs2.setString(2, sale.getItem());
-                cs2.setDouble(3, Double.parseDouble(sale.getPrice()));
-                cs2.setInt(4, Integer.parseInt(sale.getSize()));
-                cs2.setString(5, sale.getCondition());
-                cs2.setString(6, user.getUsername());
-                cs2.setString(7, order.getAddressOrder());
-                cs2.setString(8, sale.getSeller());
-                cs2.setInt(9, isChecked);
-
-                cs2.execute();
+                utilityInsertOrderCatalog(order, user, sale, isChecked, cs2);
             }
         }else {
             try(CallableStatement cs2 = conn.prepareCall("{call insertSaleStorageSQL(?, ?, ?, ?, ?, ?, ?, ?, ?)}")) {
-                cs2.setString(1, sale.getBrand());
-                cs2.setString(2, sale.getItem());
-                cs2.setDouble(3, Double.parseDouble(sale.getPrice()));
-                cs2.setInt(4, Integer.parseInt(sale.getSize()));
-                cs2.setString(5, sale.getCondition());
-                cs2.setString(6, user.getUsername());
-                cs2.setString(7, order.getAddressOrder());
-                cs2.setString(8, sale.getSeller());
-                cs2.setInt(9, isChecked);
-
-                cs2.execute();
+                utilityInsertOrderCatalog(order, user, sale, isChecked, cs2);
             }
         }
 
@@ -339,6 +319,20 @@ public class SimpleQueries {
 
             cs1.execute();
         }
+    }
+
+    public static void utilityInsertOrderCatalog(Order order, User user, Sale sale, int isChecked, CallableStatement cs2) throws SQLException {
+        cs2.setString(1, sale.getBrand());
+        cs2.setString(2, sale.getItem());
+        cs2.setDouble(3, Double.parseDouble(sale.getPrice()));
+        cs2.setInt(4, Integer.parseInt(sale.getSize()));
+        cs2.setString(5, sale.getCondition());
+        cs2.setString(6, user.getUsername());
+        cs2.setString(7, order.getAddressOrder());
+        cs2.setString(8, sale.getSeller());
+        cs2.setInt(9, isChecked);
+
+        cs2.execute();
     }
 
     public static void insertOrderMethod(Connection conn, Order order, User user, boolean check) throws SQLException {
