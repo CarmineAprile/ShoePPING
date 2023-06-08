@@ -1,11 +1,11 @@
 package com.example.shoepping.pattern.observer;
 
-public interface SizeList {
-    void addObserver(SizeButton button);
+public interface Subject {
+    void addObserver(Observer observer);
 
     void addSizeAmount(SizeAmount sizeAmount);
 
-    void removeObserver(SizeButton button);
+    void removeObserver(Observer observer);
 
     void setAvailable();
 }

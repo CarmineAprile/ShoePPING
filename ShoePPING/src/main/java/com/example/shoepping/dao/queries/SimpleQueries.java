@@ -14,7 +14,7 @@ import com.example.shoepping.model.sale_storage.SaleStorage;
 import com.example.shoepping.model.sale_storage.SaleStorageItem;
 import com.example.shoepping.model.shoe.Shoe;
 import com.example.shoepping.model.user.User;
-import com.example.shoepping.pattern.observer.ShoeSizeList;
+import com.example.shoepping.pattern.observer.ShoeSizeSubject;
 import com.example.shoepping.pattern.observer.SizeAmount;
 
 import java.sql.*;
@@ -237,8 +237,8 @@ public class SimpleQueries {
         }
     }
 
-    public static ShoeSizeList getSizeList(Connection conn, String model) throws SQLException {
-        ShoeSizeList shoeSizeList = new ShoeSizeList();
+    public static ShoeSizeSubject getSizeList(Connection conn, String model) throws SQLException {
+        ShoeSizeSubject shoeSizeList = new ShoeSizeSubject();
 
 
         try (CallableStatement cs = conn.prepareCall("{call getSizeList(?)}")) {

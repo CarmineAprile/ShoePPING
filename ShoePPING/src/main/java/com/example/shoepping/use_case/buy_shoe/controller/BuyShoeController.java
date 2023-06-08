@@ -6,9 +6,8 @@ import com.example.shoepping.dao.size_dao.SizeDaoJDBC;
 import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.order.Order;
 import com.example.shoepping.model.user.User;
-import com.example.shoepping.pattern.observer.ShoeSizeButton;
-import com.example.shoepping.pattern.observer.ShoeSizeList;
-import com.example.shoepping.pattern.observer.SizeButton;
+import com.example.shoepping.pattern.observer.ShoeSizeSubject;
+import com.example.shoepping.pattern.observer.buttonObserver;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.buy_shoe.view.IBuyShoeView;
 import com.opencsv.exceptions.CsvValidationException;
@@ -28,35 +27,30 @@ public class BuyShoeController implements IBuyShoeController{
     }
 
     @Override
-    public void onUpdate(ShoeSizeList shoeSizeList) {
-        int i = 37;
-        SizeShoeBean sizeShoeBean = new SizeShoeBean();
+    public void onUpdate(int sizeButton) {
 
-        for (SizeButton button : shoeSizeList.buttons) {
-            if(!button.getIsAvailable()){
-                sizeShoeBean.setSizeShoe(String.valueOf(i));
-                buyShoeView.onDisable(sizeShoeBean);
-            }
-            i++;
-        }
+        SizeShoeBean sizeShoeBean = new SizeShoeBean();
+        sizeShoeBean.setSizeShoe(String.valueOf(sizeButton));
+        buyShoeView.onDisable(sizeShoeBean);
+
     }
 
     @Override
     public void getSizeAmountList(ModelShoeBean modelShoeBean) throws SQLException, IOException, ClassNotFoundException {
-        ShoeSizeList shoeSizeList;
+        ShoeSizeSubject shoeSizeList;
         SizeDaoJDBC sizeDao = new SizeDaoJDBC();
         shoeSizeList = sizeDao.getSizeList(modelShoeBean.getModelShoe());
 
-        ShoeSizeButton observer37 = new ShoeSizeButton();
-        ShoeSizeButton observer38 = new ShoeSizeButton();
-        ShoeSizeButton observer39 = new ShoeSizeButton();
-        ShoeSizeButton observer40 = new ShoeSizeButton();
-        ShoeSizeButton observer41 = new ShoeSizeButton();
-        ShoeSizeButton observer42 = new ShoeSizeButton();
-        ShoeSizeButton observer43 = new ShoeSizeButton();
-        ShoeSizeButton observer44 = new ShoeSizeButton();
-        ShoeSizeButton observer45 = new ShoeSizeButton();
-        ShoeSizeButton observer46 = new ShoeSizeButton();
+        buttonObserver observer37 = new buttonObserver(37, buyShoeView);
+        buttonObserver observer38 = new buttonObserver(38, buyShoeView);
+        buttonObserver observer39 = new buttonObserver(39, buyShoeView);
+        buttonObserver observer40 = new buttonObserver(40, buyShoeView);
+        buttonObserver observer41 = new buttonObserver(41, buyShoeView);
+        buttonObserver observer42 = new buttonObserver(42, buyShoeView);
+        buttonObserver observer43 = new buttonObserver(43, buyShoeView);
+        buttonObserver observer44 = new buttonObserver(44, buyShoeView);
+        buttonObserver observer45 = new buttonObserver(45, buyShoeView);
+        buttonObserver observer46 = new buttonObserver(46, buyShoeView);
 
         shoeSizeList.addObserver(observer37);
         shoeSizeList.addObserver(observer38);
@@ -70,7 +64,6 @@ public class BuyShoeController implements IBuyShoeController{
         shoeSizeList.addObserver(observer46);
 
         shoeSizeList.setAvailable();
-        onUpdate(shoeSizeList);
     }
 
     public void onConfirm(OrderVecBean orderVec) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
