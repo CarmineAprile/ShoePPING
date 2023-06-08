@@ -413,17 +413,24 @@ public class SimpleQueries {
     }
 
     public static void confirmSale(Connection conn, SaleStorageItem saleStorageItem) throws SQLException {
-        CallableStatement cs;
 
         if (saleStorageItem.getStorageIsChecked() == 0){
-            cs = conn.prepareCall("{call updateOrderSQL(?,?)}");
-        }else {
-            cs = conn.prepareCall("{call updateOrderCSV(?,?)}");
-        }
-        cs.setInt(1, saleStorageItem.getStorageSale());
-        cs.setString(2, "confirmed");
+            try (CallableStatement cs = conn.prepareCall("{call updateOrderSQL(?,?)}")) {
 
-        cs.executeQuery();
+                cs.setInt(1, saleStorageItem.getStorageSale());
+                cs.setString(2, "confirmed");
+
+                cs.executeQuery();
+            }
+        }else {
+            try (CallableStatement cs = conn.prepareCall("{call updateOrderCSV(?,?)}")) {
+
+                cs.setInt(1, saleStorageItem.getStorageSale());
+                cs.setString(2, "confirmed");
+
+                cs.executeQuery();
+            }
+        }
 
         try (CallableStatement cs2 = conn.prepareCall("{call storeSale(?,?,?,?,?,?,?,?,?,?)}")) {
             cs2.setInt(1, saleStorageItem.getStorageSale());
