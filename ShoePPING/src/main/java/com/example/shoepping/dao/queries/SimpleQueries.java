@@ -449,18 +449,24 @@ public class SimpleQueries {
     }
 
     public static void refuseSale(Connection conn, SaleStorageItem saleStorageItem) throws SQLException {
-        CallableStatement cs;
 
         if (saleStorageItem.getStorageIsChecked() == 0){
-            cs = conn.prepareCall("{call updateOrderSQL(?,?)}");
+            try(CallableStatement cs = conn.prepareCall("{call updateOrderSQL(?,?)}")) {
+                cs.setInt(1, saleStorageItem.getStorageSale());
+                cs.setString(2, "refused");
+
+                cs.executeQuery();
+            }
         }else {
-            cs = conn.prepareCall("{call updateOrderCSV(?,?)}");
+            try (CallableStatement cs = conn.prepareCall("{call updateOrderCSV(?,?)}")) {
+                cs.setInt(1, saleStorageItem.getStorageSale());
+                cs.setString(2, "refused");
+
+                cs.executeQuery();
+            }
         }
 
-        cs.setInt(1, saleStorageItem.getStorageSale());
-        cs.setString(2, "refused");
 
-        cs.executeQuery();
     }
 
 
