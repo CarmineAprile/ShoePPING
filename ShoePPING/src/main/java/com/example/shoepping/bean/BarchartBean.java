@@ -1,20 +1,20 @@
 package com.example.shoepping.bean;
 
-import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 
 public class BarchartBean {
 
-    private BarChart<String,Integer> barchart;
+    private XYChart.Series<String, Integer> barchart;
 
     public BarchartBean() {
         // empty constructor
     }
 
-    public BarChart<String,Integer> getBarchart() {
+    public XYChart.Series<String, Integer> getBarchart() {
         return barchart;
     }
 
-    public void setBarchart(BarChart<String,Integer> barchartInt) {
+    public void setBarchart(XYChart.Series<String, Integer> barchartInt) {
         this.barchart = barchartInt;
     }
 }

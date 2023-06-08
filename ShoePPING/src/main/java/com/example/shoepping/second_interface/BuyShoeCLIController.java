@@ -110,6 +110,11 @@ public class BuyShoeCLIController implements IBuyShoeView {
         goBackMethod();
     }
 
+    @Override
+    public void onBarchart(BarchartBean barchartBean) {
+        // is not implemented in CLI
+    }
+
     public void confirmMethod(String model, String price) throws IOException, CsvValidationException, SQLException, ClassNotFoundException, ManageException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Size: ");

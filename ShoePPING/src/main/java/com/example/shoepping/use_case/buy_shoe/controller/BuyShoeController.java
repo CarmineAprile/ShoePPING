@@ -12,7 +12,7 @@ import com.example.shoepping.pattern.observer.ButtonObserver;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.buy_shoe.view.IBuyShoeView;
 import com.opencsv.exceptions.CsvValidationException;
-import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -38,7 +38,7 @@ public class BuyShoeController implements IBuyShoeController{
     }
 
     @Override
-    public void onBarchart(BarChart<String, Integer> barchart) {
+    public void onBarchart(XYChart.Series<String, Integer> barchart) {
         BarchartBean barchartBean = new BarchartBean();
         barchartBean.setBarchart(barchart);
         buyShoeView.onBarchart(barchartBean);
