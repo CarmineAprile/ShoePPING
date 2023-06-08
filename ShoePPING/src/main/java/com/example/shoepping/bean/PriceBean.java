@@ -25,11 +25,12 @@ public class PriceBean {
 
 
     private void isValid(){
-        if (price.isEmpty()){
+        if (price.isEmpty())
             this.isValid = 2;
-        }else if(isNotAPrice(price)) {
+        else if(isNotAPrice(price))
             this.isValid = 3;
-        }
+        else if(Double.parseDouble(price) < 0)
+            this.isValid = 4;
         else this.isValid = -1;
     }
 }

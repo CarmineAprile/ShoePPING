@@ -28,6 +28,7 @@ public class AdministratorController implements IAdministratorController{
         // 1. check for ID is int
         // 2. check for amount is empty
         // 3. check for amount is int
+        // 4. check for amount is > 0
         // 5. check for size is empty
         // 6. check for size is int
 
@@ -39,6 +40,8 @@ public class AdministratorController implements IAdministratorController{
             utilityOnUpdateAmount("Please insert an amount", 2);
         else if (amount.getIsValid() == 3)
             utilityOnUpdateAmount("Please insert a valid amount format", 3);
+        else if (amount.getIsValid() == 4)
+            utilityOnUpdateAmount("Please insert a valid amount format", 4);
         else if (size.getIsValid() == 5)
             utilityOnUpdateAmount("Please insert a size", 5);
         else if (size.getIsValid() == 6)
@@ -64,10 +67,12 @@ public class AdministratorController implements IAdministratorController{
             utilityOnUpdatePrice("Please insert an ID", 0);
         else if (id.getIsValid() == 1)
             utilityOnUpdatePrice("Please insert a valid ID format", 1);
-        if(price.getIsValid() == 2)
+        else if(price.getIsValid() == 2)
             utilityOnUpdatePrice("Please insert a price", 2);
         else if (price.getIsValid() == 3)
             utilityOnUpdatePrice("Please insert a valid price format", 3);
+        else if (price.getIsValid() == 4)
+            utilityOnUpdatePrice("Please insert a valid price format", 4);
         else {
                 UpdateDao updateDao = new UpdateDao();
                 updateDao.updatePrice(shoe);

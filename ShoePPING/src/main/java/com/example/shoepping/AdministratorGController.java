@@ -78,9 +78,10 @@ public class AdministratorGController implements IAdministratorView {
         // 1. check for ID is int
         // 2. check for amount is empty
         // 3. check for amount is int
+        // 4. check for amount is > 0
         // 5. check for size is empty
         // 6. check for size is int
-         if(errorCode.getCode() == 0 || errorCode.getCode() == 1 || errorCode.getCode() == 2 || errorCode.getCode() == 3 || errorCode.getCode() == 5 || errorCode.getCode() == 6){
+         if(errorCode.getCode() == 0 || errorCode.getCode() == 1 || errorCode.getCode() == 2 || errorCode.getCode() == 3 || errorCode.getCode() == 4 || errorCode.getCode() == 5 || errorCode.getCode() == 6){
             amountL.setText(message.getMessage());
         }
     }
@@ -114,8 +115,9 @@ public class AdministratorGController implements IAdministratorView {
         // 1. check for ID is int
         // 2. check for price is empty
         // 3. check for price is numeric
+        // 4. check for price is > 0
 
-        if(errorCode.getCode() == 0 || errorCode.getCode() == 1 || errorCode.getCode() == 2 || errorCode.getCode() == 3){
+        if(errorCode.getCode() == 0 || errorCode.getCode() == 1 || errorCode.getCode() == 2 || errorCode.getCode() == 3 || errorCode.getCode() == 4){
             priceL.setText(message.getMessage());
         }
     }
