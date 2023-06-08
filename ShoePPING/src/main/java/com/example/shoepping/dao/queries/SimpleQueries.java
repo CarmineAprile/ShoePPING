@@ -291,8 +291,6 @@ public class SimpleQueries {
 
     public static void insertOrderCatalog(Connection conn, Order order, User user, boolean check, String sellID, Sale sale) throws SQLException {
 
-        CallableStatement cs2;
-
         int isChecked;
         if(check){
             isChecked = 1;
@@ -303,22 +301,37 @@ public class SimpleQueries {
         insertOrderMethod(conn, order, user, check);
 
         if(check){
-            cs2 = conn.prepareCall("{call insertSaleStorageCSV(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+            try (CallableStatement cs2 = conn.prepareCall("{call insertSaleStorageCSV(?, ?, ?, ?, ?, ?, ?, ?, ?)}")) {
+
+                cs2.setString(1, sale.getBrand());
+                cs2.setString(2, sale.getItem());
+                cs2.setDouble(3, Double.parseDouble(sale.getPrice()));
+                cs2.setInt(4, Integer.parseInt(sale.getSize()));
+                cs2.setString(5, sale.getCondition());
+                cs2.setString(6, user.getUsername());
+                cs2.setString(7, order.getAddressOrder());
+                cs2.setString(8, sale.getSeller());
+                cs2.setInt(9, isChecked);
+
+                cs2.execute();
+            }
         }else {
-            cs2 = conn.prepareCall("{call insertSaleStorageSQL(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+            try(CallableStatement cs2 = conn.prepareCall("{call insertSaleStorageSQL(?, ?, ?, ?, ?, ?, ?, ?, ?)}")) {
+                cs2.setString(1, sale.getBrand());
+                cs2.setString(2, sale.getItem());
+                cs2.setDouble(3, Double.parseDouble(sale.getPrice()));
+                cs2.setInt(4, Integer.parseInt(sale.getSize()));
+                cs2.setString(5, sale.getCondition());
+                cs2.setString(6, user.getUsername());
+                cs2.setString(7, order.getAddressOrder());
+                cs2.setString(8, sale.getSeller());
+                cs2.setInt(9, isChecked);
+
+                cs2.execute();
+            }
         }
 
-        cs2.setString(1, sale.getBrand());
-        cs2.setString(2, sale.getItem());
-        cs2.setDouble(3, Double.parseDouble(sale.getPrice()));
-        cs2.setInt(4, Integer.parseInt(sale.getSize()));
-        cs2.setString(5, sale.getCondition());
-        cs2.setString(6, user.getUsername());
-        cs2.setString(7, order.getAddressOrder());
-        cs2.setString(8, sale.getSeller());
-        cs2.setInt(9, isChecked);
 
-        cs2.execute();
 
         try (CallableStatement cs1 = conn.prepareCall("{call deleteCatalog(?)}")) {
 
