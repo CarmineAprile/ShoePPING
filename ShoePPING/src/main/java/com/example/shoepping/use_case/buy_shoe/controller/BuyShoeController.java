@@ -6,11 +6,13 @@ import com.example.shoepping.dao.size_dao.SizeDaoJDBC;
 import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.order.Order;
 import com.example.shoepping.model.user.User;
+import com.example.shoepping.pattern.observer.BarchartObserver;
 import com.example.shoepping.pattern.observer.ShoeSizeSubject;
 import com.example.shoepping.pattern.observer.ButtonObserver;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.buy_shoe.view.IBuyShoeView;
 import com.opencsv.exceptions.CsvValidationException;
+import javafx.scene.chart.BarChart;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -36,6 +38,13 @@ public class BuyShoeController implements IBuyShoeController{
     }
 
     @Override
+    public void onBarchart(BarChart<String, Integer> barchart) {
+        BarchartBean barchartBean = new BarchartBean();
+        barchartBean.setBarchart(barchart);
+        buyShoeView.onBarchart(barchartBean);
+    }
+
+    @Override
     public void getSizeAmountList(ModelShoeBean modelShoeBean) throws SQLException, IOException, ClassNotFoundException {
         ShoeSizeSubject shoeSizeList;
         SizeDaoJDBC sizeDao = new SizeDaoJDBC();
@@ -51,6 +60,7 @@ public class BuyShoeController implements IBuyShoeController{
         ButtonObserver observer44 = new ButtonObserver(44, buyShoeView);
         ButtonObserver observer45 = new ButtonObserver(45, buyShoeView);
         ButtonObserver observer46 = new ButtonObserver(46, buyShoeView);
+        BarchartObserver barchartObserver = new BarchartObserver(buyShoeView);
 
         shoeSizeList.addObserver(observer37);
         shoeSizeList.addObserver(observer38);
@@ -62,6 +72,7 @@ public class BuyShoeController implements IBuyShoeController{
         shoeSizeList.addObserver(observer44);
         shoeSizeList.addObserver(observer45);
         shoeSizeList.addObserver(observer46);
+        shoeSizeList.addObserver(barchartObserver);
 
         shoeSizeList.setAvailable();
     }
@@ -105,6 +116,8 @@ public class BuyShoeController implements IBuyShoeController{
         }
 
     }
+
+
 
     private void utilityOnConfirm(String message, int errorCode) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
         MessageBean messageBean = new MessageBean();

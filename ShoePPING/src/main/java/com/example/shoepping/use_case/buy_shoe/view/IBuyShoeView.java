@@ -1,5 +1,6 @@
 package com.example.shoepping.use_case.buy_shoe.view;
 
+import com.example.shoepping.bean.BarchartBean;
 import com.example.shoepping.bean.CodeBean;
 import com.example.shoepping.bean.MessageBean;
 import com.example.shoepping.bean.SizeShoeBean;
@@ -14,4 +15,6 @@ public interface IBuyShoeView {
 
     void onConfirmSuccess() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, ManageException;
     void onConfirmError(MessageBean message, CodeBean code) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException;
+
+    void onBarchart(BarchartBean barchartBean);
 }

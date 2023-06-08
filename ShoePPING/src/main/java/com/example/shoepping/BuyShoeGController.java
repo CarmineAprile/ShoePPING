@@ -11,6 +11,7 @@ import com.opencsv.exceptions.CsvValidationException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.chart.BarChart;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -88,6 +89,7 @@ public class BuyShoeGController implements IBuyShoeView {
     */
     int reference;
     static final String BUY_USER_VIEW_FXML = "buy-user-view.fxml";
+    BarChart<String,Integer> barchart;
 
     public void start(String shoe, String model, String price, int reference) throws SQLException, IOException, ClassNotFoundException {
 
@@ -215,6 +217,8 @@ public class BuyShoeGController implements IBuyShoeView {
         }
     }
 
+
+
     public void size37(){
         sizeMenu.setText("37");
     }
@@ -262,6 +266,11 @@ public class BuyShoeGController implements IBuyShoeView {
             default -> error();
 
         }
+    }
+
+    @Override
+    public void onBarchart(BarchartBean barchartBean) {
+        this.barchart = barchartBean.getBarchart();
     }
 
     public void maxLengthAddress() {

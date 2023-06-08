@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="194.0" prefWidth="269.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shoepping.BarChartGController">
+    <BarChart fx:id="barchart" prefHeight="250.0" prefWidth="300.0">
+      <xAxis>
+          <CategoryAxis animated="false" side="BOTTOM" />
+      </xAxis>
+      <yAxis>
+          <NumberAxis animated="false" side="LEFT" />
+      </yAxis>
+    </BarChart>
+    <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="300.0" text="Availability" textFill="#554b4d">
+        <font>
+          <Font name="System Bold" size="14.0" />
+        </font>
+    </Label>
+</AnchorPane>
