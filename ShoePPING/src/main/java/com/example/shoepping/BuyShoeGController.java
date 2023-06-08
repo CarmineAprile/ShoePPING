@@ -33,6 +33,8 @@ public class BuyShoeGController implements IBuyShoeView {
     @FXML
     HBox sellButton;
     @FXML
+    Label availabilityButton;
+    @FXML
     ImageView backButton;
     @FXML
     ImageView userIcon;
@@ -151,6 +153,17 @@ public class BuyShoeGController implements IBuyShoeView {
 
         ChangeWindow cw = new ChangeWindow();
         cw.switchPage(root, buyShoePane);
+    }
+
+    public void onAvailability() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("barchart-view.fxml"));
+        Parent root = loader.load();
+
+        BarChartGController barChartGController = loader.getController();
+        barChartGController.start(barchart);
+
+        ChangeWindow cw = new ChangeWindow();
+        cw.openPage(root);
     }
 
     public void confirm() throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {
@@ -319,4 +332,5 @@ public class BuyShoeGController implements IBuyShoeView {
         }
         return str.substring(0, str.length() - 1);
     }
+
 }
