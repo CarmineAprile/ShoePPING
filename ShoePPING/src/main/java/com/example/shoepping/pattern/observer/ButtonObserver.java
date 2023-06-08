@@ -6,12 +6,12 @@ import com.example.shoepping.use_case.buy_shoe.view.IBuyShoeView;
 
 import java.util.List;
 
-public class buttonObserver implements Observer {
+public class ButtonObserver implements Observer {
 
     private final int sizeButton;
     private final IBuyShoeView buyShoeView;
 
-    public buttonObserver(int sizeButton, IBuyShoeView buyShoeView) {
+    public ButtonObserver(int sizeButton, IBuyShoeView buyShoeView) {
         this.sizeButton = sizeButton;
         this.buyShoeView = buyShoeView;
     }

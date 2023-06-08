@@ -7,7 +7,7 @@ import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.order.Order;
 import com.example.shoepping.model.user.User;
 import com.example.shoepping.pattern.observer.ShoeSizeSubject;
-import com.example.shoepping.pattern.observer.buttonObserver;
+import com.example.shoepping.pattern.observer.ButtonObserver;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.buy_shoe.view.IBuyShoeView;
 import com.opencsv.exceptions.CsvValidationException;
@@ -41,16 +41,16 @@ public class BuyShoeController implements IBuyShoeController{
         SizeDaoJDBC sizeDao = new SizeDaoJDBC();
         shoeSizeList = sizeDao.getSizeList(modelShoeBean.getModelShoe());
 
-        buttonObserver observer37 = new buttonObserver(37, buyShoeView);
-        buttonObserver observer38 = new buttonObserver(38, buyShoeView);
-        buttonObserver observer39 = new buttonObserver(39, buyShoeView);
-        buttonObserver observer40 = new buttonObserver(40, buyShoeView);
-        buttonObserver observer41 = new buttonObserver(41, buyShoeView);
-        buttonObserver observer42 = new buttonObserver(42, buyShoeView);
-        buttonObserver observer43 = new buttonObserver(43, buyShoeView);
-        buttonObserver observer44 = new buttonObserver(44, buyShoeView);
-        buttonObserver observer45 = new buttonObserver(45, buyShoeView);
-        buttonObserver observer46 = new buttonObserver(46, buyShoeView);
+        ButtonObserver observer37 = new ButtonObserver(37, buyShoeView);
+        ButtonObserver observer38 = new ButtonObserver(38, buyShoeView);
+        ButtonObserver observer39 = new ButtonObserver(39, buyShoeView);
+        ButtonObserver observer40 = new ButtonObserver(40, buyShoeView);
+        ButtonObserver observer41 = new ButtonObserver(41, buyShoeView);
+        ButtonObserver observer42 = new ButtonObserver(42, buyShoeView);
+        ButtonObserver observer43 = new ButtonObserver(43, buyShoeView);
+        ButtonObserver observer44 = new ButtonObserver(44, buyShoeView);
+        ButtonObserver observer45 = new ButtonObserver(45, buyShoeView);
+        ButtonObserver observer46 = new ButtonObserver(46, buyShoeView);
 
         shoeSizeList.addObserver(observer37);
         shoeSizeList.addObserver(observer38);
