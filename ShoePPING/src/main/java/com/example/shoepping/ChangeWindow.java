@@ -12,7 +12,7 @@ import static com.example.shoepping.SplashGController.image;
 
 public class ChangeWindow {
 
-    private final static String title = "ShoePPING";
+    private static final String TITLE = "ShoePPING";
     public void switchPage(Parent root, AnchorPane pane){
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -20,7 +20,7 @@ public class ChangeWindow {
 
         //lock dimension of window
         stage.setResizable(false);
-        stage.setTitle(title);
+        stage.setTitle(TITLE);
 
         //set icon in stage
         stage.getIcons().add(image);
@@ -36,7 +36,7 @@ public class ChangeWindow {
 
         //lock dimension of window
         stage.setResizable(false);
-        stage.setTitle(title);
+        stage.setTitle(TITLE);
 
         //set icon in stage
         stage.getIcons().add(image);
@@ -51,7 +51,7 @@ public class ChangeWindow {
 
         //lock dimension of window
         stage.setResizable(false);
-        stage.setTitle(title);
+        stage.setTitle(TITLE);
 
         //set icon in stage
         stage.getIcons().add(image);
