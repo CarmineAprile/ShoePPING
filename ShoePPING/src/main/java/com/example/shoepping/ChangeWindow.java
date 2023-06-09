@@ -12,7 +12,7 @@ import static com.example.shoepping.SplashGController.image;
 
 public class ChangeWindow {
 
-    private final String title = "ShoePPING";
+    private final static String title = "ShoePPING";
     public void switchPage(Parent root, AnchorPane pane){
         Scene scene = new Scene(root);
         Stage stage = new Stage();
