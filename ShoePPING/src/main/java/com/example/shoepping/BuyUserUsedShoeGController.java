@@ -67,7 +67,7 @@ public class BuyUserUsedShoeGController implements IBuyUserUsedShoeView {
 
 
 
-    public void start(String label) throws SQLException, IOException, ClassNotFoundException {
+    public void start(String label) throws SQLException, IOException, ClassNotFoundException, ManageException {
         IBuyUserUsedShoeController buyUserUsedShoeController = new BuyUserUsedShoeController(this);
 
         LabelBean labelBean = new LabelBean();

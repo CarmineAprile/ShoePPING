@@ -8,6 +8,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public interface IBuyUserUsedShoeController {
-    String setLabels(LabelBean label) throws SQLException, IOException, ClassNotFoundException;
+    String setLabels(LabelBean label) throws SQLException, IOException, ClassNotFoundException, ManageException;
     void onConfirm(ModelShoeBean item, BrandBean brand, PriceBean price, SizeShoeBean size, SellerBean condition, UserVecBean userDataVec, SellIdUpdateBean sellIDUpdate) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException;
 }

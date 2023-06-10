@@ -38,6 +38,8 @@ public class ValidationNumeric {
             Double.parseDouble(price);
             return false;
         }catch(Exception e){
+            //throw an exception when the price is not a number
+            System.err.println("Price format error: " + e);
             return true;
         }
     }

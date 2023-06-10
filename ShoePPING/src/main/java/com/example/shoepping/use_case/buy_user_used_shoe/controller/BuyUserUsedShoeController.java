@@ -28,7 +28,7 @@ public class BuyUserUsedShoeController implements IBuyUserUsedShoeController{
     }
 
     @Override
-    public String setLabels(LabelBean label) throws SQLException, IOException, ClassNotFoundException {
+    public String setLabels(LabelBean label) throws SQLException, IOException, ClassNotFoundException, ManageException {
 
         CatalogDao catalogDao = new CatalogDao();
 

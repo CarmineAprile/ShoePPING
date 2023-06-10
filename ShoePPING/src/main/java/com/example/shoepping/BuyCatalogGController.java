@@ -92,13 +92,13 @@ public class BuyCatalogGController implements IBuyCatalogView {
         label.setOnMouseClicked(evt -> {
             try {
                 switchPage(label);
-            } catch (IOException | SQLException | ClassNotFoundException e) {
+            } catch (IOException | SQLException | ClassNotFoundException | ManageException e) {
                 throw new RuntimeException(e);
             }
         });
     }
 
-    public void switchPage(Label label) throws IOException, SQLException, ClassNotFoundException {
+    public void switchPage(Label label) throws IOException, SQLException, ClassNotFoundException, ManageException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-used-shoe-view.fxml"));
         Parent root = loader.load();
 

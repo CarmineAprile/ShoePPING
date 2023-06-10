@@ -1,5 +1,7 @@
 package com.example.shoepping.bean;
 
+import com.example.shoepping.exception.ManageException;
+
 import static com.example.shoepping.ValidationNumeric.isNotAPrice;
 
 public class PriceBean {
@@ -14,7 +16,7 @@ public class PriceBean {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(String price) throws ManageException {
         this.price = price;
         isValid();
     }
@@ -24,7 +26,7 @@ public class PriceBean {
     }
 
 
-    private void isValid(){
+    private void isValid() {
         if (price.isEmpty())
             this.isValid = 2;
         else if(isNotAPrice(price))
