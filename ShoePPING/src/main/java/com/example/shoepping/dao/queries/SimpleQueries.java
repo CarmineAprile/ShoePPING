@@ -47,7 +47,7 @@ public class SimpleQueries {
                 cs.executeQuery();
             }
         }catch (SQLException e){
-            throw new ManageException("Failed insert: " + e.getMessage());
+            throw new ManageException("Procedure call error: " + e.getMessage());
         }
 
     }

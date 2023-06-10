@@ -13,7 +13,7 @@ public class CriteriaPrice implements Criteria{
         try {
             priceDouble = Double.parseDouble(price);
         }catch (Exception e){
-            throw new ManageException("Error format: " + e.getMessage());
+            throw new ManageException("Price error format: " + e.getMessage());
         }
 
         for(CatalogItem catalogItem : catalog.getCatalog()){
