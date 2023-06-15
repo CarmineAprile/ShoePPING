@@ -1,33 +1,23 @@
 package com.example.test;
 
 import com.example.shoepping.pattern.adapter.Adapter;
-import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestAdapter {
+class TestAdapter {
 
-    @Test
-    public void TestAdapterAsNew(){
+    @ParameterizedTest
+    @CsvSource({
+            "100, As new, 90",
+            "100, Lightly used, 70",
+            "100, Averagely used, 50",
+    })
+    void TestAdapter(String price, String condition, double expectedPrice){
         Adapter testAdapter = new Adapter();
-        double output = testAdapter.calculatePrice("100", "As new");
-        assertEquals(90, output, 0);
+        double output = testAdapter.calculatePrice(price, condition);
+        assertEquals(expectedPrice, output, 0);
     }
-
-    @Test
-    public void TestAdapterLightlyUsed(){
-        Adapter testAdapter = new Adapter();
-        double output = testAdapter.calculatePrice("100", "Lightly used");
-        assertEquals(70, output, 0);
-    }
-
-    @Test
-    public void TestAdapterAveragelyUsed(){
-        Adapter testAdapter = new Adapter();
-        double output = testAdapter.calculatePrice("100", "Averagely used");
-        assertEquals(50, output, 0);
-    }
-
 
 }
