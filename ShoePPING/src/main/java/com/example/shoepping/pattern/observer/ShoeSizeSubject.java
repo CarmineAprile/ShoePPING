@@ -25,7 +25,7 @@ public class ShoeSizeSubject implements Subject {
 
 
     @Override
-    public void setAvailable() {
+    public void notifyObserver() {
 
         for (Observer button : this.observers) {
             button.update(sizeAmounts);

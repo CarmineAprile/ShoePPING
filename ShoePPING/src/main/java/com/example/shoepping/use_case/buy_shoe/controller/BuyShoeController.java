@@ -74,7 +74,7 @@ public class BuyShoeController implements IBuyShoeController{
         shoeSizeList.addObserver(observer46);
         shoeSizeList.addObserver(barchartObserver);
 
-        shoeSizeList.setAvailable();
+        shoeSizeList.notifyObserver();
     }
 
     public void onConfirm(OrderVecBean orderVec) throws SQLException, IOException, ClassNotFoundException, CsvValidationException, ManageException {

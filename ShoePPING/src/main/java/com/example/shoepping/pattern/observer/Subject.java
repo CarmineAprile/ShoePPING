@@ -7,5 +7,5 @@ public interface Subject {
 
     void removeObserver(Observer observer);
 
-    void setAvailable();
+    void notifyObserver();
 }
