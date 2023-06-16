@@ -17,7 +17,6 @@ public class UserDAOJDBC implements UserDao {
         int rs;
         Connection conn = DaoUtility.prepareQuery();
 
-        // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
         rs = SimpleQueries.selectUser(conn, instance.getUsername(), instance.getPassword());
 
         return rs == 1;
@@ -28,7 +27,6 @@ public class UserDAOJDBC implements UserDao {
         int rs;
         Connection conn = DaoUtility.prepareQuery();
 
-        // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
         rs = SimpleQueries.checkUserExistence(conn, instance.getUsername());
 
         return rs == 1;
@@ -39,7 +37,6 @@ public class UserDAOJDBC implements UserDao {
 
         Connection conn = DaoUtility.prepareQuery();
 
-        // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
         SimpleQueries.insertUser(conn, instance.getUsername(), instance.getPassword(), instance.getEmail());
     }
 
