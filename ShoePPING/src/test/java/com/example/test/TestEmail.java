@@ -1,13 +1,14 @@
 package com.example.test;
 
 import com.example.shoepping.bean.EmailBean;
-import com.example.shoepping.bean.PasswordBean;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestEmail {
+
+
+class TestEmail {
     // Carmine Aprile
 
     @ParameterizedTest
