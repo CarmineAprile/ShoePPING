@@ -1,0 +1,153 @@
+{
+  "id": "12aff7f4-e34c-4457-be3c-222317ecaa9b",
+  "version": "2.0",
+  "name": "CheckAvailabilityTest",
+  "url": "https://www.google.com",
+  "tests": [{
+    "id": "1e498048-305a-4b68-a6cf-901997e9cba3",
+    "name": "CheckAvailabilityTest",
+    "commands": [{
+      "id": "33038ba9-9722-45c5-8e28-d7f186016b77",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c0fe46d1-190d-4d56-bd79-b97ed7726fd4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "68f9b082-760e-4d0e-afe9-977d806af6c8",
+      "comment": "",
+      "command": "type",
+      "target": "id=APjFqb",
+      "targets": [
+        ["id=APjFqb", "id"],
+        ["name=q", "name"],
+        ["css=#APjFqb", "css:finder"],
+        ["xpath=//textarea[@id='APjFqb']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "amazon"
+    }, {
+      "id": "36f30f59-8349-4d0b-a383-0feb23082f44",
+      "comment": "",
+      "command": "click",
+      "target": "css=.QCzoEc > svg",
+      "targets": [
+        ["css=.QCzoEc > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "868c0133-d35d-4b52-8f4e-186df4957c19",
+      "comment": "",
+      "command": "click",
+      "target": "css=.WggQGd > span",
+      "targets": [
+        ["css=.WggQGd > span", "css:finder"],
+        ["xpath=//div[@id='jZ2SBf']/div/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Amazon')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e01c1ff2-9c41-4db0-9369-af3b5cbf06c9",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.CCgQ5",
+      "targets": [
+        ["css=.CCgQ5", "css:finder"],
+        ["xpath=//div[@id='tads']/div/div/div/div/div/a/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/div/div/div/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bbe474d7-530e-4dc0-8dbb-4fb422d5b1e7",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.CCgQ5",
+      "targets": [
+        ["css=.CCgQ5", "css:finder"],
+        ["xpath=//div[@id='tads']/div/div/div/div/div/a/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/div/div/div/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3341d4c1-5779-4a4a-b171-b3717de04d22",
+      "comment": "",
+      "command": "click",
+      "target": "css=.CCgQ5 > span",
+      "targets": [
+        ["css=.CCgQ5 > span", "css:finder"],
+        ["xpath=//div[@id='tads']/div/div/div/div/div/a/div/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/div/div/div/a/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Amazon.it - Shopping Online')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dcb95fd7-9870-495c-99fd-7de3d4d6bc94",
+      "comment": "",
+      "command": "type",
+      "target": "id=twotabsearchtextbox",
+      "targets": [
+        ["id=twotabsearchtextbox", "id"],
+        ["name=field-keywords", "name"],
+        ["css=#twotabsearchtextbox", "css:finder"],
+        ["xpath=//input[@id='twotabsearchtextbox']", "xpath:attributes"],
+        ["xpath=//form[@id='nav-search-bar-form']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "nintendo switch"
+    }, {
+      "id": "56b950f8-a6b9-4686-8bef-50bfa461ee4d",
+      "comment": "",
+      "command": "click",
+      "target": "id=nav-search-submit-button",
+      "targets": [
+        ["id=nav-search-submit-button", "id"],
+        ["css=#nav-search-submit-button", "css:finder"],
+        ["xpath=//input[@id='nav-search-submit-button']", "xpath:attributes"],
+        ["xpath=//span[@id='nav-search-submit-text']/input", "xpath:idRelative"],
+        ["xpath=//span/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eeddd565-e334-4b06-90dc-64d402598f7d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sg-col-4-of-24:nth-child(7) .s-image:nth-child(1)",
+      "targets": [
+        ["css=.sg-col-4-of-24:nth-child(7) .s-image:nth-child(1)", "css:finder"],
+        ["xpath=//img[@alt='Nintendo Switch con Joy-Con Rosso Neon e Blu Neon [Ed. 2022]']", "xpath:img"],
+        ["xpath=//div[@id='search']/div/div/div/span/div/div[3]/div/div/div/div/div/span/a/div/img", "xpath:idRelative"],
+        ["xpath=//span/a/div/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0254cf92-24d4-4eec-b3b2-53e5f46f9b7c",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.reinventPricePriceToPayMargin:nth-child(1) .a-price-whole",
+      "targets": [
+        ["css=.reinventPricePriceToPayMargin:nth-child(1) > span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='corePriceDisplay_desktop_feature_div']/div/span/span[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/span/span[2]", "xpath:position"]
+      ],
+      "value": "262"
+    }]
+  }],
+  "suites": [{
+    "id": "49a79bba-99d7-4ec4-8ca9-68e35d9834e4",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["1e498048-305a-4b68-a6cf-901997e9cba3"]
+  }],
+  "urls": ["https://www.google.com/"],
+  "plugins": []
+}
