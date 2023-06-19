@@ -1,0 +1,140 @@
+{
+  "id": "1ccb8f3a-d130-4ade-9dfe-4e30d54be671",
+  "version": "2.0",
+  "name": "CheckPriceTest",
+  "url": "https://www.google.com",
+  "tests": [{
+    "id": "800b0ea0-817f-48c2-a761-b78d9e9687ab",
+    "name": "Untitled",
+    "commands": [{
+      "id": "285a0b68-4508-468e-8dcf-fe58a76662f5",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7625366f-fce4-45a2-8529-bf38cc4c893a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6b78d96e-b286-400b-a4d5-1435196c9714",
+      "comment": "",
+      "command": "click",
+      "target": "css=.M8H8pb",
+      "targets": [
+        ["css=.M8H8pb", "css:finder"],
+        ["xpath=//form/div/div/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fe68daeb-0f97-490c-9501-cbf2587c2b06",
+      "comment": "",
+      "command": "click",
+      "target": "id=APjFqb",
+      "targets": [
+        ["id=APjFqb", "id"],
+        ["name=q", "name"],
+        ["css=#APjFqb", "css:finder"],
+        ["xpath=//textarea[@id='APjFqb']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "720695ef-9ae0-4e4e-bc0b-47aa99b249c0",
+      "comment": "",
+      "command": "type",
+      "target": "id=APjFqb",
+      "targets": [
+        ["id=APjFqb", "id"],
+        ["name=q", "name"],
+        ["css=#APjFqb", "css:finder"],
+        ["xpath=//textarea[@id='APjFqb']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "new balance"
+    }, {
+      "id": "71dab48e-7004-4d55-b60d-0803ec5ac573",
+      "comment": "",
+      "command": "click",
+      "target": "css=#jZ2SBf > .wM6W7d > span",
+      "targets": [
+        ["css=#jZ2SBf > .wM6W7d > span", "css:finder"],
+        ["xpath=//div[@id='jZ2SBf']/div/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'New Balance')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c7ca4289-2ad9-430b-aabe-1fae1b79cf4e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.CCgQ5 > span",
+      "targets": [
+        ["css=.CCgQ5 > span", "css:finder"],
+        ["xpath=//div[@id='tads']/div/div/div/div/div/a/div/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/div/div/div/a/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'New Balance - Sito Ufficiale - New Balance Sneakers')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1a34d6f6-361e-4278-9232-e7660bcd33ac",
+      "comment": "",
+      "command": "click",
+      "target": "id=1000",
+      "targets": [
+        ["id=1000", "id"],
+        ["linkText=Uomo", "linkText"],
+        ["css=#\\31 000", "css:finder"],
+        ["xpath=//a[@id='1000']", "xpath:attributes"],
+        ["xpath=//div[@id='sg-navbar-collapse']/div/div/nav/div[2]/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/it/uomo/')]", "xpath:href"],
+        ["xpath=//div[2]/ul/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "550395ee-3484-48b2-b9e7-d72bd66a8f76",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,123.19999694824219)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d0496e12-b4ae-4cc0-abdc-dd658c3be4f6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pgptiles:nth-child(2) .tile-image",
+      "targets": [
+        ["css=.pgptiles:nth-child(2) .tile-image", "css:finder"],
+        ["xpath=//img[@alt='550']", "xpath:img"],
+        ["xpath=//div[@id='product-search-results']/div/div[4]/div[6]/div[2]/div/div/div/a/picture/img", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/a/picture/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1fb1afbc-efef-416f-bdcb-accef130c2ef",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.col-lg-12 .sales",
+      "targets": [
+        ["css=.col-lg-12 .sales", "css:finder"],
+        ["xpath=//div[@id='productDetails']/div/div[3]/div/div/div/span/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]/div/div/div/span/span", "xpath:position"]
+      ],
+      "value": "€150,00"
+    }]
+  }],
+  "suites": [{
+    "id": "14c8c196-14d4-481c-9a0c-24c6eea90e88",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["800b0ea0-817f-48c2-a761-b78d9e9687ab"]
+  }],
+  "urls": ["https://www.google.com/"],
+  "plugins": []
+}
