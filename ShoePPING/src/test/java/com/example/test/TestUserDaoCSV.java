@@ -10,7 +10,9 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestUserDaoCSV {
+class TestUserDaoCSV {
+    // Carmine Aprile
+
     @ParameterizedTest
     @CsvSource({
             "utente1, utente1, true",
