@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public interface IBuyShoeController {
-    void onUpdate(int shoeSizeList);
+    void onUpdate(int sizeButton);
 
     void getSizeAmountList(ModelShoeBean modelShoeBean) throws SQLException, IOException, ClassNotFoundException;
 
