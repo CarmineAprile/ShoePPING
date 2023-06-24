@@ -1,7 +1,6 @@
 package com.example.shoepping.use_case.sell_user_shoe.view;
 
 import com.example.shoepping.bean.CodeBean;
-import com.example.shoepping.bean.ConditionBean;
 import com.example.shoepping.bean.MessageBean;
 import com.example.shoepping.bean.PriceBean;
 import com.example.shoepping.exception.ManageException;
@@ -15,5 +14,5 @@ public interface ISellUserShoeView {
     void onInsertSaleSuccess() throws IOException, CsvValidationException, SQLException, ClassNotFoundException, ManageException;
 
     void onRecommendedPriceCalculateError(MessageBean message) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException;
-    void onRecommendedPriceCalculateSuccess(PriceBean price, ConditionBean condition) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException;
+    void onRecommendedPriceCalculateSuccess(PriceBean recommendedPrice) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException;
 }

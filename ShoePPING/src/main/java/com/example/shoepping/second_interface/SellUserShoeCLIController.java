@@ -2,7 +2,6 @@ package com.example.shoepping.second_interface;
 
 import com.example.shoepping.bean.*;
 import com.example.shoepping.exception.ManageException;
-import com.example.shoepping.pattern.adapter.Adapter;
 import com.example.shoepping.use_case.sell_user_shoe.controller.ISellUserShoeController;
 import com.example.shoepping.use_case.sell_user_shoe.controller.SellUserShoeController;
 import com.example.shoepping.use_case.sell_user_shoe.view.ISellUserShoeView;
@@ -140,11 +139,8 @@ public class SellUserShoeCLIController implements ISellUserShoeView {
     }
 
     @Override
-    public void onRecommendedPriceCalculateSuccess(PriceBean price, ConditionBean condition) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
-        Adapter adapter = new Adapter();
-        // vedere se può chiamare direttamente il pattern o se è un model
-        String recommendedPrice = String.valueOf(adapter.calculatePrice(price.getPrice(), condition.getCondition()));
-        System.out.println("Recommended price: " + recommendedPrice);
+    public void onRecommendedPriceCalculateSuccess(PriceBean recommendedPrice) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+        System.out.println("Recommended price: " + recommendedPrice.getPrice());
         start();
     }
 }

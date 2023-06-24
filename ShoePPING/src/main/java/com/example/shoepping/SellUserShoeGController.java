@@ -2,7 +2,6 @@ package com.example.shoepping;
 
 import com.example.shoepping.bean.*;
 import com.example.shoepping.exception.ManageException;
-import com.example.shoepping.pattern.adapter.Adapter;
 import com.example.shoepping.use_case.sell_user_shoe.controller.ISellUserShoeController;
 import com.example.shoepping.use_case.sell_user_shoe.controller.SellUserShoeController;
 import com.example.shoepping.use_case.sell_user_shoe.view.ISellUserShoeView;
@@ -158,10 +157,10 @@ public class SellUserShoeGController implements ISellUserShoeView {
         priceL.setText(message.getMessage());
     }
     @Override
-    public void onRecommendedPriceCalculateSuccess(PriceBean price, ConditionBean condition) {
-        Adapter adapter = new Adapter();
-        String recommendedPrice = String.valueOf(adapter.calculatePrice(price.getPrice(), condition.getCondition()));
-        priceTA.setText(recommendedPrice);
+    public void onRecommendedPriceCalculateSuccess(PriceBean recommendedPrice) {
+        //Adapter adapter = new Adapter();
+        //String recommendedPrice = String.valueOf(adapter.calculatePrice(price.getPrice(), condition.getCondition()));
+        priceTA.setText(String.valueOf(recommendedPrice.getPrice()));
     }
 
     public void onPriceInfo() {
