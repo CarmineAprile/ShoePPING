@@ -108,7 +108,7 @@ public class SellUserShoeCLIController implements ISellUserShoeView {
         conditionBean.setCondition(conditionSell);
 
         ISellUserShoeController sellUserShoeController = new SellUserShoeController(this);
-        sellUserShoeController.onReccomendedPriceCalculate(priceBean, conditionBean);
+        sellUserShoeController.onRecommendedPriceCalculate(priceBean, conditionBean);
 
     }
     public void buyMethod() throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
