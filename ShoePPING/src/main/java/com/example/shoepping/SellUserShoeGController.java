@@ -150,7 +150,7 @@ public class SellUserShoeGController implements ISellUserShoeView {
         conditionBean.setCondition(condition);
 
         ISellUserShoeController sellUserShoeController = new SellUserShoeController(this);
-        sellUserShoeController.onReccomendedPriceCalculate(priceBean, conditionBean);
+        sellUserShoeController.onRecommendedPriceCalculate(priceBean, conditionBean);
     }
     @Override
     public void onRecommendedPriceCalculateError(MessageBean message) {

@@ -76,7 +76,7 @@ public class SellUserShoeController implements ISellUserShoeController{
         sellUserShoeView.onInsertSaleError(messageBean, codeBean);
     }
     @Override
-    public void onReccomendedPriceCalculate(PriceBean price, ConditionBean condition) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
+    public void onRecommendedPriceCalculate(PriceBean price, ConditionBean condition) throws CsvValidationException, SQLException, IOException, ClassNotFoundException, ManageException {
 
         MessageBean messageBean = new MessageBean();
 
