@@ -158,8 +158,6 @@ public class SellUserShoeGController implements ISellUserShoeView {
     }
     @Override
     public void onRecommendedPriceCalculateSuccess(PriceBean recommendedPrice) {
-        //Adapter adapter = new Adapter();
-        //String recommendedPrice = String.valueOf(adapter.calculatePrice(price.getPrice(), condition.getCondition()));
         priceTA.setText(String.valueOf(recommendedPrice.getPrice()));
     }
 
