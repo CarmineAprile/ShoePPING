@@ -5,6 +5,7 @@ import com.example.shoepping.dao.sales_dao.SalesDaoJDBC;
 import com.example.shoepping.exception.ManageException;
 import com.example.shoepping.model.sale.Sale;
 import com.example.shoepping.pattern.adapter.Adapter;
+import com.example.shoepping.pattern.adapter.Target;
 import com.example.shoepping.pattern.singleton.UserSingleton;
 import com.example.shoepping.use_case.sell_user_shoe.view.ISellUserShoeView;
 import com.opencsv.exceptions.CsvValidationException;
@@ -93,8 +94,10 @@ public class SellUserShoeController implements ISellUserShoeController{
 
             PriceBean priceBean = new PriceBean();
 
-            Adapter adapter = new Adapter();
-            String recommendedPrice = String.valueOf(adapter.calculatePrice(price.getPrice(), condition.getCondition()));
+            Sale sale = new Sale(price.getPrice(), condition.getCondition());
+
+            Target usedShoe = new Adapter(sale);
+            String recommendedPrice = String.valueOf(usedShoe.calculatePrice());
 
             priceBean.setPrice(recommendedPrice);
 
