@@ -34,6 +34,8 @@ public class ValidationNumeric {
         if(l>3 && !findPoint)
             return true;
 
+        // Exception managed by Daniele Ausili
+
         try{
             Double.parseDouble(price);
             return false;

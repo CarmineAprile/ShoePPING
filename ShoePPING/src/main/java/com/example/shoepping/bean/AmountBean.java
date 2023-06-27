@@ -32,6 +32,9 @@ public class AmountBean {
     }
 
     private boolean isNotAnInt(String value){
+
+        // Exception managed by Carmine Aprile
+
         try{
             Integer.parseInt(value);
             return false;

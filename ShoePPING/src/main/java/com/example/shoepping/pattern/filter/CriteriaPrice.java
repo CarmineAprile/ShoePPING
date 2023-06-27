@@ -10,6 +10,7 @@ public class CriteriaPrice implements Criteria{
         Catalog catalogFind = new Catalog();
         double priceDouble;
 
+        // Exception managed by Daniele Ausili
         try {
             priceDouble = Double.parseDouble(price);
         }catch (Exception e){

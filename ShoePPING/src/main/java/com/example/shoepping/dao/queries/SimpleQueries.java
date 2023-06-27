@@ -38,6 +38,8 @@ public class SimpleQueries {
     }
 
     public static void insertUser(Connection conn, String username, String passd, String email) throws ManageException {
+
+        // Exception managed by Carmine Aprile
         try {
             try (CallableStatement cs = conn.prepareCall("{call addNewUser(?, ?, ?)}")) {
                 cs.setString(1, username);
