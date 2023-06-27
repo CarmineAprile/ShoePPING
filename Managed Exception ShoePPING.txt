@@ -1,0 +1,5 @@
+CriteriaPrice -> meetCriteria OK -> DANIELE
+ValidationNumeric -> utilityPrice OK -> DANIELE
+LoginCLIController -> start() OK -> NESSUNO 
+AmountBean -> isNotAnInt OK -> CARMINE
+SimpleQueries -> insertUser OK -> CARMINE
