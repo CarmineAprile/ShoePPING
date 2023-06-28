@@ -8,15 +8,13 @@ Flusso principale:
 4) Sistema fornisce form per inserire Nome Utente e password
 5) Utente inserisce Nome utente e password
 6) Il sistema verifica l'Utente
-7) Utente è stato verificato
+7) Il sistema verifica l'utente
 
 Extensions:
 
-2a) Utente ha scelto login via FB: <<LOGIN VIA FB>>
-2b) Utente ha scelto login via Google: <<LOGIN VIA GOOGLE>>
-
+2a) Utente ha scelto login via FB: <<LOGIN VIA FB>> (underlined per indicare che è un altro Use Case a se stante, con il suo Internal Steps)
+2b) Utente ha scelto login via Google: <<LOGIN VIA GOOGLE>> (underlined per indicare che è un altro Use Case a se stante, con il suo Internal Steps)
 
 2n) ...
 
-
-6a) Utente non riconosciuto: mosta menù registrazione
+6a) Utente non riconosciuto: mostra menù registrazione
