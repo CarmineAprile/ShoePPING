@@ -5,6 +5,7 @@ import java.util.List;
 
 public class ShoeSizeSubject implements Subject {
     public final List<Observer> observers = new ArrayList<>();
+
     List<SizeAmount> sizeAmounts = new ArrayList<>();
 
     @Override
@@ -22,13 +23,15 @@ public class ShoeSizeSubject implements Subject {
         this.observers.remove(observer);
     }
 
-
+    public List<SizeAmount> getState() {
+        return sizeAmounts;
+    }
 
     @Override
     public void notifyObserver() {
 
         for (Observer button : this.observers) {
-            button.update(sizeAmounts);
+            button.update();
         }
     }
 

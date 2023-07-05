@@ -50,17 +50,17 @@ public class BuyShoeController implements IBuyShoeController{
         SizeDaoJDBC sizeDao = new SizeDaoJDBC();
         shoeSizeList = sizeDao.getSizeList(modelShoeBean.getModelShoe());
 
-        ButtonObserver observer37 = new ButtonObserver(37, buyShoeView);
-        ButtonObserver observer38 = new ButtonObserver(38, buyShoeView);
-        ButtonObserver observer39 = new ButtonObserver(39, buyShoeView);
-        ButtonObserver observer40 = new ButtonObserver(40, buyShoeView);
-        ButtonObserver observer41 = new ButtonObserver(41, buyShoeView);
-        ButtonObserver observer42 = new ButtonObserver(42, buyShoeView);
-        ButtonObserver observer43 = new ButtonObserver(43, buyShoeView);
-        ButtonObserver observer44 = new ButtonObserver(44, buyShoeView);
-        ButtonObserver observer45 = new ButtonObserver(45, buyShoeView);
-        ButtonObserver observer46 = new ButtonObserver(46, buyShoeView);
-        BarchartObserver barchartObserver = new BarchartObserver(buyShoeView);
+        ButtonObserver observer37 = new ButtonObserver(37, buyShoeView, shoeSizeList);
+        ButtonObserver observer38 = new ButtonObserver(38, buyShoeView, shoeSizeList);
+        ButtonObserver observer39 = new ButtonObserver(39, buyShoeView, shoeSizeList);
+        ButtonObserver observer40 = new ButtonObserver(40, buyShoeView, shoeSizeList);
+        ButtonObserver observer41 = new ButtonObserver(41, buyShoeView, shoeSizeList);
+        ButtonObserver observer42 = new ButtonObserver(42, buyShoeView, shoeSizeList);
+        ButtonObserver observer43 = new ButtonObserver(43, buyShoeView, shoeSizeList);
+        ButtonObserver observer44 = new ButtonObserver(44, buyShoeView, shoeSizeList);
+        ButtonObserver observer45 = new ButtonObserver(45, buyShoeView, shoeSizeList);
+        ButtonObserver observer46 = new ButtonObserver(46, buyShoeView, shoeSizeList);
+        BarchartObserver barchartObserver = new BarchartObserver(buyShoeView, shoeSizeList);
 
         shoeSizeList.addObserver(observer37);
         shoeSizeList.addObserver(observer38);

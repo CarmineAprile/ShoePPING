@@ -10,15 +10,20 @@ public class ButtonObserver implements Observer {
 
     private final int sizeButton;
     private final IBuyShoeView buyShoeView;
+    private final ShoeSizeSubject shoeSizeSubject;
 
-    public ButtonObserver(int sizeButton, IBuyShoeView buyShoeView) {
+    public ButtonObserver(int sizeButton, IBuyShoeView buyShoeView, ShoeSizeSubject shoeSizeList) {
         this.sizeButton = sizeButton;
         this.buyShoeView = buyShoeView;
+        this.shoeSizeSubject = shoeSizeList;
     }
 
     @Override
-    public void update(List<SizeAmount> sizeAmounts) {
-        for(SizeAmount sa : sizeAmounts){
+    public void update() {
+
+        List<SizeAmount> observerState = shoeSizeSubject.getState();
+
+        for(SizeAmount sa : observerState){
             if (sa.getShoeAmount() == 0 && sa.getShoeSize() == sizeButton) {
                 IBuyShoeController buyShoeController = new BuyShoeController(buyShoeView);
                 buyShoeController.onUpdate(sizeButton);
