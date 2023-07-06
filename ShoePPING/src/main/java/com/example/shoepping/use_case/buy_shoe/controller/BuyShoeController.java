@@ -22,10 +22,14 @@ import java.time.format.DateTimeFormatter;
 
 public class BuyShoeController implements IBuyShoeController{
 
-    IBuyShoeView buyShoeView;
+    static IBuyShoeView buyShoeView;
 
     public BuyShoeController(IBuyShoeView buyShoeView) {
-        this.buyShoeView = buyShoeView;
+        BuyShoeController.buyShoeView = buyShoeView;
+    }
+
+    public BuyShoeController() {
+        //empty constructor
     }
 
     @Override
@@ -50,17 +54,17 @@ public class BuyShoeController implements IBuyShoeController{
         SizeDaoJDBC sizeDao = new SizeDaoJDBC();
         shoeSizeList = sizeDao.getSizeList(modelShoeBean.getModelShoe());
 
-        ButtonObserver observer37 = new ButtonObserver(37, buyShoeView, shoeSizeList);
-        ButtonObserver observer38 = new ButtonObserver(38, buyShoeView, shoeSizeList);
-        ButtonObserver observer39 = new ButtonObserver(39, buyShoeView, shoeSizeList);
-        ButtonObserver observer40 = new ButtonObserver(40, buyShoeView, shoeSizeList);
-        ButtonObserver observer41 = new ButtonObserver(41, buyShoeView, shoeSizeList);
-        ButtonObserver observer42 = new ButtonObserver(42, buyShoeView, shoeSizeList);
-        ButtonObserver observer43 = new ButtonObserver(43, buyShoeView, shoeSizeList);
-        ButtonObserver observer44 = new ButtonObserver(44, buyShoeView, shoeSizeList);
-        ButtonObserver observer45 = new ButtonObserver(45, buyShoeView, shoeSizeList);
-        ButtonObserver observer46 = new ButtonObserver(46, buyShoeView, shoeSizeList);
-        BarchartObserver barchartObserver = new BarchartObserver(buyShoeView, shoeSizeList);
+        ButtonObserver observer37 = new ButtonObserver(37, shoeSizeList);
+        ButtonObserver observer38 = new ButtonObserver(38, shoeSizeList);
+        ButtonObserver observer39 = new ButtonObserver(39, shoeSizeList);
+        ButtonObserver observer40 = new ButtonObserver(40, shoeSizeList);
+        ButtonObserver observer41 = new ButtonObserver(41, shoeSizeList);
+        ButtonObserver observer42 = new ButtonObserver(42, shoeSizeList);
+        ButtonObserver observer43 = new ButtonObserver(43, shoeSizeList);
+        ButtonObserver observer44 = new ButtonObserver(44, shoeSizeList);
+        ButtonObserver observer45 = new ButtonObserver(45, shoeSizeList);
+        ButtonObserver observer46 = new ButtonObserver(46, shoeSizeList);
+        BarchartObserver barchartObserver = new BarchartObserver(shoeSizeList);
 
         shoeSizeList.addObserver(observer37);
         shoeSizeList.addObserver(observer38);
