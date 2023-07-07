@@ -12,9 +12,9 @@ public class BarchartObserver implements Observer{
     private final IBuyShoeView buyShoeView;
     private final ShoeSizeSubject shoeSizeSubject;
 
-    public BarchartObserver(IBuyShoeView buyShoeView, ShoeSizeSubject shoeSizeList) {
+    public BarchartObserver(IBuyShoeView buyShoeView, ShoeSizeSubject shoeSizeSubject) {
         this.buyShoeView = buyShoeView;
-        this.shoeSizeSubject = shoeSizeList;
+        this.shoeSizeSubject = shoeSizeSubject;
     }
 
     @Override

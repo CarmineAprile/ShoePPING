@@ -12,10 +12,10 @@ public class ButtonObserver implements Observer {
     private final IBuyShoeView buyShoeView;
     private final ShoeSizeSubject shoeSizeSubject;
 
-    public ButtonObserver(int sizeButton, IBuyShoeView buyShoeView, ShoeSizeSubject shoeSizeList) {
+    public ButtonObserver(int sizeButton, IBuyShoeView buyShoeView, ShoeSizeSubject shoeSizeSubject) {
         this.sizeButton = sizeButton;
         this.buyShoeView = buyShoeView;
-        this.shoeSizeSubject = shoeSizeList;
+        this.shoeSizeSubject = shoeSizeSubject;
     }
 
     @Override

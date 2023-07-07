@@ -30,8 +30,8 @@ public class ShoeSizeSubject implements Subject {
     @Override
     public void notifyObserver() {
 
-        for (Observer button : this.observers) {
-            button.update();
+        for (Observer observer : this.observers) {
+            observer.update();
         }
     }
 
