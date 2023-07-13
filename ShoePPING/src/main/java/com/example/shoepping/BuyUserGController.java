@@ -31,8 +31,6 @@ public class BuyUserGController{
 
     public void onNikeClick() throws IOException, SQLException, ClassNotFoundException {
 
-        int x = 0;
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buy-user-nike-view.fxml"));
         Parent root = loader.load();
 
